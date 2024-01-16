@@ -1,0 +1,4 @@
+**/*.json
+**/*.config.*
+node_modules/
+example/
