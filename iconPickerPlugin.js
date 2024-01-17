@@ -10,6 +10,7 @@ import bold from "@ckeditor/ckeditor5-core/theme/icons/bold.svg";
 import Widget from "@ckeditor/ckeditor5-widget/src/widget";
 import WidgetResize from "@ckeditor/ckeditor5-widget/src/widgetresize";
 import ClickObserver from "@ckeditor/ckeditor5-engine/src/view/observer/clickobserver";
+import { replaceTextInSvg } from "./utils";
 // import SelectionObserver from '@ckeditor/ckeditor5-engine/src/view/observer/selectionobserver';
 
 class IconPickerPlugin extends Plugin {
@@ -72,11 +73,10 @@ class IconPickerPlugin extends Plugin {
               const selection = model.document.selection;
 
               const selectedElement = selection.getSelectedElement();
-              if(selectedElement.name === 'icon') {
+              if (selectedElement.name === "icon") {
                 console.log("selectedElement", selectedElement);
-                writer.setAttribute( 'resizedWidth', newValue, selectedElement );
+                writer.setAttribute("resizedWidth", newValue, selectedElement);
               }
-             
             });
 
             // editor.execute( 'resizeImage', { width: newValue } );
@@ -170,7 +170,7 @@ class IconPickerPlugin extends Plugin {
       {
         iconName: "icon1",
         label: "Icon 1",
-        icon: sing,
+        icon: replaceTextInSvg(sing),
       },
       {
         iconName: "icon2",
@@ -183,3 +183,6 @@ class IconPickerPlugin extends Plugin {
 }
 
 export default IconPickerPlugin;
+
+
+
