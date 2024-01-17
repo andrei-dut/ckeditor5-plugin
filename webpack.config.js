@@ -7,12 +7,10 @@
 
 const path = require("path");
 const { styles } = require("@ckeditor/ckeditor5-dev-utils");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  // https://webpack.js.org/configuration/entry-context/
   entry: "./app.js",
-
-  // https://webpack.js.org/configuration/output/
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -55,6 +53,22 @@ module.exports = {
 
     ],
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+    }),
+  ],
+
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'), // Каталог для статики
+    },
+    port: 8080,
+    open: true, // Автоматически открывать браузер
+  },
+
+  mode: 'development',
 
   // Useful for debugging.
   devtool: "source-map",

@@ -126,8 +126,7 @@ function attachDowncastConverter(
 
 console.log(width, height);
       viewWriter.setStyle( {
-        width: '100px',
-        height: '50px',
+        width: '100px'
       }, img );
     
   } );
