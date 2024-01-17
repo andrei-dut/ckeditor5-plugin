@@ -149,7 +149,7 @@ class IconPickerPlugin extends Plugin {
         listItem.on("execute", () => {
           editor.execute("insertIcon", {
             iconName: icon.iconName,
-            icon: icon.icon,
+            icon: replaceTextInSvg(icon.icon),
           });
           editor.editing.view.focus();
           // dropdown.hide();
@@ -170,7 +170,7 @@ class IconPickerPlugin extends Plugin {
       {
         iconName: "icon1",
         label: "Icon 1",
-        icon: replaceTextInSvg(sing),
+        icon: sing,
       },
       {
         iconName: "icon2",
