@@ -1,3 +1,7 @@
+import Emittery from "emittery";
+
+export const emitter = new Emittery();
+
 export function parseSvg(svgString) {
   const parser = new DOMParser();
   const xmlDoc = parser.parseFromString(svgString, "image/svg+xml");
@@ -50,25 +54,16 @@ export function cloneElem(viewWriter, sourceNode) {
     throw new Exception('Given node has unsupported type.'); // eslint-disable-line no-undef
   }
 
-export  function replaceTextInSvg(_svgString) {
+export  function replaceTextInSvg(_svgString, replacement) {
     let svgString = _svgString;
   
-    const testValues = {
-      'YY': '11',
-      'XX(1)': '22',
-      'XX(2)': '33',
-      'XX(3)': '44',
-      'XX(4)': '55',
-      'Z': '66',
-    }
-
     function replaceTemp(string, regex) {
       return string.replace(
         regex,
         (match, group) => {
           // match - это весь найденный тег <text>
           // group - это содержимое текста внутри тега    
-          return match.replace(group, testValues[group] || group);
+          return match.replace(group, replacement[group] || group);
         }
       );
     }

@@ -1,3 +1,77 @@
 .ck-svg-widget {
-    display: inline-block;
+  display: inline-block;
+  font-size: 0px;
+}
+
+#myModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+#modalContainer {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+#closeModal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#closeModal:hover,
+#closeModal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#wrapForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#headFormSvg {
+  display: flex;
+  align-items: center;
+}
+
+#headFormSvg h2 {
+  padding-right: 16px;
+}
+
+#headFormSvg svg {
+  width: 75px;
+}
+
+.form-edit-svg {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  min-width: 240px;
+}
+
+.form-edit-svg label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form-edit-svg input {
+  margin-top: 6px;
+  padding: 5px;
 }

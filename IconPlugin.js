@@ -35,7 +35,7 @@ class IconPlugin extends Plugin {
           const widgetElement = writer.createContainerElement("span", {
             class: "ck-svg-widget",
           });
-          console.log(modelElement.getAttribute("resizedWidth"));
+  
           const svgUIElement = createViewSvg(modelElement, { writer });
 
           if (svgUIElement) {
@@ -104,30 +104,23 @@ function attachDowncastConverter(
 ) {
   dispatcher.on( `attribute:resizedWidth:icon`, ( evt, data, conversionApi ) => {
 
-
     console.log("dispatcher", evt, data, conversionApi);
-
-    // if ( !conversionApi.consumable.consume( data.item, evt.name ) ) {
-    //   return;
-    // }
 
     const viewWriter = conversionApi.writer;
     const viewElement = conversionApi.mapper.toViewElement( data.item );
-    const img = viewElement;
 
     if ( data.attributeNewValue !== null ) {
-      viewWriter.setAttribute( viewAttributeName, data.attributeNewValue, img );
+      viewWriter.setAttribute( viewAttributeName, data.attributeNewValue, viewElement );
     } else {
-      viewWriter.removeAttribute( viewAttributeName, img );
+      viewWriter.removeAttribute( viewAttributeName, viewElement );
     }
 
-    const width = data.item.getAttribute( 'width' );
-    const height = data.item.getAttribute( 'height' );
+    const width = viewElement.getAttribute( 'width' );
 
-console.log(width, height);
+console.log("attachDowncastConverter", width, viewAttributeName, viewElement);
       viewWriter.setStyle( {
-        width: '100px'
-      }, img );
+        width,
+      }, viewElement );
     
   } );
 }

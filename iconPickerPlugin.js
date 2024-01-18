@@ -10,7 +10,8 @@ import bold from "@ckeditor/ckeditor5-core/theme/icons/bold.svg";
 import Widget from "@ckeditor/ckeditor5-widget/src/widget";
 import WidgetResize from "@ckeditor/ckeditor5-widget/src/widgetresize";
 import ClickObserver from "@ckeditor/ckeditor5-engine/src/view/observer/clickobserver";
-import { replaceTextInSvg } from "./utils";
+import { emitter, replaceTextInSvg } from "./utils";
+import { openEditSvgModal } from "./manageCustomModal";
 // import SelectionObserver from '@ckeditor/ckeditor5-engine/src/view/observer/selectionobserver';
 
 class IconPickerPlugin extends Plugin {
@@ -44,7 +45,7 @@ class IconPickerPlugin extends Plugin {
           modelElement: imageModel,
           viewElement: widgetView,
           editor,
-
+          unit: "px",
           getHandleHost(domWidgetElement) {
             // console.log("getHandleHost");
             return domWidgetElement.querySelector("svg");
@@ -146,12 +147,18 @@ class IconPickerPlugin extends Plugin {
           icon: icon.icon,
         });
 
-        listItem.on("execute", () => {
+        function insertIconFc(valuesSvg) {
           editor.execute("insertIcon", {
             iconName: icon.iconName,
-            icon: replaceTextInSvg(icon.icon),
+            icon: replaceTextInSvg(icon.icon, valuesSvg),
           });
           editor.editing.view.focus();
+          emitter.off("insertIcon", insertIconFc)
+        }
+
+        listItem.on("execute", () => {
+          emitter.on("insertIcon", insertIconFc);
+          openEditSvgModal(icon);
           // dropdown.hide();
         });
 
@@ -183,6 +190,3 @@ class IconPickerPlugin extends Plugin {
 }
 
 export default IconPickerPlugin;
-
-
-

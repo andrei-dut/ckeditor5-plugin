@@ -14,7 +14,8 @@
   "dependencies": {
     "@ckeditor/ckeditor5-basic-styles": "38.1.1",
     "@ckeditor/ckeditor5-editor-classic": "38.1.1",
-    "@ckeditor/ckeditor5-essentials": "38.1.1"
+    "@ckeditor/ckeditor5-essentials": "38.1.1",
+    "emittery": "^1.0.1"
   },
   "devDependencies": {
     "css-loader": "^5.2.7",
