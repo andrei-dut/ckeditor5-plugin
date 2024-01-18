@@ -46,7 +46,7 @@ class IconPlugin extends Plugin {
           }
 
           // hasSelectionHandle: true, 3 argm for toWidget, move widget editor
-
+          console.log(widgetElement);
           return toWidget(widgetElement, writer);
         },
       })
@@ -104,7 +104,7 @@ function attachDowncastConverter(
 ) {
   dispatcher.on( `attribute:resizedWidth:icon`, ( evt, data, conversionApi ) => {
 
-    console.log("dispatcher", evt, data, conversionApi);
+    // console.log("dispatcher", evt, data, conversionApi);
 
     const viewWriter = conversionApi.writer;
     const viewElement = conversionApi.mapper.toViewElement( data.item );
@@ -117,7 +117,7 @@ function attachDowncastConverter(
 
     const width = viewElement.getAttribute( 'width' );
 
-console.log("attachDowncastConverter", width, viewAttributeName, viewElement);
+// console.log("attachDowncastConverter", width, viewAttributeName, viewElement);
       viewWriter.setStyle( {
         width,
       }, viewElement );

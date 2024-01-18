@@ -6,13 +6,13 @@ import {
   createDropdown,
 } from "@ckeditor/ckeditor5-ui";
 import sing from "./icons/sign.svg";
+import text from "./icons/text.svg";
 import bold from "@ckeditor/ckeditor5-core/theme/icons/bold.svg";
 import Widget from "@ckeditor/ckeditor5-widget/src/widget";
 import WidgetResize from "@ckeditor/ckeditor5-widget/src/widgetresize";
-import ClickObserver from "@ckeditor/ckeditor5-engine/src/view/observer/clickobserver";
 import { emitter, replaceTextInSvg } from "./utils";
 import { openEditSvgModal } from "./manageCustomModal";
-// import SelectionObserver from '@ckeditor/ckeditor5-engine/src/view/observer/selectionobserver';
+import { insertContentEvent } from "./insertContentEvent";
 
 class IconPickerPlugin extends Plugin {
   static get requires() {
@@ -26,89 +26,15 @@ class IconPickerPlugin extends Plugin {
   init() {
     const editor = this.editor;
 
-    editor.editing.view.addObserver(ClickObserver);
+    insertContentEvent.call(this, editor)
 
-    this.listenTo(
-      editor.editing.view.document,
-      "click",
-      (evt, data) => {
-        const mapper = editor.editing.mapper;
-        const domConverter = editor.editing.view.domConverter;
-        const widgetView = data.target.findAncestor({
-          classes: /^(ck-svg-widget)$/,
-        });
-
-        if (!widgetView) return;
-
-        const imageModel = mapper.toModelElement(widgetView);
-        const resizer = editor.plugins.get(WidgetResize).attachTo({
-          modelElement: imageModel,
-          viewElement: widgetView,
-          editor,
-          unit: "px",
-          getHandleHost(domWidgetElement) {
-            // console.log("getHandleHost");
-            return domWidgetElement.querySelector("svg");
-          },
-          getResizeHost() {
-            console.log("getResizeHost");
-            // Return the model image element parent to avoid setting an inline element (<a>/<span>) as a resize host.
-            return domConverter.mapViewToDom(
-              mapper.toViewElement(imageModel.parent)
-            );
-          },
-          // TODO consider other positions.
-          isCentered() {
-            return false;
-          },
-
-          onCommit(newValue) {
-            // Get rid of the CSS class in case the command execution that follows is unsuccessful
-            // (e.g. Track Changes can override it and the new dimensions will not apply). Otherwise,
-            // the presence of the class and the absence of the width style will cause it to take 100%
-            // of the horizontal space.
-            console.log(newValue);
-
-            editor.model.change((writer) => {
-              const model = editor.model;
-              const selection = model.document.selection;
-
-              const selectedElement = selection.getSelectedElement();
-              if (selectedElement.name === "icon") {
-                console.log("selectedElement", selectedElement);
-                writer.setAttribute("resizedWidth", newValue, selectedElement);
-              }
-            });
-
-            // editor.execute( 'resizeImage', { width: newValue } );
-          },
-        });
-
-        console.log("2323", resizer, widgetView);
-        if (data.domEvent.detail === 2) {
-          evt.stop();
-        }
-      },
-      { priority: "highest" }
-    );
+    // editor.editing.view.addObserver(ClickObserver);
 
     // this.listenTo(editor.editing.view.document, 'selectionChange', (evt, data) => {
     //   // Is Double-click
     //   console.log('selectionChange');
 
     // }, { priority: 'highest' });
-
-    // editor.model.document.selection.on('change', (evt, data) => {
-
-    //   const selectedElement = editor.model.document.selection.getSelectedElement();
-    // console.log(evt, data, selectedElement);
-    //   if (selectedElement?.is?.('element', 'icon')) {
-    //     // Элемент вашего виджета (замените 'myCustomWidget' на тип вашего виджета)
-    //     console.log('My custom widget is selected');
-    //   } else {
-    //     console.log('No custom widget is selected');
-    //   }
-    // });
 
     // Регистрация команды для вставки иконки
 
@@ -122,6 +48,7 @@ class IconPickerPlugin extends Plugin {
             "data-name": data.iconName,
             "data-icon": data.icon,
           });
+          console.log(selection, model);
 
           model.insertContent(iconElement, selection);
         });
@@ -153,7 +80,7 @@ class IconPickerPlugin extends Plugin {
             icon: replaceTextInSvg(icon.icon, valuesSvg),
           });
           editor.editing.view.focus();
-          emitter.off("insertIcon", insertIconFc)
+          emitter.off("insertIcon", insertIconFc);
         }
 
         listItem.on("execute", () => {
@@ -178,6 +105,11 @@ class IconPickerPlugin extends Plugin {
         iconName: "icon1",
         label: "Icon 1",
         icon: sing,
+      },
+      {
+        iconName: "icon3",
+        label: "Icon 3",
+        icon: text,
       },
       {
         iconName: "icon2",

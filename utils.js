@@ -29,7 +29,10 @@ export function createViewSvg(modelElement, { writer }) {
       "svg",
       {
         class: `svg-${modelElement.getAttribute("data-name")}`,
-        ..._parseSvg.attributes
+
+        ..._parseSvg.attributes,
+        width: '100%',
+        height: '100%',
       },
       function (domElement) {
         domElement.innerHTML = _parseSvg.content;
