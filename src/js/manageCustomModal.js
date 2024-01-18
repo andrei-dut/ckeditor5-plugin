@@ -1,4 +1,4 @@
-import { emitter } from "./utils";
+import { emitter } from "../utils/utils";
 
 function createFormForModal(parent, formData) {
   const formContainer = document.createElement("div");
@@ -27,7 +27,7 @@ function createFormForModal(parent, formData) {
       formValues[name] = value;
     }
     emitter.emit("insertIcon", formValues);
-    closeEditSvgModal()
+    closeEditSvgModal();
   };
 
   const submitButton = document.createElement("button");
@@ -36,7 +36,6 @@ function createFormForModal(parent, formData) {
 
   form.appendChild(submitButton);
   formContainer.appendChild(form);
-  
 }
 
 export function openEditSvgModal(iconData) {

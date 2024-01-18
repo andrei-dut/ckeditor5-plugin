@@ -1,6 +1,6 @@
 import Plugin from "@ckeditor/ckeditor5-core/src/plugin";
 import { toWidget } from "@ckeditor/ckeditor5-widget/src/utils";
-import { cloneElem, createViewSvg } from "./utils";
+import { cloneElem, createViewSvg } from "../utils/utils";
 
 // Регистрируем новый тип элемента "icon"
 class IconPlugin extends Plugin {
@@ -25,17 +25,19 @@ class IconPlugin extends Plugin {
     });
 
     editor.conversion
-      .for("editingDowncast").add( dispatcher => {
-        attachDowncastConverter( dispatcher, 'width', 'width', true );
-        attachDowncastConverter( dispatcher, 'height', 'height', true );
-      } )
+      .for("editingDowncast")
+      .add((dispatcher) => {
+        attachDowncastConverter(dispatcher, "width", "width", true);
+        attachDowncastConverter(dispatcher, "height", "height", true);
+      })
       .elementToElement({
         model: "icon",
         view: (modelElement, { writer }) => {
           const widgetElement = writer.createContainerElement("span", {
             class: "ck-svg-widget",
+            style: 'width: 60px;'
           });
-  
+
           const svgUIElement = createViewSvg(modelElement, { writer });
 
           if (svgUIElement) {
@@ -56,7 +58,7 @@ class IconPlugin extends Plugin {
           key: "resizedWidth",
         },
         view: (attributeValue) => {
-          console.log('width1',attributeValue);
+          console.log("width1", attributeValue);
           return {
             key: "width",
             value: `${parseInt(attributeValue)}px`,
@@ -66,10 +68,11 @@ class IconPlugin extends Plugin {
       });
 
     editor.conversion
-      .for("dataDowncast").add( dispatcher => {
-        attachDowncastConverter( dispatcher, 'width', 'width', true );
-        attachDowncastConverter( dispatcher, 'height', 'height', true );
-      } )
+      .for("dataDowncast")
+      .add((dispatcher) => {
+        attachDowncastConverter(dispatcher, "width", "width", true);
+        attachDowncastConverter(dispatcher, "height", "height", true);
+      })
       .elementToElement({
         model: "icon",
         view: (modelElement, { writer }) => {
@@ -85,11 +88,12 @@ class IconPlugin extends Plugin {
           key: "resizedWidth",
         },
         view: (attributeValue) => {
-          console.log('width2',attributeValue);
-          return ({
-          key: "width",
-          value: `${parseInt(attributeValue)}px`,
-        })},
+          console.log("width2", attributeValue);
+          return {
+            key: "width",
+            value: `${parseInt(attributeValue)}px`,
+          };
+        },
         converterPriority: "high",
       });
   }
@@ -97,30 +101,31 @@ class IconPlugin extends Plugin {
 
 export default IconPlugin;
 
-
-function attachDowncastConverter(
-  dispatcher,
-  viewAttributeName,
-) {
-  dispatcher.on( `attribute:resizedWidth:icon`, ( evt, data, conversionApi ) => {
-
+function attachDowncastConverter(dispatcher, viewAttributeName) {
+  dispatcher.on(`attribute:resizedWidth:icon`, (evt, data, conversionApi) => {
     // console.log("dispatcher", evt, data, conversionApi);
 
     const viewWriter = conversionApi.writer;
-    const viewElement = conversionApi.mapper.toViewElement( data.item );
+    const viewElement = conversionApi.mapper.toViewElement(data.item);
 
-    if ( data.attributeNewValue !== null ) {
-      viewWriter.setAttribute( viewAttributeName, data.attributeNewValue, viewElement );
+    if (data.attributeNewValue !== null) {
+      viewWriter.setAttribute(
+        viewAttributeName,
+        data.attributeNewValue,
+        viewElement
+      );
     } else {
-      viewWriter.removeAttribute( viewAttributeName, viewElement );
+      viewWriter.removeAttribute(viewAttributeName, viewElement);
     }
 
-    const width = viewElement.getAttribute( 'width' );
+    const width = viewElement.getAttribute("width");
 
-// console.log("attachDowncastConverter", width, viewAttributeName, viewElement);
-      viewWriter.setStyle( {
+    // console.log("attachDowncastConverter", width, viewAttributeName, viewElement);
+    viewWriter.setStyle(
+      {
         width,
-      }, viewElement );
-    
-  } );
+      },
+      viewElement
+    );
+  });
 }

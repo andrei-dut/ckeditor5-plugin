@@ -5,14 +5,13 @@ import {
   ButtonView,
   createDropdown,
 } from "@ckeditor/ckeditor5-ui";
-import sing from "./icons/sign.svg";
-import text from "./icons/text.svg";
-import bold from "@ckeditor/ckeditor5-core/theme/icons/bold.svg";
 import Widget from "@ckeditor/ckeditor5-widget/src/widget";
 import WidgetResize from "@ckeditor/ckeditor5-widget/src/widgetresize";
-import { emitter, replaceTextInSvg } from "./utils";
-import { openEditSvgModal } from "./manageCustomModal";
-import { insertContentEvent } from "./insertContentEvent";
+import { emitter, replaceTextInSvg } from "../utils/utils";
+import { customIcons } from '../icons'
+import { insertContentEvent } from "../events/insertContentEvent";
+import { openEditSvgModal } from "../js/manageCustomModal";
+
 
 class IconPickerPlugin extends Plugin {
   static get requires() {
@@ -26,7 +25,7 @@ class IconPickerPlugin extends Plugin {
   init() {
     const editor = this.editor;
 
-    insertContentEvent.call(this, editor)
+    insertContentEvent.call(this, editor);
 
     // editor.editing.view.addObserver(ClickObserver);
 
@@ -100,24 +99,7 @@ class IconPickerPlugin extends Plugin {
 
   // Функция для получения списка иконок (замените этот код на свою логику)
   _getIconList() {
-    return [
-      {
-        iconName: "icon1",
-        label: "Icon 1",
-        icon: sing,
-      },
-      {
-        iconName: "icon3",
-        label: "Icon 3",
-        icon: text,
-      },
-      {
-        iconName: "icon2",
-        label: "Icon 2",
-        icon: bold,
-      },
-      // Добавьте свои иконки и их метки
-    ];
+    return customIcons;
   }
 }
 
