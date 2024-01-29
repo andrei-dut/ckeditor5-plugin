@@ -1,360 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./IconPlugin.js":
-/*!***********************!*\
-  !*** ./IconPlugin.js ***!
-  \***********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _ckeditor_ckeditor5_widget_src_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-widget/src/utils */ "./node_modules/@ckeditor/ckeditor5-widget/src/utils.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./utils.js");
-
-
-
-
-// Регистрируем новый тип элемента "icon"
-class IconPlugin extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-  static get pluginName() {
-    return "IconPlugin";
-  }
-
-  init() {
-    const editor = this.editor;
-
-    editor.model.schema.register("icon", {
-      inheritAllFrom: "$inlineObject",
-      allowAttributes: ["data-name", "data-icon", "resizedWidth"],
-    });
-
-    editor.conversion.for("upcast").elementToElement({
-      model: "icon",
-      view: {
-        name: "span",
-        classes: "ck-svg-widget",
-      },
-    });
-
-    editor.conversion
-      .for("editingDowncast").add( dispatcher => {
-        attachDowncastConverter( dispatcher, 'width', 'width', true );
-        attachDowncastConverter( dispatcher, 'height', 'height', true );
-      } )
-      .elementToElement({
-        model: "icon",
-        view: (modelElement, { writer }) => {
-          const widgetElement = writer.createContainerElement("span", {
-            class: "ck-svg-widget",
-          });
-          console.log(modelElement.getAttribute("resizedWidth"));
-          const svgUIElement = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.createViewSvg)(modelElement, { writer });
-
-          if (svgUIElement) {
-            writer.insert(
-              writer.createPositionAt(widgetElement, 0),
-              svgUIElement
-            );
-          }
-
-          // hasSelectionHandle: true, 3 argm for toWidget, move widget editor
-
-          return (0,_ckeditor_ckeditor5_widget_src_utils__WEBPACK_IMPORTED_MODULE_1__.toWidget)(widgetElement, writer);
-        },
-      })
-      .attributeToAttribute({
-        model: {
-          name: "icon",
-          key: "resizedWidth",
-        },
-        view: (attributeValue) => {
-          console.log('width1',attributeValue);
-          return {
-            key: "width",
-            value: `${parseInt(attributeValue)}px`,
-          };
-        },
-        converterPriority: "high",
-      });
-
-    editor.conversion
-      .for("dataDowncast").add( dispatcher => {
-        attachDowncastConverter( dispatcher, 'width', 'width', true );
-        attachDowncastConverter( dispatcher, 'height', 'height', true );
-      } )
-      .elementToElement({
-        model: "icon",
-        view: (modelElement, { writer }) => {
-          console.log("dataDowncast");
-          console.log(modelElement.getAttribute("resizedWidth"));
-          const svgUIElement = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.createViewSvg)(modelElement, { writer });
-          return (0,_utils__WEBPACK_IMPORTED_MODULE_2__.cloneElem)(writer, svgUIElement);
-        },
-      })
-      .attributeToAttribute({
-        model: {
-          name: "icon",
-          key: "resizedWidth",
-        },
-        view: (attributeValue) => {
-          console.log('width2',attributeValue);
-          return ({
-          key: "width",
-          value: `${parseInt(attributeValue)}px`,
-        })},
-        converterPriority: "high",
-      });
-  }
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IconPlugin);
-
-
-function attachDowncastConverter(
-  dispatcher,
-  viewAttributeName,
-) {
-  dispatcher.on( `attribute:resizedWidth:icon`, ( evt, data, conversionApi ) => {
-
-
-    console.log("dispatcher", evt, data, conversionApi);
-
-    // if ( !conversionApi.consumable.consume( data.item, evt.name ) ) {
-    //   return;
-    // }
-
-    const viewWriter = conversionApi.writer;
-    const viewElement = conversionApi.mapper.toViewElement( data.item );
-    const img = viewElement;
-
-    if ( data.attributeNewValue !== null ) {
-      viewWriter.setAttribute( viewAttributeName, data.attributeNewValue, img );
-    } else {
-      viewWriter.removeAttribute( viewAttributeName, img );
-    }
-
-    const width = data.item.getAttribute( 'width' );
-    const height = data.item.getAttribute( 'height' );
-
-console.log(width, height);
-      viewWriter.setStyle( {
-        width: '100px'
-      }, img );
-    
-  } );
-}
-
-
-/***/ }),
-
-/***/ "./iconPickerPlugin.js":
-/*!*****************************!*\
-  !*** ./iconPickerPlugin.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-/* harmony import */ var _ckeditor_ckeditor5_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui */ "./node_modules/@ckeditor/ckeditor5-ui/src/index.js");
-/* harmony import */ var _icons_sign_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./icons/sign.svg */ "./icons/sign.svg");
-/* harmony import */ var _ckeditor_ckeditor5_core_theme_icons_bold_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/theme/icons/bold.svg */ "./node_modules/@ckeditor/ckeditor5-core/theme/icons/bold.svg");
-/* harmony import */ var _ckeditor_ckeditor5_widget_src_widget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-widget/src/widget */ "./node_modules/@ckeditor/ckeditor5-widget/src/widget.js");
-/* harmony import */ var _ckeditor_ckeditor5_widget_src_widgetresize__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ckeditor/ckeditor5-widget/src/widgetresize */ "./node_modules/@ckeditor/ckeditor5-widget/src/widgetresize.js");
-/* harmony import */ var _ckeditor_ckeditor5_engine_src_view_observer_clickobserver__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ckeditor/ckeditor5-engine/src/view/observer/clickobserver */ "./node_modules/@ckeditor/ckeditor5-engine/src/view/observer/clickobserver.js");
-// iconPickerPlugin.js
-
-
-
-
-
-
-
-// import SelectionObserver from '@ckeditor/ckeditor5-engine/src/view/observer/selectionobserver';
-
-class IconPickerPlugin extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
-  static get requires() {
-    return [_ckeditor_ckeditor5_widget_src_widget__WEBPACK_IMPORTED_MODULE_4__["default"], _ckeditor_ckeditor5_widget_src_widgetresize__WEBPACK_IMPORTED_MODULE_5__["default"]];
-  }
-
-  static get pluginName() {
-    return "IconPickerPlugin";
-  }
-
-  init() {
-    const editor = this.editor;
-
-    editor.editing.view.addObserver(_ckeditor_ckeditor5_engine_src_view_observer_clickobserver__WEBPACK_IMPORTED_MODULE_6__["default"]);
-
-    this.listenTo(
-      editor.editing.view.document,
-      "click",
-      (evt, data) => {
-        const mapper = editor.editing.mapper;
-        const domConverter = editor.editing.view.domConverter;
-        const widgetView = data.target.findAncestor({
-          classes: /^(ck-svg-widget)$/,
-        });
-
-        if (!widgetView) return;
-
-        const imageModel = mapper.toModelElement(widgetView);
-        const resizer = editor.plugins.get(_ckeditor_ckeditor5_widget_src_widgetresize__WEBPACK_IMPORTED_MODULE_5__["default"]).attachTo({
-          modelElement: imageModel,
-          viewElement: widgetView,
-          editor,
-
-          getHandleHost(domWidgetElement) {
-            // console.log("getHandleHost");
-            return domWidgetElement.querySelector("svg");
-          },
-          getResizeHost() {
-            console.log("getResizeHost");
-            // Return the model image element parent to avoid setting an inline element (<a>/<span>) as a resize host.
-            return domConverter.mapViewToDom(
-              mapper.toViewElement(imageModel.parent)
-            );
-          },
-          // TODO consider other positions.
-          isCentered() {
-            return false;
-          },
-
-          onCommit(newValue) {
-            // Get rid of the CSS class in case the command execution that follows is unsuccessful
-            // (e.g. Track Changes can override it and the new dimensions will not apply). Otherwise,
-            // the presence of the class and the absence of the width style will cause it to take 100%
-            // of the horizontal space.
-            console.log(newValue);
-
-            editor.model.change((writer) => {
-              const model = editor.model;
-              const selection = model.document.selection;
-
-              const selectedElement = selection.getSelectedElement();
-              if(selectedElement.name === 'icon') {
-                console.log("selectedElement", selectedElement);
-                writer.setAttribute( 'resizedWidth', newValue, selectedElement );
-              }
-             
-            });
-
-            // editor.execute( 'resizeImage', { width: newValue } );
-          },
-        });
-
-        console.log("2323", resizer, widgetView);
-        if (data.domEvent.detail === 2) {
-          evt.stop();
-        }
-      },
-      { priority: "highest" }
-    );
-
-    // this.listenTo(editor.editing.view.document, 'selectionChange', (evt, data) => {
-    //   // Is Double-click
-    //   console.log('selectionChange');
-
-    // }, { priority: 'highest' });
-
-    // editor.model.document.selection.on('change', (evt, data) => {
-
-    //   const selectedElement = editor.model.document.selection.getSelectedElement();
-    // console.log(evt, data, selectedElement);
-    //   if (selectedElement?.is?.('element', 'icon')) {
-    //     // Элемент вашего виджета (замените 'myCustomWidget' на тип вашего виджета)
-    //     console.log('My custom widget is selected');
-    //   } else {
-    //     console.log('No custom widget is selected');
-    //   }
-    // });
-
-    // Регистрация команды для вставки иконки
-
-    editor.commands.add("insertIcon", {
-      execute: (data) => {
-        editor.model.change((writer) => {
-          const model = editor.model;
-          const selection = model.document.selection;
-
-          const iconElement = writer.createElement("icon", {
-            "data-name": data.iconName,
-            "data-icon": data.icon,
-          });
-
-          model.insertContent(iconElement, selection);
-        });
-      },
-    });
-
-    // Добавление кнопки в тулбар
-    editor.ui.componentFactory.add("iconPickerButton", (locale) => {
-      const dropdown = (0,_ckeditor_ckeditor5_ui__WEBPACK_IMPORTED_MODULE_1__.createDropdown)(locale);
-
-      dropdown.buttonView.set({
-        label: "Dropdown",
-        withText: true,
-      });
-      // Добавление списка иконок в выпадающий список
-      const iconList = this._getIconList();
-
-      const buttons = iconList.map((icon) => {
-        const listItem = new _ckeditor_ckeditor5_ui__WEBPACK_IMPORTED_MODULE_1__.ButtonView();
-
-        listItem.set({
-          label: icon.label,
-          icon: icon.icon,
-        });
-
-        listItem.on("execute", () => {
-          editor.execute("insertIcon", {
-            iconName: icon.iconName,
-            icon: icon.icon,
-          });
-          editor.editing.view.focus();
-          // dropdown.hide();
-        });
-
-        return listItem;
-      });
-
-      (0,_ckeditor_ckeditor5_ui__WEBPACK_IMPORTED_MODULE_1__.addToolbarToDropdown)(dropdown, buttons);
-
-      return dropdown;
-    });
-  }
-
-  // Функция для получения списка иконок (замените этот код на свою логику)
-  _getIconList() {
-    return [
-      {
-        iconName: "icon1",
-        label: "Icon 1",
-        icon: _icons_sign_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-      },
-      {
-        iconName: "icon2",
-        label: "Icon 2",
-        icon: _ckeditor_ckeditor5_core_theme_icons_bold_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
-      },
-      // Добавьте свои иконки и их метки
-    ];
-  }
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IconPickerPlugin);
-
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js ***!
@@ -74798,10 +74444,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".ck .ck-widget .ck-widget__type-around
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./styles.css":
-/*!********************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./styles.css ***!
-  \********************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/styles.css":
+/*!*******************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/styles.css ***!
+  \*******************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -74809,16 +74455,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".ck-svg-widget{display:inline-block}", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAAA,eACI,oBACJ","sourcesContent":[".ck-svg-widget {\n    display: inline-block;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".ck-svg-widget{display:inline-block;font-size:0}#myModal{background-color:#000;background-color:rgba(0,0,0,.4);display:none;height:100%;left:0;overflow:auto;padding-top:60px;position:fixed;top:0;width:100%;z-index:1}#modalContainer{background-color:#fefefe;border:1px solid #888;margin:5% auto;padding:20px;width:80%}#closeModal{color:#aaa;float:right;font-size:28px;font-weight:700}#closeModal:focus,#closeModal:hover{color:#000;cursor:pointer;text-decoration:none}#wrapForm{flex-direction:column}#headFormSvg,#wrapForm{align-items:center;display:flex}#headFormSvg h2{padding-right:16px}#headFormSvg svg{width:75px}.form-edit-svg{display:flex;flex-direction:column;max-width:300px;min-width:240px}.form-edit-svg label{display:flex;flex-direction:column;margin-bottom:10px}.form-edit-svg input{margin-top:6px;padding:5px}", "",{"version":3,"sources":["webpack://./src/styles/styles.css"],"names":[],"mappings":"AAAA,eACE,oBAAqB,CACrB,WACF,CAEA,SASE,qBAA8B,CAC9B,+BAAoC,CATpC,YAAa,CAMb,WAAY,CAHZ,MAAO,CAIP,aAAc,CAGd,gBAAiB,CATjB,cAAe,CAGf,KAAM,CACN,UAAW,CAHX,SASF,CAEA,gBACE,wBAAyB,CAGzB,qBAAsB,CAFtB,cAAe,CACf,YAAa,CAEb,SACF,CAEA,YACE,UAAW,CACX,WAAY,CACZ,cAAe,CACf,eACF,CAEA,oCAEE,UAAY,CAEZ,cAAe,CADf,oBAEF,CAEA,UAEI,qBAEJ,CAEA,uBAHI,kBAAmB,CAFnB,YAQJ,CAEA,gBACE,kBACF,CAEA,iBACE,UACF,CAEA,eACE,YAAa,CACb,qBAAsB,CACtB,eAAgB,CAChB,eACF,CAEA,qBACE,YAAa,CACb,qBAAsB,CACtB,kBACF,CAEA,qBACE,cAAe,CACf,WACF","sourcesContent":[".ck-svg-widget {\n  display: inline-block;\n  font-size: 0px;\n}\n\n#myModal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.4);\n  padding-top: 60px;\n}\n\n#modalContainer {\n  background-color: #fefefe;\n  margin: 5% auto;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 80%;\n}\n\n#closeModal {\n  color: #aaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n#closeModal:hover,\n#closeModal:focus {\n  color: black;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n#wrapForm {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n}\n\n#headFormSvg {\n  display: flex;\n  align-items: center;\n}\n\n#headFormSvg h2 {\n  padding-right: 16px;\n}\n\n#headFormSvg svg {\n  width: 75px;\n}\n\n.form-edit-svg {\n  display: flex;\n  flex-direction: column;\n  max-width: 300px;\n  min-width: 240px;\n}\n\n.form-edit-svg label {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 10px;\n}\n\n.form-edit-svg input {\n  margin-top: 6px;\n  padding: 5px;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -74944,21 +74590,6 @@ module.exports = function cssWithMappingToString(item) {
 
   return [content].join("\n");
 };
-
-/***/ }),
-
-/***/ "./icons/sign.svg":
-/*!************************!*\
-  !*** ./icons/sign.svg ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\"\n    width=\"100%\" height=\"100%\" viewBox=\"-0.5 -0.5 172 72\"\n    content=\"&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-15T05:56:27.561Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;ywTXVZ6QrcgfFR3RYL_w&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;5VVdb4MgFP01Pi5RsLZ97Ne6ZVmypA99JnKnLCgOsdr9+uHAKu2atUmTPfTFwOFyLpxzvXh4kTVrSYr0VVDgHvJp4+GlhxAKI/1tgb0BgmBigEQyaqEe2LAvsKBv0YpRKJ1AJQRXrHDBWOQ5xMrBiJSidsPeBXezFiSBE2ATE36KbhlVqUEnaNzjT8CStMscRFOzkpEu2N6kTAkV9QDCKw8vpBDKjLJmAbzVrtPF7Hs8s3o4mIRcXbIBhdWqLMrtLJuny4+X58+9XD8gw7IjvLIXtodV+04ByOmsFVLPcpFrcJ6qjOtZoIdSVDmFNoOvZ2Yv0BNJ+zMGh5vrigGRgZJ7HVL32o6sXulA1g6TwIliO5eeWIuTA90hw5tgOjHybTXiqeWxxYhD36UoRSVjsLuGWh4RhdglQuMjIkVkAuqESA8G1+6hH6uusA3flW1/qn2pbaN/ti28wDbOdWtr7apTpmBTkLhdqXVzdS0kZWH63TtrWietizuQCpprfez+j3Hk6jO1FAOf8S8+Y/+8pY6G1wo2uqs6v1l7wtFRnU9uVed62r9YJrx/9vHqGw==&lt;/diagram&gt;&lt;/mxfile&gt;\"\n    style=\"background-color: rgb(255, 255, 255);\">\n    <defs />\n    <g>\n        <path d=\"M 30 70 L 70 0\" fill=\"none\" stroke=\"rgb(0, 0, 0)\" stroke-miterlimit=\"10\"\n            pointer-events=\"stroke\" />\n        <text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" font-size=\"10\"\n            fill=\"black\">35</text>\n        <path d=\"M 70 0 L 170 0\" fill=\"none\" stroke=\"rgb(0, 0, 0)\" stroke-miterlimit=\"10\"\n            pointer-events=\"stroke\" />\n        <ellipse cx=\"31\" cy=\"36\" rx=\"15\" ry=\"15\" fill=\"rgb(255, 255, 255)\" stroke=\"rgb(0, 0, 0)\"\n            pointer-events=\"all\" />\n        <path d=\"M 30 70 L 0 10\" fill=\"none\" stroke=\"rgb(0, 0, 0)\" stroke-miterlimit=\"10\"\n            pointer-events=\"stroke\" />\n    </g>\n</svg>\n");
 
 /***/ }),
 
@@ -75649,6 +75280,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<svg viewBox=\"0 0 10 8\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038\"/></svg>");
+
+/***/ }),
+
+/***/ "./src/icons/sign.svg":
+/*!****************************!*\
+  !*** ./src/icons/sign.svg ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\"\nwidth=\"100%\" height=\"100%\" viewBox=\"-0.5 -0.5 132 141\"\n    content=\"&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-17T11:43:05.474Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;H-96SXCI5RICZbEWg_Ra&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;7VhNj5swEP01SO0hEsEEkmO+Nl2tWlWKVrvppbLAAbcGE+ME6K+vARNwQtqkSsShnOJ5Ho+HeW8sxxqYB+mKwcj/TF1ENEN3Uw0sNMMYGvZY/ORIViLW0CoBj2FXOtXAGv9CEtQluscuihVHTinhOFJBh4YhcriCQcZoorptKVF3jaCHzoC1A8k5+oZd7pfo2LBr/BPCnl/tPLQm5UwAK2f5JbEPXZo0ILDUwJxRystRkM4RyYtX1aVc93Rh9pgYQyG/ZoFh7pdxFL9Ng5m/+PHyvMvYamCUUQ6Q7OUHy2R5VlUAhe40L6SwQhoKcObzgAhrKIaM7kMX5TvowjpPSWaJXKXKMsEVogHiLBMOSV3bkayX3yhrhTFEIMcHlRsoKfaO4Y47fKVYZGLoUo5gIuNIMQJTV0PEdM8cJFc1a3kSyARqIMM+CcQh8xA/CyQGjc+uoYKqG2gDd6VNsMWydzlVGJumsUibfovsRrJFwxbFKKGXxJkdnsLn191354u/IBadvw46FcVfubxWFKOORWFeIQpCxMGZiyHxMUfrCDr5TCLOblUgMI7K03SL01wnl9k+IMZRqv2puavusy21PhMZosEzaOEZ6JcpVWp4a8FG/eH3LzoH9kkg/WE6v3xanNBmEVGs2ZYWedb8Wbs9rSYGcXG5mAqHoRmlBWPVvBh5+e9mU4USmZXRyokzYQjN53jMGf2J5pRQVksEEuyFwnSEEhDLt8eEnPg0ZJR3EBY3jqlcFmDXJZd6tE1zZy3YIsOLXWmaJ6dWZTdUaT2oK1vpbbuS3Ine9/cPw489w7bZLcNtt5f7MWz0DBuTjnu47SpyP4ZBzzDQO+7htrvT/Rg2e4aB0XEPWw9leNQzDEDHPWw/lGGrZxiMOu7h8eMY/vb/saur7xdtJ/Sd3i+EWT8Ml/+b6+d1sPwN&lt;/diagram&gt;&lt;/mxfile&gt;\"\n    style=\"background-color: rgb(255, 255, 255);\">\n    <defs />\n    <g>\n        <path d=\"M 20 100 L 60 30\" fill=\"none\" stroke=\"rgb(0, 0, 0)\" stroke-miterlimit=\"10\"\n            pointer-events=\"stroke\" />\n        <path d=\"M 60 30 L 130 30\" fill=\"none\" stroke=\"rgb(0, 0, 0)\" stroke-miterlimit=\"10\"\n            pointer-events=\"stroke\" />\n        <ellipse cx=\"21\" cy=\"66\" rx=\"15\" ry=\"15\" fill=\"rgb(255, 255, 255)\" stroke=\"rgb(0, 0, 0)\"\n            pointer-events=\"all\" />\n        <path d=\"M 20 100 L 0 60\" fill=\"none\" stroke=\"rgb(0, 0, 0)\" stroke-miterlimit=\"10\"\n            pointer-events=\"stroke\" />\n        <rect x=\"70\" y=\"0\" width=\"60\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\" />\n        <g transform=\"translate(-0.5 -0.5)\">\n            <switch>\n                <foreignObject pointer-events=\"none\" width=\"100%\" height=\"100%\"\n                    requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"\n                    style=\"overflow: visible; text-align: left;\">\n                    <div xmlns=\"http://www.w3.org/1999/xhtml\"\n                        style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 15px; margin-left: 71px;\">\n                        <div data-drawio-colors=\"color: rgb(0, 0, 0); \"\n                            style=\"box-sizing: border-box; font-size: 0px; text-align: center;\">\n                            <div\n                                style=\"display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;\">\n                                <font style=\"font-size: 14px;\">YY</font>\n                            </div>\n                        </div>\n                    </div>\n                </foreignObject>\n                <text x=\"100\" y=\"19\" fill=\"rgb(0, 0, 0)\" font-family=\"Helvetica\" font-size=\"12px\"\n                    text-anchor=\"middle\">YY</text>\n            </switch>\n        </g>\n        <rect x=\"70\" y=\"34\" width=\"60\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\" />\n        <g transform=\"translate(-0.5 -0.5)\">\n            <switch>\n                <foreignObject pointer-events=\"none\" width=\"100%\" height=\"100%\"\n                    requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"\n                    style=\"overflow: visible; text-align: left;\">\n                    <div xmlns=\"http://www.w3.org/1999/xhtml\"\n                        style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 49px; margin-left: 71px;\">\n                        <div data-drawio-colors=\"color: rgb(0, 0, 0); \"\n                            style=\"box-sizing: border-box; font-size: 0px; text-align: center;\">\n                            <div\n                                style=\"display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;\">\n                                <font style=\"font-size: 14px;\">XX(1)</font>\n                            </div>\n                        </div>\n                    </div>\n                </foreignObject>\n                <text x=\"100\" y=\"53\" fill=\"rgb(0, 0, 0)\" font-family=\"Helvetica\" font-size=\"12px\"\n                    text-anchor=\"middle\">XX(1)</text>\n            </switch>\n        </g>\n        <rect x=\"70\" y=\"50\" width=\"60\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\" />\n        <g transform=\"translate(-0.5 -0.5)\">\n            <switch>\n                <foreignObject pointer-events=\"none\" width=\"100%\" height=\"100%\"\n                    requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"\n                    style=\"overflow: visible; text-align: left;\">\n                    <div xmlns=\"http://www.w3.org/1999/xhtml\"\n                        style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 65px; margin-left: 71px;\">\n                        <div data-drawio-colors=\"color: rgb(0, 0, 0); \"\n                            style=\"box-sizing: border-box; font-size: 0px; text-align: center;\">\n                            <div\n                                style=\"display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;\">\n                                <font style=\"font-size: 14px;\">XX(2)</font>\n                            </div>\n                        </div>\n                    </div>\n                </foreignObject>\n                <text x=\"100\" y=\"69\" fill=\"rgb(0, 0, 0)\" font-family=\"Helvetica\" font-size=\"12px\"\n                    text-anchor=\"middle\">XX(2)</text>\n            </switch>\n        </g>\n        <rect x=\"70\" y=\"64\" width=\"60\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\" />\n        <g transform=\"translate(-0.5 -0.5)\">\n            <switch>\n                <foreignObject pointer-events=\"none\" width=\"100%\" height=\"100%\"\n                    requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"\n                    style=\"overflow: visible; text-align: left;\">\n                    <div xmlns=\"http://www.w3.org/1999/xhtml\"\n                        style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 79px; margin-left: 71px;\">\n                        <div data-drawio-colors=\"color: rgb(0, 0, 0); \"\n                            style=\"box-sizing: border-box; font-size: 0px; text-align: center;\">\n                            <div\n                                style=\"display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;\">\n                                <font style=\"font-size: 14px;\">XX(3)</font>\n                            </div>\n                        </div>\n                    </div>\n                </foreignObject>\n                <text x=\"100\" y=\"83\" fill=\"rgb(0, 0, 0)\" font-family=\"Helvetica\" font-size=\"12px\"\n                    text-anchor=\"middle\">XX(3)</text>\n            </switch>\n        </g>\n        <rect x=\"70\" y=\"80\" width=\"60\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\" />\n        <g transform=\"translate(-0.5 -0.5)\">\n            <switch>\n                <foreignObject pointer-events=\"none\" width=\"100%\" height=\"100%\"\n                    requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"\n                    style=\"overflow: visible; text-align: left;\">\n                    <div xmlns=\"http://www.w3.org/1999/xhtml\"\n                        style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 95px; margin-left: 71px;\">\n                        <div data-drawio-colors=\"color: rgb(0, 0, 0); \"\n                            style=\"box-sizing: border-box; font-size: 0px; text-align: center;\">\n                            <div\n                                style=\"display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;\">\n                                <font style=\"font-size: 14px;\">XX(4)</font>\n                            </div>\n                        </div>\n                    </div>\n                </foreignObject>\n                <text x=\"100\" y=\"99\" fill=\"rgb(0, 0, 0)\" font-family=\"Helvetica\" font-size=\"12px\"\n                    text-anchor=\"middle\">XX(4)</text>\n            </switch>\n        </g>\n        <rect x=\"36\" y=\"80\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\" />\n        <g transform=\"translate(-0.5 -0.5)\">\n            <switch>\n                <foreignObject pointer-events=\"none\" width=\"100%\" height=\"100%\"\n                    requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"\n                    style=\"overflow: visible; text-align: left;\">\n                    <div xmlns=\"http://www.w3.org/1999/xhtml\"\n                        style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 28px; height: 1px; padding-top: 95px; margin-left: 37px;\">\n                        <div data-drawio-colors=\"color: rgb(0, 0, 0); \"\n                            style=\"box-sizing: border-box; font-size: 0px; text-align: center;\">\n                            <div\n                                style=\"display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;\">\n                                <font style=\"font-size: 14px;\">Z</font>\n                            </div>\n                        </div>\n                    </div>\n                </foreignObject>\n                <text x=\"51\" y=\"99\" fill=\"rgb(0, 0, 0)\" font-family=\"Helvetica\" font-size=\"12px\"\n                    text-anchor=\"middle\">Z</text>\n            </switch>\n        </g>\n    </g>\n    <switch>\n        <g requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\" />\n        <a transform=\"translate(0,-5)\"\n            xlink:href=\"https://www.drawio.com/doc/faq/svg-export-text-problems\" target=\"_blank\">\n            <text text-anchor=\"middle\" font-size=\"10px\" x=\"50%\" y=\"100%\">Text is not SVG - cannot\n                display</text>\n        </a>\n    </switch>\n</svg>\n");
+
+/***/ }),
+
+/***/ "./src/icons/text.svg":
+/*!****************************!*\
+  !*** ./src/icons/text.svg ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\"\n    width=\"100%\" height=\"100%\" viewBox=\"-0.5 -0.5 77 54\"\n    content=\"&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-18T11:04:17.874Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;6nW66n8_krRSH8aiTRA1&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&lt;diagram name=&quot;Страница 1&quot; id=&quot;qNkHH9AtMeMB8LDzhwJW&quot;&gt;7Zbfb5swEMf/Gh4zgSE0fWxot0rdXpZKi/YyueEAq4ajxgmQv35nMBDaRdo0NU+VkOA+98Nn39dKHD/Kmy+Kl9k3jEE6zI0bx791GPPY1YpehrQ9Cb2wB6kSsQ2awEYcwULX0r2IoZoFakSpRTmHOywK2OkZ40phPQ9LUM5XLXkKb8Bmx+Vb+kPEOuvpil1N/B5Emg0re+F178n5EGx3UmU8xvoE+XeOHylE3X/lTQTSHN5wLn3e5zPesTEFhf6bBHf78DMMVs9JnC0f7x+jw8L9tfD7Kgcu93bDDgsl1VsnSGWpa93aowhf9jg4FlU3qBsK8FYlDXs9+ekrNe/tdihFPfXVeoc9jrEw09AYXmmFzxChREW8wALMakLKV4hLkRZkSkhM2gGUFjSwG4s1lqZYyXeiSL92MbfBRL7bYRmElJvIbiiZiGOg9LVCzTV/6npzyS5RFLoT0XJND51x5H5aOktqPCLbm2x6TLjSERa0Fy66uQCvdA2V6bTOhIYNtWFq13RfiGU6l2R547mY7UBzdsbeqBy6coA5aNVSiE3wQys2e9v84RrVk3YDi7IT2fqWcXtb0rHyJCj6sJr6B30F/68vdkZfbfuhr4vr6/qVvtw/6Cu4oL6W76ev4/FDX5fXF5vri72bvsicfns738k/GP/uNw==&lt;/diagram&gt;&lt;/mxfile&gt;\"\n    style=\"background-color: rgb(255, 255, 255);\">\n    <defs />\n    <g>\n        <rect x=\"0\" y=\"10\" width=\"40\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\" />\n        <g transform=\"translate(-0.5 -0.5)\">\n            <switch>\n                <foreignObject pointer-events=\"none\" width=\"100%\" height=\"100%\"\n                    requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"\n                    style=\"overflow: visible; text-align: left;\">\n                    <div xmlns=\"http://www.w3.org/1999/xhtml\"\n                        style=\"display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 30px; height: 1px; padding-top: 17px; margin-left: 6px;\">\n                        <div data-drawio-colors=\"color: rgb(0, 0, 0); \"\n                            style=\"box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;\">\n                            <div\n                                style=\"display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;\">\n                                <font style=\"font-size: 18px;\">XX</font>\n                            </div>\n                        </div>\n                    </div>\n                </foreignObject>\n                <text x=\"6\" y=\"29\" fill=\"rgb(0, 0, 0)\" font-family=\"Helvetica\" font-size=\"12px\">XX</text>\n            </switch>\n        </g>\n        <rect x=\"30\" y=\"0\" width=\"44\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\" />\n        <g transform=\"translate(-0.5 -0.5)\">\n            <switch>\n                <foreignObject pointer-events=\"none\" width=\"100%\" height=\"100%\"\n                    requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"\n                    style=\"overflow: visible; text-align: left;\">\n                    <div xmlns=\"http://www.w3.org/1999/xhtml\"\n                        style=\"display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 7px; margin-left: 36px;\">\n                        <div data-drawio-colors=\"color: rgb(0, 0, 0); \"\n                            style=\"box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;\">\n                            <div\n                                style=\"display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;\">\n                                <font style=\"font-size: 12px;\">yy</font>\n                            </div>\n                        </div>\n                    </div>\n                </foreignObject>\n                <text x=\"36\" y=\"19\" fill=\"rgb(0, 0, 0)\" font-family=\"Helvetica\" font-size=\"12px\">yy</text>\n            </switch>\n        </g>\n        <rect x=\"32\" y=\"20\" width=\"44\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\" />\n        <g transform=\"translate(-0.5 -0.5)\">\n            <switch>\n                <foreignObject pointer-events=\"none\" width=\"100%\" height=\"100%\"\n                    requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"\n                    style=\"overflow: visible; text-align: left;\">\n                    <div xmlns=\"http://www.w3.org/1999/xhtml\"\n                        style=\"display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 27px; margin-left: 38px;\">\n                        <div data-drawio-colors=\"color: rgb(0, 0, 0); \"\n                            style=\"box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;\">\n                            <div\n                                style=\"display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;\">\n                                <font style=\"font-size: 12px;\">zz</font>\n                            </div>\n                        </div>\n                    </div>\n                </foreignObject>\n                <text x=\"38\" y=\"39\" fill=\"rgb(0, 0, 0)\" font-family=\"Helvetica\" font-size=\"12px\">zz</text>\n            </switch>\n        </g>\n    </g>\n    <switch>\n        <g requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\" />\n        <a transform=\"translate(0,-5)\"\n            xlink:href=\"https://www.drawio.com/doc/faq/svg-export-text-problems\" target=\"_blank\">\n            <text text-anchor=\"middle\" font-size=\"10px\" x=\"50%\" y=\"100%\">Text is not SVG - cannot\n                display</text>\n        </a>\n    </switch>\n</svg>\n");
 
 /***/ }),
 
@@ -76552,10 +76213,10 @@ var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMP
 
 /***/ }),
 
-/***/ "./styles.css":
-/*!********************!*\
-  !*** ./styles.css ***!
-  \********************/
+/***/ "./src/styles/styles.css":
+/*!*******************************!*\
+  !*** ./src/styles/styles.css ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -76563,9 +76224,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./styles.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./styles.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_use_2_styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./styles.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/styles.css");
 
             
 
@@ -76861,10 +76522,509 @@ module.exports = function (list, options) {
 
 /***/ }),
 
-/***/ "./utils.js":
-/*!******************!*\
-  !*** ./utils.js ***!
-  \******************/
+/***/ "./src/events/insertContentEvent.js":
+/*!******************************************!*\
+  !*** ./src/events/insertContentEvent.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   insertContentEvent: () => (/* binding */ insertContentEvent)
+/* harmony export */ });
+/* harmony import */ var _ckeditor_ckeditor5_widget_src_widgetresize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-widget/src/widgetresize */ "./node_modules/@ckeditor/ckeditor5-widget/src/widgetresize.js");
+
+
+async function insertContentEvent(editor) {
+  editor.model.on("insertContent", (event, [modelElement]) => {
+
+    const registerResizer = async () => {
+      const mapper = editor.editing.mapper;
+      const domConverter = editor.editing.view.domConverter;
+      let viewElement = mapper.toViewElement(modelElement);
+
+      let attempts = 0;
+      const maxAttempts = 100;
+
+      while (!viewElement && attempts < maxAttempts) {
+
+        await new Promise((resolve) =>
+          setTimeout(() => {
+            viewElement = mapper.toViewElement(modelElement);
+            attempts++;
+            resolve();
+          }, attempts < 20 ? 10 : 200)
+        );
+      }
+
+      const resizer = editor.plugins.get(_ckeditor_ckeditor5_widget_src_widgetresize__WEBPACK_IMPORTED_MODULE_0__["default"]).attachTo({
+        modelElement,
+        viewElement,
+        editor,
+        unit: "px",
+        getHandleHost(domWidgetElement) {
+          return domWidgetElement;
+        },
+        getResizeHost() {
+          console.log("getResizeHost");
+          // Return the model image element parent to avoid setting an inline element (<a>/<span>) as a resize host.
+          return domConverter.mapViewToDom(
+            mapper.toViewElement(modelElement.parent)
+          );
+        },
+        // TODO consider other positions.
+        isCentered() {
+          return false;
+        },
+
+        onCommit(newValue) {
+          editor.model.change((writer) => {
+            const model = editor.model;
+            const selection = model.document.selection;
+
+            const selectedElement = selection.getSelectedElement();
+            if (selectedElement.name === "icon") {
+              writer.setAttribute("resizedWidth", newValue, selectedElement);
+            }
+          });
+
+          // editor.execute( 'resizeImage', { width: newValue } );
+        },
+      });
+      resizer.bind( 'isEnabled' ).to( this );
+    };
+
+    registerResizer();
+  }, { priority: "highest" });
+}
+
+
+/***/ }),
+
+/***/ "./src/iconPlugin/IconPlugin.js":
+/*!**************************************!*\
+  !*** ./src/iconPlugin/IconPlugin.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
+/* harmony import */ var _ckeditor_ckeditor5_widget_src_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-widget/src/utils */ "./node_modules/@ckeditor/ckeditor5-widget/src/utils.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/utils */ "./src/utils/utils.js");
+
+
+
+
+// Регистрируем новый тип элемента "icon"
+class IconPlugin extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
+  static get pluginName() {
+    return "IconPlugin";
+  }
+
+  init() {
+    const editor = this.editor;
+
+    editor.model.schema.register("icon", {
+      inheritAllFrom: "$inlineObject",
+      allowAttributes: ["data-name", "data-icon", "resizedWidth"],
+    });
+
+    editor.conversion.for("upcast").elementToElement({
+      model: "icon",
+      view: {
+        name: "span",
+        classes: "ck-svg-widget",
+      },
+    });
+
+    editor.conversion
+      .for("editingDowncast")
+      .add((dispatcher) => {
+        attachDowncastConverter(dispatcher, "width", "width", true);
+        attachDowncastConverter(dispatcher, "height", "height", true);
+      })
+      .elementToElement({
+        model: "icon",
+        view: (modelElement, { writer }) => {
+          const widgetElement = writer.createContainerElement("span", {
+            class: "ck-svg-widget",
+            style: 'width: 60px;'
+          });
+
+          const svgUIElement = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.createViewSvg)(modelElement, { writer });
+
+          if (svgUIElement) {
+            writer.insert(
+              writer.createPositionAt(widgetElement, 0),
+              svgUIElement
+            );
+          }
+
+          // hasSelectionHandle: true, 3 argm for toWidget, move widget editor
+          console.log(widgetElement);
+          return (0,_ckeditor_ckeditor5_widget_src_utils__WEBPACK_IMPORTED_MODULE_1__.toWidget)(widgetElement, writer);
+        },
+      })
+      .attributeToAttribute({
+        model: {
+          name: "icon",
+          key: "resizedWidth",
+        },
+        view: (attributeValue) => {
+          console.log("width1", attributeValue);
+          return {
+            key: "width",
+            value: `${parseInt(attributeValue)}px`,
+          };
+        },
+        converterPriority: "high",
+      });
+
+    editor.conversion
+      .for("dataDowncast")
+      .add((dispatcher) => {
+        attachDowncastConverter(dispatcher, "width", "width", true);
+        attachDowncastConverter(dispatcher, "height", "height", true);
+      })
+      .elementToElement({
+        model: "icon",
+        view: (modelElement, { writer }) => {
+          console.log("dataDowncast");
+          console.log(modelElement.getAttribute("resizedWidth"));
+          const svgUIElement = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.createViewSvg)(modelElement, { writer });
+          return (0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.cloneElem)(writer, svgUIElement);
+        },
+      })
+      .attributeToAttribute({
+        model: {
+          name: "icon",
+          key: "resizedWidth",
+        },
+        view: (attributeValue) => {
+          console.log("width2", attributeValue);
+          return {
+            key: "width",
+            value: `${parseInt(attributeValue)}px`,
+          };
+        },
+        converterPriority: "high",
+      });
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IconPlugin);
+
+function attachDowncastConverter(dispatcher, viewAttributeName) {
+  dispatcher.on(`attribute:resizedWidth:icon`, (evt, data, conversionApi) => {
+    // console.log("dispatcher", evt, data, conversionApi);
+
+    const viewWriter = conversionApi.writer;
+    const viewElement = conversionApi.mapper.toViewElement(data.item);
+
+    if (data.attributeNewValue !== null) {
+      viewWriter.setAttribute(
+        viewAttributeName,
+        data.attributeNewValue,
+        viewElement
+      );
+    } else {
+      viewWriter.removeAttribute(viewAttributeName, viewElement);
+    }
+
+    const width = viewElement.getAttribute("width");
+
+    // console.log("attachDowncastConverter", width, viewAttributeName, viewElement);
+    viewWriter.setStyle(
+      {
+        width,
+      },
+      viewElement
+    );
+  });
+}
+
+
+/***/ }),
+
+/***/ "./src/iconPlugin/iconPickerPlugin.js":
+/*!********************************************!*\
+  !*** ./src/iconPlugin/iconPickerPlugin.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
+/* harmony import */ var _ckeditor_ckeditor5_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-ui */ "./node_modules/@ckeditor/ckeditor5-ui/src/index.js");
+/* harmony import */ var _ckeditor_ckeditor5_widget_src_widget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-widget/src/widget */ "./node_modules/@ckeditor/ckeditor5-widget/src/widget.js");
+/* harmony import */ var _ckeditor_ckeditor5_widget_src_widgetresize__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-widget/src/widgetresize */ "./node_modules/@ckeditor/ckeditor5-widget/src/widgetresize.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/utils */ "./src/utils/utils.js");
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../icons */ "./src/icons/index.js");
+/* harmony import */ var _events_insertContentEvent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../events/insertContentEvent */ "./src/events/insertContentEvent.js");
+/* harmony import */ var _js_manageCustomModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../js/manageCustomModal */ "./src/js/manageCustomModal.js");
+// iconPickerPlugin.js
+
+
+
+
+
+
+
+
+
+
+class IconPickerPlugin extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MODULE_0__["default"] {
+  static get requires() {
+    return [_ckeditor_ckeditor5_widget_src_widget__WEBPACK_IMPORTED_MODULE_2__["default"], _ckeditor_ckeditor5_widget_src_widgetresize__WEBPACK_IMPORTED_MODULE_3__["default"]];
+  }
+
+  static get pluginName() {
+    return "IconPickerPlugin";
+  }
+
+  init() {
+    const editor = this.editor;
+
+    _events_insertContentEvent__WEBPACK_IMPORTED_MODULE_6__.insertContentEvent.call(this, editor);
+
+    // editor.editing.view.addObserver(ClickObserver);
+
+    // this.listenTo(editor.editing.view.document, 'selectionChange', (evt, data) => {
+    //   // Is Double-click
+    //   console.log('selectionChange');
+
+    // }, { priority: 'highest' });
+
+    // Регистрация команды для вставки иконки
+
+    editor.commands.add("insertIcon", {
+      execute: (data) => {
+        editor.model.change((writer) => {
+          const model = editor.model;
+          const selection = model.document.selection;
+
+          const iconElement = writer.createElement("icon", {
+            "data-name": data.iconName,
+            "data-icon": data.icon,
+          });
+          console.log(selection, model);
+
+          model.insertContent(iconElement, selection);
+        });
+      },
+    });
+
+    // Добавление кнопки в тулбар
+    editor.ui.componentFactory.add("iconPickerButton", (locale) => {
+      const dropdown = (0,_ckeditor_ckeditor5_ui__WEBPACK_IMPORTED_MODULE_1__.createDropdown)(locale);
+
+      dropdown.buttonView.set({
+        label: "Dropdown",
+        withText: true,
+      });
+      // Добавление списка иконок в выпадающий список
+      const iconList = this._getIconList();
+
+      const buttons = iconList.map((icon) => {
+        const listItem = new _ckeditor_ckeditor5_ui__WEBPACK_IMPORTED_MODULE_1__.ButtonView();
+
+        listItem.set({
+          label: icon.label,
+          icon: icon.icon,
+        });
+
+        function insertIconFc(valuesSvg) {
+          editor.execute("insertIcon", {
+            iconName: icon.iconName,
+            icon: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.replaceTextInSvg)(icon.icon, valuesSvg),
+          });
+          editor.editing.view.focus();
+          _utils_utils__WEBPACK_IMPORTED_MODULE_4__.emitter.off("insertIcon", insertIconFc);
+        }
+
+        listItem.on("execute", () => {
+          _utils_utils__WEBPACK_IMPORTED_MODULE_4__.emitter.on("insertIcon", insertIconFc);
+          (0,_js_manageCustomModal__WEBPACK_IMPORTED_MODULE_7__.openEditSvgModal)(icon);
+          // dropdown.hide();
+        });
+
+        return listItem;
+      });
+
+      (0,_ckeditor_ckeditor5_ui__WEBPACK_IMPORTED_MODULE_1__.addToolbarToDropdown)(dropdown, buttons);
+
+      return dropdown;
+    });
+  }
+
+  // Функция для получения списка иконок (замените этот код на свою логику)
+  _getIconList() {
+    return _icons__WEBPACK_IMPORTED_MODULE_5__.customIcons;
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IconPickerPlugin);
+
+
+/***/ }),
+
+/***/ "./src/icons/index.js":
+/*!****************************!*\
+  !*** ./src/icons/index.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   customIcons: () => (/* binding */ customIcons)
+/* harmony export */ });
+/* harmony import */ var _sign_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sign.svg */ "./src/icons/sign.svg");
+/* harmony import */ var _text_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./text.svg */ "./src/icons/text.svg");
+
+
+
+
+const customIcons = [
+  {
+    iconName: "sing",
+    label: "sing",
+    icon: _sign_svg__WEBPACK_IMPORTED_MODULE_0__["default"],
+  },
+  {
+    iconName: "text",
+    label: "text",
+    icon: _text_svg__WEBPACK_IMPORTED_MODULE_1__["default"],
+  },
+] 
+
+
+/***/ }),
+
+/***/ "./src/js/manageCustomModal.js":
+/*!*************************************!*\
+  !*** ./src/js/manageCustomModal.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   closeEditSvgModal: () => (/* binding */ closeEditSvgModal),
+/* harmony export */   openEditSvgModal: () => (/* binding */ openEditSvgModal),
+/* harmony export */   testFormData: () => (/* binding */ testFormData)
+/* harmony export */ });
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/utils */ "./src/utils/utils.js");
+
+
+function createFormForModal(parent, formData) {
+  const formContainer = document.createElement("div");
+  formContainer.id = "formContainer";
+  parent.appendChild(formContainer);
+
+  const form = document.createElement("form");
+  form.className = "form-edit-svg";
+  for (const key in formData) {
+    const label = document.createElement("label");
+    label.textContent = key + ":";
+    const input = document.createElement("input");
+    input.type = "text";
+    input.name = key;
+    input.value = formData[key];
+    label.appendChild(input);
+    form.appendChild(label);
+  }
+
+  form.onsubmit = function (e) {
+    const formValues = {};
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    for (const [name, value] of formData.entries()) {
+      formValues[name] = value;
+    }
+    _utils_utils__WEBPACK_IMPORTED_MODULE_0__.emitter.emit("insertIcon", formValues);
+    closeEditSvgModal();
+  };
+
+  const submitButton = document.createElement("button");
+  submitButton.type = "submit";
+  submitButton.textContent = "Вставить";
+
+  form.appendChild(submitButton);
+  formContainer.appendChild(form);
+}
+
+function openEditSvgModal(iconData) {
+  document.getElementById("myModal").style.display = "block";
+
+  const formData = setIconHeadForm(iconData.icon);
+  createFormForModal(document.getElementById("wrapForm"), formData);
+  toggleCloseEvent(true);
+}
+
+function setIconHeadForm(svgString) {
+  const parser = new DOMParser();
+  const svgDocument = parser.parseFromString(svgString, "image/svg+xml");
+  const svgElement = svgDocument.documentElement;
+  const textElements = svgDocument.querySelectorAll("text");
+  const textValues = {};
+
+  textElements?.forEach((textElement) => {
+    const content = textElement.textContent || "";
+    // textElement.id = 'text_' + content
+    if (content.length <= 6) textValues[content] = "";
+  });
+
+  document.getElementById("headFormSvg").appendChild(svgElement);
+  return textValues;
+}
+
+function closeEditSvgModal() {
+  document.getElementById("myModal").style.display = "none";
+
+  const formContainer = document.getElementById("formContainer");
+  const svg = document.querySelector("#headFormSvg svg");
+  formContainer?.remove();
+  svg?.remove();
+
+  toggleCloseEvent();
+}
+
+function toggleCloseEvent(isOpen) {
+  const closeBtn = document.getElementById("closeModal");
+  if (isOpen) {
+    closeBtn.onclick = closeEditSvgModal;
+  } else {
+    closeBtn.onclick = null;
+  }
+}
+
+// Закрыть модальное окно при клике вне его области
+window.onclick = function (event) {
+  const modal = document.getElementById("myModal");
+  if (event.target === modal) {
+    closeEditSvgModal();
+  }
+};
+
+const testFormData = { key1: "", key2: "", key3: "" };
+
+
+/***/ }),
+
+/***/ "./src/utils/utils.js":
+/*!****************************!*\
+  !*** ./src/utils/utils.js ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -76872,8 +77032,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   cloneElem: () => (/* binding */ cloneElem),
 /* harmony export */   createViewSvg: () => (/* binding */ createViewSvg),
-/* harmony export */   parseSvg: () => (/* binding */ parseSvg)
+/* harmony export */   emitter: () => (/* binding */ emitter),
+/* harmony export */   parseSvg: () => (/* binding */ parseSvg),
+/* harmony export */   replaceTextInSvg: () => (/* binding */ replaceTextInSvg)
 /* harmony export */ });
+/* harmony import */ var emittery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! emittery */ "./node_modules/emittery/index.js");
+
+
+const emitter = new emittery__WEBPACK_IMPORTED_MODULE_0__["default"]();
+
 function parseSvg(svgString) {
   const parser = new DOMParser();
   const xmlDoc = parser.parseFromString(svgString, "image/svg+xml");
@@ -76901,7 +77068,10 @@ function createViewSvg(modelElement, { writer }) {
       "svg",
       {
         class: `svg-${modelElement.getAttribute("data-name")}`,
-        ..._parseSvg.attributes
+
+        ..._parseSvg.attributes,
+        width: '100%',
+        height: '100%',
       },
       function (domElement) {
         domElement.innerHTML = _parseSvg.content;
@@ -76924,6 +77094,26 @@ function cloneElem(viewWriter, sourceNode) {
     }
 
     throw new Exception('Given node has unsupported type.'); // eslint-disable-line no-undef
+  }
+
+function replaceTextInSvg(_svgString, replacement) {
+    let svgString = _svgString;
+  
+    function replaceTemp(string, regex) {
+      return string.replace(
+        regex,
+        (match, group) => {
+          // match - это весь найденный тег <text>
+          // group - это содержимое текста внутри тега    
+          return match.replace(group, replacement[group] || group);
+        }
+      );
+    }
+  
+    svgString = replaceTemp(svgString, /<text[^>]*>(.*?)<\/text>/g);
+    svgString = replaceTemp(svgString, /<font[^>]*>(.*?)<\/font>/g);
+  
+    return svgString;
   }
 
 // Пример использования
@@ -77115,6 +77305,576 @@ function parse (cstr) {
 		alpha: alpha
 	}
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/emittery/index.js":
+/*!****************************************!*\
+  !*** ./node_modules/emittery/index.js ***!
+  \****************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Emittery)
+/* harmony export */ });
+/* harmony import */ var _maps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./maps.js */ "./node_modules/emittery/maps.js");
+
+
+const anyProducer = Symbol('anyProducer');
+const resolvedPromise = Promise.resolve();
+
+// Define symbols for "meta" events.
+const listenerAdded = Symbol('listenerAdded');
+const listenerRemoved = Symbol('listenerRemoved');
+
+let canEmitMetaEvents = false;
+let isGlobalDebugEnabled = false;
+
+function assertEventName(eventName) {
+	if (typeof eventName !== 'string' && typeof eventName !== 'symbol' && typeof eventName !== 'number') {
+		throw new TypeError('`eventName` must be a string, symbol, or number');
+	}
+}
+
+function assertListener(listener) {
+	if (typeof listener !== 'function') {
+		throw new TypeError('listener must be a function');
+	}
+}
+
+function getListeners(instance, eventName) {
+	const events = _maps_js__WEBPACK_IMPORTED_MODULE_0__.eventsMap.get(instance);
+	if (!events.has(eventName)) {
+		return;
+	}
+
+	return events.get(eventName);
+}
+
+function getEventProducers(instance, eventName) {
+	const key = typeof eventName === 'string' || typeof eventName === 'symbol' || typeof eventName === 'number' ? eventName : anyProducer;
+	const producers = _maps_js__WEBPACK_IMPORTED_MODULE_0__.producersMap.get(instance);
+	if (!producers.has(key)) {
+		return;
+	}
+
+	return producers.get(key);
+}
+
+function enqueueProducers(instance, eventName, eventData) {
+	const producers = _maps_js__WEBPACK_IMPORTED_MODULE_0__.producersMap.get(instance);
+	if (producers.has(eventName)) {
+		for (const producer of producers.get(eventName)) {
+			producer.enqueue(eventData);
+		}
+	}
+
+	if (producers.has(anyProducer)) {
+		const item = Promise.all([eventName, eventData]);
+		for (const producer of producers.get(anyProducer)) {
+			producer.enqueue(item);
+		}
+	}
+}
+
+function iterator(instance, eventNames) {
+	eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+
+	let isFinished = false;
+	let flush = () => {};
+	let queue = [];
+
+	const producer = {
+		enqueue(item) {
+			queue.push(item);
+			flush();
+		},
+		finish() {
+			isFinished = true;
+			flush();
+		},
+	};
+
+	for (const eventName of eventNames) {
+		let set = getEventProducers(instance, eventName);
+		if (!set) {
+			set = new Set();
+			const producers = _maps_js__WEBPACK_IMPORTED_MODULE_0__.producersMap.get(instance);
+			producers.set(eventName, set);
+		}
+
+		set.add(producer);
+	}
+
+	return {
+		async next() {
+			if (!queue) {
+				return {done: true};
+			}
+
+			if (queue.length === 0) {
+				if (isFinished) {
+					queue = undefined;
+					return this.next();
+				}
+
+				await new Promise(resolve => {
+					flush = resolve;
+				});
+
+				return this.next();
+			}
+
+			return {
+				done: false,
+				value: await queue.shift(),
+			};
+		},
+
+		async return(value) {
+			queue = undefined;
+
+			for (const eventName of eventNames) {
+				const set = getEventProducers(instance, eventName);
+				if (set) {
+					set.delete(producer);
+					if (set.size === 0) {
+						const producers = _maps_js__WEBPACK_IMPORTED_MODULE_0__.producersMap.get(instance);
+						producers.delete(eventName);
+					}
+				}
+			}
+
+			flush();
+
+			return arguments.length > 0
+				? {done: true, value: await value}
+				: {done: true};
+		},
+
+		[Symbol.asyncIterator]() {
+			return this;
+		},
+	};
+}
+
+function defaultMethodNamesOrAssert(methodNames) {
+	if (methodNames === undefined) {
+		return allEmitteryMethods;
+	}
+
+	if (!Array.isArray(methodNames)) {
+		throw new TypeError('`methodNames` must be an array of strings');
+	}
+
+	for (const methodName of methodNames) {
+		if (!allEmitteryMethods.includes(methodName)) {
+			if (typeof methodName !== 'string') {
+				throw new TypeError('`methodNames` element must be a string');
+			}
+
+			throw new Error(`${methodName} is not Emittery method`);
+		}
+	}
+
+	return methodNames;
+}
+
+const isMetaEvent = eventName => eventName === listenerAdded || eventName === listenerRemoved;
+
+function emitMetaEvent(emitter, eventName, eventData) {
+	if (isMetaEvent(eventName)) {
+		try {
+			canEmitMetaEvents = true;
+			emitter.emit(eventName, eventData);
+		} finally {
+			canEmitMetaEvents = false;
+		}
+	}
+}
+
+class Emittery {
+	static mixin(emitteryPropertyName, methodNames) {
+		methodNames = defaultMethodNamesOrAssert(methodNames);
+		return target => {
+			if (typeof target !== 'function') {
+				throw new TypeError('`target` must be function');
+			}
+
+			for (const methodName of methodNames) {
+				if (target.prototype[methodName] !== undefined) {
+					throw new Error(`The property \`${methodName}\` already exists on \`target\``);
+				}
+			}
+
+			function getEmitteryProperty() {
+				Object.defineProperty(this, emitteryPropertyName, {
+					enumerable: false,
+					value: new Emittery(),
+				});
+				return this[emitteryPropertyName];
+			}
+
+			Object.defineProperty(target.prototype, emitteryPropertyName, {
+				enumerable: false,
+				get: getEmitteryProperty,
+			});
+
+			const emitteryMethodCaller = methodName => function (...args) {
+				return this[emitteryPropertyName][methodName](...args);
+			};
+
+			for (const methodName of methodNames) {
+				Object.defineProperty(target.prototype, methodName, {
+					enumerable: false,
+					value: emitteryMethodCaller(methodName),
+				});
+			}
+
+			return target;
+		};
+	}
+
+	static get isDebugEnabled() {
+		// In a browser environment, `globalThis.process` can potentially reference a DOM Element with a `#process` ID,
+		// so instead of just type checking `globalThis.process`, we need to make sure that `globalThis.process.env` exists.
+		// eslint-disable-next-line n/prefer-global/process
+		if (typeof globalThis.process?.env !== 'object') {
+			return isGlobalDebugEnabled;
+		}
+
+		// eslint-disable-next-line n/prefer-global/process
+		const {env} = globalThis.process ?? {env: {}};
+		return env.DEBUG === 'emittery' || env.DEBUG === '*' || isGlobalDebugEnabled;
+	}
+
+	static set isDebugEnabled(newValue) {
+		isGlobalDebugEnabled = newValue;
+	}
+
+	constructor(options = {}) {
+		_maps_js__WEBPACK_IMPORTED_MODULE_0__.anyMap.set(this, new Set());
+		_maps_js__WEBPACK_IMPORTED_MODULE_0__.eventsMap.set(this, new Map());
+		_maps_js__WEBPACK_IMPORTED_MODULE_0__.producersMap.set(this, new Map());
+
+		_maps_js__WEBPACK_IMPORTED_MODULE_0__.producersMap.get(this).set(anyProducer, new Set());
+
+		this.debug = options.debug ?? {};
+
+		if (this.debug.enabled === undefined) {
+			this.debug.enabled = false;
+		}
+
+		if (!this.debug.logger) {
+			this.debug.logger = (type, debugName, eventName, eventData) => {
+				try {
+					// TODO: Use https://github.com/sindresorhus/safe-stringify when the package is more mature. Just copy-paste the code.
+					eventData = JSON.stringify(eventData);
+				} catch {
+					eventData = `Object with the following keys failed to stringify: ${Object.keys(eventData).join(',')}`;
+				}
+
+				if (typeof eventName === 'symbol' || typeof eventName === 'number') {
+					eventName = eventName.toString();
+				}
+
+				const currentTime = new Date();
+				const logTime = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}.${currentTime.getMilliseconds()}`;
+				console.log(`[${logTime}][emittery:${type}][${debugName}] Event Name: ${eventName}\n\tdata: ${eventData}`);
+			};
+		}
+	}
+
+	logIfDebugEnabled(type, eventName, eventData) {
+		if (Emittery.isDebugEnabled || this.debug.enabled) {
+			this.debug.logger(type, this.debug.name, eventName, eventData);
+		}
+	}
+
+	on(eventNames, listener) {
+		assertListener(listener);
+
+		eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+		for (const eventName of eventNames) {
+			assertEventName(eventName);
+			let set = getListeners(this, eventName);
+			if (!set) {
+				set = new Set();
+				const events = _maps_js__WEBPACK_IMPORTED_MODULE_0__.eventsMap.get(this);
+				events.set(eventName, set);
+			}
+
+			set.add(listener);
+
+			this.logIfDebugEnabled('subscribe', eventName, undefined);
+
+			if (!isMetaEvent(eventName)) {
+				emitMetaEvent(this, listenerAdded, {eventName, listener});
+			}
+		}
+
+		return this.off.bind(this, eventNames, listener);
+	}
+
+	off(eventNames, listener) {
+		assertListener(listener);
+
+		eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+		for (const eventName of eventNames) {
+			assertEventName(eventName);
+			const set = getListeners(this, eventName);
+			if (set) {
+				set.delete(listener);
+				if (set.size === 0) {
+					const events = _maps_js__WEBPACK_IMPORTED_MODULE_0__.eventsMap.get(this);
+					events.delete(eventName);
+				}
+			}
+
+			this.logIfDebugEnabled('unsubscribe', eventName, undefined);
+
+			if (!isMetaEvent(eventName)) {
+				emitMetaEvent(this, listenerRemoved, {eventName, listener});
+			}
+		}
+	}
+
+	once(eventNames) {
+		let off_;
+
+		const promise = new Promise(resolve => {
+			off_ = this.on(eventNames, data => {
+				off_();
+				resolve(data);
+			});
+		});
+
+		promise.off = off_;
+		return promise;
+	}
+
+	events(eventNames) {
+		eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+		for (const eventName of eventNames) {
+			assertEventName(eventName);
+		}
+
+		return iterator(this, eventNames);
+	}
+
+	async emit(eventName, eventData) {
+		assertEventName(eventName);
+
+		if (isMetaEvent(eventName) && !canEmitMetaEvents) {
+			throw new TypeError('`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`');
+		}
+
+		this.logIfDebugEnabled('emit', eventName, eventData);
+
+		enqueueProducers(this, eventName, eventData);
+
+		const listeners = getListeners(this, eventName) ?? new Set();
+		const anyListeners = _maps_js__WEBPACK_IMPORTED_MODULE_0__.anyMap.get(this);
+		const staticListeners = [...listeners];
+		const staticAnyListeners = isMetaEvent(eventName) ? [] : [...anyListeners];
+
+		await resolvedPromise;
+		await Promise.all([
+			...staticListeners.map(async listener => {
+				if (listeners.has(listener)) {
+					return listener(eventData);
+				}
+			}),
+			...staticAnyListeners.map(async listener => {
+				if (anyListeners.has(listener)) {
+					return listener(eventName, eventData);
+				}
+			}),
+		]);
+	}
+
+	async emitSerial(eventName, eventData) {
+		assertEventName(eventName);
+
+		if (isMetaEvent(eventName) && !canEmitMetaEvents) {
+			throw new TypeError('`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`');
+		}
+
+		this.logIfDebugEnabled('emitSerial', eventName, eventData);
+
+		const listeners = getListeners(this, eventName) ?? new Set();
+		const anyListeners = _maps_js__WEBPACK_IMPORTED_MODULE_0__.anyMap.get(this);
+		const staticListeners = [...listeners];
+		const staticAnyListeners = [...anyListeners];
+
+		await resolvedPromise;
+		/* eslint-disable no-await-in-loop */
+		for (const listener of staticListeners) {
+			if (listeners.has(listener)) {
+				await listener(eventData);
+			}
+		}
+
+		for (const listener of staticAnyListeners) {
+			if (anyListeners.has(listener)) {
+				await listener(eventName, eventData);
+			}
+		}
+		/* eslint-enable no-await-in-loop */
+	}
+
+	onAny(listener) {
+		assertListener(listener);
+
+		this.logIfDebugEnabled('subscribeAny', undefined, undefined);
+
+		_maps_js__WEBPACK_IMPORTED_MODULE_0__.anyMap.get(this).add(listener);
+		emitMetaEvent(this, listenerAdded, {listener});
+		return this.offAny.bind(this, listener);
+	}
+
+	anyEvent() {
+		return iterator(this);
+	}
+
+	offAny(listener) {
+		assertListener(listener);
+
+		this.logIfDebugEnabled('unsubscribeAny', undefined, undefined);
+
+		emitMetaEvent(this, listenerRemoved, {listener});
+		_maps_js__WEBPACK_IMPORTED_MODULE_0__.anyMap.get(this).delete(listener);
+	}
+
+	clearListeners(eventNames) {
+		eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+
+		for (const eventName of eventNames) {
+			this.logIfDebugEnabled('clear', eventName, undefined);
+
+			if (typeof eventName === 'string' || typeof eventName === 'symbol' || typeof eventName === 'number') {
+				const set = getListeners(this, eventName);
+				if (set) {
+					set.clear();
+				}
+
+				const producers = getEventProducers(this, eventName);
+				if (producers) {
+					for (const producer of producers) {
+						producer.finish();
+					}
+
+					producers.clear();
+				}
+			} else {
+				_maps_js__WEBPACK_IMPORTED_MODULE_0__.anyMap.get(this).clear();
+
+				for (const [eventName, listeners] of _maps_js__WEBPACK_IMPORTED_MODULE_0__.eventsMap.get(this).entries()) {
+					listeners.clear();
+					_maps_js__WEBPACK_IMPORTED_MODULE_0__.eventsMap.get(this).delete(eventName);
+				}
+
+				for (const [eventName, producers] of _maps_js__WEBPACK_IMPORTED_MODULE_0__.producersMap.get(this).entries()) {
+					for (const producer of producers) {
+						producer.finish();
+					}
+
+					producers.clear();
+					_maps_js__WEBPACK_IMPORTED_MODULE_0__.producersMap.get(this).delete(eventName);
+				}
+			}
+		}
+	}
+
+	listenerCount(eventNames) {
+		eventNames = Array.isArray(eventNames) ? eventNames : [eventNames];
+		let count = 0;
+
+		for (const eventName of eventNames) {
+			if (typeof eventName === 'string') {
+				count += _maps_js__WEBPACK_IMPORTED_MODULE_0__.anyMap.get(this).size
+					+ (getListeners(this, eventName)?.size ?? 0)
+					+ (getEventProducers(this, eventName)?.size ?? 0)
+					+ (getEventProducers(this)?.size ?? 0);
+
+				continue;
+			}
+
+			if (typeof eventName !== 'undefined') {
+				assertEventName(eventName);
+			}
+
+			count += _maps_js__WEBPACK_IMPORTED_MODULE_0__.anyMap.get(this).size;
+
+			for (const value of _maps_js__WEBPACK_IMPORTED_MODULE_0__.eventsMap.get(this).values()) {
+				count += value.size;
+			}
+
+			for (const value of _maps_js__WEBPACK_IMPORTED_MODULE_0__.producersMap.get(this).values()) {
+				count += value.size;
+			}
+		}
+
+		return count;
+	}
+
+	bindMethods(target, methodNames) {
+		if (typeof target !== 'object' || target === null) {
+			throw new TypeError('`target` must be an object');
+		}
+
+		methodNames = defaultMethodNamesOrAssert(methodNames);
+
+		for (const methodName of methodNames) {
+			if (target[methodName] !== undefined) {
+				throw new Error(`The property \`${methodName}\` already exists on \`target\``);
+			}
+
+			Object.defineProperty(target, methodName, {
+				enumerable: false,
+				value: this[methodName].bind(this),
+			});
+		}
+	}
+}
+
+const allEmitteryMethods = Object.getOwnPropertyNames(Emittery.prototype).filter(v => v !== 'constructor');
+
+Object.defineProperty(Emittery, 'listenerAdded', {
+	value: listenerAdded,
+	writable: false,
+	enumerable: true,
+	configurable: false,
+});
+Object.defineProperty(Emittery, 'listenerRemoved', {
+	value: listenerRemoved,
+	writable: false,
+	enumerable: true,
+	configurable: false,
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/emittery/maps.js":
+/*!***************************************!*\
+  !*** ./node_modules/emittery/maps.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   anyMap: () => (/* binding */ anyMap),
+/* harmony export */   eventsMap: () => (/* binding */ eventsMap),
+/* harmony export */   producersMap: () => (/* binding */ producersMap)
+/* harmony export */ });
+const anyMap = new WeakMap();
+const eventsMap = new WeakMap();
+const producersMap = new WeakMap();
 
 
 /***/ }),
@@ -85896,18 +86656,18 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/*!****************!*\
-  !*** ./app.js ***!
-  \****************/
+/*!********************!*\
+  !*** ./src/app.js ***!
+  \********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ckeditor_ckeditor5_editor_classic_src_classiceditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ckeditor/ckeditor5-editor-classic/src/classiceditor */ "./node_modules/@ckeditor/ckeditor5-editor-classic/src/classiceditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_essentials_src_essentials__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-essentials/src/essentials */ "./node_modules/@ckeditor/ckeditor5-essentials/src/essentials.js");
 /* harmony import */ var _ckeditor_ckeditor5_paragraph_src_paragraph__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-paragraph/src/paragraph */ "./node_modules/@ckeditor/ckeditor5-paragraph/src/paragraph.js");
 /* harmony import */ var _ckeditor_ckeditor5_basic_styles_src_bold__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ckeditor/ckeditor5-basic-styles/src/bold */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/bold.js");
 /* harmony import */ var _ckeditor_ckeditor5_basic_styles_src_italic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ckeditor/ckeditor5-basic-styles/src/italic */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/italic.js");
-/* harmony import */ var _iconPickerPlugin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./iconPickerPlugin */ "./iconPickerPlugin.js");
-/* harmony import */ var _IconPlugin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./IconPlugin */ "./IconPlugin.js");
-/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styles.css */ "./styles.css");
+/* harmony import */ var _styles_styles_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styles/styles.css */ "./src/styles/styles.css");
+/* harmony import */ var _iconPlugin_iconPickerPlugin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./iconPlugin/iconPickerPlugin */ "./src/iconPlugin/iconPickerPlugin.js");
+/* harmony import */ var _iconPlugin_IconPlugin__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./iconPlugin/IconPlugin */ "./src/iconPlugin/IconPlugin.js");
 
 
 
@@ -85918,9 +86678,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 _ckeditor_ckeditor5_editor_classic_src_classiceditor__WEBPACK_IMPORTED_MODULE_0__["default"].create(document.querySelector("#editor"), {
-  plugins: [ _ckeditor_ckeditor5_essentials_src_essentials__WEBPACK_IMPORTED_MODULE_1__["default"], _ckeditor_ckeditor5_paragraph_src_paragraph__WEBPACK_IMPORTED_MODULE_2__["default"], _ckeditor_ckeditor5_basic_styles_src_bold__WEBPACK_IMPORTED_MODULE_3__["default"], _ckeditor_ckeditor5_basic_styles_src_italic__WEBPACK_IMPORTED_MODULE_4__["default"],    _iconPickerPlugin__WEBPACK_IMPORTED_MODULE_5__["default"],
-    _IconPlugin__WEBPACK_IMPORTED_MODULE_6__["default"] ],
-  toolbar: [ 'bold', 'italic', "iconPickerButton", ]
+  plugins: [_ckeditor_ckeditor5_essentials_src_essentials__WEBPACK_IMPORTED_MODULE_1__["default"], _ckeditor_ckeditor5_paragraph_src_paragraph__WEBPACK_IMPORTED_MODULE_2__["default"], _ckeditor_ckeditor5_basic_styles_src_bold__WEBPACK_IMPORTED_MODULE_3__["default"], _ckeditor_ckeditor5_basic_styles_src_italic__WEBPACK_IMPORTED_MODULE_4__["default"], _iconPlugin_iconPickerPlugin__WEBPACK_IMPORTED_MODULE_6__["default"], _iconPlugin_IconPlugin__WEBPACK_IMPORTED_MODULE_7__["default"]],
+  toolbar: ["bold", "italic", "iconPickerButton"],
 })
   .then((editor) => {
     console.log("Editor was initialized", editor);
