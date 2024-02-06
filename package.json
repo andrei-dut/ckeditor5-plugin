@@ -14,8 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "@ckeditor/ckeditor5-basic-styles": "38.1.1",
+    "@ckeditor/ckeditor5-dev-utils": "38.1.1",
     "@ckeditor/ckeditor5-editor-classic": "38.1.1",
     "@ckeditor/ckeditor5-essentials": "38.1.1",
+    "@ckeditor/ckeditor5-theme-lark": "38.1.1",
     "emittery": "^1.0.1",
     "gh-pages": "^6.1.1"
   },

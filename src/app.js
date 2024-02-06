@@ -6,12 +6,18 @@ import Italic from "@ckeditor/ckeditor5-basic-styles/src/italic";
 import "./styles/styles.css";
 import IconPickerPlugin from "./iconPlugin/iconPickerPlugin";
 import IconPlugin from './iconPlugin/IconPlugin';
+import { openEditSvgModal, showModal } from "./js/manageCustomModal copy";
+
+
+
 
 ClassicEditor.create(document.querySelector("#editor"), {
   plugins: [Essentials, Paragraph, Bold, Italic, IconPickerPlugin, IconPlugin],
   toolbar: ["bold", "italic", "iconPickerButton"],
 })
   .then((editor) => {
+    // openEditSvgModal()
+    showModal()
     console.log("Editor was initialized", editor);
   })
   .catch((error) => {

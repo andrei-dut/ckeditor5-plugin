@@ -3,6 +3,11 @@
   font-size: 0px;
 }
 
+*h2,
+p {
+  margin: 0;
+}
+
 #myModal {
   display: none;
   position: fixed;
@@ -40,9 +45,9 @@
 }
 
 #wrapForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #headFormSvg {
@@ -74,4 +79,106 @@
 .form-edit-svg input {
   margin-top: 6px;
   padding: 5px;
+}
+
+/* New roughness Modal  */
+
+#roughnessContent {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.roughness-symbol,
+.processing-method,
+.roughness-parameters {
+  padding-bottom: 16px;
+}
+
+#roughnessContent p,
+#roughnessContent label {
+  font-weight: bold;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+.roughness-symbol > span {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.roughness-symbol > span.selected,
+.roughness-symbol > span:hover {
+  border-color: initial;
+}
+
+.processing-method {
+  display: flex;
+  flex-direction: column;
+}
+.processing-method label {
+  font-weight: bold;
+  padding-bottom: 6px;
+}
+
+#parametr__input {
+  margin-bottom: 8px;
+  margin-right: 8px;
+}
+
+.dropdown-designation {
+  position: relative;
+  border: 1px solid;
+  max-width: 40px;
+  display: flex;
+  margin-right: auto;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.dropdown-designation-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 100%;
+}
+
+.dropdown-designation-content div {
+  padding: 4px;
+  cursor: pointer;
+}
+
+.dropdown-designation-content div:hover {
+  background-color: #cecece;
+}
+
+.dropdown-designation-icon {
+  border-left: 1px solid;
+}
+
+.dropdown-designation:hover .dropdown-designation-content {
+  display: block;
+}
+
+.roughness-content-1 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 82px;
+}
+.roughness-content-1 > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.roughness-content-2 {
+  padding-left: 16px;
 }
