@@ -39,7 +39,6 @@ class IconPlugin extends Plugin {
           });
 
           const svgUIElement = createViewSvg(modelElement, { writer });
-
           if (svgUIElement) {
             writer.insert(
               writer.createPositionAt(widgetElement, 0),

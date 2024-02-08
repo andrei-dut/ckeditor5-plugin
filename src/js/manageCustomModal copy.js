@@ -1,4 +1,7 @@
-import { emitter, findTextTagInSVG } from "../utils/utils";
+import {
+  emitter,
+  findTextTagInSVG,
+} from "../utils/utils";
 import ra1 from "../icons/RA1_template.svg";
 import ra2 from "../icons/RA2_template.svg";
 import ra3 from "../icons/RA3_template.svg";
@@ -140,6 +143,7 @@ window.onclick = function (event) {
 export const testFormData = { key1: "", key2: "", key3: "" };
 
 function addModal(content) {
+  console.log(34234234);
   var modal = document.createElement("div");
   var closeButton = document.createElement("button");
   var modalContent = document.createElement("div");
@@ -148,6 +152,7 @@ function addModal(content) {
   modalContent.innerHTML = content;
 
   // Стили модального окна
+  modal.id = "modalTest";
   modal.style.position = "fixed";
   modal.style.top = "0";
   modal.style.left = "0";
@@ -155,7 +160,7 @@ function addModal(content) {
   modal.style.height = "100%";
   modal.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
   modal.style.zIndex = "9999";
-  modal.style.display = "none";
+  modal.style.display = "flex";
   modal.style.justifyContent = "center";
   modal.style.alignItems = "center";
 
@@ -181,9 +186,20 @@ function addModal(content) {
   const addInputBtn = modalContent.querySelector("#addInput");
   const parametr__input1 = modalContent.querySelector("#parametr__input");
   const processingMethod = modalContent.querySelector("#processingMethod");
+  const saveBtn = modalContent.querySelector("#saveBtn");
+
+  if (saveBtn) {
+    saveBtn.onclick = function () {
+      const svgElement = document.querySelector("#wrapSvg svg");
+      if (svgElement.outerHTML)
+        emitter.emit("insertIcon", svgElement);
+        modal.remove();
+    };
+  }
   if (addInputBtn) {
     addInputBtn.onclick = addInput;
   }
+
   if (parametr__input1) {
     parametr__input1.addEventListener("input", function () {
       const newText = this.value;
@@ -235,11 +251,13 @@ function addModal(content) {
   }
 
   closeButton.addEventListener("click", function () {
+    modal.remove();
     modal.style.display = "none";
   });
 
   modal.addEventListener("click", function (event) {
     if (event.target === modal) {
+      modal.remove();
       modal.style.display = "none";
     }
   });
@@ -390,8 +408,9 @@ function selectItem(item) {
 }
 
 // Пример использования функции
-export const showModal = addModal(
-  `<h2 style="text-align: center;font-size: 20px;margin: 0;">Обозначение шероховатости:</h2>
+export const showModal = () =>
+  addModal(
+    `<h2 style="text-align: center;font-size: 20px;margin: 0;">Обозначение шероховатости:</h2>
   <div id="roughnessContent">
     <div class="roughness-content-1">
       <div class="content-1-wrap-preview"><span id="wrapSvg">${ra1_1}</span></div>
@@ -436,5 +455,6 @@ export const showModal = addModal(
       </div>
     </div>
   </div>
+  <button id="saveBtn" type="button">Добавить</button>
   `
-);
+  );

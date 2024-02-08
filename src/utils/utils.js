@@ -4,10 +4,8 @@ export const emitter = new Emittery();
 
 export function parseSvg(svgString) {
   const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(svgString, "image/svg+xml");
-
+  const xmlDoc = parser.parseFromString(`${svgString}`, "image/svg+xml");
   const svgElement = xmlDoc.documentElement;
-
 
   const svgAttributes = {};
   for (const attribute of svgElement.attributes) {
@@ -15,7 +13,7 @@ export function parseSvg(svgString) {
   }
 
   const match = svgString.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
-  const svgContent = match ? match[1].trim() : '';
+  const svgContent = match ? match[1].trim() : "";
 
   return {
     attributes: svgAttributes,
@@ -23,80 +21,101 @@ export function parseSvg(svgString) {
   };
 }
 
-export function createViewSvg(modelElement, { writer }) {
-    const _parseSvg = parseSvg(modelElement.getAttribute("data-icon"));
-    return writer.createRawElement(
-      "svg",
-      {
-        class: `svg-${modelElement.getAttribute("data-name")}`,
+export function getAttsAndContentFromElDom(element) {
+  const attributesObject = element.attributes;
 
-        ..._parseSvg.attributes,
-        width: '100%',
-        height: '100%',
-      },
-      function (domElement) {
-        domElement.innerHTML = _parseSvg.content;
-      }
-    )
+  const attributes = {};
+  for (const attr of attributesObject) {
+    attributes[attr.name] = attr.value;
   }
+
+  const contentString = element.innerHTML;
+
+  return { attributes, contentString };
+}
+
+export function createViewSvg(modelElement, { writer }) {
+  // const _parseSvg = parseSvg(modelElement.getAttribute("data-icon"));
+  const svgData =  getAttsAndContentFromElDom(modelElement.getAttribute("data-icon")) || {};
+  return writer.createRawElement(
+    "svg",
+    {
+      class: `svg-${modelElement.getAttribute("data-name")}`,
+      ...svgData.attributes,
+      // ..._parseSvg.attributes,
+      width: "100%",
+      height: "100%",
+    },
+    function (domElement) {
+      domElement.innerHTML = svgData.contentString;
+    }
+  );
+}
 
 export function cloneElem(viewWriter, sourceNode) {
-    if (sourceNode.is('text')) {
-      return viewWriter.createText(sourceNode.data);
-    } if (sourceNode.is('element')) {
-      if (sourceNode.is('emptyElement')) {
-        return viewWriter.createEmptyElement(sourceNode.name, sourceNode.getAttributes());
-      }
-      const element = viewWriter.createContainerElement(sourceNode.name, sourceNode.getAttributes());
-      for (const child of sourceNode.getChildren()) {
-        viewWriter.insert(viewWriter.createPositionAt(element, 'end'), cloneElem(viewWriter, child));
-      }
-      return element;
-    }
-
-    throw new Exception('Given node has unsupported type.'); // eslint-disable-line no-undef
+  if (sourceNode.is("text")) {
+    return viewWriter.createText(sourceNode.data);
   }
-
-export  function replaceTextInSvg(_svgString, replacement) {
-    let svgString = _svgString;
-  
-    function replaceTemp(string, regex) {
-      return string.replace(
-        regex,
-        (match, group) => {
-          // match - это весь найденный тег <text>
-          // group - это содержимое текста внутри тега    
-          return match.replace(group, replacement[group] || group);
-        }
+  if (sourceNode.is("element")) {
+    if (sourceNode.is("emptyElement")) {
+      return viewWriter.createEmptyElement(
+        sourceNode.name,
+        sourceNode.getAttributes()
       );
     }
-  
-    svgString = replaceTemp(svgString, /<text[^>]*>(.*?)<\/text>/g);
-    svgString = replaceTemp(svgString, /<font[^>]*>(.*?)<\/font>/g);
-  
-    return svgString;
+    const element = viewWriter.createContainerElement(
+      sourceNode.name,
+      sourceNode.getAttributes()
+    );
+    for (const child of sourceNode.getChildren()) {
+      viewWriter.insert(
+        viewWriter.createPositionAt(element, "end"),
+        cloneElem(viewWriter, child)
+      );
+    }
+    return element;
   }
 
- export  function findTextTagInSVG(svgElement, value) {
-    // Получаем все теги текста в SVG-элементе
+  throw new Exception("Given node has unsupported type."); // eslint-disable-line no-undef
+}
 
-    if(!svgElement) return null;
+export function replaceTextInSvg(_svgString, replacement) {
+  let svgString = _svgString;
 
-    const textElements = svgElement.querySelectorAll('text');
+  function replaceTemp(string, regex) {
+    return string.replace(regex, (match, group) => {
+      // match - это весь найденный тег <text>
+      // group - это содержимое текста внутри тега
+      return match.replace(group, replacement[group] || group);
+    });
+  }
 
-    // Проходим по всем найденным текстовым элементам
-    for (const textElement of textElements) {
-        // Получаем текст текущего элемента
-        const id = textElement.id;
+  svgString = replaceTemp(svgString, /<text[^>]*>(.*?)<\/text>/g);
+  svgString = replaceTemp(svgString, /<font[^>]*>(.*?)<\/font>/g);
 
-        // Если текст текущего элемента равен "121", возвращаем его
-        if (id === value) {
-            return textElement;
-        }
+  return svgString;
+}
+
+export function findTextTagInSVG(svgElement, value) {
+  // Получаем все теги текста в SVG-элементе
+
+  if (!svgElement) return null;
+
+  const textElements = svgElement.querySelectorAll("text");
+
+  // Проходим по всем найденным текстовым элементам
+  for (const textElement of textElements) {
+    // Получаем текст текущего элемента
+    const id = textElement.id;
+
+    // Если текст текущего элемента равен "121", возвращаем его
+    if (id === value) {
+      return textElement;
     }
+  }
 
-    // Если не найден элемент с текстом "121", возвращаем null
-    return null;
+  // Если не найден элемент с текстом "121", возвращаем null
+  return null;
 }
 
 // Пример использования
@@ -105,21 +124,19 @@ export  function replaceTextInSvg(_svgString, replacement) {
 // const parsedSvg = parseSvg(svgString);
 // console.log(parsedSvg);
 
-
-
 // function measureSvgTextWidth(svgString, fontFamily, fontSize) {
 //   const tempDiv = document.createElement('div');
 //   tempDiv.style.position = 'absolute';
 //   tempDiv.style.left = '100px';
 //   tempDiv.style.top = '100px';
-  
+
 //   document.body.appendChild(tempDiv);
 
 //   tempDiv.innerHTML = svgString;
 //   const svgTextElement = tempDiv.querySelector('#path2');
 
 //   if (svgTextElement) {
-    
+
 //     // Получаем ссылку на элемент SVG
 // const svgElement = document.querySelector('svg'); // Замените 'yourSvgElementId' на ваш ID
 
@@ -135,7 +152,7 @@ export  function replaceTextInSvg(_svgString, replacement) {
 // // Итерируемся по всем элементам внутри SVG
 // for (let i = 0; i < svgChildren.length; i++) {
 //   const element = svgChildren[i];
-  
+
 //   // Получаем координаты и размеры текущего элемента
 //   const bbox = element.getBBox();
 // console.log(element,bbox.x , bbox.width)
@@ -149,7 +166,6 @@ export  function replaceTextInSvg(_svgString, replacement) {
 // // Устанавливаем новое значение viewBox
 // svgElement.setAttribute('viewBox', `${minX} ${minY} ${maxX + 10 - minX} ${maxY - minY}`);
 
-    
 //     svgTextElement.setAttribute('font-family', fontFamily);
 //     svgTextElement.setAttribute('font-size', fontSize);
 
@@ -184,7 +200,6 @@ export  function replaceTextInSvg(_svgString, replacement) {
 //         <text x="60" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
 //             text-anchor="start">fgdfgdgdfgdfgd123456</text>
 
-
 //         <text x="70" y="53" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
 //             text-anchor="start">XX(1)</text>
 
@@ -204,4 +219,3 @@ export  function replaceTextInSvg(_svgString, replacement) {
 // const textWidth = measureSvgTextWidth(svgString, fontFamily, fontSize);
 
 // console.log("Ширина текста:", textWidth);
-

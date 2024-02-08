@@ -7,11 +7,11 @@ import {
 } from "@ckeditor/ckeditor5-ui";
 import Widget from "@ckeditor/ckeditor5-widget/src/widget";
 import WidgetResize from "@ckeditor/ckeditor5-widget/src/widgetresize";
-import { emitter, replaceTextInSvg } from "../utils/utils";
-import { customIcons } from '../icons'
+import { emitter } from "../utils/utils";
+import { customIcons } from "../icons";
 import { insertContentEvent } from "../events/insertContentEvent";
-import { openEditSvgModal } from "../js/manageCustomModal";
-
+// import { openEditSvgModal } from "../js/manageCustomModal";
+import { showModal } from "../js/manageCustomModal copy";
 
 class IconPickerPlugin extends Plugin {
   static get requires() {
@@ -47,7 +47,7 @@ class IconPickerPlugin extends Plugin {
             "data-name": data.iconName,
             "data-icon": data.icon,
           });
-          console.log(selection, model);
+          // console.log(selection, model, data);
 
           model.insertContent(iconElement, selection);
         });
@@ -73,10 +73,12 @@ class IconPickerPlugin extends Plugin {
           icon: icon.icon,
         });
 
-        function insertIconFc(valuesSvg) {
+        function insertIconFc(svgEl) {
+          // console.log(icon.icon);
           editor.execute("insertIcon", {
             iconName: icon.iconName,
-            icon: replaceTextInSvg(icon.icon, valuesSvg),
+            icon: svgEl,
+            // icon: replaceTextInSvg(icon.icon, valuesSvg)
           });
           editor.editing.view.focus();
           emitter.off("insertIcon", insertIconFc);
@@ -84,7 +86,8 @@ class IconPickerPlugin extends Plugin {
 
         listItem.on("execute", () => {
           emitter.on("insertIcon", insertIconFc);
-          openEditSvgModal(icon);
+          // openEditSvgModal(icon);
+          showModal();
           // dropdown.hide();
         });
 
