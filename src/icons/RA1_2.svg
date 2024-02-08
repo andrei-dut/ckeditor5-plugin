@@ -6,14 +6,13 @@
         <path d="M 45 29 L 116 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
         <ellipse cx="34.2" cy="39.5" rx="6" ry="6" fill="rgba(0,0,0,0)" stroke="rgb(0, 0, 0)" pointer-events="all" />
         <path d="M 35 57 L 24 33" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-        <text x="45" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-            text-anchor="start">Полировать</text>
-        <text x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+        <text id="y" x="45" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
+        <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
             text-anchor="start">XX(1)</text>
-        <text x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+        <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
             text-anchor="start">XX(2)</text>
 
-        <text x="42" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+        <text id="z" x="42" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
         <path d="M 35 57 L 45 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     </g>
 

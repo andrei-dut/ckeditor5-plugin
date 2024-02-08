@@ -1,7 +1,50 @@
-import { emitter } from "../utils/utils";
+import { emitter, findTextTagInSVG } from "../utils/utils";
 import ra1 from "../icons/RA1_template.svg";
 import ra2 from "../icons/RA2_template.svg";
 import ra3 from "../icons/RA3_template.svg";
+import raManual from "../icons/RA_manual.svg";
+
+import ra1_1 from "../icons/RA1_1.svg";
+import ra1_2 from "../icons/RA1_2.svg";
+import ra1_3 from "../icons/RA1_3.svg";
+import ra1_4 from "../icons/RA1_4.svg";
+import ra1_5 from "../icons/RA1_5.svg";
+import ra1_6 from "../icons/RA1_6.svg";
+
+import ra2_1 from "../icons/RA2_1.svg";
+import ra2_2 from "../icons/RA2_2.svg";
+import ra2_3 from "../icons/RA2_3.svg";
+import ra2_4 from "../icons/RA2_4.svg";
+import ra2_5 from "../icons/RA2_5.svg";
+import ra2_6 from "../icons/RA2_6.svg";
+
+import ra3_1 from "../icons/RA3_1.svg";
+import ra3_2 from "../icons/RA3_2.svg";
+import ra3_3 from "../icons/RA3_3.svg";
+import ra3_4 from "../icons/RA3_4.svg";
+import ra3_5 from "../icons/RA3_5.svg";
+import ra3_6 from "../icons/RA3_6.svg";
+
+const ra_All = {
+  ra1_1,
+  ra1_2,
+  ra1_3,
+  ra1_4,
+  ra1_5,
+  ra1_6,
+  ra2_1,
+  ra2_2,
+  ra2_3,
+  ra2_4,
+  ra2_5,
+  ra2_6,
+  ra3_1,
+  ra3_2,
+  ra3_3,
+  ra3_4,
+  ra3_5,
+  ra3_6,
+};
 
 function createFormForModal(parent, formData) {
   const formContainer = document.createElement("div");
@@ -123,6 +166,8 @@ function addModal(content) {
   modalContent.style.borderRadius = "8px";
   modalContent.style.minWidth = "50%";
   modalContent.style.minHeight = "40%";
+  modalContent.style.display = "flex";
+  modalContent.style.flexDirection = "column";
 
   // Стили кнопки закрытия
   closeButton.style.position = "absolute";
@@ -134,8 +179,30 @@ function addModal(content) {
   closeButton.style.fontSize = "30px";
 
   const addInputBtn = modalContent.querySelector("#addInput");
+  const parametr__input1 = modalContent.querySelector("#parametr__input");
+  const processingMethod = modalContent.querySelector("#processingMethod");
   if (addInputBtn) {
     addInputBtn.onclick = addInput;
+  }
+  if (parametr__input1) {
+    parametr__input1.addEventListener("input", function () {
+      const newText = this.value;
+      const svgElement = document.querySelector("#wrapSvg svg");
+      const targetTextElement = findTextTagInSVG(svgElement, "x1");
+      if (targetTextElement) {
+        targetTextElement.textContent = newText;
+      }
+    });
+  }
+  if (processingMethod) {
+    processingMethod.addEventListener("input", function () {
+      const newText = this.value;
+      const svgElement = document.querySelector("#wrapSvg svg");
+      const targetTextElement = findTextTagInSVG(svgElement, "y");
+      if (targetTextElement) {
+        targetTextElement.textContent = newText;
+      }
+    });
   }
 
   modalContent.appendChild(closeButton);
@@ -161,6 +228,8 @@ function addModal(content) {
           item.classList.remove("selected");
         });
         this.classList.add("selected");
+
+        changePreviewSvg(item.id);
       });
     });
   }
@@ -182,9 +251,69 @@ function addModal(content) {
   return openModal;
 }
 
+const changePreviewSvg = (selectedRaID) => {
+  const wrapPreviewElem = document.querySelector(".content-1-wrap-preview");
+  const dropdownValue = document.querySelector(".dropdown-designation-value");
+  const processingMethod = document.querySelector("#processingMethod");
+
+  const inputs = document.querySelectorAll(".parametr__input");
+  const inputsLength = inputs && inputs.length;
+
+  const currentValues = {};
+
+  for (const input of inputs) {
+    const inputText = input.value;
+    const index = Array.from(inputs).indexOf(input) + 1;
+    if (index && inputText) {
+      currentValues[`x${index}`] = inputText;
+    }
+  }
+
+  if (dropdownValue) {
+    currentValues.z = dropdownValue.textContent;
+  }
+
+  if (processingMethod) {
+    currentValues.y = processingMethod.value;
+  }
+
+  console.log(currentValues);
+
+  const newWrapWithSvg = document.createElement("span");
+  newWrapWithSvg.id = "wrapSvg";
+  let innerSvg;
+
+  if (selectedRaID === "ra1") {
+    innerSvg = ra_All[`ra1_${inputsLength || 1}`];
+  } else if (selectedRaID === "ra2") {
+    innerSvg = ra_All[`ra2_${inputsLength || 1}`];
+  } else {
+    innerSvg = ra_All[`ra3_${inputsLength || 1}`];
+  }
+
+  newWrapWithSvg.innerHTML = innerSvg;
+
+  const svgElement = wrapPreviewElem.querySelector("#wrapSvg");
+
+  if (svgElement) {
+    svgElement.remove();
+  }
+
+  for (const prop in currentValues) {
+    const svgElement = newWrapWithSvg.querySelector("svg");
+    const targetTextElement = findTextTagInSVG(svgElement, prop);
+    if (targetTextElement) {
+      targetTextElement.textContent =
+        currentValues[prop] || targetTextElement.textContent;
+    }
+  }
+
+  wrapPreviewElem.appendChild(newWrapWithSvg);
+};
+
 function addInput() {
   const inputsContainer = document.getElementById("inputs-container");
-  const inputs = inputsContainer.querySelectorAll("#parametr__input");
+  const inputs = inputsContainer.querySelectorAll(".parametr__input");
   const addInputBtn = document.querySelector("#addInput");
   const inputsLength = inputs && inputs.length;
   if (inputsLength >= 6) {
@@ -196,12 +325,14 @@ function addInput() {
   }
 
   const inputWrapper = document.createElement("div");
+  const inputKey = inputsLength + 1;
   inputWrapper.classList.add("input-container");
 
   const input = document.createElement("input");
-  input.id = "parametr__input";
+  input.id = `parametr__input_${inputKey}`;
+  input.className = `parametr__input`;
   input.type = "text";
-  input.name = `parament-${inputsLength + 1}`;
+  input.name = `parament-${inputKey}`;
   input.required = true;
 
   const deleteBtn = document.createElement("button");
@@ -212,13 +343,25 @@ function addInput() {
     removeInput(deleteBtn);
   };
 
+  input.addEventListener("input", function () {
+    const newText = this.value;
+    const svgElement = document.querySelector("#wrapSvg svg");
+    const targetTextElement = findTextTagInSVG(svgElement, `x${inputKey}`);
+    if (targetTextElement) {
+      targetTextElement.textContent = newText;
+    }
+  });
+
   inputWrapper.appendChild(input);
   inputWrapper.appendChild(deleteBtn);
   inputsContainer.appendChild(inputWrapper);
+
+  const selectedSymbol = document.querySelector(".wrap-symbol-svg.selected");
+  if (selectedSymbol.id) changePreviewSvg(selectedSymbol.id);
 }
 
 function removeInput(btn) {
-  const inputs = document.querySelectorAll("#parametr__input");
+  const inputs = document.querySelectorAll(".parametr__input");
   const addInputBtn = document.querySelector("#addInput");
   const inputsLength = inputs && inputs.length;
   if (inputsLength - 1 < 6) {
@@ -227,11 +370,23 @@ function removeInput(btn) {
 
   const inputWrapper = btn.parentElement;
   inputWrapper.remove();
+
+  const selectedSymbol = document.querySelector(".wrap-symbol-svg.selected");
+  if (selectedSymbol.id) changePreviewSvg(selectedSymbol.id);
 }
 
 function selectItem(item) {
   const dropdownIcon = document.querySelector(".dropdown-designation-value");
   dropdownIcon.textContent = item;
+
+  if (!item) {
+    return;
+  }
+  const svgElement = document.querySelector("#wrapSvg svg");
+  const targetTextElement = findTextTagInSVG(svgElement, "z");
+  if (targetTextElement) {
+    targetTextElement.textContent = item;
+  }
 }
 
 // Пример использования функции
@@ -239,15 +394,17 @@ export const showModal = addModal(
   `<h2 style="text-align: center;font-size: 20px;margin: 0;">Обозначение шероховатости:</h2>
   <div id="roughnessContent">
     <div class="roughness-content-1">
-      <div>Preview</div>
-      <div>Instruction manual</div>
+      <div class="content-1-wrap-preview"><span id="wrapSvg">${ra1_1}</span></div>
+      <div class="content-1-wrap-manual-svg">
+      <span>${raManual}</span>
+      </div>
     </div>
     <div class="roughness-content-2">
       <div class="roughness-symbol">
         <p>Знак шероховатости:</p>
-        <span>${ra1}</span>
-        <span>${ra2}</span>
-        <span>${ra3}</span>
+        <span id="ra1" class="wrap-symbol-svg selected">${ra1}</span>
+        <span id="ra2" class="wrap-symbol-svg">${ra2}</span>
+        <span id="ra3" class="wrap-symbol-svg">${ra3}</span>
       </div>
       <div class="processing-method">
         <label for="name">Способ обработки:</label>
@@ -257,9 +414,9 @@ export const showModal = addModal(
         <p>Параметры шероховатости:</p>
         <form id="dynamic-form">
           <div id="inputs-container">
-              <input id="parametr__input" type="text" name="parament-1" required>
+              <input class="parametr__input" id="parametr__input" type="text" name="parament-1" required>
           </div>
-          <button id="addInput" class="form-add-input" type="button" onclick="addInput()">Добавить параметр</button>
+          <button id="addInput" class="form-add-input" type="button">Добавить параметр</button>
         </form>
       </div>
       <div class="cond-designation">

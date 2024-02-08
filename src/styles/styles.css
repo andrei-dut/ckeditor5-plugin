@@ -87,12 +87,17 @@ p {
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
+  flex: 1;
 }
 
 .roughness-symbol,
 .processing-method,
 .roughness-parameters {
   padding-bottom: 16px;
+}
+
+.roughness-parameters {
+  flex: 1;
 }
 
 #roughnessContent p,
@@ -124,7 +129,7 @@ p {
   padding-bottom: 6px;
 }
 
-#parametr__input {
+.parametr__input {
   margin-bottom: 8px;
   margin-right: 8px;
 }
@@ -179,6 +184,23 @@ p {
   justify-content: center;
   flex: 1;
 }
+.roughness-content-1 > .content-1-wrap-manual-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
 .roughness-content-2 {
   padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-1-wrap-preview > span {
+  width: 170px;
+}
+
+.content-1-wrap-preview > span > svg {
+  width: 100%;
+  height: 100%;
 }

@@ -6,18 +6,17 @@
         <path d="M 45 29 L 116 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
         <ellipse cx="32.4" cy="45" rx="8.5" ry="8.5" fill="rgba(0,0,0,0)" stroke="rgb(0, 0, 0)" pointer-events="all" />
         <path d="M 35 81 L 18 33" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-        <text x="45" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-            text-anchor="start">Полировать</text>
-        <text x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+        <text id="y" x="45" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
+        <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
             text-anchor="start">XX(1)</text>
-        <text x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+        <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
             text-anchor="start">XX(2)</text>
-        <text x="55" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+        <text id="x3" x="55" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
             text-anchor="start">XX(3)</text>
-        <text x="55" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+        <text id="x4" x="55" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
             text-anchor="start">XX(4)</text>
 
-        <text x="42" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+        <text id="z" x="42" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
         <path d="M 35 81 L 45 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     </g>
 

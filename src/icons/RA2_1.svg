@@ -5,11 +5,11 @@
     <g>
         <path d="M 45 29 L 95 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
         <path d="M 35 50 L 24 33" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-        <text x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+        <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
                     text-anchor="start">YY</text>
-        <text x="55" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+        <text id="x1" x="55" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
                     text-anchor="start">XX(1)</text>
-        <text x="42" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+        <text id="z" x="42" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
                     text-anchor="start">Z</text>
         <path d="M 35 50 L 45 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     </g>
