@@ -1,7 +1,4 @@
-import {
-  emitter,
-  findTextTagInSVG,
-} from "../utils/utils";
+import { emitter, findTextTagInSVG } from "../utils/utils";
 import ra1 from "../icons/RA1_template.svg";
 import ra2 from "../icons/RA2_template.svg";
 import ra3 from "../icons/RA3_template.svg";
@@ -143,7 +140,7 @@ window.onclick = function (event) {
 export const testFormData = { key1: "", key2: "", key3: "" };
 
 function addModal(content) {
-  console.log(34234234);
+  // console.log(34234234);
   var modal = document.createElement("div");
   var closeButton = document.createElement("button");
   var modalContent = document.createElement("div");
@@ -191,9 +188,8 @@ function addModal(content) {
   if (saveBtn) {
     saveBtn.onclick = function () {
       const svgElement = document.querySelector("#wrapSvg svg");
-      if (svgElement.outerHTML)
-        emitter.emit("insertIcon", svgElement);
-        modal.remove();
+      if (svgElement.outerHTML) emitter.emit("insertIcon", svgElement);
+      modal.remove();
     };
   }
   if (addInputBtn) {
@@ -295,7 +291,7 @@ const changePreviewSvg = (selectedRaID) => {
     currentValues.y = processingMethod.value;
   }
 
-  console.log(currentValues);
+  // console.log(currentValues);
 
   const newWrapWithSvg = document.createElement("span");
   newWrapWithSvg.id = "wrapSvg";
@@ -329,6 +325,19 @@ const changePreviewSvg = (selectedRaID) => {
   wrapPreviewElem.appendChild(newWrapWithSvg);
 };
 
+function onInputForSvg() {
+  const newText = this.value;
+  const svgElement = document.querySelector("#wrapSvg svg");
+  const targetTextElement = findTextTagInSVG(
+    svgElement,
+    `x${this.id.slice(-1)}`
+  );
+  // console.log("323232", targetTextElement);
+  if (targetTextElement) {
+    targetTextElement.textContent = newText;
+  }
+}
+
 function addInput() {
   const inputsContainer = document.getElementById("inputs-container");
   const inputs = inputsContainer.querySelectorAll(".parametr__input");
@@ -361,14 +370,7 @@ function addInput() {
     removeInput(deleteBtn);
   };
 
-  input.addEventListener("input", function () {
-    const newText = this.value;
-    const svgElement = document.querySelector("#wrapSvg svg");
-    const targetTextElement = findTextTagInSVG(svgElement, `x${inputKey}`);
-    if (targetTextElement) {
-      targetTextElement.textContent = newText;
-    }
-  });
+  input.addEventListener("input", onInputForSvg);
 
   inputWrapper.appendChild(input);
   inputWrapper.appendChild(deleteBtn);
@@ -379,7 +381,7 @@ function addInput() {
 }
 
 function removeInput(btn) {
-  const inputs = document.querySelectorAll(".parametr__input");
+  let inputs = document.querySelectorAll(".parametr__input");
   const addInputBtn = document.querySelector("#addInput");
   const inputsLength = inputs && inputs.length;
   if (inputsLength - 1 < 6) {
@@ -388,9 +390,21 @@ function removeInput(btn) {
 
   const inputWrapper = btn.parentElement;
   inputWrapper.remove();
-
+  console.log(inputs);
   const selectedSymbol = document.querySelector(".wrap-symbol-svg.selected");
   if (selectedSymbol.id) changePreviewSvg(selectedSymbol.id);
+  inputs = document.querySelectorAll(".parametr__input");
+
+  for (const input of inputs) {
+    const index = Array.from(inputs).indexOf(input) + 1;
+    if (index > 1) {
+      input.id = `parametr__input_${index}`;
+      input.name = `parament-${index}`;
+      input.addEventListener("input", onInputForSvg);
+    }
+  }
+
+  console.log(inputs);
 }
 
 function selectItem(item) {
