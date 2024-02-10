@@ -4,8 +4,8 @@
     <defs />
     <g>
         <path d="M 53 29 L 116 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-        <path d="M 35 69 L 25 57" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-        <text id="y" x="53" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
+        <path d="M 35 69 L 25 56" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
+        <text id="y" x="55" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
         <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
             text-anchor="start">XX(1)</text>
         <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
