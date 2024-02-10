@@ -13,7 +13,7 @@ class IconPlugin extends Plugin {
 
     editor.model.schema.register("icon", {
       inheritAllFrom: "$inlineObject",
-      allowAttributes: ["data-name", "data-icon", "resizedWidth"],
+      allowAttributes: ["data-key", "data-name", "data-icon", "resizedWidth"],
     });
 
     editor.conversion.for("upcast").elementToElement({

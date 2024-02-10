@@ -7,6 +7,10 @@ export async function insertContentEvent(editor) {
       const mapper = editor.editing.mapper;
       const domConverter = editor.editing.view.domConverter;
       let viewElement = mapper.toViewElement(modelElement);
+      const isNameIcon = modelElement.name === 'icon';
+      const isSvgRoughness =  modelElement.getAttribute ? modelElement.getAttribute("data-key") === "svg-roughness" : null;
+
+      if(!viewElement && !(isNameIcon && isSvgRoughness)) return
 
       let attempts = 0;
       const maxAttempts = 100;
@@ -22,8 +26,7 @@ export async function insertContentEvent(editor) {
         );
       }
 
-      console.log(viewElement, modelElement);
-
+      // console.log(viewElement, modelElement);
 
       const parentView = viewElement.parent;
 
