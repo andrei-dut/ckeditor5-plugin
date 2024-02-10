@@ -22,6 +22,23 @@ export async function insertContentEvent(editor) {
         );
       }
 
+      console.log(viewElement, modelElement);
+
+
+      const parentView = viewElement.parent;
+
+      if(parentView) {
+        parentView._setStyle( 'display', 'flex' );       
+        parentView._setStyle( 'align-items', 'center' );       
+      }
+
+      
+      if(modelElement.parent) {
+
+        console.log(4, modelElement.parent, modelElement.parent.getStyle?.('display'));
+        
+      }
+
       const resizer = editor.plugins.get(WidgetResize).attachTo({
         modelElement,
         viewElement,

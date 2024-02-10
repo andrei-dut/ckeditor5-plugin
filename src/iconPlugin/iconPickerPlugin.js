@@ -47,9 +47,17 @@ class IconPickerPlugin extends Plugin {
             "data-name": data.iconName,
             "data-icon": data.icon,
           });
-          // console.log(selection, model, data);
+          // console.log(selection, model, data, editor);
+
+
 
           model.insertContent(iconElement, selection);
+
+
+          // const domElement = editor.editing.view.domConverter.viewToDom(iconElement);
+
+          // // Выводим полученный DOM-элемент в консоль
+          // console.log(domElement);
         });
       },
     });

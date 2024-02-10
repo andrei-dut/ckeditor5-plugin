@@ -35,7 +35,7 @@ class IconPlugin extends Plugin {
         view: (modelElement, { writer }) => {
           const widgetElement = writer.createContainerElement("span", {
             class: "ck-svg-widget",
-            style: 'width: 60px;'
+            style: 'width: 80px;'
           });
 
           const svgUIElement = createViewSvg(modelElement, { writer });
