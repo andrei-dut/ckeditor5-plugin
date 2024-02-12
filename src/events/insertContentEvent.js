@@ -28,12 +28,12 @@ export async function insertContentEvent(editor) {
 
       // console.log(viewElement, modelElement);
 
-      const parentView = viewElement.parent;
+      // const parentView = viewElement.parent;
 
-      if(parentView) {
-        parentView._setStyle( 'display', 'flex' );       
-        parentView._setStyle( 'align-items', 'center' );       
-      }
+      // if(parentView) {
+      //   parentView._setStyle( 'display', 'flex' );       
+      //   parentView._setStyle( 'align-items', 'center' );       
+      // }
 
       
       if(modelElement.parent) {
