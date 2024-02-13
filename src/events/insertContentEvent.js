@@ -7,6 +7,10 @@ export async function insertContentEvent(editor) {
       const mapper = editor.editing.mapper;
       const domConverter = editor.editing.view.domConverter;
       let viewElement = mapper.toViewElement(modelElement);
+      const isNameIcon = modelElement.name === 'icon';
+      const isSvgRoughness =  modelElement.getAttribute ? modelElement.getAttribute("data-key") === "svg-roughness" : null;
+
+      if(!viewElement && !(isNameIcon && isSvgRoughness)) return
 
       let attempts = 0;
       const maxAttempts = 100;
@@ -20,6 +24,22 @@ export async function insertContentEvent(editor) {
             resolve();
           }, attempts < 20 ? 10 : 200)
         );
+      }
+
+      // console.log(viewElement, modelElement);
+
+      // const parentView = viewElement.parent;
+
+      // if(parentView) {
+      //   parentView._setStyle( 'display', 'flex' );       
+      //   parentView._setStyle( 'align-items', 'center' );       
+      // }
+
+      
+      if(modelElement.parent) {
+
+        console.log(4, modelElement.parent, modelElement.parent.getStyle?.('display'));
+        
       }
 
       const resizer = editor.plugins.get(WidgetResize).attachTo({

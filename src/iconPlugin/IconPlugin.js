@@ -13,7 +13,7 @@ class IconPlugin extends Plugin {
 
     editor.model.schema.register("icon", {
       inheritAllFrom: "$inlineObject",
-      allowAttributes: ["data-name", "data-icon", "resizedWidth"],
+      allowAttributes: ["data-key", "data-name", "data-icon", "resizedWidth"],
     });
 
     editor.conversion.for("upcast").elementToElement({
@@ -35,7 +35,7 @@ class IconPlugin extends Plugin {
         view: (modelElement, { writer }) => {
           const widgetElement = writer.createContainerElement("span", {
             class: "ck-svg-widget",
-            style: 'width: 60px;'
+            style: 'width: 80px;'
           });
 
           const svgUIElement = createViewSvg(modelElement, { writer });
