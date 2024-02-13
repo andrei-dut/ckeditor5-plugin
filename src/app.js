@@ -23,3 +23,33 @@ ClassicEditor.create(document.querySelector("#editor"), {
   .catch((error) => {
     console.error(error.stack);
   });
+
+
+//   import ckeditor from './ckeditor/ckeditor'
+
+
+// console.log(ckeditor);
+// console.log(ckeditor.ClassicEditor.create);
+
+
+// ckeditor.ClassicEditor.create(document.querySelector("#editor"), {
+//   toolbar: [
+//       'Undo', 'Redo', '|',
+//       'Bold', 'Italic', 'Underline', 'Strikethrough', 'Subscript', 'Superscript', '|',
+//       'RemoveFormat', '|',
+//       '/',
+//       'NumberedList', 'BulletedList', 'Outdent', 'Indent', '|',
+//       'FontColor', 'FontBackgroundColor', '|',
+//       '/',
+//       'Heading', 'FontFamily', 'FontSize', '|', 'ImageUpload'
+//   ],
+//   startupFocus: false // N/A CKEDITOR5
+// })
+//   .then((editor) => {
+//     // openEditSvgModal()
+//     // showModal()
+//     console.log("Editor was initialized", editor);
+//   })
+//   .catch((error) => {
+//     console.error(error.stack);
+//   });
