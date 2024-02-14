@@ -1,8 +1,8 @@
-import Plugin from "@ckeditor/ckeditor5-core/src/plugin";
-import { toWidget } from "@ckeditor/ckeditor5-widget/src/utils";
+
+import { Plugin, toWidget } from "../ckeditor";
 import { cloneElem, createViewSvg } from "../utils/utils";
 
-// Регистрируем новый тип элемента "icon"
+// Регистрируем новый тип элемента "iconSvg"
 class IconPlugin extends Plugin {
   static get pluginName() {
     return "IconPlugin";
@@ -10,14 +10,16 @@ class IconPlugin extends Plugin {
 
   init() {
     const editor = this.editor;
-
-    editor.model.schema.register("icon", {
-      inheritAllFrom: "$inlineObject",
+console.log('IconPlugin');
+    editor.model.schema.register("iconSvg", {
       allowAttributes: ["data-key", "data-name", "data-icon", "resizedWidth"],
+      isObject: true,
+      isInline: true,
+      allowWhere: "$text",
     });
 
     editor.conversion.for("upcast").elementToElement({
-      model: "icon",
+      model: "iconSvg",
       view: {
         name: "span",
         classes: "ck-svg-widget",
@@ -31,7 +33,7 @@ class IconPlugin extends Plugin {
         attachDowncastConverter(dispatcher, "height", "height", true);
       })
       .elementToElement({
-        model: "icon",
+        model: "iconSvg",
         view: (modelElement, { writer }) => {
           const widgetElement = writer.createContainerElement("span", {
             class: "ck-svg-widget",
@@ -53,7 +55,7 @@ class IconPlugin extends Plugin {
       })
       .attributeToAttribute({
         model: {
-          name: "icon",
+          name: "iconSvg",
           key: "resizedWidth",
         },
         view: (attributeValue) => {
@@ -73,7 +75,7 @@ class IconPlugin extends Plugin {
         attachDowncastConverter(dispatcher, "height", "height", true);
       })
       .elementToElement({
-        model: "icon",
+        model: "iconSvg",
         view: (modelElement, { writer }) => {
           console.log("dataDowncast");
           console.log(modelElement.getAttribute("resizedWidth"));
@@ -83,7 +85,7 @@ class IconPlugin extends Plugin {
       })
       .attributeToAttribute({
         model: {
-          name: "icon",
+          name: "iconSvg",
           key: "resizedWidth",
         },
         view: (attributeValue) => {

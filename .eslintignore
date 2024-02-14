@@ -1,4 +1,6 @@
 **/*.json
 **/*.config.*
 node_modules/
+ckeditor/
+*/ckeditor.js
 example/
