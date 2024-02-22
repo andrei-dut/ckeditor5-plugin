@@ -14,7 +14,6 @@ import { insertContentEvent } from "./insertContentEvent";
 import "./styles/styles.css";
 // import IconPlugin from "../iconPlugin/IconPlugin";
 
-import factory from "./icons/symbols/factory.svg";
 import mult1 from "./icons/symbols/mult1.svg";
 import mult2 from "./icons/symbols/mult2.svg";
 import param from "./icons/symbols/param.svg";
@@ -92,11 +91,6 @@ export class IconPickerPlugin extends Plugin {
 
     editor.ui.componentFactory.add("iconListButton", (locale) => {
       const iconList = [
-        {
-          label: "factory",
-          icon: factory,
-          iconName: "factory",
-        },
         {
           label: "mult1",
           icon: mult1,
