@@ -18,7 +18,7 @@ export default class InsertIconCommand extends Command {
     model.change((writer) => {
       
       const iconElement = writer.createElement("iconSvg", {
-        "data-key": "svg-roughness",
+        "data-key": iconData.key || 'svg-roughness',
         "data-name": iconData.iconName,
         "data-icon": iconData.icon,
       });

@@ -9,9 +9,8 @@ export async function insertContentEvent(editor) {
         const domConverter = editor.editing.view.domConverter;
         let viewElement = mapper.toViewElement(modelElement);
         const isNameIcon = modelElement.name === "iconSvg";
-        const isSvgRoughness = modelElement.getAttribute
-          ? modelElement.getAttribute("data-key") === "svg-roughness"
-          : null;
+        const key = modelElement.getAttribute && modelElement.getAttribute("data-key")
+        const isSvgRoughness = key === "svg-roughness" || key === "symbol";
 
         let attempts = 0;
         let intervalId;

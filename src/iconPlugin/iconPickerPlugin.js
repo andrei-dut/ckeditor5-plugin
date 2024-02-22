@@ -44,7 +44,7 @@ class IconPickerPlugin extends Plugin {
           const selection = model.document.selection;
 
           const iconElement = writer.createElement("icon", {
-            "data-key": 'svg-roughness',
+            "data-key": data.key || 'svg-roughness',
             "data-name": data.iconName,
             "data-icon": data.icon,
           });

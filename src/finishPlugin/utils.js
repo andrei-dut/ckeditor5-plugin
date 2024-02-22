@@ -29,25 +29,26 @@ export function getAttsAndContentFromElDom(element) {
     attributes[attr.name] = attr.value;
   }
 
-  const contentString = element.innerHTML;
+  const content = element.innerHTML;
 
-  return { attributes, contentString };
+  return { attributes, content };
 }
 
 export function createViewSvg(modelElement, { writer }) {
-  // const _parseSvg = parseSvg(modelElement.getAttribute("data-icon"));
-  const svgData =  getAttsAndContentFromElDom(modelElement.getAttribute("data-icon")) || {};
+  const key = modelElement.getAttribute("data-key");
+  const isSymbol = key === 'symbol';
+  const svgObj = isSymbol ? parseSvg(modelElement.getAttribute("data-icon")) : (getAttsAndContentFromElDom(modelElement.getAttribute("data-icon")) || {});
+
   return writer.createRawElement(
     "svg",
     {
       class: `svg-${modelElement.getAttribute("data-name")}`,
-      ...svgData.attributes,
-      // ..._parseSvg.attributes,
+      ...svgObj.attributes,
       width: "100%",
       height: "100%",
     },
     function (domElement) {
-      domElement.innerHTML = svgData.contentString;
+      domElement.innerHTML = svgObj.content;
     }
   );
 }
