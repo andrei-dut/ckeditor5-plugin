@@ -2,6 +2,17 @@
   width: 45px;
 }
 
+.ck.ck-reset_all svg.ck-button__icon text > tspan {
+  font-size: inherit;
+}
+
+.toolbar-insert-symbol .ck.ck-reset.ck-dropdown__panel {
+  max-width: 100px;
+}
+svg.ck-button__icon text > tspan {
+  font-size: inherit;
+}
+
 .ck-svg-widget {
   display: inline-block;
   font-size: 0px;

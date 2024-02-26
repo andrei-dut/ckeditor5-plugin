@@ -701,228 +701,377 @@ style="background-color: rgb(255, 255, 255);">
 </switch>
 </svg>
 `;
-export const mult1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="68px"
-height="54px" viewBox="-0.5 -0.5 68 54"
-content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-30T11:38:37.814Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;BeMfNtIUaJzst-IXR-5v&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;qNkHH9AtMeMB8LDzhwJW&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;1278&quot; dy=&quot;616&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-3&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;367&quot; y=&quot;313&quot; width=&quot;40&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-4&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;yy&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;390&quot; y=&quot;300&quot; width=&quot;44&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-5&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;zz&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;390&quot; y=&quot;320&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;VVkPbL1qr-AzhDiekJIq-1&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=0.951;entryY=0.258;entryDx=0;entryDy=0;entryPerimeter=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot; target=&quot;0XKZ648kfdh5THTCv-0_-5&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;393&quot; y=&quot;328&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;440&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
-<defs />
-<g>
-    <rect x="0" y="13" width="40" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 30px; height: 1px; padding-top: 20px; margin-left: 6px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 14px;">XX</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="6" y="32" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">XX</text>
-        </switch>
-    </g>
-    <rect x="23" y="0" width="44" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 7px; margin-left: 29px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 14px;">yy</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="29" y="19" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">yy</text>
-        </switch>
-    </g>
-    <rect x="23" y="20" width="30" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 20px; height: 1px; padding-top: 27px; margin-left: 29px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 14px;">zz</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="29" y="39" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">zz</text>
-        </switch>
-    </g>
-    <path d="M 26 28 L 51.53 27.74" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
-        pointer-events="stroke" />
+export const mult1 = `<svg
+width="36"
+height="21"
+viewBox="0 0 36 21"
+version="1.1"
+id="svg1"
+inkscape:export-filename="bitmap.svg"
+inkscape:export-xdpi="96"
+inkscape:export-ydpi="96"
+inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+sodipodi:docname="drawing1.svg"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:svg="http://www.w3.org/2000/svg">
+<sodipodi:namedview
+  id="namedview1"
+  pagecolor="#ffffff"
+  bordercolor="#000000"
+  borderopacity="0.25"
+  inkscape:showpageshadow="2"
+  inkscape:pageopacity="0.0"
+  inkscape:pagecheckerboard="0"
+  inkscape:deskcolor="#d1d1d1"
+  inkscape:document-units="px"
+  inkscape:zoom="25.345359"
+  inkscape:cx="20.279847"
+  inkscape:cy="17.774457"
+  inkscape:window-width="2400"
+  inkscape:window-height="1271"
+  inkscape:window-x="6391"
+  inkscape:window-y="216"
+  inkscape:window-maximized="1"
+  inkscape:current-layer="layer1" />
+<defs
+  id="defs1" />
+<g
+  inkscape:label="Layer 1"
+  inkscape:groupmode="layer"
+  id="layer1">
+ <text
+    xml:space="preserve"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.950804"
+    x="0.071719833"
+    y="13.80837"
+    id="text1"
+    transform="scale(0.99648908,1.0035233)"><tspan
+      sodipodi:role="line"
+      id="tspan1"
+      x="0.071719833"
+      y="13.80837"
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.950804">aa</tspan></text>
+ <text
+    xml:space="preserve"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.921777"
+    x="17.743065"
+    y="9.3944159"
+    id="text2"
+    transform="scale(1.0072517,0.99280051)"><tspan
+      sodipodi:role="line"
+      id="tspan2"
+      x="17.743065"
+      y="9.3944159"
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.921777">bb</tspan></text>
+ <text
+    xml:space="preserve"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.410603"
+    x="18.26631"
+    y="20.013704"
+    id="text3"
+    transform="scale(0.98086086,1.0195126)"><tspan
+      sodipodi:role="line"
+      id="tspan3"
+      x="18.26631"
+      y="20.013704"
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.410603">cc</tspan></text>
+ <path
+    style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.78038px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+    d="m 15.152495,11.461665 h 19.798977 v -0.04769"
+    id="path4"
+    inkscape:connector-type="orthogonal"
+    inkscape:connector-curvature="0" />
 </g>
-<switch>
-    <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" /><a transform="translate(0,-5)"
-        xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank"><text
-            text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text></a>
-</switch>
 </svg>
 `;
-export const mult2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="78px"
-height="47px" viewBox="-0.5 -0.5 78 47"
-content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-30T11:55:16.328Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;zUNyRi-JTeuwkPkOvSuf&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;qNkHH9AtMeMB8LDzhwJW&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;426&quot; dy=&quot;205&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-3&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;367&quot; y=&quot;313&quot; width=&quot;40&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-4&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;yy&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;392&quot; y=&quot;300&quot; width=&quot;44&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-5&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;zz&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;313&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;VVkPbL1qr-AzhDiekJIq-1&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;400&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;430&quot; y=&quot;310&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
-<defs />
-<g>
-    <rect x="0" y="13" width="40" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 30px; height: 1px; padding-top: 20px; margin-left: 6px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 14px;">XX</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="6" y="32" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">XX</text>
-        </switch>
-    </g>
-    <rect x="25" y="0" width="44" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 7px; margin-left: 31px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 14px;">yy</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="31" y="19" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">yy</text>
-        </switch>
-    </g>
-    <rect x="47" y="13" width="30" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 20px; height: 1px; padding-top: 20px; margin-left: 53px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 14px;">zz</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="53" y="32" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">zz</text>
-        </switch>
-    </g>
-    <path d="M 33 40 L 63 10" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
+export const mult2 = `<svg
+width="36"
+height="21"
+viewBox="0 0 36 21"
+version="1.1"
+id="svg1"
+inkscape:export-filename="bitmap.svg"
+inkscape:export-xdpi="96"
+inkscape:export-ydpi="96"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:svg="http://www.w3.org/2000/svg">
+<sodipodi:namedview
+  id="namedview1"
+  pagecolor="#ffffff"
+  bordercolor="#000000"
+  borderopacity="0.25"
+  inkscape:showpageshadow="2"
+  inkscape:pageopacity="0.0"
+  inkscape:pagecheckerboard="0"
+  inkscape:deskcolor="#d1d1d1"
+  inkscape:document-units="px" />
+<defs
+  id="defs1" />
+<g
+  inkscape:label="Layer 1"
+  inkscape:groupmode="layer"
+  id="layer1">
+ <text
+    xml:space="preserve"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.950804"
+    x="0.90319312"
+    y="18.487024"
+    id="text1"
+    transform="scale(0.99648909,1.0035233)"><tspan
+      sodipodi:role="line"
+      id="tspan1"
+      x="0.90319312"
+      y="18.487024"
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.950804">aa</tspan></text>
+ <text
+    xml:space="preserve"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.921777"
+    x="12.729191"
+    y="10.149496"
+    id="text2"
+    transform="scale(1.0072517,0.99280052)"><tspan
+      sodipodi:role="line"
+      id="tspan2"
+      x="12.729191"
+      y="10.149496"
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.921777">bb</tspan></text>
+ <text
+    xml:space="preserve"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.369199"
+    x="23.561834"
+    y="19.402912"
+    id="text3"
+    transform="scale(0.98244899,1.0178645)"><tspan
+      sodipodi:role="line"
+      id="tspan3"
+      x="23.561834"
+      y="19.402912"
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.369199">cc</tspan></text>
+ <path
+    style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.985608px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+    d="M 18.128202,18.807127 31.861166,5.8127613"
+    id="path4"
+    inkscape:connector-type="polyline"
+    inkscape:connector-curvature="0" />
 </g>
-<switch>
-    <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" /><a transform="translate(0,-5)"
-        xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank"><text
-            text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text></a>
-</switch>
 </svg>
 `;
-export const param_title = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="61px"
-height="31px" viewBox="-0.5 -0.5 61 31"
-content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-01T05:59:29.764Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;wG3hOmsia9aw1obn0vRj&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;144GJa-1z3GKYIAk-sqm&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;1278&quot; dy=&quot;616&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;IgiJvJ6uJB29Jw_CjTZ3-1&quot; value=&quot;[123]v&quot; style=&quot;text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;30&quot; y=&quot;28&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
-<defs />
-<g>
-    <rect x="0" y="0" width="60" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 15px; margin-left: 30px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: nowrap;">
-                            [123]v</div>
-                    </div>
-                </div>
-            </foreignObject><text x="30" y="19" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-                text-anchor="middle">[123]v</text>
-        </switch>
-    </g>
+
+export const param = `<svg
+width="28"
+height="20"
+viewBox="0 0 28 20"
+version="1.1"
+id="svg1"
+inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+sodipodi:docname="xx.svg"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:svg="http://www.w3.org/2000/svg">
+
+<defs
+  id="defs1" />
+<g
+  inkscape:label="Layer 1"
+  inkscape:groupmode="layer"
+  id="layer1">
+ <text
+    xml:space="preserve"
+    style="font-size:21.1872px;fill:#000000;stroke-width:1.76559"
+    x="0.8510443"
+    y="17.423805"
+    id="text5"
+    transform="scale(0.91620843,1.0914547)"><tspan
+      sodipodi:role="line"
+      id="tspan5"
+      x="0.8510443"
+      y="17.423805"
+      style="stroke-width:1.76559">XX</tspan></text>
 </g>
-<switch>
-    <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" /><a transform="translate(0,-5)"
-        xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank"><text
-            text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text></a>
-</switch>
-</svg>`;
-export const param = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="41px"
-height="34px" viewBox="-0.5 -0.5 41 34"
-content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-30T10:54:57.692Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;hY14-mUE8f0UvBS9scwG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;qNkHH9AtMeMB8LDzhwJW&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;1278&quot; dy=&quot;616&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-3&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 18px;&amp;quot;&amp;gt;XX&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;360&quot; y=&quot;310&quot; width=&quot;40&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
-<defs />
-<g>
-    <rect x="0" y="0" width="40" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 30px; height: 1px; padding-top: 7px; margin-left: 6px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 18px;">XX</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="6" y="19" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">XX</text>
-        </switch>
-    </g>
+</svg>
+`;
+export const spec1 = `<svg
+width="36"
+height="35"
+viewBox="0 0 36 35"
+version="1.1"
+id="svg1"
+inkscape:export-filename="bitmap.svg"
+inkscape:export-xdpi="96"
+inkscape:export-ydpi="96"
+inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+sodipodi:docname="addS1.svg"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:svg="http://www.w3.org/2000/svg">
+<sodipodi:namedview
+  id="namedview1"
+  pagecolor="#ffffff"
+  bordercolor="#000000"
+  borderopacity="0.25"
+  inkscape:showpageshadow="2"
+  inkscape:pageopacity="0.0"
+  inkscape:pagecheckerboard="0"
+  inkscape:deskcolor="#d1d1d1"
+  inkscape:document-units="px"
+  inkscape:zoom="25.345359"
+  inkscape:cx="20.279847"
+  inkscape:cy="17.774457"
+  inkscape:window-width="2400"
+  inkscape:window-height="1271"
+  inkscape:window-x="6391"
+  inkscape:window-y="216"
+  inkscape:window-maximized="1"
+  inkscape:current-layer="layer1"
+  showguides="true" />
+<defs
+  id="defs1">
+ <linearGradient
+    id="swatch25"
+    inkscape:swatch="solid">
+   <stop
+      style="stop-color:#fcfdff;stop-opacity:1;"
+      offset="0"
+      id="stop25" />
+ </linearGradient>
+ <linearGradient
+    id="swatch19"
+    inkscape:swatch="solid">
+   <stop
+      style="stop-color:#8a1a1a;stop-opacity:1;"
+      offset="0"
+      id="stop19" />
+ </linearGradient>
+ <linearGradient
+    id="swatch11"
+    inkscape:swatch="solid">
+   <stop
+      style="stop-color:#000000;stop-opacity:1;"
+      offset="0"
+      id="stop11" />
+ </linearGradient>
+</defs>
+<g
+  inkscape:label="Layer 1"
+  inkscape:groupmode="layer"
+  id="layer1">
+ <rect
+    style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.278415;stroke-dasharray:none;stroke-opacity:1"
+    id="rect17"
+    width="30.721586"
+    height="30.721584"
+    x="2.7165992"
+    y="3.7818835" />
+ <path
+    style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#1d1d1d;stroke-width:0.29;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+    d="m 0.90350348,18.501531 34.25482152,0.0014"
+    id="path17"
+    inkscape:connector-type="polyline"
+    inkscape:connector-curvature="0" />
+ <rect
+    style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#1d1d1d;stroke-width:0.316934;stroke-dasharray:none;stroke-opacity:1"
+    id="rect27"
+    width="9.6830664"
+    height="9.6830654"
+    x="13.349242"
+    y="13.507062" />
+ <path
+    style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.29;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+    d="m 18.109824,13.45414 -0.03946,9.903194"
+    id="path27"
+    inkscape:connector-type="polyline"
+    inkscape:connector-curvature="0" />
 </g>
-<switch>
-    <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" /><a transform="translate(0,-5)"
-        xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank"><text
-            text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text></a>
-</switch>
-</svg>`;
-export const spec1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="75px"
-height="61px" viewBox="-0.5 -0.5 75 61"
-content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-31T05:58:00.267Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;LlpiobIBaytK6ody2n6b&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;1DW_mXKvvkt0BKsrx3go&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;1278&quot; dy=&quot;616&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;aSEVnuGlYPYOpSoSaMaM-2&quot; value=&quot;&quot; style=&quot;shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/png,iVBORw0KGgoAAAANSUhEUgAAAEoAAAA8CAYAAADBqyytAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFxEAABcRAcom8z8AAAHwSURBVHhe7dAxbgJAEENRClokjsL9mxwkx8gByFo2ZUbK36Vx8qQRxQaLn8vkdrt9ro/nX7i0Ys+/Qq1OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjJz3uPxeP24X52+9w7ZxzJz3rRN33Zodx2WmfOmbfq2Q7vrsMycN23Ttx3aXYdl5rxpm77t0O46LDPnTdv0bYd212GZOW/apm87tLtu9LHu9Yf/9/ON8v8+b9qmbzu0uw7LzHnTNn3bod11WGbOm7bp2w7trsMyc960Td92aHcdlpnzpm36tkO767DMnDdt07cd2l2HZea8aZu+7dDuOiwz593v99eP+9Xpe++QfSwz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZOB6vX6tj9dI9aX1B5fLN2P33TdM1XCDAAAAAElFTkSuQmCC;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;40&quot; y=&quot;40&quot; width=&quot;74&quot; height=&quot;60&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
-<defs />
-<g>
-    <image x="-0.5" y="-0.5" width="74" height="60"
-        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAA8CAYAAADBqyytAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFxEAABcRAcom8z8AAAHwSURBVHhe7dAxbgJAEENRClokjsL9mxwkx8gByFo2ZUbK36Vx8qQRxQaLn8vkdrt9ro/nX7i0Ys+/Qq1OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjLTT61OZjJz3uPxeP24X52+9w7ZxzJz3rRN33Zodx2WmfOmbfq2Q7vrsMycN23Ttx3aXYdl5rxpm77t0O46LDPnTdv0bYd212GZOW/apm87tLtu9LHu9Yf/9/ON8v8+b9qmbzu0uw7LzHnTNn3bod11WGbOm7bp2w7trsMyc960Td92aHcdlpnzpm36tkO767DMnDdt07cd2l2HZea8aZu+7dDuOiwz593v99eP+9Xpe++QfSwz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZCYz/dTqZOB6vX6tj9dI9aX1B5fLN2P33TdM1XCDAAAAAElFTkSuQmCC"
-        preserveAspectRatio="none" />
+</svg>
+`;
+export const circleXXX = `<svg
+width="22"
+height="21"
+viewBox="0 0 22 21"
+version="1.1"
+id="svg1"
+inkscape:export-filename="bitmap.svg"
+inkscape:export-xdpi="96"
+inkscape:export-ydpi="96"
+inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+sodipodi:docname="circle.svg"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:svg="http://www.w3.org/2000/svg">
+<sodipodi:namedview
+  id="namedview1"
+  pagecolor="#ffffff"
+  bordercolor="#000000"
+  borderopacity="0.25"
+  inkscape:showpageshadow="2"
+  inkscape:pageopacity="0.0"
+  inkscape:pagecheckerboard="0"
+  inkscape:deskcolor="#d1d1d1"
+  inkscape:document-units="px"
+  inkscape:zoom="25.345359"
+  inkscape:cx="20.279847"
+  inkscape:cy="17.774457"
+  inkscape:window-width="2400"
+  inkscape:window-height="1271"
+  inkscape:window-x="6391"
+  inkscape:window-y="216"
+  inkscape:window-maximized="1"
+  inkscape:current-layer="layer1" />
+<defs
+  id="defs1">
+ <linearGradient
+    id="swatch11"
+    inkscape:swatch="solid">
+   <stop
+      style="stop-color:#000000;stop-opacity:1;"
+      offset="0"
+      id="stop11" />
+ </linearGradient>
+ <linearGradient
+    inkscape:collect="always"
+    xlink:href="#swatch11"
+    id="linearGradient17"
+    gradientUnits="userSpaceOnUse"
+    gradientTransform="matrix(0.61032805,0,0,0.61032805,-4.0255061,10.210423)"
+    x1="12.736513"
+    y1="3.0766834"
+    x2="26.086551"
+    y2="3.0766834" />
+</defs>
+<g
+  inkscape:label="Layer 1"
+  inkscape:groupmode="layer"
+  id="layer1">
+ <circle
+    style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.408091;stroke-dasharray:none;stroke-opacity:1"
+    id="path9"
+    cx="11.128406"
+    cy="10.891676"
+    r="9.5959549" />
+ <text
+    xml:space="preserve"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.24258px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill-opacity:1;stroke:none;stroke-width:0.248;stroke-dasharray:none;stroke-opacity:1;fill-rule:nonzero"
+    x="4.5357599"
+    y="14.063298"
+    id="text11"
+    transform="scale(1.1244143,0.8893519)"><tspan
+      sodipodi:role="line"
+      id="tspan11"
+      x="4.5357599"
+      y="14.263298"
+      style="stroke-width:0.248;fill-opacity:1;fill-rule:nonzero;stroke-dasharray:none">xxx</tspan></text>
 </g>
-</svg>`;
+</svg>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+`;
 export const spec2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="54px"
 height="61px" viewBox="-0.5 -0.5 54 61"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-31T05:59:18.095Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;gyNZcluz-sdASU6YP6KG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;FjaSKiSr_DAhbAtSCe0Z&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;1278&quot; dy=&quot;616&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;nxKVQiPscUhWEFZ8yWZY-1&quot; value=&quot;&quot; style=&quot;shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/png,iVBORw0KGgoAAAANSUhEUgAAADUAAAA8CAYAAADG6fK4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFxEAABcRAcom8z8AAAGgSURBVGhD7c/BbcJQFERRL7x1T5RCR5RAKRSSIlikAOLRXMQmJPaXZlAirvTkv3k6ftOelmX5WD+39uDGur0iueYzwXSTaz4TTDe55jPBDHY88tiXXPOZYAYb3JdrPhPMYO+jHsk1nwlmsD991OHgA7bM+czS8+SazwQz2OC+XPOZYAZ7H/VIrvlMMIP9y6NOJx77kms+E0w3ueYzwXSTaz4TTDe55jPBdJNrPhNMN7nmM8F0k2s+E0w3ueYzwXSTaz4TTDe55jPBdJNrPhNMN7nmM8F0k2s+E0w3ueYzwXSTaz4TTDe55jPBdJNrPhNMN7nmM8F0k2s+E0w3ueYzwXSTaz4TTDe55jPBdJNrPhNMN7nmM8F0k2s+E0w3ueYzwXSTaz4TTDe55jPBdJNrPhNMN7nmM8F0k2s+E0w3ueYzwXSTaz4TTDe55jPBdJNrPhNMN7nmM8F0k2t+e5d17ou/ziv67j9+mOs6u4LpJtd8Jphucs1ngukm13wmmG5yzWeC6SbXfCaYbnLNZ4LpJtd8oHmeP9fPHakN7sam6QuwgM312vho4wAAAABJRU5ErkJggg==;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;30&quot; y=&quot;20&quot; width=&quot;53&quot; height=&quot;60&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
@@ -963,110 +1112,4 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-01T06:15:29
         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAAgCAYAAABJqsWHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFxEAABcRAcom8z8AAAFESURBVGhD1daxjcNQDANQF269/zgZJGNkAMeE6M6AJcpMoAd8pDlR1DXJ4rBt2/v42F2P+WPsTsiPNTOwtgfyY80MrO2B/FgzA2t7ID/WzMDaHsiPNTOwtgfyY80MrO2B/FgzA2t7ID/W/Jj6A8rpat/de+qHGivkKTMVaicc08W4PGWmQu2EY7oYl6fMVKidcEwX4/KUmQq1E47pYlyeMlOhdsIxXYzLU2Yq1E445s7reOcfP/acrvY98PB/uMUKecpMhdoJx3QxLk+ZqVA74ZguxuUpMxVqJxzTxbg8ZaZC7YRjuhiXp8xUqJ1wTBfj8pSZCrUTjuliXJ4yU6F2wjEt67p+jo8zLP2crvbdPd7xF6ztgfxYMwNreyA/1szA2h7IjzUzsLYH8mPNDKztgfxYMwNreyA/1gygfh1nn+drclm+yNh970qwf7sAAAAASUVORK5CYII="
         preserveAspectRatio="none" />
 </g>
-</svg>`;
-export const symbol_title = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="46px" height="21px" viewBox="-0.5 -0.5 46 21" content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-01T06:00:46.543Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;VddvxL6kh-VrG1-TlcBA&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;_xXvwtO-S4PaDo8IqrDL&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;1278&quot; dy=&quot;616&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1bh_skLNWUMJ7I3hJTLs-1&quot; value=&quot;&quot; style=&quot;shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/png,iVBORw0KGgoAAAANSUhEUgAAAG8AAAAyCAYAAABS1YVJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFxEAABcRAcom8z8AABB8SURBVHhe7ZwHkFRFE4APUQEzKihiBswSREvFDAiKYiQpwUihKBJUpIxoCYKKWeEvsYyYA4dZkgF+BAVRVIIcSRQURUBAuDuu//f1u96dezu7t3csvwtHV7V3N2+mp6dzz3uYk5+fL5nE9evXe8fLi1F6GzZskC0NOJN7xmSILNatWxeTScaVtykRmDFjhlx66aVy7rnnbjE4YsQIWbVqlSqxoKDAe3YQpbnGvNkoj4NxwKeeekpycnK2KLz++uvljz/+UONMpbwobhbK40DA1KlT5ZxzzpFtttlG6tWrJy1btpTzzjvPa82bE6breVHcLJTHoQgXTzzxhFSpUkWqVasmjz32mCxfvlwP+88//2zWSB7znbs0zHrloThg4sSJctZZZ2mYOfHEE+Wbb77R8S0FfGcvDbNeeUVFRYoDBgyQnXbaSXbbbTd56KGHZMWKFeU+9JaCWa08vK6wsFC+/fZbOfPMM9XrmjdvLjNnzlSF8sy3rqJgVisPWLt2rdx9992y5557yh577CEPP/ywrFmzRp/51lQkzFrl4VV416xZs+Tkk09Wrzv77LO1z7NnvnUVCbNWecCff/4pDzzwgHpd9erV5cEHH1TFAb41FQ2zUnmmoClTpshxxx0X87pp06bpOLnQt66iYVYqD1i2bJkMHDhQtt9+e9l5553lkUce0Z4IxZalkd2SMeuUZ7cp48aNk2OPPVYqVaok559/fszrtioujlmlPBRDIcJVERUm12C1atWSl156Sb1ua5FSEjdKeZn2ArtNee+99+SYY47RkNmlSxf56aefdNy3piy4qbz234oGWeN55DLw119/lW7duknlypXloIMOktzcXL3XrGheh0GUZhRZozwA5b322mtSp04dvYC+4oorZMmSJfrs37Lufws3G+VZa/Dbb79pmKQ1aNCggXz44YcV0uvSxaxQHsBrkTfffFMOPvhgDZnXXnut/P333/rMLJCfKDIV/D96QPiw/OwDn8cwlg741ibDtJWXjCG8hoOACNZ+ZzxdRoAFCxZIu3bttDVo2LChvPXWWzoOROdTeXK/6SJjeCn7lmXv8qCdkf24e2V/fsIDz9k/ugZkvo93dz1zfGt9mKA8FvsIRIXB36VBNNwZbZc+c1avXi2vvvqq1KxZU0Nm79699UUrz0wQCIsWggKmbdu20qJFC2nWrJm+ZeCNA4ofPHiwvoFgvk+AvnOlQh+/nJu/v//+e7046Ny5s+7PW/3LL79cczafNLgGBO+8wnr22Welffv2yjt8R7FPnz7y+++/67nTMb6Y8lxGXWYNXWIGeXl52ky//PLLegd51113yZNPPilvv/22TJo0KfZdBpCMPsDlM4dCcRQr77zzjo7bnvwE5s6dK1dffbXOq1Gjhhx55JFy+OGHy7777qsei/IvvPBCzZUAQmO9b9/S0F1j68zjnnvuOTWco48+WqPEoYceKlWrVlW+aHF488ENkRkvQBXdqlUrnQOfrDnkkEP0c466desqcjbucwHjwfjxYZmUZ0LExVFaz5495YwzzpD99ttPmQJprBEo35bgCSjGwKUPLayT31988UU90HbbbSe33HKLLFy4sIT12b6ff/65nHDCCXpddu+998ro0aPlgw8+kFdeeUV52WuvvZQHhEC+NBrswV7pgJ3X5RVkDEB5N954oyqOCIHh0pcOGTJEFcn+PPvhhx90vvHO30cddZTUr19fXya///77MmrUKI0kI0eO1J/Tp0/XfUwutm8yVOW5TCZbZIfHorC8U045RRnF4nfddVfZZ599VIkIcIcddtBnvPm+7LLLZPz48RrXEabRN3o//vijdOzYUedjjRgFYIoDTQB4JEref//9ZcKECTrGc4CwdNFFFykdPpcghyJo9jEPJCThvbxWYt+lS5dqyKbK5SKASGHKjiLrocNzjIjPMow3xjlb//79dX/egLiX6OBHH30kBxxwgHTq1Enmz5+vzwD4gwbI79C0/UrDnCiTUWSSCRoFcFlMyEJphAo84Z577tEDIRSsiEqRMMBB6Nco+7E0AFrQ5UAAeWDvvfdWhfMJ3KJFi3Tc9gY5GDBs2DD17NNOO03fprsAbxdffLHu2aZNG/nrr7903PZh/p133qlGR/N/2GGHqeeQa2+66SY5/vjj1YMt1LkyMDReiDzGkwt4X1R5AFFg+PDhes6+ffvGqugouHvb2VNhUuW5kwywfNweBrlz5AsuXttg0QYIC8tCmd27d9e5IDkN5doclMg8LJHnhBo8lL3NAkGzSDyLg6PkXr16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;&quot; vertex=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;30&quot; y=&quot;10&quot; width=&quot;44.4&quot; height=&quot;20&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;"><defs/><g><image x="-0.5" y="-0.5" width="44.4" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG8AAAAyCAYAAABS1YVJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFxEAABcRAcom8z8AABB8SURBVHhe7ZwHkFRFE4APUQEzKihiBswSREvFDAiKYiQpwUihKBJUpIxoCYKKWeEvsYyYA4dZkgF+BAVRVIIcSRQURUBAuDuu//f1u96dezu7t3csvwtHV7V3N2+mp6dzz3uYk5+fL5nE9evXe8fLi1F6GzZskC0NOJN7xmSILNatWxeTScaVtykRmDFjhlx66aVy7rnnbjE4YsQIWbVqlSqxoKDAe3YQpbnGvNkoj4NxwKeeekpycnK2KLz++uvljz/+UONMpbwobhbK40DA1KlT5ZxzzpFtttlG6tWrJy1btpTzzjvPa82bE6breVHcLJTHoQgXTzzxhFSpUkWqVasmjz32mCxfvlwP+88//2zWSB7znbs0zHrloThg4sSJctZZZ2mYOfHEE+Wbb77R8S0FfGcvDbNeeUVFRYoDBgyQnXbaSXbbbTd56KGHZMWKFeU+9JaCWa08vK6wsFC+/fZbOfPMM9XrmjdvLjNnzlSF8sy3rqJgVisPWLt2rdx9992y5557yh577CEPP/ywrFmzRp/51lQkzFrl4VV416xZs+Tkk09Wrzv77LO1z7NnvnUVCbNWecCff/4pDzzwgHpd9erV5cEHH1TFAb41FQ2zUnmmoClTpshxxx0X87pp06bpOLnQt66iYVYqD1i2bJkMHDhQtt9+e9l5553lkUce0Z4IxZalkd2SMeuUZ7cp48aNk2OPPVYqVaok559/fszrtioujlmlPBRDIcJVERUm12C1atWSl156Sb1ua5FSEjdKeZn2ArtNee+99+SYY47RkNmlSxf56aefdNy3piy4qbz234oGWeN55DLw119/lW7duknlypXloIMOktzcXL3XrGheh0GUZhRZozwA5b322mtSp04dvYC+4oorZMmSJfrs37Lufws3G+VZa/Dbb79pmKQ1aNCggXz44YcV0uvSxaxQHsBrkTfffFMOPvhgDZnXXnut/P333/rMLJCfKDIV/D96QPiw/OwDn8cwlg741ibDtJWXjCG8hoOACNZ+ZzxdRoAFCxZIu3bttDVo2LChvPXWWzoOROdTeXK/6SJjeCn7lmXv8qCdkf24e2V/fsIDz9k/ugZkvo93dz1zfGt9mKA8FvsIRIXB36VBNNwZbZc+c1avXi2vvvqq1KxZU0Nm79699UUrz0wQCIsWggKmbdu20qJFC2nWrJm+ZeCNA4ofPHiwvoFgvk+AvnOlQh+/nJu/v//+e7046Ny5s+7PW/3LL79cczafNLgGBO+8wnr22Welffv2yjt8R7FPnz7y+++/67nTMb6Y8lxGXWYNXWIGeXl52ky//PLLegd51113yZNPPilvv/22TJo0KfZdBpCMPsDlM4dCcRQr77zzjo7bnvwE5s6dK1dffbXOq1Gjhhx55JFy+OGHy7777qsei/IvvPBCzZUAQmO9b9/S0F1j68zjnnvuOTWco48+WqPEoYceKlWrVlW+aHF488ENkRkvQBXdqlUrnQOfrDnkkEP0c466desqcjbucwHjwfjxYZmUZ0LExVFaz5495YwzzpD99ttPmQJprBEo35bgCSjGwKUPLayT31988UU90HbbbSe33HKLLFy4sIT12b6ff/65nHDCCXpddu+998ro0aPlgw8+kFdeeUV52WuvvZQHhEC+NBrswV7pgJ3X5RVkDEB5N954oyqOCIHh0pcOGTJEFcn+PPvhhx90vvHO30cddZTUr19fXya///77MmrUKI0kI0eO1J/Tp0/XfUwutm8yVOW5TCZbZIfHorC8U045RRnF4nfddVfZZ599VIkIcIcddtBnvPm+7LLLZPz48RrXEabRN3o//vijdOzYUedjjRgFYIoDTQB4JEref//9ZcKECTrGc4CwdNFFFykdPpcghyJo9jEPJCThvbxWYt+lS5dqyKbK5SKASGHKjiLrocNzjIjPMow3xjlb//79dX/egLiX6OBHH30kBxxwgHTq1Enmz5+vzwD4gwbI79C0/UrDnCiTUWSSCRoFcFlMyEJphAo84Z577tEDIRSsiEqRMMBB6Nco+7E0AFrQ5UAAeWDvvfdWhfMJ3KJFi3Tc9gY5GDBs2DD17NNOO03fprsAbxdffLHu2aZNG/nrr7903PZh/p133qlGR/N/2GGHqeeQa2+66SY5/vjj1YMt1LkyMDReiDzGkwt4X1R5AFFg+PDhes6+ffvGqugouHvb2VNhUuW5kwywfNweBrlz5AsuXttg0QYIC8tCmd27d9e5IDkN5doclMg8LJHnhBo8lL3NAkGzSDyLg6PkXr16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" preserveAspectRatio="none"/></g></svg>`;
-export const text_b = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="77px"
-height="44px" viewBox="-0.5 -0.5 77 44"
-content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-30T10:51:54.859Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;0ZoCuBp9Z_vrPTtBaoOF&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;qNkHH9AtMeMB8LDzhwJW&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;1278&quot; dy=&quot;616&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-3&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 18px;&amp;quot;&amp;gt;XX&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;360&quot; y=&quot;310&quot; width=&quot;40&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-5&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 12px;&amp;quot;&amp;gt;zz&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;392&quot; y=&quot;320&quot; width=&quot;44&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
-<defs />
-<g>
-    <rect x="0" y="0" width="40" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 30px; height: 1px; padding-top: 7px; margin-left: 6px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 18px;">XX</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="6" y="19" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">XX</text>
-        </switch>
-    </g>
-    <rect x="32" y="10" width="44" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 17px; margin-left: 38px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 12px;">zz</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="38" y="29" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">zz</text>
-        </switch>
-    </g>
-</g>
-<switch>
-    <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" /><a transform="translate(0,-5)"
-        xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank"><text
-            text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text></a>
-</switch>
-</svg>
-`;
-export const text_t = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="75px"
-height="44px" viewBox="-0.5 -0.5 75 44"
-content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-30T10:53:11.100Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;xVGo3APq7ktkiEbmuCpG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;qNkHH9AtMeMB8LDzhwJW&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;1278&quot; dy=&quot;616&quot; grid=&quot;1&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-3&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 18px;&amp;quot;&amp;gt;XX&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;360&quot; y=&quot;310&quot; width=&quot;40&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;0XKZ648kfdh5THTCv-0_-4&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 12px;&amp;quot;&amp;gt;yy&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;390&quot; y=&quot;300&quot; width=&quot;44&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
-<defs />
-<g>
-    <rect x="0" y="10" width="40" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 30px; height: 1px; padding-top: 17px; margin-left: 6px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 18px;">XX</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="6" y="29" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">XX</text>
-        </switch>
-    </g>
-    <rect x="30" y="0" width="44" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 7px; margin-left: 36px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 12px;">yy</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject><text x="36" y="19" fill="rgb(0, 0, 0)" font-family="Helvetica"
-                font-size="12px">yy</text>
-        </switch>
-    </g>
-</g>
-<switch>
-    <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" /><a transform="translate(0,-5)"
-        xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank"><text
-            text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text></a>
-</switch>
 </svg>`;

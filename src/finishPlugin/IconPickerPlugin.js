@@ -5,15 +5,12 @@ import {
   mult2,
   sign,
   param,
-  param_title,
   spec1,
   spec2,
   spec3,
   spec4,
   spec5,
-  symbol_title,
-  text_b,
-  text_t,
+  circleXXX,
 } from "./icons/insertSymbols";
 import {
   ButtonView,
@@ -86,6 +83,7 @@ export class IconPickerPlugin extends Plugin {
         icon: insertSymbol,
         class: "icon-picker-button",
       });
+      toolbarDropdown.class = 'toolbar-insert-symbol';
       addToolbarToDropdown(toolbarDropdown, buttons);
       //   toolbarDropdown.render();
       return toolbarDropdown;
@@ -107,11 +105,6 @@ export class IconPickerPlugin extends Plugin {
           label: "param",
           icon: param,
           iconName: "param",
-        },
-        {
-          label: "param_title",
-          icon: param_title,
-          iconName: "param_title",
         },
         {
           label: "spec1",
@@ -139,19 +132,9 @@ export class IconPickerPlugin extends Plugin {
           iconName: "spec5",
         },
         {
-          label: "symbol_title",
-          icon: symbol_title,
-          iconName: "symbol_title",
-        },
-        {
-          label: "text_b",
-          icon: text_b,
-          iconName: "text_b",
-        },
-        {
-          label: "text_t",
-          icon: text_t,
-          iconName: "text_t",
+          label: "circleXXX",
+          icon: circleXXX,
+          iconName: "circleXXX",
         },
       ];
 
