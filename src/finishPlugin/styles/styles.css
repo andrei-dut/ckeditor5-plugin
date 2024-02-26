@@ -87,6 +87,10 @@ p {
 
 /* New roughness Modal  */
 
+.modal-roughness-wrap-content {
+  color: rgb(30, 30,30);
+}
+
 #roughnessContent {
   display: flex;
   justify-content: space-between;
