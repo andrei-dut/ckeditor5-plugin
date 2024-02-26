@@ -1,6 +1,6 @@
-import Emittery from "emittery";
+import EventEmitter from "./eventEmmitery";
 
-export const emitter = new Emittery();
+export const emitter = new EventEmitter();
 
 export function parseSvg(svgString) {
   const parser = new DOMParser();

@@ -44,7 +44,7 @@ console.log(modelElement);
         //   console.log(
         //     4,
         //     modelElement.parent,
-        //     modelElement.parent.getStyle?.("display")
+        //     modelElement.parent.getStyle.("display")
         //   );
         // }
 

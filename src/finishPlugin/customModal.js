@@ -1,27 +1,29 @@
 import { emitter, findTextTagInSVG } from "./utils";
-import ra1 from "./icons/RA1_template.svg";
-import ra2 from "./icons/RA2_template.svg";
-import ra3 from "./icons/RA3_template.svg";
-import raManual from "./icons/RA_manual.svg";
 
-import ra1_1 from "./icons/RA1_1.svg";
-import ra1_2 from "./icons/RA1_2.svg";
-import ra1_3 from "./icons/RA1_3.svg";
-import ra1_4 from "./icons/RA1_4.svg";
-import ra1_5 from "./icons/RA1_5.svg";
-import ra1_6 from "./icons/RA1_6.svg";
-import ra2_1 from "./icons/RA2_1.svg";
-import ra2_2 from "./icons/RA2_2.svg";
-import ra2_3 from "./icons/RA2_3.svg";
-import ra2_4 from "./icons/RA2_4.svg";
-import ra2_5 from "./icons/RA2_5.svg";
-import ra2_6 from "./icons/RA2_6.svg";
-import ra3_1 from "./icons/RA3_1.svg";
-import ra3_2 from "./icons/RA3_2.svg";
-import ra3_3 from "./icons/RA3_3.svg";
-import ra3_4 from "./icons/RA3_4.svg";
-import ra3_5 from "./icons/RA3_5.svg";
-import ra3_6 from "./icons/RA3_6.svg";
+import {
+  ra1_temp,
+  ra2_temp,
+  ra3_temp,
+  ra_manual,
+  ra1_1,
+  ra1_2,
+  ra1_3,
+  ra1_4,
+  ra1_5,
+  ra1_6,
+  ra2_1,
+  ra2_2,
+  ra2_3,
+  ra2_4,
+  ra2_5,
+  ra2_6,
+  ra3_1,
+  ra3_2,
+  ra3_3,
+  ra3_4,
+  ra3_5,
+  ra3_6,
+} from "./icons/insertSymbols";
 
 const ra_All = {
   ra1_1,
@@ -109,7 +111,6 @@ function setIconHeadForm(svgString) {
 }
 
 export function closeEditSvgModal() {
-
   const myModal = document.getElementById("myModal");
   if (myModal) myModal.style.display = "none";
 
@@ -123,13 +124,13 @@ export function closeEditSvgModal() {
 
 function toggleCloseEvent(isOpen) {
   const closeBtn = document.getElementById("closeModal");
-  
-  if(closeBtn)
-  if (isOpen) {
-    closeBtn.onclick = closeEditSvgModal;
-  } else {
-    closeBtn.onclick = null;
-  }
+
+  if (closeBtn)
+    if (isOpen) {
+      closeBtn.onclick = closeEditSvgModal;
+    } else {
+      closeBtn.onclick = null;
+    }
 }
 
 // Закрыть модальное окно при клике вне его области
@@ -293,7 +294,6 @@ const changePreviewSvg = (selectedRaID) => {
     currentValues.y = processingMethod.value;
   }
 
-
   const newWrapWithSvg = document.createElement("span");
   newWrapWithSvg.id = "wrapSvg";
   let innerSvg;
@@ -377,7 +377,7 @@ function addInput() {
   inputsContainer?.appendChild(inputWrapper);
 
   const selectedSymbol = document.querySelector(".wrap-symbol-svg.selected");
-  if (selectedSymbol?.id) changePreviewSvg(selectedSymbol.id) ;
+  if (selectedSymbol?.id) changePreviewSvg(selectedSymbol.id);
 }
 
 function removeInput(btn) {
@@ -402,12 +402,11 @@ function removeInput(btn) {
       input.addEventListener("input", onInputForSvg);
     }
   }
-
 }
 
 function selectItem(item) {
   const dropdownIcon = document.querySelector(".dropdown-designation-value");
-  if(dropdownIcon) dropdownIcon.textContent = item;
+  if (dropdownIcon) dropdownIcon.textContent = item;
 
   if (!item) {
     return;
@@ -427,15 +426,15 @@ export const showModal = () =>
     <div class="roughness-content-1">
       <div class="content-1-wrap-preview"><span id="wrapSvg">${ra1_1}</span></div>
       <div class="content-1-wrap-manual-svg">
-      <span>${raManual}</span>
+      <span>${ra_manual}</span>
       </div>
     </div>
     <div class="roughness-content-2">
       <div class="roughness-symbol">
         <p>Знак шероховатости:</p>
-        <span id="ra1" class="wrap-symbol-svg selected">${ra1}</span>
-        <span id="ra2" class="wrap-symbol-svg">${ra2}</span>
-        <span id="ra3" class="wrap-symbol-svg">${ra3}</span>
+        <span id="ra1" class="wrap-symbol-svg selected">${ra1_temp}</span>
+        <span id="ra2" class="wrap-symbol-svg">${ra2_temp}</span>
+        <span id="ra3" class="wrap-symbol-svg">${ra3_temp}</span>
       </div>
       <div class="processing-method">
         <label for="name">Способ обработки:</label>

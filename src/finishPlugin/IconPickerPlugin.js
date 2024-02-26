@@ -1,5 +1,20 @@
 // iconPickerPlugin.js
-import sign from "./icons/sign.svg";
+import {
+  insertSymbol,
+  mult1,
+  mult2,
+  sign,
+  param,
+  param_title,
+  spec1,
+  spec2,
+  spec3,
+  spec4,
+  spec5,
+  symbol_title,
+  text_b,
+  text_t,
+} from "./icons/insertSymbols";
 import {
   ButtonView,
   Plugin,
@@ -13,19 +28,6 @@ import { registerIconSvg } from "./registerIconSvg";
 import { insertContentEvent } from "./insertContentEvent";
 import "./styles/styles.css";
 // import IconPlugin from "../iconPlugin/IconPlugin";
-
-import mult1 from "./icons/symbols/mult1.svg";
-import mult2 from "./icons/symbols/mult2.svg";
-import param from "./icons/symbols/param.svg";
-import param_title from "./icons/symbols/param_title.svg";
-import spec1 from "./icons/symbols/spec1.svg";
-import spec2 from "./icons/symbols/spec2.svg";
-import spec3 from "./icons/symbols/spec3.svg";
-import spec4 from "./icons/symbols/spec4.svg";
-import spec5 from "./icons/symbols/spec5.svg";
-import symbol_title from "./icons/symbols/symbol_title.svg";
-import text_b from "./icons/symbols/text_b.svg";
-import text_t from "./icons/symbols/text_t.svg";
 
 export class IconPickerPlugin extends Plugin {
   static get pluginName() {
@@ -81,8 +83,8 @@ export class IconPickerPlugin extends Plugin {
 
       const toolbarDropdown = createDropdown(locale);
       toolbarDropdown.buttonView.set({
-        label: "Roughnessn",
-        withText: true,
+        icon: insertSymbol,
+        class: "icon-picker-button",
       });
       addToolbarToDropdown(toolbarDropdown, buttons);
       //   toolbarDropdown.render();

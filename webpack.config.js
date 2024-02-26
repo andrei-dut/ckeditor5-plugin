@@ -10,12 +10,11 @@ const { styles } = require("@ckeditor/ckeditor5-dev-utils");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/app.js",
+  entry: "./src/finishPlugin/IconPickerPlugin.js",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
-
   module: {
     rules: [
       {
@@ -50,7 +49,13 @@ module.exports = {
           },
         ],
       },
-
+      {
+        test: /\.js$/, // Применять загрузчик только к .js файлам
+        exclude: /node_modules/, // Исключить папку node_modules
+        use: {
+          loader: 'babel-loader', // Использовать babel-loader для обработки .js файлов
+        },
+      },
     ],
   },
 
