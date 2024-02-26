@@ -10,7 +10,7 @@ const { styles } = require("@ckeditor/ckeditor5-dev-utils");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/finishPlugin/IconPickerPlugin.js",
+  entry: "./src/app.js",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
