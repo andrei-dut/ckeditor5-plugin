@@ -8,7 +8,7 @@ function addModal(content) {
   closeButton.innerHTML = "&times;";
   modalContent.innerHTML = content;
 
-  modalContent.className = "modal-baseModal-wrap-content";
+  modalContent.className = "modal-complexSvgModal-wrap-content";
 
   // Стили модального окна
   modal.id = "modalRoughness";
@@ -45,7 +45,9 @@ function addModal(content) {
     wrapSvgTEmpElem.querySelectorAll("text tspan") ||
     wrapSvgTEmpElem.querySelectorAll("text");
   const numberOfTextElements = textElementsSvgTemp.length;
-  const baseModalContent2 = modalContent.querySelector(".baseModal-content-2");
+  const baseModalContent2 = modalContent.querySelector(
+    ".complexSvgModal-content-2"
+  );
   console.log(numberOfTextElements);
 
   textElementsSvgTemp?.forEach(function (textElement) {
@@ -117,11 +119,11 @@ export const showBaseModal = (svgTemp) =>
   addModal(
     `<h2 style="text-align: center;font-size: 20px;margin: 0;">Установка значений:</h2>
   <div id="baseModalContent">
-    <div class="baseModal-content-1">
+    <div class="complexSvgModal-content-1">
 
       <span class="wrap-svg-temp">${svgTemp}</span>
     </div>
-    <div class="baseModal-content-2">
+    <div class="complexSvgModal-content-2">
 
     </div>
   </div>
