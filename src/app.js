@@ -78,6 +78,35 @@ Editor.create(document.querySelector("#editor"), {})
     // openEditSvgModal()
     // showModal()
     console.log("Editor was initialized", editor);
+    console.log("doc", editor.model.document);
+    editor.model.document.selection.on("change", (...args) => {
+      console.log("selChange", args);
+      const selectedBlocks = Array.from(
+        editor.model.document.selection.getSelectedBlocks()
+      );
+      console.log(selectedBlocks);
+      if (selectedBlocks.length > 0) {
+        const selectedElement = selectedBlocks[0]; // Берем только первый выбранный элемент
+        console.log("Selected Element:", selectedElement);
+      }
+
+      const selectedViewElement =
+        editor.editing.view.document.selection.getSelectedElement();
+      console.log(
+        selectedViewElement,
+        editor.editing.view.document.selection.getSelectedElement,
+        editor.editing.view.document.selection
+      );
+      if (selectedViewElement) {
+        console.log("Selected View Element:", selectedViewElement);
+      }
+    });
+    editor.editing.view.document.on("selectionChange", (event, data) => {
+      // console.log("sel2Change", event, data);
+    });
+    editor.model.document.on("change:data", () => {
+      // console.log("data");
+    });
   })
   .catch((error) => {
     console.error(error.stack);
