@@ -65,7 +65,6 @@ class Editor extends ClassicEditor {
         "ImageUpload",
         "link",
         "iconPickerButton",
-        "iconListButton",
       ],
     },
     language: "ru",
