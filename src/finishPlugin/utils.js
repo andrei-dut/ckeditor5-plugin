@@ -36,8 +36,8 @@ export function getAttsAndContentFromElDom(element) {
 
 export function createViewSvg(modelElement, { writer }) {
   const key = modelElement.getAttribute("data-key");
-  const isSymbol = key === 'symbol';
-  const svgObj = isSymbol ? parseSvg(modelElement.getAttribute("data-icon")) : (getAttsAndContentFromElDom(modelElement.getAttribute("data-icon")) || {});
+  const isSimpleSymbol = key === 'simpleSymbol';
+  const svgObj = isSimpleSymbol ? parseSvg(modelElement.getAttribute("data-icon")) : (getAttsAndContentFromElDom(modelElement.getAttribute("data-icon")) || {});
 
   return writer.createRawElement(
     "svg",

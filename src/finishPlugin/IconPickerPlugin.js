@@ -6,13 +6,14 @@ import {
   addToolbarToDropdown,
   createDropdown,
 } from "../ckeditor";
-import { showModal } from "./customModal";
+import { showModal } from "./roughnessModal";
 import { emitter } from "./utils";
 import InsertIconCommand from "./InsertIconCommand";
 import { registerIconSvg } from "./registerIconSvg";
 import { insertContentEvent } from "./insertContentEvent";
 import "./styles/styles.css";
 import { insertIconList } from "./iconLists";
+import { showBaseModal } from "./complexSvgModal";
 // import IconPlugin from "../iconPlugin/IconPlugin";
 
 export class IconPickerPlugin extends Plugin {
@@ -37,18 +38,23 @@ export class IconPickerPlugin extends Plugin {
           icon: icon.icon,
         });
 
-        function insertIconFc(svgEl, isSymbol) {
+        function insertIconFc(svgEl, isSimpleSymbol) {
           const insertIconCmd = editor.commands.get("insertIcon");
 
           if (insertIconCmd) {
             insertIconCmd.execute(
-              isSymbol
+              isSimpleSymbol
                 ? {
-                    key: "symbol",
+                    key: "simpleSymbol",
                     iconName: icon.iconName,
                     icon: icon.icon,
                   }
                 : {
+                    key: isSimpleSymbol
+                      ? "simpleSymbol"
+                      : icon.isComplexSymbol
+                      ? "complexSymbol"
+                      : 'roughnessSymbol',
                     iconName: icon.iconName,
                     icon: svgEl,
                   }
@@ -60,12 +66,14 @@ export class IconPickerPlugin extends Plugin {
 
         listItem.on("execute", () => {
           if (icon.isRoughness) {
-            emitter.on("insertIcon", insertIconFc);
             showModal();
+          } else if (icon.isComplexSymbol) {
+            showBaseModal(icon.icon);
           } else {
             insertIconFc(icon.icon, true);
+            return;
           }
-
+          emitter.on("insertIcon", insertIconFc);
           // dropdown.hide();
         });
 
@@ -82,6 +90,5 @@ export class IconPickerPlugin extends Plugin {
       //   toolbarDropdown.render();
       return toolbarDropdown;
     });
-
   }
 }

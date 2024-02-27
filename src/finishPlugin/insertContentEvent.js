@@ -10,11 +10,11 @@ export async function insertContentEvent(editor) {
         let viewElement = mapper.toViewElement(modelElement);
         const isNameIcon = modelElement.name === "iconSvg";
         const key = modelElement.getAttribute && modelElement.getAttribute("data-key")
-        const isSvgRoughness = key === "svg-roughness" || key === "symbol";
+        const isInsertSvg = ["roughnessSymbol", "simpleSymbol", "complexSymbol"].includes(key);
 
         let attempts = 0;
         let intervalId;
-        if (!viewElement && !(isNameIcon && isSvgRoughness)) return;
+        if (!viewElement && !(isNameIcon && isInsertSvg)) return;
 
         try {
 console.log(modelElement);
