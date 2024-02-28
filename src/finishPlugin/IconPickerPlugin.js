@@ -7,7 +7,7 @@ import {
   createDropdown,
 } from "../ckeditor";
 import { showModal } from "./roughnessModal";
-import { emitter } from "./utils";
+import { emitter, findParent, moveListItemInParent, removeListItemInParent } from "./utils";
 import InsertIconCommand from "./InsertIconCommand";
 import { registerIconSvg } from "./registerIconSvg";
 import { insertContentEvent } from "./insertContentEvent";
@@ -23,7 +23,37 @@ export class IconPickerPlugin extends Plugin {
 
   init() {
     const editor = this.editor;
+    let newSelection; 
+    document.getElementById('moveUpButton').addEventListener('click', function() {
+      // moveListItem(editor, 'up');
+      removeListItemInParent(newSelection, editor);
+      // editor?.editing?.view?.focus();
+      // if(newSelection) {
+      //   moveListItemInParent(newSelection, 'up', editor)
+      // }
+      // console.log('up', newSelection);
+  });
+  
+  document.getElementById('moveDownButton').addEventListener('click', function() {
+      // moveListItem(editor, 'down');
+      if(newSelection) {
+        moveListItemInParent(newSelection, 'down', editor)
+      }
+      console.log('down', newSelection);
+  });
+
     // console.log('WidgetResize',editor.plugins.get("WidgetResize"));
+// console.log(editor.editing.view._observers.get(1));
+    // editor.editing.view.addObserver(SelectionObserver)
+
+    editor.editing.view.document.selection.on("change", (event) => {
+      newSelection = event.source;
+      if(newSelection) {
+        // moveListItemInParent(newSelection)
+      }
+      console.log("selectionChange", event);
+    });
+
     registerIconSvg(editor);
     insertContentEvent.call(this, editor);
 

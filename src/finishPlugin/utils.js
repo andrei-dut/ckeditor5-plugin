@@ -118,3 +118,75 @@ export function findTextTagInSVG(svgElement, value) {
   // Если не найден элемент с текстом "121", возвращаем null
   return null;
 }
+
+export function findParent(element, parentName) {
+  console.log(element, parentName);
+  // Начинаем с переданного элемента
+  let currentElement = element;
+
+  if(!currentElement) return null
+  // Рекурсивно ищем родителя
+  while (currentElement) {
+      const parentElement = currentElement.parent;
+
+      // Если родитель найден, проверяем его с помощью переданной функции
+      if (parentElement) {
+          if (parentElement.name === parentName) {
+              // Если функция возвращает true, возвращаем найденный родитель
+              return parentElement;
+          } else {
+              // Иначе продолжаем искать в родителе родителя
+              currentElement = parentElement;
+          }
+      } else {
+          // Если текущий элемент не имеет родителя, значит, мы достигли корневого элемента
+          // и завершаем поиск
+          return null;
+      }
+  }
+
+  return null; // Возвращаем null, если ничего не найдено
+}
+
+export function moveListItemInParent(source, direction, editor) {
+  const isUpDirection = direction === 'up';
+  const anchor = source?.anchor;
+  if(anchor) {
+    setTimeout(() => {
+        const olEl = findParent(source.anchor, 'ol')
+        const selectLi = findParent(source.anchor, 'li')
+        if(!olEl) return;
+        // reverse()
+        const previousSibling = selectLi.previousSibling
+        const nextSibling = selectLi.nextSibling
+        console.log('selectLi', selectLi, );
+        if(previousSibling && isUpDirection) {
+          const prevind = previousSibling?.index;
+          console.log('previousSibling',previousSibling, prevind);
+          olEl._insertChild(prevind, selectLi);
+        } 
+
+        if(nextSibling && !isUpDirection) {
+          const nextInd = nextSibling?.index;
+          console.log('nextSibling',nextSibling, nextInd);
+          olEl._insertChild(nextInd, selectLi);
+        } 
+        editor?.editing?.view?.focus();
+    }, );
+  }
+}
+
+export function removeListItemInParent(source, editor) {
+  const anchor = source?.anchor;
+  if(anchor) {
+    setTimeout(() => {
+        const selectLi = findParent(source.anchor, 'li')
+        if(!selectLi) return;
+        editor.editing.model.change(writer => {
+          const selectLiModel = editor.editing.mapper.toModelElement(selectLi);
+          if(selectLiModel) writer.remove(selectLiModel);
+      });
+    }, );
+    editor?.editing?.view?.focus();
+  }
+}

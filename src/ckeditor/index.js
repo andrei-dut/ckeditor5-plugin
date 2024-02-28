@@ -15,5 +15,6 @@ export const Command = ckeditor.Command;
 export const createDropdown = ckeditor.createDropdown;
 export const addToolbarToDropdown = ckeditor.addToolbarToDropdown;
 export const toWidget = ckeditor.toWidget;
+export const SelectionObserver = ckeditor.SelectionObserver;
 
 
