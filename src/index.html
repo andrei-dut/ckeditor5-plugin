@@ -15,15 +15,10 @@
         <li>3</li>
       </ol>
     </div>
-    <div>
-      <button id="moveUpButton">up</button
-      ><button id="moveDownButton">down</button>
-      <button id="removeButton">remove</button>
-    </div>
 
-    <div ng-app="myApp" ng-controller="myController">
+    <div ng-app="myApp" id="addButton">
       <div class="toolbar">
-        <div class="toolbar-item" ng-click="add()">
+        <div class="toolbar-item">
           <svg
             width="32"
             height="32"
@@ -97,7 +92,7 @@
             </g>
           </svg>
         </div>
-        <div class="toolbar-item" ng-click="moveUp()">
+        <div class="toolbar-item" id="moveUpButton">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -108,7 +103,7 @@
             <path d="M0 0h24v24H0z" fill="none" />
           </svg>
         </div>
-        <div class="toolbar-item" ng-click="moveDown()">
+        <div class="toolbar-item" id="moveDownButton">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -119,7 +114,7 @@
             <path d="M0 0h24v24H0z" fill="none" />
           </svg>
         </div>
-        <div class="toolbar-item" ng-click="remove()">
+        <div class="toolbar-item" id="removeButton">
           <svg
             width="32"
             height="32"
