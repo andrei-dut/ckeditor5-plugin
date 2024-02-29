@@ -20,14 +20,20 @@ export function findParent(element, parentName) {
   return null; // Возвращаем null, если ничего не найдено
 }
 
+export function executeEditorCmd(cmdName, editor) {
+  const indentCommand = editor ? editor.commands.get(cmdName) : null;
+  if(indentCommand?.execute) {
+      indentCommand.execute();
+  }
+}
+
 export function getLastChildOl(rootNode) {
   try {
     const children = rootNode._children;
     if (children) {
       for (const child of children) {
         if (child.name === "ol" && child.getChild) {
-          const lastChild = child.getChild(child.childCount - 1);
-          return lastChild;
+          return child.getChild(child.childCount - 1);
         }
       }
     }
