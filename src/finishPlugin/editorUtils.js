@@ -1,5 +1,4 @@
 export function findParent(element, parentName) {
-
   let currentElement = element;
 
   if (!currentElement) return null;
@@ -21,6 +20,43 @@ export function findParent(element, parentName) {
   return null; // Возвращаем null, если ничего не найдено
 }
 
+export function getLastChildOl(rootNode) {
+  try {
+    const children = rootNode._children;
+    if (children) {
+      for (const child of children) {
+        if (child.name === "ol" && child.getChild) {
+          const lastChild = child.getChild(child.childCount - 1);
+          return lastChild;
+        }
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function getPreviousSibling(selectedSubling) {
+  if (selectedSubling) {
+    return selectedSubling.previousSibling;
+  }
+  return null;
+}
+
+export function getNextSibling(selectedSubling) {
+  if (selectedSubling) {
+    return selectedSubling.nextSibling;
+  }
+  return null;
+}
+
+export function viewToModelElem(editor, viewElem) {
+  if (editor && viewElem) {
+    return editor.editing.mapper.toModelElement(viewElem);
+  }
+  return null;
+}
+
 export function moveListItemInParent(source, direction, editor) {
   const isUpDirection = direction === "up";
   const anchor = source?.anchor;
@@ -29,19 +65,31 @@ export function moveListItemInParent(source, direction, editor) {
       const olEl = findParent(source.anchor, "ol");
       const selectLi = findParent(source.anchor, "li");
       if (!olEl) return;
-      const previousSibling = selectLi.previousSibling;
-      const nextSibling = selectLi.nextSibling;
 
-      const selectLiModel = editor.editing.mapper.toModelElement(selectLi);
-      const previousSiblingModel = previousSibling ? editor.editing.mapper.toModelElement(previousSibling) : null;
-      const nextSiblingModel = nextSibling ? editor.editing.mapper.toModelElement(nextSibling) : null;
+      const previousSibling = getPreviousSibling(selectLi);
+      const nextSibling = getNextSibling(selectLi);
 
-      if((isUpDirection && previousSiblingModel) || (!isUpDirection && nextSiblingModel)) {
+      const selectLiModel = viewToModelElem(editor, selectLi);
+      const previousSiblingModel = viewToModelElem(editor, previousSibling);
+      const nextSiblingModel = viewToModelElem(editor, nextSibling);
+
+      const lastChild = getLastChildOl(selectLi);
+      const lastChildModel = viewToModelElem(editor, lastChild);
+
+      if ((isUpDirection && previousSiblingModel) || (!isUpDirection && nextSiblingModel)) {
         editor.editing.model.change((writer) => {
           const range = writer.createRangeOn(selectLiModel);
-          // const position = writer.createPositionAt(previousSiblingModel, 'before'); // can be used instead of the element
+          const rangeNextSibling = nextSiblingModel ? writer.createRangeOn(nextSiblingModel) : null;
+          const rangeLastChild = lastChildModel ? writer.createRangeOn(lastChildModel) : null;
+
+          const fullRange = writer.createRange(
+            range.start,
+            rangeNextSibling ? rangeNextSibling.start : rangeLastChild ? rangeLastChild.end : range.end
+          );
+
+          // const position = writer.createPositionAt(nextSiblingModel, 'after'); // can be used instead of the element
           writer.move(
-            range,
+            fullRange,
             isUpDirection ? previousSiblingModel : nextSiblingModel,
             isUpDirection ? "before" : "after"
           );
@@ -75,9 +123,9 @@ export function addListItemInParent(source, editor) {
       if (!selectLi) return;
       editor.editing.model.change((writer) => {
         const selectLiModel = editor.editing.mapper.toModelElement(selectLi);
-        const cloneElem = writer.cloneElement(selectLiModel, false)
-        console.log("cloneElem",cloneElem);
-        writer.insert(cloneElem, selectLiModel, 'after')
+        const cloneElem = writer.cloneElement(selectLiModel, false);
+        console.log("cloneElem", cloneElem);
+        writer.insert(cloneElem, selectLiModel, "after");
 
         // Getting the insertion position
         // const positionAfterInsertion = writer.createPositionAfter(cloneElem);
