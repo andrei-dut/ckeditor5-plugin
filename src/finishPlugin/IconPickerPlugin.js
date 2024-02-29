@@ -25,17 +25,18 @@ export class IconPickerPlugin extends Plugin {
     const editor = this.editor;
     let newSelection; 
     document.getElementById('moveUpButton').addEventListener('click', function() {
-      // moveListItem(editor, 'up');
+
+      if(newSelection) {
+        moveListItemInParent(newSelection, 'up', editor)
+      }
+
+  });
+    document.getElementById('removeButton').addEventListener('click', function() {
       removeListItemInParent(newSelection, editor);
-      // editor?.editing?.view?.focus();
-      // if(newSelection) {
-      //   moveListItemInParent(newSelection, 'up', editor)
-      // }
-      // console.log('up', newSelection);
+
   });
   
   document.getElementById('moveDownButton').addEventListener('click', function() {
-      // moveListItem(editor, 'down');
       if(newSelection) {
         moveListItemInParent(newSelection, 'down', editor)
       }

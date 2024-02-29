@@ -36,8 +36,10 @@ export function getAttsAndContentFromElDom(element) {
 
 export function createViewSvg(modelElement, { writer }) {
   const key = modelElement.getAttribute("data-key");
-  const isSimpleSymbol = key === 'simpleSymbol';
-  const svgObj = isSimpleSymbol ? parseSvg(modelElement.getAttribute("data-icon")) : (getAttsAndContentFromElDom(modelElement.getAttribute("data-icon")) || {});
+  const isSimpleSymbol = key === "simpleSymbol";
+  const svgObj = isSimpleSymbol
+    ? parseSvg(modelElement.getAttribute("data-icon"))
+    : getAttsAndContentFromElDom(modelElement.getAttribute("data-icon")) || {};
 
   return writer.createRawElement(
     "svg",
@@ -124,69 +126,72 @@ export function findParent(element, parentName) {
   // Начинаем с переданного элемента
   let currentElement = element;
 
-  if(!currentElement) return null
+  if (!currentElement) return null;
   // Рекурсивно ищем родителя
   while (currentElement) {
-      const parentElement = currentElement.parent;
+    const parentElement = currentElement.parent;
 
-      // Если родитель найден, проверяем его с помощью переданной функции
-      if (parentElement) {
-          if (parentElement.name === parentName) {
-              // Если функция возвращает true, возвращаем найденный родитель
-              return parentElement;
-          } else {
-              // Иначе продолжаем искать в родителе родителя
-              currentElement = parentElement;
-          }
+    // Если родитель найден, проверяем его с помощью переданной функции
+    if (parentElement) {
+      if (parentElement.name === parentName) {
+        // Если функция возвращает true, возвращаем найденный родитель
+        return parentElement;
       } else {
-          // Если текущий элемент не имеет родителя, значит, мы достигли корневого элемента
-          // и завершаем поиск
-          return null;
+        // Иначе продолжаем искать в родителе родителя
+        currentElement = parentElement;
       }
+    } else {
+      // Если текущий элемент не имеет родителя, значит, мы достигли корневого элемента
+      // и завершаем поиск
+      return null;
+    }
   }
 
   return null; // Возвращаем null, если ничего не найдено
 }
 
 export function moveListItemInParent(source, direction, editor) {
-  const isUpDirection = direction === 'up';
+  const isUpDirection = direction === "up";
   const anchor = source?.anchor;
-  if(anchor) {
+  if (anchor) {
     setTimeout(() => {
-        const olEl = findParent(source.anchor, 'ol')
-        const selectLi = findParent(source.anchor, 'li')
-        if(!olEl) return;
-        // reverse()
-        const previousSibling = selectLi.previousSibling
-        const nextSibling = selectLi.nextSibling
-        console.log('selectLi', selectLi, );
-        if(previousSibling && isUpDirection) {
-          const prevind = previousSibling?.index;
-          console.log('previousSibling',previousSibling, prevind);
-          olEl._insertChild(prevind, selectLi);
-        } 
+      const olEl = findParent(source.anchor, "ol");
+      const selectLi = findParent(source.anchor, "li");
+      if (!olEl) return;
+      const previousSibling = selectLi.previousSibling;
+      const nextSibling = selectLi.nextSibling;
 
-        if(nextSibling && !isUpDirection) {
-          const nextInd = nextSibling?.index;
-          console.log('nextSibling',nextSibling, nextInd);
-          olEl._insertChild(nextInd, selectLi);
-        } 
-        editor?.editing?.view?.focus();
-    }, );
+      const selectLiModel = editor.editing.mapper.toModelElement(selectLi);
+      const previousSiblingModel = previousSibling ? editor.editing.mapper.toModelElement(previousSibling) : null;
+      const nextSiblingModel = nextSibling ? editor.editing.mapper.toModelElement(nextSibling) : null;
+
+      if((isUpDirection && previousSiblingModel) || (!isUpDirection && nextSiblingModel)) {
+        editor.editing.model.change((writer) => {
+          const range = writer.createRangeOn(selectLiModel);
+          // const position = writer.createPositionAt(previousSiblingModel, 'before'); // can be used instead of the element
+          writer.move(
+            range,
+            isUpDirection ? previousSiblingModel : nextSiblingModel,
+            isUpDirection ? "before" : "after"
+          );
+        });
+      }
+      editor?.editing?.view?.focus();
+    });
   }
 }
 
 export function removeListItemInParent(source, editor) {
   const anchor = source?.anchor;
-  if(anchor) {
+  if (anchor) {
     setTimeout(() => {
-        const selectLi = findParent(source.anchor, 'li')
-        if(!selectLi) return;
-        editor.editing.model.change(writer => {
-          const selectLiModel = editor.editing.mapper.toModelElement(selectLi);
-          if(selectLiModel) writer.remove(selectLiModel);
+      const selectLi = findParent(source.anchor, "li");
+      if (!selectLi) return;
+      editor.editing.model.change((writer) => {
+        const selectLiModel = editor.editing.mapper.toModelElement(selectLi);
+        if (selectLiModel) writer.remove(selectLiModel);
       });
-    }, );
+    });
     editor?.editing?.view?.focus();
   }
 }
