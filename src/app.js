@@ -242,6 +242,13 @@ Editor.create(document.querySelector("#editor"), {})
     editor.model.document.on("change:data", () => {
       // console.log("data");
     });
+
+    editor.on("lala", (...arg) => {
+      console.log("lala", arg);
+    });
+    editor.editing.view.document.on("blur", (...arg) => {
+      console.log("foc", arg);
+    });
   })
   .catch((error) => {
     console.error(error.stack);
