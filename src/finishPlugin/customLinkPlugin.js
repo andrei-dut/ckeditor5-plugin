@@ -105,14 +105,16 @@ export class CustomLinkPlugin extends Plugin {
 
       // Show the panel on button click.
       this.listenTo(button, "execute", () => {
-        setLink(editor);
+        console.log(editor.fire);
+        editor.fire('lala', 1111111, 2222)
+        // setLink(editor);
         // editor.execute(
         //   "link",
         //   'test url',
         // );
       });
 
-      button.delegate("execute").to(editor, "lala");
+      // button.delegate("execute").to(editor, "lala");
 
       return button;
     });
