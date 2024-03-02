@@ -25,6 +25,7 @@
 
 import { ClassicEditor } from "./ckeditor";
 import { IconPickerPlugin } from "./finishPlugin/IconPickerPlugin";
+import { CustomLinkPlugin } from "./finishPlugin/customLinkPlugin";
 
 class Editor extends ClassicEditor {
   static addPlugin(plugin) {
@@ -40,11 +41,6 @@ class Editor extends ClassicEditor {
         "Redo",
         "|",
         "Bold",
-        "Italic",
-        "Underline",
-        "Strikethrough",
-        "Subscript",
-        "Superscript",
         "|",
         "RemoveFormat",
         "|",
@@ -65,6 +61,7 @@ class Editor extends ClassicEditor {
         "ImageUpload",
         "link",
         "iconPickerButton",
+        "customLink"
       ],
     },
     language: "ru",
@@ -72,6 +69,7 @@ class Editor extends ClassicEditor {
 }
 
 Editor.builtinPlugins.push(IconPickerPlugin);
+Editor.builtinPlugins.push(CustomLinkPlugin);
 
 
 // Функция для перемещения строки списка вверх или вниз
