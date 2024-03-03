@@ -1,93 +1,47 @@
-import { cloneElem } from "./utils";
+// import { cloneElem } from "./utils";
+
+import { ensureSafeUrl } from "./utils";
+
+
+function createLinkElement(href, { writer }) {
+  // Priority 5 - https://github.com/ckeditor/ckeditor5-link/issues/121.
+  const linkElement = writer.createAttributeElement(
+    "a",
+    { href },
+    { priority: 5 }
+  );
+  writer.setCustomProperty("customLink", true, linkElement);
+
+  return linkElement;
+}
 
 export function registerCustomLink(editor) {
-  const elementName = "customLink";
+  editor.model.schema.extend("$text", {
+    allowAttributes: "customLink",
+  });
 
-  if (!editor.model.schema.isRegistered(elementName)) {
-    editor.model.schema.register(elementName, {
-      isObject: true,
-      isInline: true,
-      allowWhere: "$text",
-      allowAttributes: ["href", "text"],
-    });
-  }
+  editor.conversion.for("dataDowncast").attributeToElement({
+    model: "customLink",
+    view: createLinkElement,
+  });
 
-  editor.conversion.for("upcast").elementToElement({
-    model: elementName,
-    view: {
-      name: "a",
-      classes: "ck-custom-link",
-      attributes: {
-        href: true,
-        text: true,
-      },
+  editor.conversion.for("editingDowncast").attributeToElement({
+    model: "customLink",
+    view: (href, conversionApi) => {
+      return createLinkElement(ensureSafeUrl(href), conversionApi);
     },
   });
 
-  editor.conversion
-    .for("editingDowncast")
-    .elementToElement({
-      model: elementName,
-      view: (modelElement, { writer }) => {
-        const href = modelElement.getAttribute("href");
-        const linkElement = writer.createContainerElement("a", {
-          class: "ck-custom-link",
-          href,
-        });
-
-        writer.setCustomProperty("customLink", true, linkElement);
-
-        return linkElement
+  editor.conversion.for("upcast").elementToAttribute({
+    view: {
+      name: "a",
+      attributes: {
+        href: true,
       },
-      converterPriority: "high",
-    })
-    .attributeToAttribute({
-      model: {
-        name: elementName,
-        key: "href",
-      },
-      view: (attributeValue) => {
-        return {
-          key: "href",
-          value: attributeValue,
-        };
-      },
-      converterPriority: "high",
-    })
-    .add((dispatcher) => {
-      attachDowncastConverter(dispatcher, "width", "width", true);
-    });
-
-  editor.conversion
-    .for("dataDowncast")
-    .add((dispatcher) => {
-      attachDowncastConverter(dispatcher, "width", "width", true);
-    })
-    .elementToElement({
-      model: elementName,
-      view: (modelElement, { writer }) => {
-        console.log("cloneElem");
-        return cloneElem(writer, modelElement);
-      },
-    })
-    .attributeToAttribute({
-      model: {
-        name: elementName,
-        key: "href",
-      },
-      view: (attributeValue) => {
-        return {
-          key: "href",
-          value: attributeValue,
-        };
-      },
-      converterPriority: "high",
-    });
-}
-
-function attachDowncastConverter(dispatcher) {
-  dispatcher.on(`attribute:href:customLink`, (evt, data, conversionApi) => {
-    console.log("call_dispatch_href", evt, data, conversionApi);
-    // console.log("dispatcher", evt, data, conversionApi);
+    },
+    model: {
+      key: "customLink",
+      value: (viewElement) => viewElement.getAttribute("href"),
+    },
   });
 }

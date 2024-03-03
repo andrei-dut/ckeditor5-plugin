@@ -17,5 +17,12 @@ export const addToolbarToDropdown = ckeditor.addToolbarToDropdown;
 export const toWidget = ckeditor.toWidget;
 export const SelectionObserver = ckeditor.SelectionObserver;
 export const DomEventObserver = ckeditor.DomEventObserver;
+export const View = ckeditor.View;
+export const FocusTracker = ckeditor.FocusTracker;
+export const FocusCycler = ckeditor.FocusCycler;
+export const KeystrokeHandler = ckeditor.KeystrokeHandler;
+export const ViewCollection = ckeditor.ViewCollection;
+export const ContextualBalloon = ckeditor.ContextualBalloon;
+export const clickOutsideHandler = ckeditor.clickOutsideHandler;
 
 

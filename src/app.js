@@ -241,8 +241,22 @@ Editor.create(document.querySelector("#editor"), {})
       // console.log("data");
     });
 
-    editor.on("lala", (...arg) => {
-      console.log("lala", arg);
+    editor.on("customLinkEvent", (e, currentData) => {
+      
+
+      const {eventType, value} = currentData || {};
+
+      if(eventType === 'insert') {
+        console.log("insert", value);
+      }
+
+      if(eventType === "update") {
+        console.log("update", value);
+      }
+
+
+
+      // const currentData = _.find(arg)
     });
     editor.editing.view.document.on("blur", (...arg) => {
       console.log("foc", arg);

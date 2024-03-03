@@ -120,3 +120,46 @@ export function findTextTagInSVG(svgElement, value) {
   // Если не найден элемент с текстом "121", возвращаем null
   return null;
 }
+
+export function openLinkInNewWindow(linkElement) {
+  if (linkElement && linkElement.name === "a") {
+    const href = linkElement.getAttribute("href");
+    if (href) {
+      window.open(href, "_blank");
+    }
+  }
+}
+let lastClickTime = 0;
+let clickTimeout;
+
+export function checkClick(cb) {
+
+  const currentTime = new Date().getTime();
+
+  if (currentTime - lastClickTime > 250) {
+    clickTimeout = setTimeout(cb, 250);
+  } else {
+    clearTimeout(clickTimeout);
+  }
+
+  lastClickTime = currentTime;
+} 
+
+const SAFE_URL =
+/^(?:(?:https?|ftps?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.:-]|$))/i;
+
+const ATTRIBUTE_WHITESPACES =
+/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205f\u3000]/g; // eslint-disable-line no-control-regex
+
+
+function isSafeUrl(url) {
+  const normalizedUrl = url.replace(ATTRIBUTE_WHITESPACES, "");
+
+  return normalizedUrl.match(SAFE_URL);
+}
+
+export function ensureSafeUrl(url) {
+  url = String(url);
+
+  return isSafeUrl(url) ? url : "#";
+}

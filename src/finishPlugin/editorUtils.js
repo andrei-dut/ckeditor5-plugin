@@ -20,10 +20,10 @@ export function findParent(element, parentName) {
   return null; // Возвращаем null, если ничего не найдено
 }
 
-export function executeEditorCmd(cmdName, editor) {
+export function executeEditorCmd(editor, cmdName, arg) {
   const indentCommand = editor ? editor.commands.get(cmdName) : null;
   if(indentCommand?.execute) {
-      indentCommand.execute();
+      indentCommand.execute(arg);
   }
 }
 
@@ -140,5 +140,41 @@ export function addListItemInParent(source, editor) {
       });
     });
     editor?.editing?.view?.focus();
+  }
+}
+
+export function getSelectedLinkElement(customPropName, nodeIsName) {
+  const view = this.editor.editing.view;
+  const selection = view.document.selection;
+  const selectedElement = selection.getSelectedElement();
+
+  function isCustomLinkElement(node) {
+    return node.is(nodeIsName || "containerElement") && !!node.getCustomProperty(customPropName);
+  }
+  
+  function findLinkElementAncestor(position) {
+    return position.getAncestors().find((ancestor) => isCustomLinkElement(ancestor));
+  }
+
+  // The selection is collapsed or some widget is selected (especially inline widget).
+  if (selection.isCollapsed || selectedElement) {
+    return findLinkElementAncestor(selection.getFirstPosition());
+  } else {
+    // The range for fully selected link is usually anchored in adjacent text nodes.
+    // Trim it to get closer to the actual link element.
+    const range = selection.getFirstRange().getTrimmed();
+    const startLink = findLinkElementAncestor(range.start);
+    const endLink = findLinkElementAncestor(range.end);
+
+    if (!startLink || startLink != endLink) {
+      return null;
+    }
+
+    // Check if the link element is fully selected.
+    if (view.createRangeIn(startLink).getTrimmed().isEqual(range)) {
+      return startLink;
+    } else {
+      return null;
+    }
   }
 }
