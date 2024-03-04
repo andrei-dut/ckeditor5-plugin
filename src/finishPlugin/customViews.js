@@ -1,4 +1,11 @@
-import { ButtonView, FocusCycler, FocusTracker, KeystrokeHandler, View, ViewCollection } from "../ckeditor";
+import {
+  ButtonView,
+  FocusCycler,
+  FocusTracker,
+  KeystrokeHandler,
+  View,
+  ViewCollection,
+} from "../ckeditor";
 import { pencilIcon, unlinkIcon } from "./icons/insertSymbols";
 import { ensureSafeUrl } from "./utils";
 
@@ -14,7 +21,11 @@ export class CustomLinkActionsView extends View {
 
     this.previewButtonView = this._createPreviewButton();
 
-    this.unlinkButtonView = this._createButton(t("Unlink"), unlinkIcon, "unlink");
+    this.unlinkButtonView = this._createButton(
+      t("Unlink"),
+      unlinkIcon,
+      "unlink"
+    );
 
     this.editButtonView = this._createButton(
       t("Edit link"),
@@ -100,7 +111,7 @@ export class CustomLinkActionsView extends View {
 
   /**
    * Creates a link href preview button.
- */
+   */
   _createPreviewButton() {
     const button = new ButtonView(this.locale);
     const bind = this.bindTemplate;
@@ -114,7 +125,8 @@ export class CustomLinkActionsView extends View {
     button.extendTemplate({
       attributes: {
         class: ["ck", "ck-link-actions__preview"],
-        href: bind.to("href", (href) => href && ensureSafeUrl(href)),
+        href: bind.to("href", (href, node) =>  href && ensureSafeUrl(href)
+        ),
         target: "_blank",
         rel: "noopener noreferrer",
       },

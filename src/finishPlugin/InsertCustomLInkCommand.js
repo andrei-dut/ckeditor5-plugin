@@ -16,6 +16,9 @@ function toMap(data) {
 
 export default class InsertCustomLInkCommand extends Command {
   refresh() {
+    const model = this.editor.model;
+    const selection = model.document.selection;
+    this.value = selection.getAttribute("customLink");
     this.isEnabled = true;
   }
 

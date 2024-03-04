@@ -32,6 +32,11 @@ export class CustomLinkPlugin extends Plugin {
     const model = editor.model;
     const selection = model.document.selection;
 
+    editor.commands.add(
+      "insertCustomLink",
+      new InsertCustomLInkCommand(editor)
+    );
+
     this.actionsView = this._createActionsView();
     this._balloon = editor.plugins.get(ContextualBalloon);
     // Attach lifecycle actions to the the balloon.
@@ -82,11 +87,6 @@ export class CustomLinkPlugin extends Plugin {
         // openLinkInNewWindow(customLink);
       });
     });
-
-    editor.commands.add(
-      "insertCustomLink",
-      new InsertCustomLInkCommand(editor)
-    );
 
     editor.ui.componentFactory.add("customLink", (locale) => {
       const button = new ButtonView(locale);
@@ -243,12 +243,12 @@ export class CustomLinkPlugin extends Plugin {
   _createActionsView() {
     const editor = this.editor;
     const actionsView = new CustomLinkActionsView(editor.locale);
-    const linkCommand = editor.commands.get("link");
+    const linkCommand = editor.commands.get("insertCustomLink");
     const unlinkCommand = editor.commands.get("unlink");
     const LINK_KEYSTROKE = "Ctrl+K";
 
     actionsView.bind("href").to(linkCommand, "value");
-    actionsView.editButtonView.bind("isEnabled").to(linkCommand);
+    // actionsView.editButtonView.bind("isEnabled").to(linkCommand);
     actionsView.unlinkButtonView.bind("isEnabled").to(unlinkCommand);
 
     // Execute unlink command after clicking on the "Edit" button.
