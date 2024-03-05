@@ -125,7 +125,7 @@ export class CustomLinkActionsView extends View {
     button.extendTemplate({
       attributes: {
         class: ["ck", "ck-link-actions__preview"],
-        href: bind.to("href", (href, node) =>  href && ensureSafeUrl(href)
+        href: bind.to("href", (href) =>  href && ensureSafeUrl(href)
         ),
         target: "_blank",
         rel: "noopener noreferrer",

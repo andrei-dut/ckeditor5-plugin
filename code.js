@@ -374,3 +374,34 @@ class linkcommand_LinkCommand extends Command {
     }
   }
 
+
+  editor.editing.view.addObserver(DblClickObserver);
+
+  this.listenTo(editor.editing.view.document, "dblclick", () => {
+    // const customLink = getSelectedLinkElement.call(
+    //   this,
+    //   "customLink",
+    //   "attributeElement"
+    // );
+    // const ranges = model.schema.getValidRanges(
+    //   selection.getRanges(),
+    //   "customLink"
+    // );
+    // const allowedRanges = [];
+    // for (const element of selection.getSelectedBlocks()) {
+    //   if (model.schema.checkAttribute(element, "customLink")) {
+    //     allowedRanges.push(model.createRangeOn(element));
+    //   }
+    // }
+    // const rangesToUpdate = allowedRanges.slice();
+    // for (const range of ranges) {
+    //   rangesToUpdate.push(range);
+    //   model.change((writer) => {
+    //     writer.setAttribute("customLink", "343434", range);
+    //   });
+    // }
+    // console.log("allowedRanges", allowedRanges);
+    // console.log("rangesToUpdate", rangesToUpdate);
+    // console.log("dblclick", customLink, ranges);
+  });
+

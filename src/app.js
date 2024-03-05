@@ -253,6 +253,9 @@ Editor.create(document.querySelector("#editor"), {})
       if(eventType === "update") {
         console.log("update", value);
       }
+      if(eventType === "openModal") {
+        console.log("openModal", value);
+      }
 
 
 

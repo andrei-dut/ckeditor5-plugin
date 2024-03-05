@@ -10,10 +10,9 @@ import {
 // import { emitter, } from "./utils";
 import "./styles/styles.css";
 import { registerCustomLink } from "./registerCustomLink";
-import { DblClickObserver } from "./customObservers";
 import InsertCustomLInkCommand from "./InsertCustomLInkCommand";
 import { executeEditorCmd, getSelectedLinkElement } from "./editorUtils";
-import { checkClick, openLinkInNewWindow } from "./utils";
+import { checkClick } from "./utils";
 import { CustomLinkActionsView } from "./customViews";
 // import { showBaseModal } from "./complexSvgModal";
 // import IconPlugin from "../iconPlugin/IconPlugin";
@@ -29,8 +28,6 @@ export class CustomLinkPlugin extends Plugin {
 
   init() {
     const editor = this.editor;
-    const model = editor.model;
-    const selection = model.document.selection;
 
     editor.commands.add(
       "insertCustomLink",
@@ -43,36 +40,6 @@ export class CustomLinkPlugin extends Plugin {
     this._enableUserBalloonInteractions();
 
     registerCustomLink(editor);
-
-    editor.editing.view.addObserver(DblClickObserver);
-
-    this.listenTo(editor.editing.view.document, "dblclick", () => {
-      // const customLink = getSelectedLinkElement.call(
-      //   this,
-      //   "customLink",
-      //   "attributeElement"
-      // );
-      // const ranges = model.schema.getValidRanges(
-      //   selection.getRanges(),
-      //   "customLink"
-      // );
-      // const allowedRanges = [];
-      // for (const element of selection.getSelectedBlocks()) {
-      //   if (model.schema.checkAttribute(element, "customLink")) {
-      //     allowedRanges.push(model.createRangeOn(element));
-      //   }
-      // }
-      // const rangesToUpdate = allowedRanges.slice();
-      // for (const range of ranges) {
-      //   rangesToUpdate.push(range);
-      //   model.change((writer) => {
-      //     writer.setAttribute("customLink", "343434", range);
-      //   });
-      // }
-      // console.log("allowedRanges", allowedRanges);
-      // console.log("rangesToUpdate", rangesToUpdate);
-      // console.log("dblclick", customLink, ranges);
-    });
 
     this.listenTo(editor.editing.view.document, "click", () => {
       checkClick(() => {
@@ -105,6 +72,7 @@ export class CustomLinkPlugin extends Plugin {
         });
         // editor.fire('customLinkEvent', {eventType: 'insert'})
         // editor.fire('customLinkEvent', {eventType: 'update'})
+        // editor.fire('customLinkEvent', {eventType: 'openModal'})
       });
 
       return button;
@@ -190,48 +158,7 @@ export class CustomLinkPlugin extends Plugin {
   }
 
   _enableUserBalloonInteractions() {
-    const viewDocument = this.editor.editing.view.document;
 
-    // Handle click on view document and show panel when selection is placed inside the link element.
-    // Keep panel open until selection will be inside the same link element.
-    // this.listenTo(viewDocument, "click", () => {
-    // const parentLink = this._getSelectedLinkElement();
-
-    // if (parentLink) {
-    //   // Then show panel but keep focus inside editor editable.
-    //   this._showUI();
-    // }
-    // });
-
-    // Focus the form if the balloon is visible and the Tab key has been pressed.
-    // this.editor.keystrokes.set(
-    //   "Tab",
-    //   (data, cancel) => {
-    //     if (
-    //       this._areActionsVisible &&
-    //       !this.actionsView.focusTracker.isFocused
-    //     ) {
-    //       this.actionsView.focus();
-    //       cancel();
-    //     }
-    //   },
-    //   {
-    //     // Use the high priority because the link UI navigation is more important
-    //     // than other feature's actions, e.g. list indentation.
-    //     // https://github.com/ckeditor/ckeditor5-link/issues/146
-    //     priority: "high",
-    //   }
-    // );
-
-    // Close the panel on the Esc key press when the editable has focus and the balloon is visible.
-    // this.editor.keystrokes.set("Esc", (data, cancel) => {
-    //   if (this._isUIVisible) {
-    //     this._hideUI();
-    //     cancel();
-    //   }
-    // });
-
-    // Close on click outside of balloon panel element.
     clickOutsideHandler({
       emitter: this.actionsView,
       activator: () => this._areActionsInPanel,
@@ -277,23 +204,3 @@ export class CustomLinkPlugin extends Plugin {
     return actionsView;
   }
 }
-
-// editor.ui.componentFactory.add("link", (locale) => {
-//   const button = new buttonview_ButtonView(locale);
-
-//   button.isEnabled = true;
-//   button.label = t("Link");
-//   button.icon = icons_link;
-//   button.keystroke = LINK_KEYSTROKE;
-//   button.tooltip = true;
-//   button.isToggleable = true;
-
-//   // Bind button to the command.
-//   button.bind("isEnabled").to(linkCommand, "isEnabled");
-//   button.bind("isOn").to(linkCommand, "value", (value) => !!value);
-
-//   // Show the panel on button click.
-//   this.listenTo(button, "execute", () => this._showUI(true));
-
-//   return button;
-// });
