@@ -1,7 +1,7 @@
 
 import { ClassicEditor } from "./ckeditor";
-import { CustomLinkPlugin } from "./finishPlugin/customLinkPlugin/customLinkPlugin";
-import { IconPickerPlugin } from "./finishPlugin/insertIconPlugin/IconPickerPlugin";
+import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
+import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 
 class Editor extends ClassicEditor {
   static addPlugin(plugin) {
