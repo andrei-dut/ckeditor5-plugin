@@ -1,4 +1,4 @@
-import { Command } from "../ckeditor";
+import { Command } from "../../ckeditor";
 
 function objectToMap(obj) {
   const map = new Map();

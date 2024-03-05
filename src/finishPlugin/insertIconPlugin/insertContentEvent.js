@@ -17,7 +17,7 @@ export async function insertContentEvent(editor) {
         if (!viewElement && !(isNameIcon && isInsertSvg)) return;
 
         try {
-console.log(modelElement);
+
         await new Promise(
           (resolve, reject) =>
             (intervalId = setInterval(

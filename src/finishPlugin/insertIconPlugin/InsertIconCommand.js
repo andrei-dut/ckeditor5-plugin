@@ -1,4 +1,4 @@
-import { Command } from "../ckeditor";
+import { Command } from "../../ckeditor";
 
 export default class InsertIconCommand extends Command {
   refresh() {
@@ -16,7 +16,6 @@ export default class InsertIconCommand extends Command {
     const selection = model.document.selection;
 
     model.change((writer) => {
-      
       const iconElement = writer.createElement("iconSvg", {
         "data-key": iconData.key,
         "data-name": iconData.iconName,

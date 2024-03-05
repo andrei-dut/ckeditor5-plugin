@@ -1,4 +1,4 @@
-import { emitter, findTextTagInSVG } from "./utils";
+import { emitter, findTextTagInSVG } from "../utils";
 
 function addModal(content) {
   var modal = document.createElement("div");

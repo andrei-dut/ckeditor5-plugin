@@ -9,7 +9,7 @@ import {
   spec5,
   circleXXX,
   ra1_temp,
-} from "./icons/insertSymbols";
+} from "../icons/insertSymbols";
 
 export const insertIconList = [
   {

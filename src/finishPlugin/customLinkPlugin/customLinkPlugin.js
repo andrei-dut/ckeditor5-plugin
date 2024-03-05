@@ -1,21 +1,16 @@
 // CustomLinkPlugin.js
-import { linkIcon } from "./icons/insertSymbols";
+import { linkIcon } from "../icons/insertSymbols";
 import {
   ButtonView,
   ContextualBalloon,
   Plugin,
   clickOutsideHandler,
-} from "../ckeditor";
-// import { showModal } from "./roughnessModal";
-// import { emitter, } from "./utils";
-import "./styles/styles.css";
+} from "../../ckeditor";
 import { registerCustomLink } from "./registerCustomLink";
 import InsertCustomLInkCommand from "./InsertCustomLInkCommand";
-import { executeEditorCmd, getSelectedLinkElement } from "./editorUtils";
-import { checkClick } from "./utils";
-import { CustomLinkActionsView } from "./customViews";
-// import { showBaseModal } from "./complexSvgModal";
-// import IconPlugin from "../iconPlugin/IconPlugin";
+import { executeEditorCmd, getSelectedLinkElement } from "../editorUtils";
+import { checkClick } from "../utils";
+import { CustomLinkActionsView } from "../customViews";
 
 export class CustomLinkPlugin extends Plugin {
   static get pluginName() {

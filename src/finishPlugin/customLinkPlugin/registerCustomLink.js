@@ -1,6 +1,6 @@
 // import { cloneElem } from "./utils";
 
-import { ensureSafeUrl } from "./utils";
+import { ensureSafeUrl } from "../utils";
 
 
 function createLinkElement(href, { writer }) {

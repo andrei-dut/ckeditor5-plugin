@@ -1,4 +1,4 @@
-import { emitter, findTextTagInSVG } from "./utils";
+import { emitter, findTextTagInSVG } from "../utils";
 
 import {
   ra1_temp,
@@ -23,7 +23,7 @@ import {
   ra3_4,
   ra3_5,
   ra3_6,
-} from "./icons/insertSymbols";
+} from "../icons/insertSymbols";
 
 const ra_All = {
   ra1_1,
@@ -54,7 +54,7 @@ function addModal(content) {
   closeButton.innerHTML = "&times;";
   modalContent.innerHTML = content;
 
-  modalContent.className = 'modal-roughness-wrap-content';
+  modalContent.className = "modal-roughness-wrap-content";
 
   // Стили модального окна
   modal.id = "modalRoughness";
