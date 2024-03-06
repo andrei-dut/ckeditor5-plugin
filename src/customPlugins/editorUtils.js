@@ -156,8 +156,16 @@ export function getSelectedLinkElement(customPropName, nodeIsName) {
     return position.getAncestors().find((ancestor) => isCustomLinkElement(ancestor));
   }
 
+  function isWidget(node) {
+    if (!node.is("element")) {
+      return false;
+    }
+
+    return !!node.getCustomProperty("widget");
+  }
+
   // The selection is collapsed or some widget is selected (especially inline widget).
-  if (selection.isCollapsed || selectedElement) {
+  if (selection.isCollapsed || (selectedElement && isWidget(selectedElement))) {
     return findLinkElementAncestor(selection.getFirstPosition());
   } else {
     // The range for fully selected link is usually anchored in adjacent text nodes.
@@ -169,7 +177,6 @@ export function getSelectedLinkElement(customPropName, nodeIsName) {
     if (!startLink || startLink != endLink) {
       return null;
     }
-
     // Check if the link element is fully selected.
     if (view.createRangeIn(startLink).getTrimmed().isEqual(range)) {
       return startLink;
@@ -177,4 +184,30 @@ export function getSelectedLinkElement(customPropName, nodeIsName) {
       return null;
     }
   }
+}
+
+function _findBound(position, attributeName, value, lookBack, model) {
+  // Get node before or after position (depends on `lookBack` flag).
+  // When position is inside text node then start searching from text node.
+  let node =
+    position.textNode ||
+    (lookBack ? position.nodeBefore : position.nodeAfter);
+
+  let lastNode = null;
+
+  while (node && node.getAttribute(attributeName) == value) {
+    lastNode = node;
+    node = lookBack ? node.previousSibling : node.nextSibling;
+  }
+
+  return lastNode
+    ? model.createPositionAt(lastNode, lookBack ? "before" : "after")
+    : position;
+}
+
+export function findAttributeRange(position, attributeName, value, model) {
+  return model.createRange(
+    _findBound(position, attributeName, value, true, model),
+    _findBound(position, attributeName, value, false, model)
+  );
 }

@@ -1,4 +1,5 @@
 import { Command } from "../../ckeditor";
+import { findAttributeRange } from "../editorUtils";
 
 function objectToMap(obj) {
   const map = new Map();
@@ -11,7 +12,7 @@ function objectToMap(obj) {
 }
 
 function toMap(data) {
-    return objectToMap(data);
+  return objectToMap(data);
 }
 
 export default class InsertCustomLInkCommand extends Command {
@@ -34,25 +35,29 @@ export default class InsertCustomLInkCommand extends Command {
         const position = selection.getFirstPosition();
         const attributes = toMap(selection.getAttributes());
 
-        attributes.set("customLink", href);
+        if (selection.hasAttribute("customLink")) {
+          const position = selection.getFirstPosition();
+          const linkRange = findAttributeRange(
+            position,
+            "customLink",
+            selection.getAttribute("customLink"),
+            model
+          );
 
-        const { end: positionAfter } = model.insertContent(
-          writer.createText(text, attributes),
-          position
-        );
+          writer.setAttribute("customLink", href, linkRange);
+          writer.remove(linkRange);
+          attributes.set("customLink", href);
+          writer.insertText(text, attributes, linkRange.start)
+        } else {
+          attributes.set("customLink", href);
 
-        // Put the selection at the end of the inserted link.
-        // Using end of range returned from insertContent in case nodes with the same attributes got merged.
-        writer.setSelection(positionAfter);
+          const { end: positionAfter } = model.insertContent(
+            writer.createText(text, attributes),
+            position
+          );
 
-
-
-        // const position = selection.getFirstPosition();
-        // const link = writer.createElement("customLink", { href, text });
-        // console.log("link", link);
-        // writer.insertText(text, link);
-
-        // writer.insert(link, position);
+          writer.setSelection(positionAfter);
+        }
       });
     }
   }

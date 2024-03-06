@@ -66,6 +66,10 @@ Editor.create(document.querySelector("#editor"), {})
         console.log("onNavLink", value);
       }
 
+      if (eventType === "editSelectedLink") {
+        console.log("editSelectedLink", value);
+      }
+
       if (eventType === "insert") {
         console.log("insert", value);
       }

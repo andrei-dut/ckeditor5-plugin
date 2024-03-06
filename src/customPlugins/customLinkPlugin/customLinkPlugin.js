@@ -8,9 +8,10 @@ import {
 } from "../../ckeditor";
 import { registerCustomLink } from "./registerCustomLink";
 import InsertCustomLInkCommand from "./InsertCustomLInkCommand";
-import { getSelectedLinkElement } from "../editorUtils";
+import { executeEditorCmd, findAttributeRange, getSelectedLinkElement } from "../editorUtils";
 import { checkClick } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
+import { MouseObserver } from "../customObservers";
 
 export class CustomLinkPlugin extends Plugin {
   static get pluginName() {
@@ -34,6 +35,8 @@ export class CustomLinkPlugin extends Plugin {
     // Attach lifecycle actions to the the balloon.
     this._enableUserBalloonInteractions();
 
+    this._enableClickingAfterLink();
+
     registerCustomLink(editor);
 
     this.listenTo(editor.editing.view.document, "click", () => {
@@ -43,6 +46,7 @@ export class CustomLinkPlugin extends Plugin {
           "customLink",
           "attributeElement"
         );
+        console.log("customLink", customLink);
         if (customLink) {
           this._addActionsView();
         }
@@ -61,22 +65,97 @@ export class CustomLinkPlugin extends Plugin {
       button.isToggleable = true;
 
       this.listenTo(button, "execute", () => {
-        // executeEditorCmd(editor, "insertCustomLink", {
-        //   href: "href",
-        //   text: "text text",
-        // });
-        editor.fire('customLinkEvent', {eventType: 'openModal'})
+        executeEditorCmd(editor, "insertCustomLink", {
+          href: "href",
+          text: "text text",
+        });
+        // editor.fire('customLinkEvent', {eventType: 'openModal'})
       });
 
       return button;
     });
   }
 
+  _enableClickingAfterLink() {
+    const editor = this.editor;
+    const model = editor.model;
+
+    function removeLinkAttributesFromSelection(writer, linkAttributes) {
+      writer.removeSelectionAttribute("customLink");
+
+      for (const attribute of linkAttributes) {
+        writer.removeSelectionAttribute(attribute);
+      }
+    }
+
+    function getLinkAttributesAllowedOnText(schema) {
+      const textAttributes = schema.getDefinition("$text").allowAttributes;
+
+      return textAttributes.filter((attribute) =>
+        attribute.startsWith("link")
+      );
+    }
+
+    editor.editing.view.addObserver(MouseObserver);
+
+    let clicked = false;
+
+    // Detect the click.
+    this.listenTo(editor.editing.view.document, "mousedown", () => {
+      clicked = true;
+    });
+
+    // When the selection has changed...
+    this.listenTo(
+      editor.editing.view.document,
+      "selectionChange",
+      () => {
+        if (!clicked) {
+          return;
+        }
+
+        // ...and it was caused by the click...
+        clicked = false;
+
+        const selection = model.document.selection;
+
+        // ...and no text is selected...
+        if (!selection.isCollapsed) {
+          return;
+        }
+
+        // ...and clicked text is the link...
+        if (!selection.hasAttribute("customLink")) {
+          return;
+        }
+
+        const position = selection.getFirstPosition();
+        const linkRange = findAttributeRange(
+          position,
+          "customLink",
+          selection.getAttribute("customLink"),
+          model
+        );
+
+        if (
+          position.isTouching(linkRange.start) ||
+          position.isTouching(linkRange.end)
+        ) {
+          model.change((writer) => {
+            removeLinkAttributesFromSelection(
+              writer,
+              getLinkAttributesAllowedOnText(model.schema)
+            );
+          });
+        }
+      }
+    );
+  }
+
   _addActionsView() {
     if (this._areActionsInPanel) {
       return;
     }
-    console.log(this);
     this._balloon.add({
       view: this.actionsView,
       position: this._getBalloonPositionData(),
@@ -106,10 +185,6 @@ export class CustomLinkPlugin extends Plugin {
 
       target = view.domConverter.viewRangeToDom(newRange);
     } else {
-      // Make sure the target is calculated on demand at the last moment because a cached DOM range
-      // (which is very fragile) can desynchronize with the state of the editing view if there was
-      // any rendering done in the meantime. This can happen, for instance, when an inline widget
-      // gets unlinked.
       target = () => {
         const targetLink = getSelectedLinkElement.call(
           this,
@@ -131,8 +206,7 @@ export class CustomLinkPlugin extends Plugin {
   }
 
   _hideUI() {
-    console.log(this);
-    console.log(this._areActionsInPanel);
+
     if (!this._areActionsInPanel) {
       return;
     }
@@ -173,7 +247,8 @@ export class CustomLinkPlugin extends Plugin {
 
     // Execute unlink command after clicking on the "Edit" button.
     this.listenTo(actionsView, "edit", () => {
-      this._addFormView();
+      editor.fire("customLinkEvent", { eventType: "editSelectedLink" });
+      this._hideUI();
     });
 
     this.listenTo(actionsView, "clickedPreviewLink", () => {
