@@ -8,7 +8,7 @@ import {
 } from "../../ckeditor";
 import { registerCustomLink } from "./registerCustomLink";
 import InsertCustomLInkCommand from "./InsertCustomLInkCommand";
-import { getSelectedLinkElement } from "../editorUtils";
+import { executeEditorCmd, getSelectedLinkElement } from "../editorUtils";
 import { checkClick } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
 
@@ -61,10 +61,10 @@ export class CustomLinkPlugin extends Plugin {
       button.isToggleable = true;
 
       this.listenTo(button, "execute", () => {
-        // executeEditorCmd(editor, "insertCustomLink", {
-        //   href: "href",
-        //   text: "text text",
-        // });
+        executeEditorCmd(editor, "insertCustomLink", {
+          href: "href",
+          text: "text text",
+        });
         editor.fire('customLinkEvent', {eventType: 'openModal'})
       });
 
@@ -162,7 +162,7 @@ export class CustomLinkPlugin extends Plugin {
 
   _createActionsView() {
     const editor = this.editor;
-    const actionsView = new CustomLinkActionsView(editor.locale);
+    const actionsView = new CustomLinkActionsView(editor.locale, editor);
     const linkCommand = editor.commands.get("insertCustomLink");
     const unlinkCommand = editor.commands.get("unlink");
     const LINK_KEYSTROKE = "Ctrl+K";
@@ -174,6 +174,11 @@ export class CustomLinkPlugin extends Plugin {
     // Execute unlink command after clicking on the "Edit" button.
     this.listenTo(actionsView, "edit", () => {
       this._addFormView();
+    });
+
+    this.listenTo(actionsView, "clickedPreviewLink", () => {
+      editor.fire("customLinkEvent", { eventType: "onNavLink" });
+      this._hideUI();
     });
 
     // Execute unlink command after clicking on the "Unlink" button.

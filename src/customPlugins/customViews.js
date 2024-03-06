@@ -7,13 +7,14 @@ import {
   ViewCollection,
 } from "../ckeditor";
 import { pencilIcon, unlinkIcon } from "./icons/insertSymbols";
-import { ensureSafeUrl } from "./utils";
 
 export class CustomLinkActionsView extends View {
-  constructor(locale) {
-    super(locale);
+  constructor(locale, editor) {
+    super(locale, editor);
 
     const t = locale.t;
+
+    this.editor = editor;
 
     this.focusTracker = new FocusTracker();
 
@@ -125,12 +126,19 @@ export class CustomLinkActionsView extends View {
     button.extendTemplate({
       attributes: {
         class: ["ck", "ck-link-actions__preview"],
-        href: bind.to("href", (href) =>  href && ensureSafeUrl(href)
-        ),
-        target: "_blank",
+        // href: bind.to("href", (href) => href && ensureSafeUrl(href)),
+        // target: "_blank",
         rel: "noopener noreferrer",
       },
+      on: {
+        click: bind.to('clickedPreviewLink'),
+        // click: bind.to(() => {
+        //   this.editor
+        // }),
+      },
     });
+
+    // editor.fire('customLinkEvent', {eventType: 'openModal'})
 
     button.bind("label").to(this, "href", (href) => {
       return href || t("This link has no URL");
@@ -138,8 +146,8 @@ export class CustomLinkActionsView extends View {
 
     button.bind("isEnabled").to(this, "href", (href) => !!href);
 
-    button.template.tag = "a";
-    button.template.eventListeners = {};
+    button.template.tag = "div";
+    // button.template.eventListeners = {};
 
     return button;
   }

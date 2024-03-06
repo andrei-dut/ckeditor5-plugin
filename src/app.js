@@ -1,4 +1,3 @@
-
 import { ClassicEditor } from "./ckeditor";
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
@@ -37,7 +36,7 @@ class Editor extends ClassicEditor {
         "ImageUpload",
         "link",
         "iconPickerButton",
-        "customLink"
+        "customLink",
       ],
     },
     language: "ru",
@@ -47,39 +46,42 @@ class Editor extends ClassicEditor {
 Editor.builtinPlugins.push(IconPickerPlugin);
 Editor.builtinPlugins.push(CustomLinkPlugin);
 
-
 // delete selected content editor.model.deleteContent(modelSelect)
-
 
 Editor.create(document.querySelector("#editor"), {})
   .then((editor) => {
     console.log("Editor was initialized", editor);
     console.log("doc", editor.model.document);
 
-
     editor.model.document.on("change:data", () => {
       // console.log("data");
     });
 
     editor.on("customLinkEvent", (e, currentData) => {
-      
+      console.log("call_customLinkEvent");
 
-      const {eventType, value} = currentData || {};
+      const { eventType, value } = currentData || {};
 
-      if(eventType === 'insert') {
+      if (eventType === "onNavLink") {
+        console.log("onNavLink", value);
+      }
+
+      if (eventType === "insert") {
         console.log("insert", value);
       }
 
-      if(eventType === "update") {
+      if (eventType === "update") {
         console.log("update", value);
       }
-      if(eventType === "openModal") {
+      if (eventType === "openModal") {
         console.log("openModal", value);
       }
 
-
-
       // const currentData = _.find(arg)
+    });
+
+    editor.on("clicked", (e, currentData) => {
+      console.log("clicked", e, currentData);
     });
     editor.editing.view.document.on("blur", (...arg) => {
       console.log("foc", arg);
