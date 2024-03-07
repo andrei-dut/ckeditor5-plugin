@@ -50,6 +50,22 @@ Editor.builtinPlugins.push(CustomLinkPlugin);
 
 Editor.create(document.querySelector("#editor"), {})
   .then((editor) => {
+
+
+
+    const liObjects = {
+      1: { number: 1, content: "Mix flour, baking powder, sugar, and salt." },
+      2: { number: 2, content: "In another bowl, mix eggs, milk, and oil." },
+      3: { number: 3, content: "Stir <span>both mixtures</span> together." },
+      4: { number: 4, content: "Fill muffin tray 3/4 full." },
+      5: { number: 5, content: "Bake for 20 minutes." }
+    };
+    
+    const _htmlContent = createHtmlFromLiObjects(liObjects);
+
+    editor.setData(_htmlContent)
+
+
     console.log("Editor was initialized", editor);
     console.log("doc", editor.model.document);
 
@@ -94,3 +110,82 @@ Editor.create(document.querySelector("#editor"), {})
   .catch((error) => {
     console.error(error.stack);
   });
+
+  export function parseLiTags(htmlContent) {
+    const tempElement = document.createElement('div');
+    tempElement.innerHTML = htmlContent;
+  
+    const olElement = tempElement.querySelector('ol');
+  
+    if (!olElement) {
+      return {};
+    }
+
+    const liObjects = {};
+  
+    const liTags = olElement.children;
+
+    for (const child of liTags) {
+      if (child.tagName && child.tagName.toLowerCase() === 'li') {
+        const liNumber = Object.keys(liObjects).length + 1;
+        const liContent = child.innerHTML;
+        liObjects[liNumber] = {
+          number: liNumber,
+          content: liContent
+        };
+      }
+    }
+  
+    return liObjects;
+}
+  
+  const htmlContent = `
+  <ol>
+  dfgdfg
+  <p>fi343</p>
+  <li>first item</li>
+  <li>
+    second item
+    <ol>
+      <li>second item first subitem</li>
+      <li>second item second subitem</li>
+      <li>second item third subitem</li>
+    </ol>
+  </li>
+  <li>third item</li>
+</ol>
+  `;
+  
+  const parsedLiTags = parseLiTags(htmlContent);
+  console.log(parsedLiTags);
+
+
+  function createHtmlFromLiObjects(liObjectsOrArray) {
+    let htmlContent = '<ol>';
+    if (Array.isArray(liObjectsOrArray)) {
+        liObjectsOrArray.forEach(content => {
+            htmlContent += `<li>${content}</li>`;
+        });
+    } else {
+        for (const key in liObjectsOrArray) {
+            const liObject = liObjectsOrArray[key];
+            htmlContent += `<li>${liObject.content}</li>`;
+        }
+    }
+    htmlContent += '</ol>';
+    return htmlContent;
+  }
+  
+  const liObjects = {
+    1: { number: 1, content: "Mix flour, baking powder, sugar, and salt." },
+    2: { number: 2, content: "In another bowl, mix eggs, milk, and oil." },
+    3: { number: 3, content: "Stir <p>both mixtures</p> together." },
+    4: { number: 4, content: "Fill muffin tray 3/4 full." },
+    5: { number: 5, content: "Bake for 20 minutes." }
+  };
+  
+  const _htmlContent = createHtmlFromLiObjects(liObjects);
+  const __htmlContent = createHtmlFromLiObjects(['a', 'b', 'c']);
+  console.log(_htmlContent);
+  console.log(__htmlContent);
+  
