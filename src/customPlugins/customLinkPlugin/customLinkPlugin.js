@@ -8,7 +8,11 @@ import {
 } from "../../ckeditor";
 import { registerCustomLink } from "./registerCustomLink";
 import InsertCustomLInkCommand from "./InsertCustomLInkCommand";
-import { executeEditorCmd, findAttributeRange, getSelectedLinkElement } from "../editorUtils";
+import {
+  executeEditorCmd,
+  findAttributeRange,
+  getSelectedLinkElement,
+} from "../editorUtils";
 import { checkClick } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
 import { MouseObserver } from "../customObservers";
@@ -65,11 +69,11 @@ export class CustomLinkPlugin extends Plugin {
       button.isToggleable = true;
 
       this.listenTo(button, "execute", () => {
-        executeEditorCmd(editor, "insertCustomLink", {
-          href: "href",
-          text: "text text",
-        });
-        // editor.fire('customLinkEvent', {eventType: 'openModal'})
+        // executeEditorCmd(editor, "insertCustomLink", {
+        //   href: "href",
+        //   text: "text text",
+        // });
+        editor.fire('customLinkEvent', {eventType: 'openModal'})
       });
 
       return button;
@@ -91,9 +95,7 @@ export class CustomLinkPlugin extends Plugin {
     function getLinkAttributesAllowedOnText(schema) {
       const textAttributes = schema.getDefinition("$text").allowAttributes;
 
-      return textAttributes.filter((attribute) =>
-        attribute.startsWith("link")
-      );
+      return textAttributes.filter((attribute) => attribute.startsWith("link"));
     }
 
     editor.editing.view.addObserver(MouseObserver);
@@ -106,50 +108,46 @@ export class CustomLinkPlugin extends Plugin {
     });
 
     // When the selection has changed...
-    this.listenTo(
-      editor.editing.view.document,
-      "selectionChange",
-      () => {
-        if (!clicked) {
-          return;
-        }
-
-        // ...and it was caused by the click...
-        clicked = false;
-
-        const selection = model.document.selection;
-
-        // ...and no text is selected...
-        if (!selection.isCollapsed) {
-          return;
-        }
-
-        // ...and clicked text is the link...
-        if (!selection.hasAttribute("customLink")) {
-          return;
-        }
-
-        const position = selection.getFirstPosition();
-        const linkRange = findAttributeRange(
-          position,
-          "customLink",
-          selection.getAttribute("customLink"),
-          model
-        );
-
-        if (
-          position.isTouching(linkRange.start) ||
-          position.isTouching(linkRange.end)
-        ) {
-          model.change((writer) => {
-            removeLinkAttributesFromSelection(
-              writer,
-              getLinkAttributesAllowedOnText(model.schema)
-            );
-          });
-        }
+    this.listenTo(editor.editing.view.document, "selectionChange", () => {
+      if (!clicked) {
+        return;
       }
-    );
+
+      // ...and it was caused by the click...
+      clicked = false;
+
+      const selection = model.document.selection;
+
+      // ...and no text is selected...
+      if (!selection.isCollapsed) {
+        return;
+      }
+
+      // ...and clicked text is the link...
+      if (!selection.hasAttribute("customLink")) {
+        return;
+      }
+
+      const position = selection.getFirstPosition();
+      const linkRange = findAttributeRange(
+        position,
+        "customLink",
+        selection.getAttribute("customLink"),
+        model
+      );
+
+      if (
+        position.isTouching(linkRange.start) ||
+        position.isTouching(linkRange.end)
+      ) {
+        model.change((writer) => {
+          removeLinkAttributesFromSelection(
+            writer,
+            getLinkAttributesAllowedOnText(model.schema)
+          );
+        });
+      }
+    });
   }
 
   _addActionsView() {
@@ -206,7 +204,6 @@ export class CustomLinkPlugin extends Plugin {
   }
 
   _hideUI() {
-
     if (!this._areActionsInPanel) {
       return;
     }
@@ -225,7 +222,6 @@ export class CustomLinkPlugin extends Plugin {
   }
 
   _enableUserBalloonInteractions() {
-
     clickOutsideHandler({
       emitter: this.actionsView,
       activator: () => this._areActionsInPanel,
@@ -258,7 +254,10 @@ export class CustomLinkPlugin extends Plugin {
 
     // Execute unlink command after clicking on the "Unlink" button.
     this.listenTo(actionsView, "unlink", () => {
-      editor.execute("unlink");
+      editor.fire("customLinkEvent", { eventType: "removeSelectedLink" });
+      executeEditorCmd(editor, "insertCustomLink", {
+        isRemoveLink: true
+      });
       this._hideUI();
     });
 

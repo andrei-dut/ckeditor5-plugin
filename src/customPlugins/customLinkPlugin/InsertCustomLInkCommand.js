@@ -24,11 +24,11 @@ export default class InsertCustomLInkCommand extends Command {
   }
 
   execute(linkData = {}) {
-    const { href, text } = linkData;
+    const { href = '', text = '', isRemoveLink } = linkData;
     const model = this.editor.model;
     const selection = model.document.selection;
 
-    if (href) {
+    if (href || isRemoveLink) {
       model.deleteContent(selection);
 
       model.change((writer) => {
@@ -46,6 +46,7 @@ export default class InsertCustomLInkCommand extends Command {
 
           writer.setAttribute("customLink", href, linkRange);
           writer.remove(linkRange);
+          if(isRemoveLink) return;
           attributes.set("customLink", href);
           writer.insertText(text, attributes, linkRange.start)
         } else {
