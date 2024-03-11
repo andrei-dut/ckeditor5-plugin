@@ -23,7 +23,7 @@ export function findParent(element, parentName) {
 export function executeEditorCmd(editor, cmdName, arg) {
   const indentCommand = editor ? editor.commands.get(cmdName) : null;
   if(indentCommand?.execute) {
-      indentCommand.execute(arg);
+          indentCommand.execute(arg);
   }
 }
 
@@ -210,4 +210,97 @@ export function findAttributeRange(position, attributeName, value, model) {
     _findBound(position, attributeName, value, true, model),
     _findBound(position, attributeName, value, false, model)
   );
+}
+
+export function viewToPlainText(viewItem) {
+  let text = "";
+  const smallPaddingElements = ["figcaption", "li"];
+
+  if (viewItem.is("$text") || viewItem.is("$textProxy")) {
+    // If item is `Text` or `TextProxy` simple take its text data.
+    text = viewItem.data;
+  } else if (
+    viewItem.is("element", "img") &&
+    viewItem.hasAttribute("alt")
+  ) {
+    // Special case for images - use alt attribute if it is provided.
+    text = viewItem.getAttribute("alt");
+  } else if (viewItem.is("element", "br")) {
+    // A soft break should be converted into a single line break (#8045).
+    text = "\n";
+  } else {
+    // Other elements are document fragments, attribute elements or container elements.
+    // They don't have their own text value, so convert their children.
+    let prev = null;
+
+    for (const child of viewItem.getChildren()) {
+      const childText = viewToPlainText(child);
+
+      // Separate container element children with one or more new-line characters.
+      if (
+        prev &&
+        (prev.is("containerElement") || child.is("containerElement"))
+      ) {
+        if (
+          smallPaddingElements.includes(prev.name) ||
+          smallPaddingElements.includes(child.name)
+        ) {
+          text += "\n";
+        } else {
+          text += "\n\n";
+        }
+      }
+
+      text += childText;
+      prev = child;
+    }
+  }
+
+  return text;
+}
+
+export function normalizeClipboardData(data) {
+  return (
+    data
+      .replace(
+        /<span(?: class="Apple-converted-space"|)>(\s+)<\/span>/g,
+        (fullMatch, spaces) => {
+          // Handle the most popular and problematic case when even a single space becomes an nbsp;.
+          // Decode those to normal spaces. Read more in https://github.com/ckeditor/ckeditor5-clipboard/issues/2.
+          if (spaces.length == 1) {
+            return " ";
+          }
+
+          return spaces;
+        }
+      )
+      // Remove all HTML comments.
+      .replace(/<!--[\s\S]*?-->/g, "")
+  );
+}
+
+export  function plainTextToHtml(text) {
+  text = text
+    // Encode <>.
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    // Creates a paragraph for each double line break.
+    .replace(/\r?\n\r?\n/g, "</p><p>")
+    // Creates a line break for each single line break.
+    .replace(/\r?\n/g, "<br>")
+    // Preserve trailing spaces (only the first and last one – the rest is handled below).
+    .replace(/^\s/, "&nbsp;")
+    .replace(/\s$/, "&nbsp;")
+    // Preserve other subsequent spaces now.
+    .replace(/\s\s/g, " &nbsp;");
+
+  if (text.includes("</p><p>") || text.includes("<br>")) {
+    // If we created paragraphs above, add the trailing ones.
+    text = `<p>${text}</p>`;
+  }
+
+  // TODO:
+  // * What about '\nfoo' vs ' foo'?
+
+  return text;
 }

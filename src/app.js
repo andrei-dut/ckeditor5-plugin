@@ -1,4 +1,5 @@
 import { ClassicEditor } from "./ckeditor";
+import { CopyCutPastePlugin } from "./customPlugins/copyCutPastePlugin/copyCutPastePlugin";
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 
@@ -45,11 +46,13 @@ class Editor extends ClassicEditor {
 
 Editor.builtinPlugins.push(IconPickerPlugin);
 Editor.builtinPlugins.push(CustomLinkPlugin);
+Editor.builtinPlugins.push(CopyCutPastePlugin);
 
 // delete selected content editor.model.deleteContent(modelSelect)
 
 Editor.create(document.querySelector("#editor"), {})
   .then((editor) => {
+
     const liObjects = {
       1: { number: 1, content: "Mix flour, baking powder, sugar, and salt." },
       2: { number: 2, content: "In another bowl, mix eggs, milk, and oil." },
@@ -69,12 +72,12 @@ Editor.create(document.querySelector("#editor"), {})
       // console.log("data");
     });
 
-    editor.editing.view.document.on("selectionChange", (e, data) => {
-      const model = editor.model;
-      const selection = model.document.selection;
-      console.log("datselectionChangea", selection, data, e);
-      window.selec = selection;
-    });
+    // editor.editing.view.document.on("selectionChange", (e, data) => {
+    //   const model = editor.model;
+    //   const selection = model.document.selection;
+    //   console.log("datselectionChangea", selection, data, e);
+    //   window.selec = selection;
+    // });
 
     editor.on("customLinkEvent", (e, currentData) => {
       console.log("call_customLinkEvent");
@@ -97,72 +100,12 @@ Editor.create(document.querySelector("#editor"), {})
         console.log("update", value);
       }
 
-      function copyTextToClipboard(text) {
-
-        const type = "text/plain";
-        const blob = new Blob([text], { type });
-        const data = [new ClipboardItem({ [type]: blob })];
-
-        navigator.clipboard
-          .write(data)
-          .then(() => {
-            console.log("Текст скопирован в буфер обмена");
-          })
-          .catch((err) => {
-            console.error("Не удалось скопировать текст: ", err);
-          });
-      }
 
       if (eventType === "openModal") {
-        const model = editor.model;
-
-        try {
-          var successful = document.execCommand("paste", false, '123');
-          var msg = successful
-            ? "Успешно скопировано в буфер обмена"
-            : "Не удалось скопировать в буфер обмена";
-          console.log(msg);
-
-          const result = document.execCommand('paste')
-          console.log('document.execCommand result: ', result);
-
-          const viewDocument = editor.editing.view.document;
-
-          const dataController = editor.data;
-          const content = editor.data.toView(
-            editor.model.getSelectedContent(modelDocument.selection)
-          );
-
-          viewDocument.fire("clipboardOutput", {
-            dataTransfer: data.dataTransfer,
-            content,
-            method: 'paste',
-          });
-
-
-
-          // Пример использования
-          // copyTextToClipboard("Текст для копирования");
-        } catch (err) {
-          console.error("Ошибка при копировании текста: ", err);
-        }
 
         console.log(editor.commands.get("undo"));
 
-        model.change((writer) => {
-          const content = editor.data.toView(
-            editor.model.getSelectedContent(window.selec)
-          );
 
-          console.log(content);
-          console.log(editor.data.htmlProcessor.toData(content));
-
-          // console.log(window.selec.getRanges());
-          // console.log(window.selec._ranges);
-          // writer.remove(window.selec._selection._ranges[0]);
-
-          // editor.model.deleteContent(window.selec);
-        });
         console.log("openModal", value);
       }
 
