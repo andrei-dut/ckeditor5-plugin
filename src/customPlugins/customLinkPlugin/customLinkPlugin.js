@@ -15,7 +15,6 @@ import {
 } from "../editorUtils";
 import { checkClick } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
-import { MouseObserver } from "../customObservers";
 
 export class CustomLinkPlugin extends Plugin {
   static get pluginName() {
@@ -69,7 +68,13 @@ export class CustomLinkPlugin extends Plugin {
       button.isToggleable = true;
 
       this.listenTo(button, "execute", () => {
+        // editor.set('isReadOnly', true)
         editor.fire('customLinkEvent', {eventType: 'openModal'})
+        // console.log(editor.getData());
+        // executeEditorCmd(editor, "insertCustomLink", {
+        //   href: `123`,
+        //   text: `123`,
+        // });
       });
 
       return button;
@@ -94,7 +99,7 @@ export class CustomLinkPlugin extends Plugin {
       return textAttributes.filter((attribute) => attribute.startsWith("link"));
     }
 
-    editor.editing.view.addObserver(MouseObserver);
+    // editor.editing.view.addObserver(MouseObserver);
 
     let clicked = false;
 
