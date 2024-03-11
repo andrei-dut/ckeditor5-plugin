@@ -28,6 +28,7 @@ export default class InsertCustomLInkCommand extends Command {
     const model = this.editor.model;
     const selection = model.document.selection;
 
+
     if (href || isRemoveLink) {
       model.deleteContent(selection);
 
