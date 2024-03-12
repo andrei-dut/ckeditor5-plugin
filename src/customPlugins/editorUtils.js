@@ -22,8 +22,8 @@ export function findParent(element, parentName) {
 
 export function executeEditorCmd(editor, cmdName, arg) {
   const indentCommand = editor ? editor.commands.get(cmdName) : null;
-  if(indentCommand?.execute) {
-          indentCommand.execute(arg);
+  if (indentCommand?.execute) {
+    indentCommand.execute(arg);
   }
 }
 
@@ -82,15 +82,26 @@ export function moveListItemInParent(source, direction, editor) {
       const lastChild = getLastChildOl(selectLi);
       const lastChildModel = viewToModelElem(editor, lastChild);
 
-      if ((isUpDirection && previousSiblingModel) || (!isUpDirection && nextSiblingModel)) {
+      if (
+        (isUpDirection && previousSiblingModel) ||
+        (!isUpDirection && nextSiblingModel)
+      ) {
         editor.editing.model.change((writer) => {
           const range = writer.createRangeOn(selectLiModel);
-          const rangeNextSibling = nextSiblingModel ? writer.createRangeOn(nextSiblingModel) : null;
-          const rangeLastChild = lastChildModel ? writer.createRangeOn(lastChildModel) : null;
+          const rangeNextSibling = nextSiblingModel
+            ? writer.createRangeOn(nextSiblingModel)
+            : null;
+          const rangeLastChild = lastChildModel
+            ? writer.createRangeOn(lastChildModel)
+            : null;
 
           const fullRange = writer.createRange(
             range.start,
-            rangeNextSibling ? rangeNextSibling.start : rangeLastChild ? rangeLastChild.end : range.end
+            rangeNextSibling
+              ? rangeNextSibling.start
+              : rangeLastChild
+              ? rangeLastChild.end
+              : range.end
           );
 
           // const position = writer.createPositionAt(nextSiblingModel, 'after'); // can be used instead of the element
@@ -149,11 +160,16 @@ export function getSelectedLinkElement(customPropName, nodeIsName) {
   const selectedElement = selection.getSelectedElement();
 
   function isCustomLinkElement(node) {
-    return node.is(nodeIsName || "containerElement") && !!node.getCustomProperty(customPropName);
+    return (
+      node.is(nodeIsName || "containerElement") &&
+      !!node.getCustomProperty(customPropName)
+    );
   }
-  
+
   function findLinkElementAncestor(position) {
-    return position.getAncestors().find((ancestor) => isCustomLinkElement(ancestor));
+    return position
+      .getAncestors()
+      .find((ancestor) => isCustomLinkElement(ancestor));
   }
 
   function isWidget(node) {
@@ -190,8 +206,7 @@ function _findBound(position, attributeName, value, lookBack, model) {
   // Get node before or after position (depends on `lookBack` flag).
   // When position is inside text node then start searching from text node.
   let node =
-    position.textNode ||
-    (lookBack ? position.nodeBefore : position.nodeAfter);
+    position.textNode || (lookBack ? position.nodeBefore : position.nodeAfter);
 
   let lastNode = null;
 
@@ -212,17 +227,96 @@ export function findAttributeRange(position, attributeName, value, model) {
   );
 }
 
+function attributesToString(attributes) {
+  let result = "";
+  for (const key in attributes) {
+    // Добавляем каждый ключ и его значение к результату
+    result += `${key}="${attributes[key]}" `;
+  }
+  // Обрезаем лишний пробел в конце строки
+  result = result.trim();
+  return result;
+}
+
+function getAttributesElem(elem) {
+  if (elem?.getAttributes) {
+    const attributes = {};
+
+    for (const item of elem.getAttributes()) {
+      const value = item || [];
+      attributes[`${value[0]}`] = value[1];
+    }
+
+    // const attrsString = attributesToString(attributes);
+    console.log("getAttributesElem", attributes);
+    return attributes;
+  }
+}
+
+function getChildrenElem(elem) {
+  if (elem?.getChildren) {
+    return elem.getChildren();
+  }
+}
+
+function objectToHTML(elem) {
+  if (!elem) return null;
+
+  const selfClosingTags = [
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
+  ];
+  if (elem.is("$text") || elem.is("$textProxy")) return elem.data;
+
+  let html = `<${elem.name}`;
+
+  const attrs = getAttributesElem(elem);
+  if (attrs) {
+    html += ` ${attributesToString(attrs)}`;
+  }
+  html += ">";
+
+  const children = getChildrenElem(elem);
+
+  if (children) {
+      for (const child of children) {
+        html += objectToHTML(child);
+      }
+  }
+  html += `</${elem.name}>`;
+  return html;
+}
+
 export function viewToPlainText(viewItem) {
+  // getAttributesElem(viewItem);
+const svgString = objectToHTML(viewItem)
+  console.log("objectToHTML",svgString );
+
+  const svgElement = document.createElement('div');
+svgElement.innerHTML = svgString.trim(); // Используем .trim(), чтобы удалить начальные и конечные пробелы
+
+// Вставляем элемент SVG в body
+document.body.appendChild(svgElement.firstChild);
+
   let text = "";
   const smallPaddingElements = ["figcaption", "li"];
 
   if (viewItem.is("$text") || viewItem.is("$textProxy")) {
     // If item is `Text` or `TextProxy` simple take its text data.
     text = viewItem.data;
-  } else if (
-    viewItem.is("element", "img") &&
-    viewItem.hasAttribute("alt")
-  ) {
+  } else if (viewItem.is("element", "img") && viewItem.hasAttribute("alt")) {
     // Special case for images - use alt attribute if it is provided.
     text = viewItem.getAttribute("alt");
   } else if (viewItem.is("element", "br")) {
@@ -234,7 +328,8 @@ export function viewToPlainText(viewItem) {
     let prev = null;
 
     for (const child of viewItem.getChildren()) {
-      const childText = viewToPlainText(child);
+      // console.log(child);
+      // const childText = viewToPlainText(child);
 
       // Separate container element children with one or more new-line characters.
       if (
@@ -251,7 +346,7 @@ export function viewToPlainText(viewItem) {
         }
       }
 
-      text += childText;
+      // text += childText;
       prev = child;
     }
   }
@@ -279,7 +374,7 @@ export function normalizeClipboardData(data) {
   );
 }
 
-export  function plainTextToHtml(text) {
+export function plainTextToHtml(text) {
   text = text
     // Encode <>.
     .replace(/</g, "&lt;")

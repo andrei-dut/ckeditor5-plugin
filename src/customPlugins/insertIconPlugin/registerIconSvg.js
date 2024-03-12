@@ -1,4 +1,5 @@
 import { toWidget } from "../../ckeditor";
+import { viewToPlainText } from "../editorUtils";
 import { cloneElem, createViewSvg } from "../utils";
 
 export function registerIconSvg(editor) {
@@ -15,10 +16,21 @@ export function registerIconSvg(editor) {
   console.log(elementName, editor.model.schema.isRegistered(elementName));
 
   editor.conversion.for("upcast").elementToElement({
-    model: elementName,
+    model: (viewImage, { writer }) => {
+      console.log("upcast",viewImage);
+      // console.log("upcast22",editor.data.htmlProcessor.toData(viewImage));
+
+      console.log("upcast22",viewToPlainText(viewImage));
+
+    // writer.createElement("imageBlock", {
+    //   src: viewImage.getAttribute("src"),
+    // });
+    },
     view: {
-      name: "span",
-      classes: "ck-svg-widget",
+      name: "svg",
+      attributes: {
+        viewBox: true
+      }
     },
   });
 
