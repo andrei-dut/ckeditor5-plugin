@@ -6,6 +6,10 @@
   font-size: inherit;
 }
 
+.ck.ck-editor__editable .image, .ck.ck-editor__editable .image-inline {
+  width: 80px;
+}
+
 .toolbar-insert-symbol .ck.ck-reset.ck-dropdown__panel {
   max-width: 114px;
 }

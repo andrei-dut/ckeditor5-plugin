@@ -96,7 +96,8 @@ function addModal(content) {
   if (saveBtn) {
     saveBtn.onclick = function () {
       const svgElement = document.querySelector("#wrapSvg svg");
-      if (svgElement?.outerHTML) emitter.emit("insertIcon", svgElement);
+      if (svgElement?.outerHTML)
+        emitter.emit("insertIcon", svgElement);
       modal.remove();
     };
   }
@@ -174,6 +175,7 @@ function addModal(content) {
 }
 
 const changePreviewSvg = (selectedRaID) => {
+  console.log(12121212);
   const wrapPreviewElem = document.querySelector(".content-1-wrap-preview");
   const dropdownValue = document.querySelector(".dropdown-designation-value");
   const processingMethod = document.querySelector("#processingMethod");
@@ -342,7 +344,7 @@ export const showModal = () =>
         <span id="ra3" class="wrap-symbol-svg">${ra3_temp}</span>
       </div>
       <div class="processing-method">
-        <label for="name">Способ обработки:</label>
+        <label for="processingMethod">Способ обработки:</label>
         <input type="text" id="processingMethod" name="processing-method" required minlength="1" maxlength="12" size="10" />
       </div>
       <div class="roughness-parameters">

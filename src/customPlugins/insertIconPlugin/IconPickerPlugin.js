@@ -9,8 +9,6 @@ import {
 import { showModal } from "./roughnessModal";
 import { emitter } from "../utils";
 import InsertIconCommand from "./InsertIconCommand";
-import { registerIconSvg } from "./registerIconSvg";
-import { insertContentEvent } from "./insertContentEvent";
 import "../styles/styles.css";
 import { insertIconList } from "./iconLists";
 import { showBaseModal } from "./complexSvgModal";
@@ -25,13 +23,7 @@ export class IconPickerPlugin extends Plugin {
   init() {
     const editor = this.editor;
 
-    registerIconSvg(editor);
-    insertContentEvent.call(this, editor);
-
     editor.commands.add("insertIcon", new InsertIconCommand(editor));
-
-    console.log(editor);
-
     editor.ui.componentFactory.add("iconPickerButton", (locale) => {
       const buttons = insertIconList.map((icon) => {
         const listItem = new ButtonView();
@@ -41,24 +33,12 @@ export class IconPickerPlugin extends Plugin {
           icon: icon.icon,
         });
 
-        function insertIconFc(svgEl, isSimpleSymbol) {
+        function insertIconFc(svgEl) {
           const insertIconCmd = editor.commands.get("insertIcon");
 
           if (insertIconCmd) {
-            insertIconCmd.execute(
-              isSimpleSymbol
-                ? {
-                    key: "simpleSymbol",
-                    iconName: icon.iconName,
-                    icon: icon.icon,
-                  }
-                : {
-                    key: isSimpleSymbol
-                      ? "simpleSymbol"
-                      : icon.isComplexSymbol
-                      ? "complexSymbol"
-                      : "roughnessSymbol",
-                    iconName: icon.iconName,
+            insertIconCmd.execute({
+
                     icon: svgEl,
                   }
             );
@@ -73,7 +53,7 @@ export class IconPickerPlugin extends Plugin {
           } else if (icon.isComplexSymbol) {
             showBaseModal(icon.icon);
           } else {
-            insertIconFc(icon.icon, true);
+            insertIconFc(icon.icon);
             return;
           }
           emitter.on("insertIcon", insertIconFc);

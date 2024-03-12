@@ -1,4 +1,4 @@
-import { emitter, findTextTagInSVG } from "../utils";
+import { emitter } from "../utils";
 
 function addModal(content) {
   var modal = document.createElement("div");
@@ -44,11 +44,11 @@ function addModal(content) {
   const textElementsSvgTemp =
     wrapSvgTEmpElem.querySelectorAll("text tspan") ||
     wrapSvgTEmpElem.querySelectorAll("text");
-  const numberOfTextElements = textElementsSvgTemp.length;
+  // const numberOfTextElements = textElementsSvgTemp.length;
   const baseModalContent2 = modalContent.querySelector(
     ".complexSvgModal-content-2"
   );
-  console.log(numberOfTextElements);
+  // console.log(numberOfTextElements);
 
   textElementsSvgTemp?.forEach(function (textElement) {
     // Создаем новый элемент input
@@ -69,27 +69,16 @@ function addModal(content) {
     baseModalContent2.appendChild(inputElement);
   });
 
-  const parametr__input1 = modalContent.querySelector("#parametr__input");
   const saveBtn = modalContent.querySelector("#saveBtn");
 
   if (saveBtn) {
     saveBtn.onclick = function () {
       const svgElement = wrapSvgTEmpElem.querySelector("svg");
-      if (svgElement?.outerHTML) emitter.emit("insertIcon", svgElement);
+      if (svgElement?.outerHTML) emitter.emit("insertIcon", svgElement?.outerHTML);
       modal.remove();
     };
   }
 
-  if (parametr__input1) {
-    parametr__input1.addEventListener("input", function () {
-      const newText = this.value;
-      const svgElement = document.querySelector("#wrapSvg svg");
-      const targetTextElement = findTextTagInSVG(svgElement, "x1");
-      if (targetTextElement) {
-        targetTextElement.textContent = newText;
-      }
-    });
-  }
 
   modalContent.appendChild(closeButton);
   modal.appendChild(modalContent);

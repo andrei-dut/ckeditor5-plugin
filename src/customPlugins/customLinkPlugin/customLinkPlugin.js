@@ -70,7 +70,7 @@ export class CustomLinkPlugin extends Plugin {
       this.listenTo(button, "execute", () => {
         // editor.set('isReadOnly', true)
         editor.fire('customLinkEvent', {eventType: 'openModal'})
-        // console.log(editor.getData());
+        console.log(editor.getData());
         // executeEditorCmd(editor, "insertCustomLink", {
         //   href: `123`,
         //   text: `123`,

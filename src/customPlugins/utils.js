@@ -2,6 +2,44 @@ import EventEmitter from "./eventEmmitery";
 
 export const emitter = new EventEmitter();
 
+export function convertBase64ToSvg(base64String) {
+  // Ищем подстроку, которая начинается с "base64," и берем только часть после нее
+  const base64Data = base64String.split(",")[1];
+
+  // Декодируем строку base64 в обычный текст
+  const svgString = atob(base64Data);
+
+  return svgString;
+}
+
+export function convertSvgToBase64(svgString) {
+  // Создаем новый объект Blob из переданной строки SVG
+  if (!svgString) {
+    return Promise.reject(new Error("Передана пустая строка SVG"));
+  }
+
+  const blob = new Blob([svgString], { type: "image/svg+xml" });
+
+  // Создаем объект FileReader для чтения данных из Blob
+  const reader = new FileReader();
+
+  // Создаем промис, который будет возвращен из этой функции
+  return new Promise((resolve, reject) => {
+    reader.onload = function () {
+      // Когда FileReader завершит чтение, мы получим base64 изображения
+      resolve(reader.result);
+    };
+
+    reader.onerror = function (error) {
+      // Если возникла ошибка, отклоняем промис с ошибкой
+      reject(error);
+    };
+
+    // Читаем данные из Blob как base64
+    reader.readAsDataURL(blob);
+  });
+}
+
 export function parseSvg(svgString) {
   const parser = new DOMParser();
   const xmlDoc = parser.parseFromString(`${svgString}`, "image/svg+xml");
@@ -22,6 +60,8 @@ export function parseSvg(svgString) {
 }
 
 export function getAttsAndContentFromElDom(element) {
+  if (!element) return {};
+
   const attributesObject = element.attributes;
 
   const attributes = {};
@@ -37,6 +77,7 @@ export function getAttsAndContentFromElDom(element) {
 export function createViewSvg(modelElement, { writer }) {
   const key = modelElement.getAttribute("data-key");
   const isSimpleSymbol = key === "simpleSymbol";
+  console.log("createViewSvg", modelElement, key);
   const svgObj = isSimpleSymbol
     ? parseSvg(modelElement.getAttribute("data-icon"))
     : getAttsAndContentFromElDom(modelElement.getAttribute("data-icon")) || {};
@@ -133,7 +174,6 @@ let lastClickTime = 0;
 let clickTimeout;
 
 export function checkClick(cb) {
-
   const currentTime = new Date().getTime();
 
   if (currentTime - lastClickTime > 250) {
@@ -143,14 +183,13 @@ export function checkClick(cb) {
   }
 
   lastClickTime = currentTime;
-} 
+}
 
 const SAFE_URL =
-/^(?:(?:https?|ftps?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.:-]|$))/i;
+  /^(?:(?:https?|ftps?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.:-]|$))/i;
 
 const ATTRIBUTE_WHITESPACES =
-/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205f\u3000]/g; // eslint-disable-line no-control-regex
-
+  /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205f\u3000]/g; // eslint-disable-line no-control-regex
 
 function isSafeUrl(url) {
   const normalizedUrl = url.replace(ATTRIBUTE_WHITESPACES, "");
