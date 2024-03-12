@@ -333,7 +333,7 @@ export const showModal = () =>
     <div class="roughness-content-1">
       <div class="content-1-wrap-preview"><span id="wrapSvg">${ra1_1}</span></div>
       <div class="content-1-wrap-manual-svg">
-      <span>${ra_manual}</span>
+      <span style="width: 240px;">${ra_manual}</span>
       </div>
     </div>
     <div class="roughness-content-2">

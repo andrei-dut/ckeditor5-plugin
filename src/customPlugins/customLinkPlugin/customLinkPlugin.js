@@ -68,13 +68,9 @@ export class CustomLinkPlugin extends Plugin {
       button.isToggleable = true;
 
       this.listenTo(button, "execute", () => {
-        // editor.set('isReadOnly', true)
+
         editor.fire('customLinkEvent', {eventType: 'openModal'})
-        console.log(editor.getData());
-        // executeEditorCmd(editor, "insertCustomLink", {
-        //   href: `123`,
-        //   text: `123`,
-        // });
+
       });
 
       return button;

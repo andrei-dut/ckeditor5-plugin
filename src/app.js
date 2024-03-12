@@ -1,22 +1,25 @@
 import { ClassicEditor } from "./ckeditor";
 import { CopyCutPastePlugin } from "./customPlugins/copyCutPastePlugin/copyCutPastePlugin";
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
-import { ra_manual, testImage, testIage2 } from "./customPlugins/icons/insertSymbols";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
-import { convertSvgToBase64 } from "./customPlugins/utils";
 
+// Ваша обычная HTML разметка
+const htmlString = `
+<div>
+    <p>This is a paragraph.</p>
+    <div>This is another div.</div>
+</div>`;
 
-convertSvgToBase64(ra_manual)
-  .then(base64String => {
-      // Вставляем base64 строку в тег img
-      const imgElement = document.createElement('img');
-      imgElement.src = base64String;
-      console.log(imgElement)
-      document.body.appendChild(imgElement);
-  })
-  .catch(error => {
-      console.error('Ошибка:', error);
-  });
+// Преобразование HTML в строку base64
+const base64String = btoa(htmlString);
+
+// Создание элемента img
+const img = new Image();
+img.src = `data:image/html;base64,${base64String}`;
+
+// Вставка элемента img в документ
+document.body.appendChild(img);
+
 
 
 class Editor extends ClassicEditor {
@@ -62,7 +65,7 @@ class Editor extends ClassicEditor {
 
 Editor.builtinPlugins.push(IconPickerPlugin);
 Editor.builtinPlugins.push(CustomLinkPlugin);
-// Editor.builtinPlugins.push(CopyCutPastePlugin);
+Editor.builtinPlugins.push(CopyCutPastePlugin);
 
 // delete selected content editor.model.deleteContent(modelSelect)
 
@@ -71,9 +74,9 @@ Editor.create(document.querySelector("#editor"), {})
     const liObjects = {
       1: {
         number: 1,
-        content: `Mix flour, ${ra_manual}baking powder, sugar,${testIage2} and salt.`,
+        content: `Mix flour, baking powder, sugar, and salt.`,
       },
-      2: { number: 2, content: `In another ${testImage} bowl, mix eggs, milk, and oil.` },
+      2: { number: 2, content: `In another bowl, mix eggs, milk, and oil.` },
       3: { number: 3, content: "Stir <span>both mixtures</span> together." },
       4: { number: 4, content: "Fill muffin tray 3/4 full." },
       5: { number: 5, content: "Bake for 20 minutes." },
@@ -82,8 +85,7 @@ Editor.create(document.querySelector("#editor"), {})
     const _htmlContent = createHtmlFromLiObjects(liObjects);
 
     editor.setData(
-      _htmlContent +
-        " " + `<figure class="image image_resized" style="width:34.66%;">${testImage}</figure>` + "  " 
+      _htmlContent
     );
 
     console.log("Editor was initialized", editor);
