@@ -15,14 +15,17 @@ export default class InsertIconCommand extends Command {
     const model = this.editor.model;
     const selection = model.document.selection;
 
+   
     model.change((writer) => {
       const iconElement = writer.createElement("iconSvg", {
         "data-key": iconData.key,
         "data-name": iconData.iconName,
         "data-icon": iconData.icon,
       });
+
       console.log(iconElement, selection, writer);
       model.insertContent(iconElement, selection);
+      return iconElement
     });
   }
 }

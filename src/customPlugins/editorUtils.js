@@ -167,6 +167,8 @@ export function getSelectedLinkElement(customPropName, nodeIsName) {
   }
 
   function findLinkElementAncestor(position) {
+    console.log(position
+      .getAncestors());
     return position
       .getAncestors()
       .find((ancestor) => isCustomLinkElement(ancestor));
@@ -179,7 +181,9 @@ export function getSelectedLinkElement(customPropName, nodeIsName) {
 
     return !!node.getCustomProperty("widget");
   }
-
+  console.log(selection.getFirstPosition())
+  console.log(findLinkElementAncestor(selection.getFirstPosition()))
+  console.log(this.editor.editing.mapper.toModelElement(selection.getFirstPosition().parent.parent))
   // The selection is collapsed or some widget is selected (especially inline widget).
   if (selection.isCollapsed || (selectedElement && isWidget(selectedElement))) {
     return findLinkElementAncestor(selection.getFirstPosition());
@@ -187,6 +191,7 @@ export function getSelectedLinkElement(customPropName, nodeIsName) {
     // The range for fully selected link is usually anchored in adjacent text nodes.
     // Trim it to get closer to the actual link element.
     const range = selection.getFirstRange().getTrimmed();
+
     const startLink = findLinkElementAncestor(range.start);
     const endLink = findLinkElementAncestor(range.end);
 
@@ -302,13 +307,9 @@ function objectToHTML(elem) {
 export function viewToPlainText(viewItem) {
   // getAttributesElem(viewItem);
 const svgString = objectToHTML(viewItem)
-  console.log("objectToHTML",svgString );
+  // console.log("objectToHTML",svgString );
 
-  const svgElement = document.createElement('div');
-svgElement.innerHTML = svgString.trim(); // Используем .trim(), чтобы удалить начальные и конечные пробелы
 
-// Вставляем элемент SVG в body
-document.body.appendChild(svgElement.firstChild);
 
   let text = "";
   const smallPaddingElements = ["figcaption", "li"];

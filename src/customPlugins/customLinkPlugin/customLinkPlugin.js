@@ -42,12 +42,13 @@ export class CustomLinkPlugin extends Plugin {
 
     registerCustomLink(editor);
 
-    this.listenTo(editor.editing.view.document, "click", () => {
+    this.listenTo(editor.editing.view.document, "click", (...args) => {
+      console.log(args);
       checkClick(() => {
         const customLink = getSelectedLinkElement.call(
           this,
-          "customLink",
-          "attributeElement"
+          "widget",
+          "containerElement"
         );
         console.log("customLink", customLink);
         if (customLink) {

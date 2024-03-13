@@ -62,6 +62,18 @@ export const insertIconList = [
     iconName: "spec5",
   },
   {
+    label: "spec6",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+    <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    text-anchor="start">dfg sdf END <tspan>not</tspan></text>
+    <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    text-anchor="start">SSSS</text>
+    <rect x="15" y="15" width="70" height="70" stroke="black" stroke-width="3" fill="blue" />
+  </svg>`,
+    iconName: "spec6",
+  },
+  {
     label: "circleXXX",
     icon: circleXXX,
     iconName: "circleXXX",
