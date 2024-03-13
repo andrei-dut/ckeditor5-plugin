@@ -73,7 +73,7 @@ Editor.create(document.querySelector("#editor"), {})
       },
       2: { number: 2, content: "In another bowl, mix eggs, milk, and oil." },
       3: { number: 3, content: "Stir <span>both mixtures</span> together." },
-      4: { number: 4, content: "Fill muffin tray 3/4 full." },
+      4: { number: 4, content: `Fill <a id="id_A" href="123">123</a> muffin tray 3/4 full.` },
       5: { number: 5, content: "Bake for 20 minutes." },
     };
 
@@ -81,7 +81,7 @@ Editor.create(document.querySelector("#editor"), {})
 
     editor.setData(_htmlContent + " " + ` ${insertSymbol}`);
 
-    console.log("Editor was initialized", editor);
+    console.log("Editor was initialized", editor.getData());
     console.log("doc", editor.model.document);
 
     editor.model.document.on("change:data", () => {
@@ -206,30 +206,30 @@ function createHtmlFromLiObjects(liObjectsOrArray) {
   let htmlContent = "<ol>";
   if (Array.isArray(liObjectsOrArray)) {
     liObjectsOrArray.forEach((content) => {
-      htmlContent += `<li>${content}</li>`;
+      htmlContent += `<li id="id_LI" data-comment="Comment" class="asd">${content}</li>`;
     });
   } else {
     for (const key in liObjectsOrArray) {
       const liObject = liObjectsOrArray[key];
-      htmlContent += `<li>${liObject.content}</li>`;
+      htmlContent += `<li id="id_LI" data-comment="Comment" class="asd">${liObject.content}</li>`;
     }
   }
   htmlContent += "</ol>";
   return htmlContent;
 }
 
-const liObjects = {
-  1: { number: 1, content: "Mix flour, baking powder, sugar, and salt." },
-  2: { number: 2, content: "In another bowl, mix eggs, milk, and oil." },
-  3: { number: 3, content: "Stir <p>both mixtures</p> together." },
-  4: { number: 4, content: "Fill muffin tray 3/4 full." },
-  5: { number: 5, content: "Bake for 20 minutes." },
-};
+// const liObjects = {
+//   1: { number: 1, content: "Mix flour, baking powder, sugar, and salt." },
+//   2: { number: 2, content: "In another bowl, mix eggs, milk, and oil." },
+//   3: { number: 3, content: "Stir <p>both mixtures</p> together." },
+//   4: { number: 4, content: `Fill <a href="123">123</a> muffin tray 3/4 full.` },
+//   5: { number: 5, content: "Bake for 20 minutes." },
+// };
 
-const _htmlContent = createHtmlFromLiObjects(liObjects);
-const __htmlContent = createHtmlFromLiObjects(["a", "b", "c"]);
-console.log(_htmlContent);
-console.log(__htmlContent);
+// const _htmlContent = createHtmlFromLiObjects(liObjects);
+// const __htmlContent = createHtmlFromLiObjects(["a", "b", "c"]);
+// console.log(_htmlContent);
+// console.log(__htmlContent);
 
 // {name: 'svg',
 // attrs: {color: 'red'}

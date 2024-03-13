@@ -11,6 +11,7 @@ import InsertCustomLInkCommand from "./InsertCustomLInkCommand";
 import {
   executeEditorCmd,
   findAttributeRange,
+  getSelectedElementByName,
   getSelectedLinkElement,
 } from "../editorUtils";
 import { checkClick } from "../utils";
@@ -47,9 +48,15 @@ export class CustomLinkPlugin extends Plugin {
       checkClick(() => {
         const customLink = getSelectedLinkElement.call(
           this,
-          "widget",
+          "customLink",
+          "attributeElement"
+        );
+        const findElem = getSelectedElementByName.call(
+          this,
+          "li",
           "containerElement"
         );
+        console.log("findElem", findElem);
         console.log("customLink", customLink);
         if (customLink) {
           this._addActionsView();
@@ -70,12 +77,12 @@ export class CustomLinkPlugin extends Plugin {
 
       this.listenTo(button, "execute", () => {
         // editor.set('isReadOnly', true)
-        editor.fire('customLinkEvent', {eventType: 'openModal'})
+        // editor.fire('customLinkEvent', {eventType: 'openModal'})
         console.log(editor.getData());
-        // executeEditorCmd(editor, "insertCustomLink", {
-        //   href: `123`,
-        //   text: `123`,
-        // });
+        executeEditorCmd(editor, "insertCustomLink", {
+          href: `123`,
+          text: `123`,
+        });
       });
 
       return button;

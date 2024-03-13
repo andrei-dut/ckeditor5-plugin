@@ -17,36 +17,64 @@ export function registerIconSvg(editor) {
 
   editor.conversion.for("upcast").elementToElement({
     model: (viewImage, { writer }) => {
-      console.log("upcast", viewImage);
-      // console.log("upcast22",editor.data.htmlProcessor.toData(viewImage));
-
-      const svgElement = document.createElement("div");
-      svgElement.innerHTML =
-        `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-      <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-      text-anchor="start">dfg sdf END <tspan>not</tspan></text>
-      <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-      text-anchor="start">SSSS</text>
-      <rect x="15" y="15" width="70" height="70" stroke="black" stroke-width="3" fill="blue" />
-    </svg>`.trim(); // Используем .trim(), чтобы удалить начальные и конечные пробелы
-
-      // Вставляем элемент SVG в body
-      document.body.appendChild(svgElement.firstChild);
-
-      // console.log("upcast22",viewToPlainText());
-
-      // writer.createElement("imageBlock", {
-      //   src: viewImage.getAttribute("src"),
-      // });
+      viewImage._setCustomProperty('li', true)
+      console.log("upcast_LI", viewImage);
+      return viewImage
     },
     view: {
-      name: "svg",
+      name: "li",
       attributes: {
-        viewBox: true,
+        id: true,
+      },
+    },
+    converterPriority: 'high'
+  });
+
+  editor.conversion.for("upcast").elementToElement({
+    model: (viewImage, { writer }) => {
+      console.log("upcast_A", viewImage);
+    },
+    view: {
+      name: "a",
+      attributes: {
+        id: true,
+        href: true,
       },
     },
   });
+
+  // editor.conversion.for("upcast").elementToElement({
+  //   model: (viewImage, { writer }) => {
+  //     console.log("upcast", viewImage);
+  //     // console.log("upcast22",editor.data.htmlProcessor.toData(viewImage));
+
+  //   //   const svgElement = document.createElement("div");
+  //   //   svgElement.innerHTML =
+  //   //     `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
+  //   //   <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+  //   //   <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+  //   //   text-anchor="start">dfg sdf END <tspan>not</tspan></text>
+  //   //   <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+  //   //   text-anchor="start">SSSS</text>
+  //   //   <rect x="15" y="15" width="70" height="70" stroke="black" stroke-width="3" fill="blue" />
+  //   // </svg>`.trim(); // Используем .trim(), чтобы удалить начальные и конечные пробелы
+
+  //   //   // Вставляем элемент SVG в body
+  //   //   document.body.appendChild(svgElement.firstChild);
+
+  //     // console.log("upcast22",viewToPlainText());
+
+  //     // writer.createElement("imageBlock", {
+  //     //   src: viewImage.getAttribute("src"),
+  //     // });
+  //   },
+  //   view: {
+  //     name: "svg",
+  //     attributes: {
+  //       viewBox: true,
+  //     },
+  //   },
+  // });
 
   editor.conversion
     .for("editingDowncast")
