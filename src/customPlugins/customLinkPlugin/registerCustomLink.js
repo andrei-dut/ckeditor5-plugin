@@ -5,7 +5,12 @@ import { ensureSafeUrl } from "../utils";
 
 function createLinkElement(data, { writer }) {
   console.log("createLinkElement",data, { writer });
-  const {href, text} = Boolean(data) ? data : {};
+  let href;
+  let text;
+  if(data) {
+    if(data.href) href = data.href;
+    if(data.text) text = data.text;
+  }
   const linkElement = writer.createAttributeElement(
     "a",
     { href, "data-text":  text},
