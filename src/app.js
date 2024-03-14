@@ -85,7 +85,11 @@ Editor.create(document.querySelector("#editor"), {})
 
     const _htmlContent = createHtmlFromLiObjects(liObjects);
 
-    editor.setData(_htmlContent);
+    setTimeout(() => {
+      editor.setData(_htmlContent);
+    }, 3000);
+
+
 
     console.log("Editor was initialized", editor);
     console.log("doc", editor.model.document);

@@ -2,7 +2,8 @@
 
 import { ensureSafeUrl } from "../utils";
 
-function createLinkElement({href, text} = {}, { writer }) {
+function createLinkElement(data, { writer }) {
+  const {href, text} = data || {};
   const linkElement = writer.createAttributeElement(
     "a",
     { href, "data-text":  text},
@@ -26,6 +27,7 @@ export function registerCustomLink(editor) {
   editor.conversion.for("editingDowncast").attributeToElement({
     model: "customLink",
     view: (data, conversionApi) => {
+      console.log(data);
       const { href, text } = data || {};
       return createLinkElement(
         { href: ensureSafeUrl(href), text },
