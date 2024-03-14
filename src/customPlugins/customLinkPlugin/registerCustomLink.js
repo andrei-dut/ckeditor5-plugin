@@ -1,9 +1,11 @@
+/* eslint-disable no-extra-boolean-cast */
 // import { cloneElem } from "./utils";
 
 import { ensureSafeUrl } from "../utils";
 
 function createLinkElement(data, { writer }) {
-  const {href, text} = data || {};
+  console.log("createLinkElement",data, { writer });
+  const {href, text} = Boolean(data) ? data : {};
   const linkElement = writer.createAttributeElement(
     "a",
     { href, "data-text":  text},
