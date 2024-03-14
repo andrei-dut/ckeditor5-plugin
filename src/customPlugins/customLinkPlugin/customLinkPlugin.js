@@ -11,6 +11,7 @@ import InsertCustomLInkCommand from "./InsertCustomLInkCommand";
 import {
   executeEditorCmd,
   findAttributeRange,
+  findParent,
   getSelectedLinkElement,
 } from "../editorUtils";
 import { checkClick } from "../utils";
@@ -49,9 +50,19 @@ export class CustomLinkPlugin extends Plugin {
           "customLink",
           "attributeElement"
         );
+        const view = editor.editing.view;
+        const selection = view.document.selection;
+        const findLiElem = findParent(selection.anchor, "li");
+
+        console.log("findElem", findLiElem);
         console.log("customLink", customLink);
+
         if (customLink) {
           this._addActionsView();
+        }
+
+        if (findLiElem) {
+          editor.fire('selectionLiElem', { value: findLiElem } )
         }
         // openLinkInNewWindow(customLink);
       });
@@ -68,9 +79,7 @@ export class CustomLinkPlugin extends Plugin {
       button.isToggleable = true;
 
       this.listenTo(button, "execute", () => {
-
-        editor.fire('customLinkEvent', {eventType: 'openModal'})
-
+        editor.fire("customLinkEvent", { eventType: "openModal" });
       });
 
       return button;
@@ -253,7 +262,7 @@ export class CustomLinkPlugin extends Plugin {
     this.listenTo(actionsView, "unlink", () => {
       editor.fire("customLinkEvent", { eventType: "removeSelectedLink" });
       executeEditorCmd(editor, "insertCustomLink", {
-        isRemoveLink: true
+        isRemoveLink: true,
       });
       this._hideUI();
     });

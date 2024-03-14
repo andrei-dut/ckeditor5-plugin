@@ -43,5 +43,6 @@ export function registerCustomLink(editor) {
       key: "customLink",
       value: (viewElement) => viewElement.getAttribute("href"),
     },
+    converterPriority: 'high'
   });
 }

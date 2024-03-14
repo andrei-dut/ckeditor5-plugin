@@ -20,8 +20,6 @@ img.src = `data:image/html;base64,${base64String}`;
 // Вставка элемента img в документ
 document.body.appendChild(img);
 
-
-
 class Editor extends ClassicEditor {
   static addPlugin(plugin) {
     if (!this.builtinPlugins.includes(plugin)) {
@@ -78,15 +76,16 @@ Editor.create(document.querySelector("#editor"), {})
       },
       2: { number: 2, content: `In another bowl, mix eggs, milk, and oil.` },
       3: { number: 3, content: "Stir <span>both mixtures</span> together." },
-      4: { number: 4, content: "Fill muffin tray 3/4 full." },
+      4: {
+        number: 4,
+        content: "Fill <a href='123'>123</a> muffin tray 3/4 full.",
+      },
       5: { number: 5, content: "Bake for 20 minutes." },
     };
 
     const _htmlContent = createHtmlFromLiObjects(liObjects);
 
-    editor.setData(
-      _htmlContent
-    );
+    editor.setData(_htmlContent);
 
     console.log("Editor was initialized", editor);
     console.log("doc", editor.model.document);
@@ -101,6 +100,10 @@ Editor.create(document.querySelector("#editor"), {})
     //   console.log("datselectionChangea", selection, data, e);
     //   window.selec = selection;
     // });
+
+    editor.on("selectionLiElem", (e, currentData) => {
+      console.log("selectionLiElem", currentData);
+    });
 
     editor.on("customLinkEvent", (e, currentData) => {
       console.log("call_customLinkEvent");

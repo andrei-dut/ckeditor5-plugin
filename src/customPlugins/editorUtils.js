@@ -123,14 +123,14 @@ export function removeListItemInParent(source, editor) {
 
 export function addListItemInParent(source, editor) {
   const anchor = source?.anchor;
-  if (anchor) {
+  if (anchor &&  editor) { 
     setTimeout(() => {
       const selectLi = findParent(source.anchor, "li");
       if (!selectLi) return;
       editor.editing.model.change((writer) => {
         const selectLiModel = editor.editing.mapper.toModelElement(selectLi);
         const cloneElem = writer.cloneElement(selectLiModel, false);
-        console.log("cloneElem", cloneElem);
+
         writer.insert(cloneElem, selectLiModel, "after");
 
         // Getting the insertion position
