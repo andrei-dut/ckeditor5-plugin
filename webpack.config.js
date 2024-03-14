@@ -6,7 +6,6 @@
 "use strict";
 
 const path = require("path");
-const { styles } = require("@ckeditor/ckeditor5-dev-utils");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -39,12 +38,6 @@ module.exports = {
           {
             loader: "postcss-loader",
             options: {
-              postcssOptions: styles.getPostCssConfig({
-                themeImporter: {
-                  themePath: require.resolve("@ckeditor/ckeditor5-theme-lark"),
-                },
-                minify: true,
-              }),
             },
           },
         ],
