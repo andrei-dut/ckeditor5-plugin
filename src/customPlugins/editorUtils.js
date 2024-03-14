@@ -141,7 +141,9 @@ export function addListItemInParent(source, editor) {
       editor.editing.model.change((writer) => {
         const selectLiModel = editor.editing.mapper.toModelElement(selectLi);
         const cloneElem = writer.cloneElement(selectLiModel, false);
-        console.log("cloneElem", cloneElem);
+        console.log("cloneElem", cloneElem, writer);
+        writer.setAttribute("data-custom_comment", '', cloneElem);
+
         writer.insert(cloneElem, selectLiModel, "after");
 
         // Getting the insertion position
@@ -151,67 +153,6 @@ export function addListItemInParent(source, editor) {
       });
     });
     editor?.editing?.view?.focus();
-  }
-}
-
-
-
-export function getSelectedElementByName(customPropName, nodeIsName) {
-  const editor = this.editor;
-  const view = this.editor.editing.view;
-  const selection = view.document.selection;
-  const selectedElement = selection.getSelectedElement();
-
-  function isCustomElement(node) {
-    console.log(node);
-    const modelNode = editor.editing.mapper.toModelElement(node)
-    console.log(modelNode);
-    console.log(modelNode?.is?.('element', "listItem"));
-    console.log(modelNode?.getCustomProperty?.('xer'));
-    return (
-      node.is(nodeIsName || "containerElement") &&
-      !!node.getCustomProperty(customPropName)
-    );
-  }
-
-  function findElementAncestor(position) {
-    console.log(position
-      .getAncestors());
-    return position
-      .getAncestors()
-      .find((ancestor) => isCustomElement(ancestor));
-  }
-
-  function isWidget(node) {
-    if (!node.is("element")) {
-      return false;
-    }
-
-    return !!node.getCustomProperty("widget");
-  }
-  console.log(selection.getFirstPosition())
-  console.log(findElementAncestor(selection.getFirstPosition()))
-  console.log(this.editor.editing.mapper.toModelElement(selection.getFirstPosition().parent.parent))
-  // The selection is collapsed or some widget is selected (especially inline widget).
-  if (selection.isCollapsed || (selectedElement && isWidget(selectedElement))) {
-    return findElementAncestor(selection.getFirstPosition());
-  } else {
-    // The range for fully selected link is usually anchored in adjacent text nodes.
-    // Trim it to get closer to the actual link element.
-    const range = selection.getFirstRange().getTrimmed();
-
-    const start = findElementAncestor(range.start);
-    const endLink = findElementAncestor(range.end);
-
-    if (!start || start != endLink) {
-      return null;
-    }
-    // Check if the link element is fully selected.
-    if (view.createRangeIn(start).getTrimmed().isEqual(range)) {
-      return start;
-    } else {
-      return null;
-    }
   }
 }
 

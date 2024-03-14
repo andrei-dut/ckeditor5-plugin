@@ -1,6 +1,8 @@
 import { toWidget } from "../../ckeditor";
-import { viewToPlainText } from "../editorUtils";
+import { viewToPlainText, viewToModelElem,addListItemInParent } from "../editorUtils";
 import { cloneElem, createViewSvg, injectViewList } from "../utils";
+
+
 
 export function registerIconSvg(editor) {
   const elementName = "iconSvg";
@@ -17,9 +19,9 @@ export function registerIconSvg(editor) {
 
   editor.conversion.for("upcast").elementToElement({
     model: (viewImage, { writer }) => {
-      viewImage._setCustomProperty('li', true)
+      viewImage._setCustomProperty("li", true);
       console.log("upcast_LI", viewImage);
-      return viewImage
+      return viewImage;
     },
     view: {
       name: "li",
@@ -27,7 +29,7 @@ export function registerIconSvg(editor) {
         id: true,
       },
     },
-    converterPriority: 'high'
+    converterPriority: "high",
   });
 
   editor.conversion.for("upcast").elementToElement({
@@ -43,56 +45,73 @@ export function registerIconSvg(editor) {
     },
   });
 
-  // editor.conversion.for("upcast").elementToElement({
-  //   model: (viewImage, { writer }) => {
-  //     console.log("upcast", viewImage);
-  //     // console.log("upcast22",editor.data.htmlProcessor.toData(viewImage));
+  editor.conversion.for("upcast").elementToElement({
+    model: (viewImage, cApi, gf) => {
+      const { writer, mapper } = cApi
+      // console.log(
+      //   "upcast_svg",
+      //   viewImage,
+      //   viewToModelElem(editor, viewImage),
+      //   editor.editing.mapper.toViewElement(viewImage),
+      //   writer,
+      // );
+//       console.log(viewImage, cApi, gf )
+// const el =   writer.createElement( 'iconSvg');
+// mapper.bindElements(el, viewImage);
+      // console.log("upcast22",editor.data.htmlProcessor.toData(viewImage));
+      // const model = editor.model;
+      // const selection = model.document.selection;
 
-  //   //   const svgElement = document.createElement("div");
-  //   //   svgElement.innerHTML =
-  //   //     `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
-  //   //   <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-  //   //   <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-  //   //   text-anchor="start">dfg sdf END <tspan>not</tspan></text>
-  //   //   <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-  //   //   text-anchor="start">SSSS</text>
-  //   //   <rect x="15" y="15" width="70" height="70" stroke="black" stroke-width="3" fill="blue" />
-  //   // </svg>`.trim(); // Используем .trim(), чтобы удалить начальные и конечные пробелы
+      // return el
+      //   const svgElement = document.createElement("div");
+      //   svgElement.innerHTML =
+      //     `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
+      //   <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+      //   <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+      //   text-anchor="start">dfg sdf END <tspan>not</tspan></text>
+      //   <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+      //   text-anchor="start">SSSS</text>
+      //   <rect x="15" y="15" width="70" height="70" stroke="black" stroke-width="3" fill="blue" />
+      // </svg>`.trim(); // Используем .trim(), чтобы удалить начальные и конечные пробелы
 
-  //   //   // Вставляем элемент SVG в body
-  //   //   document.body.appendChild(svgElement.firstChild);
+      //   // Вставляем элемент SVG в body
+      //   document.body.appendChild(svgElement.firstChild);
 
-  //     // console.log("upcast22",viewToPlainText());
+      // console.log("upcast22",viewToPlainText());
 
-  //     // writer.createElement("imageBlock", {
-  //     //   src: viewImage.getAttribute("src"),
-  //     // });
-  //   },
-  //   view: {
-  //     name: "svg",
-  //     attributes: {
-  //       viewBox: true,
-  //     },
-  //   },
-  // });
+      // writer.createElement("imageBlock", {
+      //   src: viewImage.getAttribute("src"),
+      // });
+    },
+    view: {
+      name: "svg",
+      attributes: {
+        viewBox: true,
+      },
+    },
+  });
 
   editor.conversion
     .for("editingDowncast")
     .elementToElement({
       model: elementName,
       view: (modelElement, conversionApi) => {
-        const{ writer, mapper } = conversionApi;
+        const { writer, mapper } = conversionApi;
         console.log("toWidget", writer);
         const widgetElement = writer.createContainerElement("span", {
           class: "ck-svg-widget",
           style: "width: 80px;height: 80px;border: 1px solid gray",
         });
 
-        const svgUIElement = createViewSvg(modelElement, { writer, editor, mapper });
+        const svgUIElement = createViewSvg(modelElement, {
+          writer,
+          editor,
+          mapper,
+        });
         console.log(
           "svgUIElement",
           svgUIElement,
-          editor.editing.mapper.toModelElement(widgetElement),
+          editor.editing.mapper.toModelElement(widgetElement)
         );
         if (svgUIElement) {
           writer.insert(
@@ -133,9 +152,11 @@ export function registerIconSvg(editor) {
     })
     .elementToElement({
       model: elementName,
-      view: (modelElement, { writer }) => {
+      view: (modelElement, conversionApi) => {
         console.log("cloneElem");
-        const svgUIElement = createViewSvg(modelElement, { writer });
+        const { writer, mapper } = conversionApi;
+        const svgUIElement = createViewSvg(modelElement, { writer,       editor,
+          mapper, });
         return cloneElem(writer, svgUIElement);
       },
     })

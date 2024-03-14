@@ -206,12 +206,12 @@ function createHtmlFromLiObjects(liObjectsOrArray) {
   let htmlContent = "<ol>";
   if (Array.isArray(liObjectsOrArray)) {
     liObjectsOrArray.forEach((content) => {
-      htmlContent += `<li id="id_LI" data-comment="Comment" class="asd">${content}</li>`;
+      htmlContent += `<li id="id_LI" data-custom_comment="Comment" class="asd">${content}</li>`;
     });
   } else {
     for (const key in liObjectsOrArray) {
       const liObject = liObjectsOrArray[key];
-      htmlContent += `<li id="id_LI" data-comment="Comment" class="asd">${liObject.content}</li>`;
+      htmlContent += `<li id="id_LI" data-custom_comment="Comment" class="asd">${liObject.content}</li>`;
     }
   }
   htmlContent += "</ol>";

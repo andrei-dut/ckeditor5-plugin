@@ -4,11 +4,11 @@ import { ensureSafeUrl } from "../utils";
 
 
 function createLinkElement(href, { writer }) {
-  // Priority 5 - https://github.com/ckeditor/ckeditor5-link/issues/121.
+
   const linkElement = writer.createAttributeElement(
     "a",
     { href },
-    { priority: 5 }
+    { priority: 6 }
   );
   writer.setCustomProperty("customLink", true, linkElement);
 
@@ -43,5 +43,6 @@ export function registerCustomLink(editor) {
       key: "customLink",
       value: (viewElement) => viewElement.getAttribute("href"),
     },
+    converterPriority: 'high'
   });
 }

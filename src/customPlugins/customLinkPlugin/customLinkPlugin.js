@@ -11,8 +11,9 @@ import InsertCustomLInkCommand from "./InsertCustomLInkCommand";
 import {
   executeEditorCmd,
   findAttributeRange,
-  getSelectedElementByName,
+  findParent,
   getSelectedLinkElement,
+  addListItemInParent,
 } from "../editorUtils";
 import { checkClick } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
@@ -42,21 +43,28 @@ export class CustomLinkPlugin extends Plugin {
     this._enableClickingAfterLink();
 
     registerCustomLink(editor);
+    document.getElementById('addButton').onclick = () => {
+      addListItemInParent(newSelection, editor)
+    }
+    let newSelection
+
+    editor.editing.view.document.selection.on("change", (event) => {
+      newSelection = event.source;
+      // console.log("change_event", event);
+    });
 
     this.listenTo(editor.editing.view.document, "click", (...args) => {
-      console.log(args);
       checkClick(() => {
         const customLink = getSelectedLinkElement.call(
           this,
           "customLink",
           "attributeElement"
         );
-        const findElem = getSelectedElementByName.call(
-          this,
-          "li",
-          "containerElement"
-        );
-        console.log("findElem", findElem);
+        const view = editor.editing.view;
+        const selection = view.document.selection;
+        const findLiElem =   findParent(selection.anchor, "li");
+
+        console.log("findElem", findLiElem);
         console.log("customLink", customLink);
         if (customLink) {
           this._addActionsView();

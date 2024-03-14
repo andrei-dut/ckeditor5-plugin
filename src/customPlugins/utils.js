@@ -350,27 +350,27 @@ function createViewElemByInnerHTML(modelElement, { writer, mapper }) {
 
 export function createViewSvg(modelElement, { writer, editor, mapper }) {
 
-  function registerItem(name) {
-    const shema = editor.model.schema;
-    console.log("isRegistered_name",shema.isRegistered(name));
+  // function registerItem(name) {
+  //   const shema = editor.model.schema;
+  //   console.log("isRegistered_name",shema.isRegistered(name));
 
-    if(!shema.isRegistered(name)) {
-      shema.register(name, {
-        inheritAllFrom: '$block',
-        isObject: true,
-        isInline: true,
-        allowWhere: "$text",
-    });
-    }
+  //   if(!shema.isRegistered(name)) {
+  //     shema.register(name, {
+  //       inheritAllFrom: '$block',
+  //       isObject: true,
+  //       isInline: true,
+  //       allowWhere: "$text",
+  //   });
+  //   }
   
-    console.log("isRegistered",shema.isRegistered(name));
-  }
+  //   console.log("isRegistered",shema.isRegistered(name));
+  // }
 
-  const itemNames = ['svg', 'circle', 'text', 'rect']
+  // const itemNames = ['svg', 'circle', 'text', 'rect']
 
-  itemNames.forEach(name => {
-    registerItem(name)
-  });
+  // itemNames.forEach(name => {
+  //   registerItem(name)
+  // });
 
 //  const test = writer.createContainerElement('span', {style: `width: 60px;height: 30px;display: inline-block;`})
 //  writer.insert(writer.createPositionAt(test, 0), writer.createText('elem'));
@@ -399,6 +399,8 @@ console.log(modelElement);
     }
   );
 }
+
+
 
 export function cloneElem(viewWriter, sourceNode) {
   if (sourceNode.is("text")) {
