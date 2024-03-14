@@ -35,6 +35,7 @@ export class CustomLinkActionsView extends View {
     );
 
     this.set("href");
+    this.set("text");
 
     this._focusables = new ViewCollection();
 
@@ -140,8 +141,8 @@ export class CustomLinkActionsView extends View {
 
     // editor.fire('customLinkEvent', {eventType: 'openModal'})
 
-    button.bind("label").to(this, "href", (href) => {
-      return href || t("This link has no URL");
+    button.bind("label").to(this, "text", (text) => {
+      return text || t("This link has no URL");
     });
 
     button.bind("isEnabled").to(this, "href", (href) => !!href);

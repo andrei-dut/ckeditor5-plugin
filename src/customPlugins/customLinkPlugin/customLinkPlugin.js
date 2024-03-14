@@ -79,7 +79,7 @@ export class CustomLinkPlugin extends Plugin {
       button.isToggleable = true;
 
       this.listenTo(button, "execute", () => {
-        editor.fire("customLinkEvent", { eventType: "openModal" });
+                editor.fire("customLinkEvent", { eventType: "openModal" });
       });
 
       return button;
@@ -244,6 +244,7 @@ export class CustomLinkPlugin extends Plugin {
     const LINK_KEYSTROKE = "Ctrl+K";
 
     actionsView.bind("href").to(linkCommand, "value");
+    actionsView.bind("text").to(linkCommand, "linkLabel");
     // actionsView.editButtonView.bind("isEnabled").to(linkCommand);
     actionsView.unlinkButtonView.bind("isEnabled").to(unlinkCommand);
 
@@ -253,8 +254,10 @@ export class CustomLinkPlugin extends Plugin {
       this._hideUI();
     });
 
-    this.listenTo(actionsView, "clickedPreviewLink", () => {
-      editor.fire("customLinkEvent", { eventType: "onNavLink" });
+    this.listenTo(actionsView, "clickedPreviewLink", (e) => {
+      if (e?.source?.href ) {
+        editor.fire("customLinkEvent", { eventType: "onNavLink", value: e?.source?.href });
+      }
       this._hideUI();
     });
 

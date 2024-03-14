@@ -19,7 +19,9 @@ export default class InsertCustomLInkCommand extends Command {
   refresh() {
     const model = this.editor.model;
     const selection = model.document.selection;
-    this.value = selection.getAttribute("customLink");
+    const { href, text } = selection.getAttribute("customLink") || {};
+    this.value = href;
+    this.set('linkLabel', text)
     this.isEnabled = true;
   }
 
@@ -45,14 +47,14 @@ export default class InsertCustomLInkCommand extends Command {
             model
           );
 
-          writer.setAttribute("customLink", href, linkRange);
+          writer.setAttribute("customLink", {href, text}, linkRange);
           writer.remove(linkRange);
           if(isRemoveLink) return;
-          attributes.set("customLink", href);
+          attributes.set("customLink", {href, text});
           writer.insertText(text, attributes, linkRange.start)
         } else {
-          attributes.set("customLink", href);
 
+          attributes.set("customLink", {href, text});
           const { end: positionAfter } = model.insertContent(
             writer.createText(text, attributes),
             position

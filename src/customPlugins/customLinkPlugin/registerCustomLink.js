@@ -2,9 +2,7 @@
 
 import { ensureSafeUrl } from "../utils";
 
-
-function createLinkElement(href, { writer }) {
-  // Priority 5 - https://github.com/ckeditor/ckeditor5-link/issues/121.
+function createLinkElement({href} = {}, { writer }) {
   const linkElement = writer.createAttributeElement(
     "a",
     { href },
@@ -17,7 +15,7 @@ function createLinkElement(href, { writer }) {
 
 export function registerCustomLink(editor) {
   editor.model.schema.extend("$text", {
-    allowAttributes: "customLink",
+    allowAttributes: ["customLink", "linkLabel"],
   });
 
   editor.conversion.for("dataDowncast").attributeToElement({
@@ -27,8 +25,12 @@ export function registerCustomLink(editor) {
 
   editor.conversion.for("editingDowncast").attributeToElement({
     model: "customLink",
-    view: (href, conversionApi) => {
-      return createLinkElement(ensureSafeUrl(href), conversionApi);
+    view: (data, conversionApi) => {
+      const { href, text } = data || {};
+      return createLinkElement(
+        { href: ensureSafeUrl(href), text },
+        conversionApi
+      );
     },
   });
 
@@ -41,8 +43,13 @@ export function registerCustomLink(editor) {
     },
     model: {
       key: "customLink",
-      value: (viewElement) => viewElement.getAttribute("href"),
+      value: (viewElement) => {
+        const children = viewElement.getChildren();
+        const href = viewElement.getAttribute("href");
+        const text =  children?.find(el => el.data)?.data || href
+        return {href, text};
+      },
     },
-    converterPriority: 'high'
+    converterPriority: "high",
   });
 }
