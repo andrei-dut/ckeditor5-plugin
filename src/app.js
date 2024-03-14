@@ -78,7 +78,7 @@ Editor.create(document.querySelector("#editor"), {})
       3: { number: 3, content: "Stir <span>both mixtures</span> together." },
       4: {
         number: 4,
-        content: "Fill <a href='123'>321</a> muffin tray 3/4 full.",
+        content: "Fill <a data-text='321' href='123'>321</a> muffin tray 3/4 full.",
       },
       5: { number: 5, content: "Bake for 20 minutes." },
     };

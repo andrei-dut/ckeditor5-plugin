@@ -2,10 +2,10 @@
 
 import { ensureSafeUrl } from "../utils";
 
-function createLinkElement({href} = {}, { writer }) {
+function createLinkElement({href, text} = {}, { writer }) {
   const linkElement = writer.createAttributeElement(
     "a",
-    { href },
+    { href, "data-text":  text},
     { priority: 5 }
   );
   writer.setCustomProperty("customLink", true, linkElement);
@@ -46,7 +46,7 @@ export function registerCustomLink(editor) {
       value: (viewElement) => {
         const children = viewElement.getChildren();
         const href = viewElement.getAttribute("href");
-        console.log('children', children);
+        console.log('viewElement', viewElement, children);
         const text =  children?.find?.(el => el.data)?.data || href
         return {href, text};
       },
