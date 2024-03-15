@@ -60,6 +60,10 @@ export function registerCustomLink(editor) {
 
         try {
           console.log('viewElement', viewElement, children, {href, text}, Array.from(children));
+          console.log('viewElement2', children?.find, children?.find?.(el => el.data), children?.find?.(el => el.data)?.data);
+          children?.find?.(el => {
+            console.log('viewElement3', el, el.data);
+            return el.data})
         } catch (error) {
           console.log(error);
         }
