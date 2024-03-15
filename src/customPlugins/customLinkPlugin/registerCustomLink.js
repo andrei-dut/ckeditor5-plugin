@@ -55,8 +55,9 @@ export function registerCustomLink(editor) {
       value: (viewElement) => {
         const children = viewElement.getChildren();
         const href = viewElement.getAttribute("href");
-        console.log('viewElement', viewElement, children);
+        
         const text =  children?.find?.(el => el.data)?.data || href
+        console.log('viewElement', viewElement, children, {href, text});
         return {href, text};
       },
     },
