@@ -63,6 +63,9 @@ export function registerCustomLink(editor) {
           for (const child of children) {
             console.log('viewElement_child', child);
           }
+          for (const child of Array.from(children)) {
+            console.log('viewElement_child2', child);
+          }
           console.log('viewElement2', children?.find, children?.find?.(el => el.data), children?.find?.(el => el.data)?.data);
           children?.find?.(el => {
             console.log('viewElement3', el, el.data);
