@@ -87,7 +87,7 @@ Editor.create(document.querySelector("#editor"), {})
 
     setTimeout(() => {
       editor.setData(_htmlContent);
-    }, 3000);
+    }, 500);
 
 
 

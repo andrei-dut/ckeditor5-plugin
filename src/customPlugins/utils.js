@@ -198,7 +198,7 @@ function isSafeUrl(url) {
 }
 
 export function ensureSafeUrl(url) {
-  url = String(url);
+  url = url ? String(url) : '';
 
   return isSafeUrl(url) ? url : "#";
 }

@@ -4,16 +4,16 @@
 import { ensureSafeUrl } from "../utils";
 
 function createLinkElement(data, { writer }) {
-  console.log("createLinkElement",data, { writer });
+  console.log("createLinkElement", data, { writer });
   let href;
   let text;
-  if(data) {
-    if(data.href) href = data.href;
-    if(data.text) text = data.text;
+  if (data) {
+    if (data.href) href = data.href;
+    if (data.text) text = data.text;
   }
   const linkElement = writer.createAttributeElement(
     "a",
-    { href, "data-text":  text},
+    { href, "data-text": text },
     { priority: 5 }
   );
   writer.setCustomProperty("customLink", true, linkElement);
@@ -53,29 +53,13 @@ export function registerCustomLink(editor) {
     model: {
       key: "customLink",
       value: (viewElement) => {
-        const children = viewElement.getChildren();
         const href = viewElement.getAttribute("href");
-        
-        const text =  children?.find?.(el => el.data)?.data || href
+        const _text = viewElement.getAttribute("data-text");
 
-        try {
-          console.log('viewElement', viewElement, children, {href, text}, Array.from(children));
-          for (const child of children) {
-            console.log('viewElement_child', child);
-          }
-          for (const child of Array.from(children)) {
-            console.log('viewElement_child2', child);
-          }
-          console.log('viewElement2', children?.find, children?.find?.(el => el.data), children?.find?.(el => el.data)?.data);
-          children?.find?.(el => {
-            console.log('viewElement3', el, el.data);
-            return el.data})
-        } catch (error) {
-          console.log(error);
-        }
+        const text =
+          viewElement.getChildren()?.find?.((el) => el.data)?.data || _text ||  href;
 
-        
-        return {href, text};
+        return { href, text };
       },
     },
     converterPriority: "high",
