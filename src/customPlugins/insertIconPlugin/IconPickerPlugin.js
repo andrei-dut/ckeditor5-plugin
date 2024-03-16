@@ -25,6 +25,7 @@ export class IconPickerPlugin extends Plugin {
 
     editor.commands.add("insertIcon", new InsertIconCommand(editor));
     editor.ui.componentFactory.add("iconPickerButton", (locale) => {
+      const command = editor.commands.get("insertIcon");
       const buttons = insertIconList.map((icon) => {
         const listItem = new ButtonView();
 
@@ -71,6 +72,7 @@ export class IconPickerPlugin extends Plugin {
       toolbarDropdown.class = "toolbar-insert-symbol";
       addToolbarToDropdown(toolbarDropdown, buttons);
       //   toolbarDropdown.render();
+      toolbarDropdown.bind("isOn", "isEnabled").to(command, "value", "isEnabled");
       return toolbarDropdown;
     });
   }
