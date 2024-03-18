@@ -80,7 +80,7 @@ export class CustomLinkPlugin extends Plugin {
       button.isToggleable = true;
 
       this.listenTo(button, "execute", () => {
-          editor.fire("customLinkEvent", { eventType: "openModal" });
+        editor.fire("customLinkEvent", { eventType: "openModal" });
       });
       button.bind("isOn", "isEnabled").to(command, "value", "isEnabled");
       return button;

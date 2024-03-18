@@ -1,6 +1,7 @@
 import { ClassicEditor } from "./ckeditor";
 import { CopyCutPastePlugin } from "./customPlugins/copyCutPastePlugin/copyCutPastePlugin";
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
+import { viewToModelElem } from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 
 // Ваша обычная HTML разметка
@@ -78,7 +79,8 @@ Editor.create(document.querySelector("#editor"), {})
       3: { number: 3, content: "Stir <span>both mixtures</span> together." },
       4: {
         number: 4,
-        content: "Fill <a data-text='321' href='123'>321</a> muffin tray 3/4 full.",
+        content:
+          "Fill <a data-text='321' href='123'>321</a> muffin tray 3/4 full.",
       },
       5: { number: 5, content: "Bake for 20 minutes." },
     };
@@ -88,8 +90,6 @@ Editor.create(document.querySelector("#editor"), {})
     setTimeout(() => {
       editor.setData(_htmlContent);
     }, 500);
-
-
 
     console.log("Editor was initialized", editor);
     console.log("doc", editor.model.document);
@@ -105,8 +105,27 @@ Editor.create(document.querySelector("#editor"), {})
     //   window.selec = selection;
     // });
 
+
     editor.on("selectionLiElem", (e, currentData) => {
       console.log("selectionLiElem", currentData);
+      const value = currentData.value;
+      const model = editor.model;
+      model.change((writer) => {
+        if (value) {
+          value._setAttribute("data-custom_comment", 222);
+          writer.setAttribute(
+            "data-custom_comment",
+            222,
+            viewToModelElem(editor, value)
+          );
+          console.log(
+            "data-custom_comment",
+            222,
+            value,
+            viewToModelElem(editor, value)
+          );
+        }
+      });
     });
 
     editor.on("customLinkEvent", (e, currentData) => {
@@ -198,8 +217,6 @@ export function parseLiTags(htmlContent) {
 
 const htmlContent = `
   <ol>
-  dfgdfg
-  <p>fi343</p>
   <li>first item</li>
   <li>
     second item
@@ -217,30 +234,33 @@ const parsedLiTags = parseLiTags(htmlContent);
 console.log(parsedLiTags);
 
 function createHtmlFromLiObjects(liObjectsOrArray) {
-  let htmlContent = "<ol>";
+  let htmlContent = '<ol>';
+  const startRex = /^\s*<li\b[^>]*>/i;
   if (Array.isArray(liObjectsOrArray)) {
-    liObjectsOrArray.forEach((content) => {
-      htmlContent += `<li>${content}</li>`;
-    });
+      liObjectsOrArray.forEach(content => {
+        const wrapInLiTag =startRex.test(content) && /<\/li>\s*$/i.test(content)
+          htmlContent += wrapInLiTag ? `${content}` : `<li>${content}</li>`;
+      });
   } else {
-    for (const key in liObjectsOrArray) {
-      const liObject = liObjectsOrArray[key];
-      htmlContent += `<li>${liObject.content}</li>`;
-    }
+      for (const key in liObjectsOrArray) {
+          const liObject = liObjectsOrArray[key];
+          const wrapInLiTag = startRex.test(liObject.content) && /<\/li>\s*$/i.test(liObject.content)
+          htmlContent += wrapInLiTag ? `${liObject.content}` : `<li>${liObject.content}</li>`;
+      }
   }
-  htmlContent += "</ol>";
+  htmlContent += '</ol>';
   return htmlContent;
 }
 
-const liObjects = {
-  1: { number: 1, content: "Mix flour, baking powder, sugar, and salt." },
-  2: { number: 2, content: "In another bowl, mix eggs, milk, and oil." },
-  3: { number: 3, content: "Stir <p>both mixtures</p> together." },
-  4: { number: 4, content: "Fill muffin tray 3/4 full." },
-  5: { number: 5, content: "Bake for 20 minutes." },
-};
+// const liObjects = {
+//   1: { number: 1, content: "Mix flour, baking powder, sugar, and salt." },
+//   2: { number: 2, content: "In another bowl, mix eggs, milk, and oil." },
+//   3: { number: 3, content: "Stir <p>both mixtures</p> together." },
+//   4: { number: 4, content: "Fill muffin tray 3/4 full." },
+//   5: { number: 5, content: "Bake for 20 minutes." },
+// };
 
-const _htmlContent = createHtmlFromLiObjects(liObjects);
-const __htmlContent = createHtmlFromLiObjects(["a", "b", "c"]);
-console.log(_htmlContent);
-console.log(__htmlContent);
+// const _htmlContent = createHtmlFromLiObjects(liObjects);
+// const __htmlContent = createHtmlFromLiObjects(["a", "b", "c"]);
+// console.log(_htmlContent);
+// console.log(__htmlContent);
