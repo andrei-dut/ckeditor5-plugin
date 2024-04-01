@@ -3,6 +3,7 @@ import { CopyCutPastePlugin } from "./customPlugins/copyCutPastePlugin/copyCutPa
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
 import { viewToModelElem } from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
+import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -79,8 +80,7 @@ Editor.create(document.querySelector("#editor"), {})
       3: { number: 3, content: "Stir <span>both mixtures</span> together." },
       4: {
         number: 4,
-        content:
-          "Fill <a data-text='321' href='123'>321</a> muffin tray 3/4 full.",
+        content: "Fill <a data-text='321' href='123'>321</a> muffin tray 3/4 full.",
       },
       5: { number: 5, content: "Bake for 20 minutes." },
     };
@@ -105,7 +105,6 @@ Editor.create(document.querySelector("#editor"), {})
     //   window.selec = selection;
     // });
 
-
     editor.on("selectionLiElem", (e, currentData) => {
       console.log("selectionLiElem", currentData);
       const value = currentData.value;
@@ -113,17 +112,8 @@ Editor.create(document.querySelector("#editor"), {})
       model.change((writer) => {
         if (value) {
           value._setAttribute("data-custom_comment", 222);
-          writer.setAttribute(
-            "data-custom_comment",
-            222,
-            viewToModelElem(editor, value)
-          );
-          console.log(
-            "data-custom_comment",
-            222,
-            value,
-            viewToModelElem(editor, value)
-          );
+          writer.setAttribute("data-custom_comment", 222, viewToModelElem(editor, value));
+          console.log("data-custom_comment", 222, value, viewToModelElem(editor, value));
         }
       });
     });
@@ -150,12 +140,15 @@ Editor.create(document.querySelector("#editor"), {})
       }
 
       if (eventType === "openModal") {
-        console.log(editor.commands.get("undo"));
-        editor.commands
-          .get("undo")
-          .on("change:isEnabled", (e, args, newVal, oldVal) => {
-            console.log(e, args, newVal, oldVal);
-          });
+        // console.log(editor.commands.get("undo"));
+        // editor.commands
+        //   .get("undo")
+        //   .on("change:isEnabled", (e, args, newVal, oldVal) => {
+        //     console.log(e, args, newVal, oldVal);
+        //   });
+
+        console.log(editor.getData());
+        console.log(getArrayImgObjByHtmlString(editor.getData()));
 
         console.log("openModal", value);
       }
@@ -234,21 +227,21 @@ const parsedLiTags = parseLiTags(htmlContent);
 console.log(parsedLiTags);
 
 function createHtmlFromLiObjects(liObjectsOrArray) {
-  let htmlContent = '<ol>';
+  let htmlContent = "<ol>";
   const startRex = /^\s*<li\b[^>]*>/i;
   if (Array.isArray(liObjectsOrArray)) {
-      liObjectsOrArray.forEach(content => {
-        const wrapInLiTag =startRex.test(content) && /<\/li>\s*$/i.test(content)
-          htmlContent += wrapInLiTag ? `${content}` : `<li>${content}</li>`;
-      });
+    liObjectsOrArray.forEach((content) => {
+      const wrapInLiTag = startRex.test(content) && /<\/li>\s*$/i.test(content);
+      htmlContent += wrapInLiTag ? `${content}` : `<li>${content}</li>`;
+    });
   } else {
-      for (const key in liObjectsOrArray) {
-          const liObject = liObjectsOrArray[key];
-          const wrapInLiTag = startRex.test(liObject.content) && /<\/li>\s*$/i.test(liObject.content)
-          htmlContent += wrapInLiTag ? `${liObject.content}` : `<li>${liObject.content}</li>`;
-      }
+    for (const key in liObjectsOrArray) {
+      const liObject = liObjectsOrArray[key];
+      const wrapInLiTag = startRex.test(liObject.content) && /<\/li>\s*$/i.test(liObject.content);
+      htmlContent += wrapInLiTag ? `${liObject.content}` : `<li>${liObject.content}</li>`;
+    }
   }
-  htmlContent += '</ol>';
+  htmlContent += "</ol>";
   return htmlContent;
 }
 

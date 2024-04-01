@@ -4,7 +4,7 @@
 import { ensureSafeUrl } from "../utils";
 
 function createLinkElement(data, { writer }) {
-  console.log("createLinkElement", data, { writer });
+  // console.log("createLinkElement", data, { writer });
   let href;
   let text;
   if (data) {

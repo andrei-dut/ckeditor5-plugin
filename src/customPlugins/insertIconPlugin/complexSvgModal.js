@@ -1,6 +1,6 @@
 import { emitter } from "../utils";
 
-function addModal(content) {
+function addModal(content, svgName) {
   var modal = document.createElement("div");
   var closeButton = document.createElement("button");
   var modalContent = document.createElement("div");
@@ -48,19 +48,22 @@ function addModal(content) {
   const baseModalContent2 = modalContent.querySelector(
     ".complexSvgModal-content-2"
   );
+  const _values = {};
   // console.log(numberOfTextElements);
 
   textElementsSvgTemp?.forEach(function (textElement) {
     // Создаем новый элемент input
     var inputElement = document.createElement("input");
+    const _textContent = textElement.textContent;
     inputElement.type = "text";
     inputElement.value = "";
-    inputElement.placeholder = textElement.textContent;
+    inputElement.placeholder = _textContent;
     inputElement.className = "parametr__input";
-    inputElement.maxLength = textElement.textContent?.length || 10;
+    inputElement.maxLength = _textContent?.length || 10;
     inputElement.addEventListener("input", function () {
       const newText = this.value;
       if (textElement) {
+        _values[_textContent] = newText;
         textElement.textContent = newText;
       }
     });
@@ -74,7 +77,7 @@ function addModal(content) {
   if (saveBtn) {
     saveBtn.onclick = function () {
       const svgElement = wrapSvgTEmpElem.querySelector("svg");
-      if (svgElement?.outerHTML) emitter.emit("insertIcon", svgElement?.outerHTML);
+      if (svgElement?.outerHTML) emitter.emit("insertIcon", svgElement?.outerHTML, svgName, _values);
       modal.remove();
     };
   }
@@ -104,7 +107,7 @@ function addModal(content) {
 }
 
 // Пример использования функции
-export const showBaseModal = (svgTemp) =>
+export const showBaseModal = (svgTemp, svgName) =>
   addModal(
     `<h2 style="text-align: center;font-size: 20px;margin: 0;">Установка значений:</h2>
   <div id="baseModalContent">
@@ -117,5 +120,5 @@ export const showBaseModal = (svgTemp) =>
     </div>
   </div>
   <button id="saveBtn" type="button">Добавить</button>
-  `
+  `, svgName
   );

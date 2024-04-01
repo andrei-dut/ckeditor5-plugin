@@ -97,7 +97,7 @@ function addModal(content) {
     saveBtn.onclick = function () {
       const svgElement = document.querySelector("#wrapSvg svg");
       if (svgElement?.outerHTML)
-        emitter.emit("insertIcon", svgElement);
+        emitter.emit("insertIcon", svgElement, 'roughness', getCurrentValues());
       modal.remove();
     };
   }
@@ -174,15 +174,10 @@ function addModal(content) {
   return openModal;
 }
 
-const changePreviewSvg = (selectedRaID) => {
-  console.log(12121212);
-  const wrapPreviewElem = document.querySelector(".content-1-wrap-preview");
+const getCurrentValues = () => {
   const dropdownValue = document.querySelector(".dropdown-designation-value");
   const processingMethod = document.querySelector("#processingMethod");
-
   const inputs = document.querySelectorAll(".parametr__input");
-  const inputsLength = inputs && inputs.length;
-
   const currentValues = {};
 
   for (const input of inputs) {
@@ -200,6 +195,17 @@ const changePreviewSvg = (selectedRaID) => {
   if (processingMethod) {
     currentValues.y = processingMethod.value;
   }
+  return currentValues;
+}
+
+const changePreviewSvg = (selectedRaID) => {
+  const wrapPreviewElem = document.querySelector(".content-1-wrap-preview");
+
+  const inputs = document.querySelectorAll(".parametr__input");
+  const inputsLength = inputs && inputs.length;
+
+  const currentValues = getCurrentValues();
+
 
   const newWrapWithSvg = document.createElement("span");
   newWrapWithSvg.id = "wrapSvg";

@@ -34,13 +34,14 @@ export class IconPickerPlugin extends Plugin {
           icon: icon.icon,
         });
 
-        function insertIconFc(svgEl) {
+        function insertIconFc(svgEl, iconName, svgValues) {
           const insertIconCmd = editor.commands.get("insertIcon");
 
           if (insertIconCmd) {
             insertIconCmd.execute({
-
+                    iconName,
                     icon: svgEl,
+                    svgValues,
                   }
             );
           }
@@ -52,9 +53,9 @@ export class IconPickerPlugin extends Plugin {
           if (icon.isRoughness) {
             showModal();
           } else if (icon.isComplexSymbol) {
-            showBaseModal(icon.icon);
+            showBaseModal(icon.icon, icon.iconName);
           } else {
-            insertIconFc(icon.icon);
+            insertIconFc(icon.icon, icon.iconName);
             return;
           }
           emitter.on("insertIcon", insertIconFc);

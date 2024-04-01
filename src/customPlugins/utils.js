@@ -202,3 +202,58 @@ export function ensureSafeUrl(url) {
 
   return isSafeUrl(url) ? url : "#";
 }
+
+export function parseStringToObject(input) {
+  const regex = /(\w[\w-]*)\s*:\s*{{(.*?)}}/g;
+  let matches;
+  const result = {};
+
+  while ((matches = regex.exec(input)) !== null) {
+      const propertyName = matches[1];
+      const propertyValue = matches[2];
+      result[propertyName] = propertyValue;
+  }
+
+  return result;
+}
+
+export function convertObjectToString(obj = {}) {
+  let result = '';
+
+  for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          result += `${key}:{{${obj[key]}}} `;
+      }
+  }
+
+  return result.trim();
+}
+
+export function extractAltImgFromHTML(htmlString) {
+  const tempElement = document.createElement('div');
+  tempElement.innerHTML = htmlString;
+  
+  const imgElements = tempElement.querySelectorAll('img');
+  
+  const altValues = [];
+  
+  imgElements.forEach(img => {
+      altValues.push(img.alt);
+  });
+  
+  return altValues;
+}
+
+export function getArrayImgObjByHtmlString(htmlString) {
+  try {
+    if(htmlString) {
+      const altArrays = extractAltImgFromHTML(htmlString);
+      return altArrays.map((alt) => parseStringToObject(alt));
+    }
+  } catch (error) {
+    console.log(error);
+    return null
+  }
+}
+
+

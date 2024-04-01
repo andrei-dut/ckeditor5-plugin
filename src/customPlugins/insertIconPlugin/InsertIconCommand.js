@@ -1,5 +1,6 @@
 import { Command } from "../../ckeditor";
 import svg64 from "../svg64";
+import { convertObjectToString } from "../utils";
 
 export default class InsertIconCommand extends Command {
   refresh() {
@@ -14,11 +15,14 @@ export default class InsertIconCommand extends Command {
     const selection = model.document.selection;
 
     model.change((writer) => {
-      const imageElement = writer.createElement("imageInline", { src: svg64(iconData.icon), 'alt': 'asa' });
+      const imageElement = writer.createElement("imageInline", {
+        src: svg64(iconData.icon),
+        alt: `icon-name:{{${iconData.iconName}}} ${convertObjectToString(iconData.svgValues)}`,
+      });
 
       model.insertContent(imageElement, selection);
 
-        return
+      return;
     });
   }
 }
