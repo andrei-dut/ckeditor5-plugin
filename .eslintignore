@@ -1,8 +1,9 @@
 **/*.json
 **/*.config.*
 node_modules/
-ckeditor/
+ckeditor/translations
 */ckeditor.js
+*/ckeditor.js.map
 */csmPlgsBabel
 example/
 code.js
