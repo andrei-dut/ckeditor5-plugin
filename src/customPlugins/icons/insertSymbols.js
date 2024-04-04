@@ -25,18 +25,18 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T12:07:15
 </svg>
 `;
 export const ra1_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 94 34"
+height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -18)">
     <path   d="M 45 29 L 108 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <ellipse cx="34" cy="41" rx="4" ry="4" fill="rgba(0,0,0,0)" stroke="rgb(0, 0, 0)" pointer-events="all" />
     <path   d="M 35 50 L 25 37" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">YY</text>
-    <text id="x1" x="55" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x1" x="55" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="z" x="42" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="z" x="42" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">Z</text>
     <path  d="M 35 50 L 45 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
@@ -44,93 +44,93 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra1_2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 95 44" 
+height="100%" viewBox="-0.5 -0.5 95 44" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g  transform="translate(-20, -16)">
     <path   d="M 47 29 L 110 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <ellipse cx="34" cy="48" rx="4" ry="4" fill="rgba(0,0,0,0)" stroke="rgb(0, 0, 0)" pointer-events="all" />
     <path d="M 35 57 L 25 44" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="47" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="47" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
 
-    <text id="z" x="42" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
         <path d="M 35 57 L 47 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
 
 </svg>
 `;
 export const ra1_3 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 102 57"
+height="100%" viewBox="-0.5 -0.5 102 57" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 53 29 L 116 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <ellipse cx="34" cy="60" rx="4" ry="4" fill="rgba(0,0,0,0)" stroke="rgb(0, 0, 0)" pointer-events="all" />
     <path d="M 35 69 L 25 56" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="55" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="55" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="55" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="55" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
 
-    <text id="z" x="42" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 69 L 53 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
 
 </svg>
 `;
 export const ra1_4 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 110 69" 
+height="100%" viewBox="-0.5 -0.5 110 69" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 60 29 L 123 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <ellipse cx="34" cy="72" rx="4" ry="4" fill="rgba(0,0,0,0)" stroke="rgb(0, 0, 0)" pointer-events="all" />
     <path d="M 35 81 L 25 68" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="60" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="61" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="60" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="61" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="61" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="61" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="61" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="61" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
-    <text id="x4" x="61" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x4" x="61" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(4)</text>
 
-    <text id="z" x="42" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 81 L 60 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
 
 </svg>
 `;
 export const ra1_5 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 117 82" 
+height="100%" viewBox="-0.5 -0.5 117 82" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 67 29 L 130 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <ellipse cx="34" cy="84" rx="4" ry="4" fill="rgba(0,0,0,0)" stroke="rgb(0, 0, 0)" pointer-events="all" />
     <path d="M 35 93 L 25 80" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="67" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="67" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">YY</text>
-    <text id="x1" x="68" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x1" x="68" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="68" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="68" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="68" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="68" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
-    <text id="x4" x="68" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x4" x="68" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(4)</text>
-    <text id="x5" x="68" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x5" x="68" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(5)</text>
 
-    <text id="z" x="42" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="z" x="42" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">Z</text>
     <path d="M 35 93 L 67 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
@@ -138,28 +138,28 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra1_6 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 126 94"
+height="100%" viewBox="-0.5 -0.5 126 94" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 72 29 L 140 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <ellipse cx="34" cy="96" rx="4" ry="4" fill="rgba(0,0,0,0)" stroke="rgb(0, 0, 0)" pointer-events="all" />
     <path d="M 35 105 L 25 92" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="72" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="72" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="72" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="72" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="72" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="72" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="72" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="72" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
-    <text id="x4" x="72" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x4" x="72" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(4)</text>
-    <text id="x5" x="72" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x5" x="72" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(5)</text>
-    <text id="x6" x="72" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x6" x="72" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(6)</text>
 
-    <text id="z" x="42" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 105 L 72 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
 
@@ -178,17 +178,17 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra2_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 94 34"
+height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -18)">
     <path   d="M 45 29 L 108 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path   d="M 35 50 L 25 37" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">YY</text>
-    <text id="x1" x="55" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x1" x="55" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="z" x="42" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="z" x="42" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">Z</text>
     <path  d="M 35 50 L 45 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
@@ -196,41 +196,41 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra2_2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 95 44"
+height="100%" viewBox="-0.5 -0.5 95 44" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 47 29 L 110 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path   d="M 35 57 L 25 44" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="47" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="47" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
 
-    <text id="z" x="42" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 57 L 47 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
 
 </svg>
 `;
 export const ra2_3 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 102 57"
+height="100%" viewBox="-0.5 -0.5 102 57" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 53 29 L 116 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 69 L 25 56" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="55" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="55" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">YY</text>
-    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="55" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="55" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
 
-    <text id="z" x="42" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="z" x="42" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">Z</text>
     <path d="M 35 69 L 53 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
@@ -238,76 +238,76 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra2_4 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%"  viewBox="-0.5 -0.5 110 69"
+height="100%"  viewBox="-0.5 -0.5 110 69" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 60 29 L 123 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 81 L 25 68" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="60" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="61" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="60" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="61" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="61" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="61" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="61" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="61" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
-    <text id="x4" x="61" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x4" x="61" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(4)</text>
 
-    <text id="z" x="42" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 81 L 60 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
 
 </svg>
 `;
 export const ra2_5 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 117 82"
+height="100%" viewBox="-0.5 -0.5 117 82" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 67 29 L 130 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 93 L 25 80" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="67" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="67" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">YY</text>
-    <text id="x1" x="68" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x1" x="68" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="68" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="68" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="68" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="68" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
-    <text id="x4" x="68" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x4" x="68" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(4)</text>
-    <text id="x5" x="68" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x5" x="68" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(5)</text>
 
-    <text id="z" x="42" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 93 L 67 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
 
 </svg>
 `;
 export const ra2_6 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 126 94"
+height="100%" viewBox="-0.5 -0.5 126 94" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 72 29 L 140 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 105 L 25 92" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="72" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="72" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="72" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="72" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="72" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="72" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="72" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="72" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
-    <text id="x4" x="72" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x4" x="72" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(4)</text>
-    <text id="x5" x="72" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x5" x="72" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(5)</text>
-    <text id="x6" x="72" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x6" x="72" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(6)</text>
 
-    <text id="z" x="42" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 105 L 72 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 </g>
 
@@ -325,17 +325,17 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra3_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 94 34"
+height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -18)">
     <path d="M 45 29 L 108 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 50 L 25 37" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="45" y="28" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
                 text-anchor="start">YY</text>
-    <text id="x1" x="55" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x1" x="55" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
                 text-anchor="start">XX(1)</text>
-    <text id="z" x="42" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="z" x="42" y="48" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
                 text-anchor="start">Z</text>
     <path d="M 35 50 L 45 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 25 37 L 41 37" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
@@ -345,19 +345,19 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra3_2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 95 44" 
+height="100%" viewBox="-0.5 -0.5 95 44"  style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 47 29 L 110 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 57 L 25 45" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="47" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="47" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
 
-    <text id="z" x="42" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 57 L 47 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 25 45 L 40 45" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 
@@ -366,21 +366,21 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra3_3 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 102 57" 
+height="100%" viewBox="-0.5 -0.5 102 57"  style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 53 29 L 116 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 69 L 25 56" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="55" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="55" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="55" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="55" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="55" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="55" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
 
-    <text id="z" x="42" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 69 L 53 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 25 56 L 41 56" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 
@@ -389,23 +389,23 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra3_4 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 110 69"
+height="100%" viewBox="-0.5 -0.5 110 69" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 60 29 L 123 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 81 L 25 68" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="60" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="61" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="60" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="61" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="61" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="61" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="61" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="61" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
-    <text id="x4" x="61" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x4" x="61" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(4)</text>
 
-    <text id="z" x="42" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 81 L 60 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 25 68 L 41 68" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 
@@ -414,26 +414,26 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra3_5 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 117 82"
+height="100%" viewBox="-0.5 -0.5 117 82" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 67 29 L 130 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 93 L 25 80" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="67" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="67" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">YY</text>
-    <text id="x1" x="68" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x1" x="68" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="68" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="68" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="68" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="68" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
-    <text id="x4" x="68" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x4" x="68" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(4)</text>
-    <text id="x5" x="68" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x5" x="68" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(5)</text>
 
-    <text id="z" x="42" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 93 L 67 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 25 80 L 41 80" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 
@@ -442,27 +442,27 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 </svg>
 `;
 export const ra3_6 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
-height="100%" viewBox="-0.5 -0.5 126 94"
+height="100%" viewBox="-0.5 -0.5 126 94" style="font-size:12px;"
 content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37.224Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;1LQ9veS5KkCN0eoByIPG&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&#10;  &lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;&#10;    &lt;mxGraphModel dx=&quot;320&quot; dy=&quot;154&quot; grid=&quot;0&quot; gridSize=&quot;10&quot; guides=&quot;1&quot; tooltips=&quot;1&quot; connect=&quot;1&quot; arrows=&quot;1&quot; fold=&quot;1&quot; page=&quot;1&quot; pageScale=&quot;1&quot; pageWidth=&quot;827&quot; pageHeight=&quot;1169&quot; math=&quot;0&quot; shadow=&quot;0&quot;&gt;&#10;      &lt;root&gt;&#10;        &lt;mxCell id=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;1&quot; parent=&quot;0&quot; /&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-3&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;&quot; parent=&quot;1&quot; target=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;530&quot; y=&quot;270&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-4&quot; value=&quot;&quot; style=&quot;ellipse;whiteSpace=wrap;html=1;aspect=fixed;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;380&quot; y=&quot;294&quot; width=&quot;26&quot; height=&quot;26&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;24uEspsWAmBhDjKIqyrG-5&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; parent=&quot;1&quot; edge=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;375&quot; y=&quot;300&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-1&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;YY&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;261&quot; width=&quot;56&quot; height=&quot;29&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-2&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;XX(1)&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;414&quot; y=&quot;310&quot; width=&quot;60&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;KwcBvFnIUq_cNhDl6oCU-8&quot; value=&quot;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;Z&amp;lt;/font&amp;gt;&quot; style=&quot;text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;&quot; parent=&quot;1&quot; vertex=&quot;1&quot;&gt;&#10;          &lt;mxGeometry x=&quot;399&quot; y=&quot;310&quot; width=&quot;30&quot; height=&quot;30&quot; as=&quot;geometry&quot; /&gt;&#10;        &lt;/mxCell&gt;&#10;        &lt;mxCell id=&quot;47NzaqUEc4aRuLURK691-2&quot; value=&quot;&quot; style=&quot;endArrow=none;html=1;rounded=0;&quot; edge=&quot;1&quot; parent=&quot;1&quot;&gt;&#10;          &lt;mxGeometry width=&quot;50&quot; height=&quot;50&quot; relative=&quot;1&quot; as=&quot;geometry&quot;&gt;&#10;            &lt;mxPoint x=&quot;390&quot; y=&quot;340&quot; as=&quot;sourcePoint&quot; /&gt;&#10;            &lt;mxPoint x=&quot;420&quot; y=&quot;290&quot; as=&quot;targetPoint&quot; /&gt;&#10;          &lt;/mxGeometry&gt;&#10;        &lt;/mxCell&gt;&#10;      &lt;/root&gt;&#10;    &lt;/mxGraphModel&gt;&#10;  &lt;/diagram&gt;&#10;&lt;/mxfile&gt;&#10;">
 <defs />
 <g transform="translate(-20, -16)">
     <path d="M 72 29 L 140 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 105 L 25 92" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
-    <text id="y" x="72" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">YY</text>
-    <text id="x1" x="72" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="y" x="72" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">YY</text>
+    <text id="x1" x="72" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(1)</text>
-    <text id="x2" x="72" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x2" x="72" y="56" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(2)</text>
-    <text id="x3" x="72" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x3" x="72" y="68" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(3)</text>
-    <text id="x4" x="72" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x4" x="72" y="80" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(4)</text>
-    <text id="x5" x="72" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x5" x="72" y="92" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(5)</text>
-    <text id="x6" x="72" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+    <text id="x6" x="72" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
         text-anchor="start">XX(6)</text>
 
-    <text id="z" x="42" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="start">Z</text>
+    <text id="z" x="42" y="104" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit" text-anchor="start">Z</text>
     <path d="M 35 105 L 72 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 25 92 L 42 92" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
 
@@ -483,240 +483,14 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-06T07:05:37
 
 </svg>
 `;
-export const sign = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-width="100%" height="100%" viewBox="-0.5 -0.5 132 141"
-    content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-17T11:43:05.474Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;H-96SXCI5RICZbEWg_Ra&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&lt;diagram name=&quot;Страница 1&quot; id=&quot;-L8JcDZjNFfGycrKBTJC&quot;&gt;7VhNj5swEP01SO0hEsEEkmO+Nl2tWlWKVrvppbLAAbcGE+ME6K+vARNwQtqkSsShnOJ5Ho+HeW8sxxqYB+mKwcj/TF1ENEN3Uw0sNMMYGvZY/ORIViLW0CoBj2FXOtXAGv9CEtQluscuihVHTinhOFJBh4YhcriCQcZoorptKVF3jaCHzoC1A8k5+oZd7pfo2LBr/BPCnl/tPLQm5UwAK2f5JbEPXZo0ILDUwJxRystRkM4RyYtX1aVc93Rh9pgYQyG/ZoFh7pdxFL9Ng5m/+PHyvMvYamCUUQ6Q7OUHy2R5VlUAhe40L6SwQhoKcObzgAhrKIaM7kMX5TvowjpPSWaJXKXKMsEVogHiLBMOSV3bkayX3yhrhTFEIMcHlRsoKfaO4Y47fKVYZGLoUo5gIuNIMQJTV0PEdM8cJFc1a3kSyARqIMM+CcQh8xA/CyQGjc+uoYKqG2gDd6VNsMWydzlVGJumsUibfovsRrJFwxbFKKGXxJkdnsLn191354u/IBadvw46FcVfubxWFKOORWFeIQpCxMGZiyHxMUfrCDr5TCLOblUgMI7K03SL01wnl9k+IMZRqv2puavusy21PhMZosEzaOEZ6JcpVWp4a8FG/eH3LzoH9kkg/WE6v3xanNBmEVGs2ZYWedb8Wbs9rSYGcXG5mAqHoRmlBWPVvBh5+e9mU4USmZXRyokzYQjN53jMGf2J5pRQVksEEuyFwnSEEhDLt8eEnPg0ZJR3EBY3jqlcFmDXJZd6tE1zZy3YIsOLXWmaJ6dWZTdUaT2oK1vpbbuS3Ine9/cPw489w7bZLcNtt5f7MWz0DBuTjnu47SpyP4ZBzzDQO+7htrvT/Rg2e4aB0XEPWw9leNQzDEDHPWw/lGGrZxiMOu7h8eMY/vb/saur7xdtJ/Sd3i+EWT8Ml/+b6+d1sPwN&lt;/diagram&gt;&lt;/mxfile&gt;"
-    style="background-color: rgb(255, 255, 255);">
-    <defs />
-    <g>
-        <path d="M 20 100 L 60 30" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
-            pointer-events="stroke" />
-        <path d="M 60 30 L 130 30" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
-            pointer-events="stroke" />
-        <ellipse cx="21" cy="66" rx="15" ry="15" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
-            pointer-events="all" />
-        <path d="M 20 100 L 0 60" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
-            pointer-events="stroke" />
-        <rect x="70" y="0" width="60" height="30" fill="none" stroke="none" pointer-events="all" />
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject pointer-events="none" width="100%" height="100%"
-                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                    style="overflow: visible; text-align: left;">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                        style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 15px; margin-left: 71px;">
-                        <div data-drawio-colors="color: rgb(0, 0, 0); "
-                            style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                            <div
-                                style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                <font style="font-size: 14px;">YY</font>
-                            </div>
-                        </div>
-                    </div>
-                </foreignObject>
-                <text x="100" y="19" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-                    text-anchor="middle">YY</text>
-            </switch>
-        </g>
-        <rect x="70" y="34" width="60" height="30" fill="none" stroke="none" pointer-events="all" />
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject pointer-events="none" width="100%" height="100%"
-                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                    style="overflow: visible; text-align: left;">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                        style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 49px; margin-left: 71px;">
-                        <div data-drawio-colors="color: rgb(0, 0, 0); "
-                            style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                            <div
-                                style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                <font style="font-size: 14px;">XX(1)</font>
-                            </div>
-                        </div>
-                    </div>
-                </foreignObject>
-                <text x="100" y="53" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-                    text-anchor="middle">XX(1)</text>
-            </switch>
-        </g>
-        <rect x="70" y="50" width="60" height="30" fill="none" stroke="none" pointer-events="all" />
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject pointer-events="none" width="100%" height="100%"
-                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                    style="overflow: visible; text-align: left;">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                        style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 65px; margin-left: 71px;">
-                        <div data-drawio-colors="color: rgb(0, 0, 0); "
-                            style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                            <div
-                                style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                <font style="font-size: 14px;">XX(2)</font>
-                            </div>
-                        </div>
-                    </div>
-                </foreignObject>
-                <text x="100" y="69" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-                    text-anchor="middle">XX(2)</text>
-            </switch>
-        </g>
-        <rect x="70" y="64" width="60" height="30" fill="none" stroke="none" pointer-events="all" />
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject pointer-events="none" width="100%" height="100%"
-                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                    style="overflow: visible; text-align: left;">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                        style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 79px; margin-left: 71px;">
-                        <div data-drawio-colors="color: rgb(0, 0, 0); "
-                            style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                            <div
-                                style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                <font style="font-size: 14px;">XX(3)</font>
-                            </div>
-                        </div>
-                    </div>
-                </foreignObject>
-                <text x="100" y="83" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-                    text-anchor="middle">XX(3)</text>
-            </switch>
-        </g>
-        <rect x="70" y="80" width="60" height="30" fill="none" stroke="none" pointer-events="all" />
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject pointer-events="none" width="100%" height="100%"
-                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                    style="overflow: visible; text-align: left;">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                        style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 95px; margin-left: 71px;">
-                        <div data-drawio-colors="color: rgb(0, 0, 0); "
-                            style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                            <div
-                                style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                <font style="font-size: 14px;">XX(4)</font>
-                            </div>
-                        </div>
-                    </div>
-                </foreignObject>
-                <text x="100" y="99" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-                    text-anchor="middle">XX(4)</text>
-            </switch>
-        </g>
-        <rect x="36" y="80" width="30" height="30" fill="none" stroke="none" pointer-events="all" />
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject pointer-events="none" width="100%" height="100%"
-                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                    style="overflow: visible; text-align: left;">
-                    <div xmlns="http://www.w3.org/1999/xhtml"
-                        style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 28px; height: 1px; padding-top: 95px; margin-left: 37px;">
-                        <div data-drawio-colors="color: rgb(0, 0, 0); "
-                            style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                            <div
-                                style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                <font style="font-size: 14px;">Z</font>
-                            </div>
-                        </div>
-                    </div>
-                </foreignObject>
-                <text x="51" y="99" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
-                    text-anchor="middle">Z</text>
-            </switch>
-        </g>
-    </g>
-    <switch>
-        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" />
-        <a transform="translate(0,-5)"
-            xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank">
-            <text text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot
-                display</text>
-        </a>
-    </switch>
-</svg>
-`;
-export const text = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-width="100%" height="100%" viewBox="-0.5 -0.5 77 54"
-content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-01-18T11:04:17.874Z&quot; agent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36&quot; etag=&quot;6nW66n8_krRSH8aiTRA1&quot; version=&quot;21.5.1&quot; type=&quot;device&quot;&gt;&lt;diagram name=&quot;Страница 1&quot; id=&quot;qNkHH9AtMeMB8LDzhwJW&quot;&gt;7Zbfb5swEMf/Gh4zgSE0fWxot0rdXpZKi/YyueEAq4ajxgmQv35nMBDaRdo0NU+VkOA+98Nn39dKHD/Kmy+Kl9k3jEE6zI0bx791GPPY1YpehrQ9Cb2wB6kSsQ2awEYcwULX0r2IoZoFakSpRTmHOywK2OkZ40phPQ9LUM5XLXkKb8Bmx+Vb+kPEOuvpil1N/B5Emg0re+F178n5EGx3UmU8xvoE+XeOHylE3X/lTQTSHN5wLn3e5zPesTEFhf6bBHf78DMMVs9JnC0f7x+jw8L9tfD7Kgcu93bDDgsl1VsnSGWpa93aowhf9jg4FlU3qBsK8FYlDXs9+ekrNe/tdihFPfXVeoc9jrEw09AYXmmFzxChREW8wALMakLKV4hLkRZkSkhM2gGUFjSwG4s1lqZYyXeiSL92MbfBRL7bYRmElJvIbiiZiGOg9LVCzTV/6npzyS5RFLoT0XJND51x5H5aOktqPCLbm2x6TLjSERa0Fy66uQCvdA2V6bTOhIYNtWFq13RfiGU6l2R547mY7UBzdsbeqBy6coA5aNVSiE3wQys2e9v84RrVk3YDi7IT2fqWcXtb0rHyJCj6sJr6B30F/68vdkZfbfuhr4vr6/qVvtw/6Cu4oL6W76ev4/FDX5fXF5vri72bvsicfns738k/GP/uNw==&lt;/diagram&gt;&lt;/mxfile&gt;"
-style="background-color: rgb(255, 255, 255);">
-<defs />
-<g>
-    <rect x="0" y="10" width="40" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 30px; height: 1px; padding-top: 17px; margin-left: 6px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 18px;">XX</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject>
-            <text x="6" y="29" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">XX</text>
-        </switch>
-    </g>
-    <rect x="30" y="0" width="44" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 7px; margin-left: 36px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 12px;">yy</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject>
-            <text x="36" y="19" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">yy</text>
-        </switch>
-    </g>
-    <rect x="32" y="20" width="44" height="30" fill="none" stroke="none" pointer-events="all" />
-    <g transform="translate(-0.5 -0.5)">
-        <switch>
-            <foreignObject pointer-events="none" width="100%" height="100%"
-                requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-                style="overflow: visible; text-align: left;">
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                    style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 34px; height: 1px; padding-top: 27px; margin-left: 38px;">
-                    <div data-drawio-colors="color: rgb(0, 0, 0); "
-                        style="box-sizing: border-box; font-size: 0px; text-align: left; max-height: 26px; overflow: hidden;">
-                        <div
-                            style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                            <font style="font-size: 12px;">zz</font>
-                        </div>
-                    </div>
-                </div>
-            </foreignObject>
-            <text x="38" y="39" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">zz</text>
-        </switch>
-    </g>
-</g>
-<switch>
-    <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" />
-    <a transform="translate(0,-5)"
-        xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank">
-        <text text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot
-            display</text>
-    </a>
-</switch>
-</svg>
-`;
+
 export const mult1 = `<svg
 width="36"
 height="21"
 viewBox="0 0 36 21"
 version="1.1"
 id="svg1"
+style="font-size:12px;"
 inkscape:export-filename="bitmap.svg"
 inkscape:export-xdpi="96"
 inkscape:export-ydpi="96"
@@ -753,7 +527,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
   id="layer1">
  <text
     xml:space="preserve"
-    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.950804"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.950804"
     x="0.071719833"
     y="13.80837"
     id="text1"
@@ -762,10 +536,10 @@ xmlns:svg="http://www.w3.org/2000/svg">
       id="tspan1"
       x="0.071719833"
       y="13.80837"
-      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.950804">aa</tspan></text>
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.950804">aa</tspan></text>
  <text
     xml:space="preserve"
-    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.921777"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.921777"
     x="17.743065"
     y="9.3944159"
     id="text2"
@@ -774,10 +548,10 @@ xmlns:svg="http://www.w3.org/2000/svg">
       id="tspan2"
       x="17.743065"
       y="9.3944159"
-      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.921777">bb</tspan></text>
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.921777">bb</tspan></text>
  <text
     xml:space="preserve"
-    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.410603"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.410603"
     x="18.26631"
     y="20.013704"
     id="text3"
@@ -786,7 +560,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
       id="tspan3"
       x="18.26631"
       y="20.013704"
-      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.86666667px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.410603">cc</tspan></text>
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.410603">cc</tspan></text>
  <path
     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.78038px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
     d="m 15.152495,11.461665 h 19.798977 v -0.04769"
@@ -802,6 +576,7 @@ height="21"
 viewBox="0 0 36 21"
 version="1.1"
 id="svg1"
+style="font-size:12px;"
 inkscape:export-filename="bitmap.svg"
 inkscape:export-xdpi="96"
 inkscape:export-ydpi="96"
@@ -827,7 +602,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
   id="layer1">
  <text
     xml:space="preserve"
-    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.950804"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.950804"
     x="0.90319312"
     y="18.487024"
     id="text1"
@@ -836,10 +611,10 @@ xmlns:svg="http://www.w3.org/2000/svg">
       id="tspan1"
       x="0.90319312"
       y="18.487024"
-      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.950804">aa</tspan></text>
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.950804">aa</tspan></text>
  <text
     xml:space="preserve"
-    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.921777"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.921777"
     x="12.729191"
     y="10.149496"
     id="text2"
@@ -848,10 +623,10 @@ xmlns:svg="http://www.w3.org/2000/svg">
       id="tspan2"
       x="12.729191"
       y="10.149496"
-      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.921777">bb</tspan></text>
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.921777">bb</tspan></text>
  <text
     xml:space="preserve"
-    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.369199"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.369199"
     x="23.561834"
     y="19.402912"
     id="text3"
@@ -860,7 +635,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
       id="tspan3"
       x="23.561834"
       y="19.402912"
-      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.369199">cc</tspan></text>
+      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.369199">cc</tspan></text>
  <path
     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.985608px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
     d="M 18.128202,18.807127 31.861166,5.8127613"
@@ -877,6 +652,7 @@ height="20"
 viewBox="0 0 28 20"
 version="1.1"
 id="svg1"
+style="font-size:12px;"
 inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
 sodipodi:docname="xx.svg"
 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -892,7 +668,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
   id="layer1">
  <text
     xml:space="preserve"
-    style="font-size:21.1872px;fill:#000000;stroke-width:1.76559"
+    style="font-size:inherit;fill:#000000;stroke-width:1.76559"
     x="0.8510443"
     y="17.423805"
     id="text5"
@@ -1006,6 +782,7 @@ height="21"
 viewBox="0 0 22 21"
 version="1.1"
 id="svg1"
+style="font-size:7.5px;"
 inkscape:export-filename="bitmap.svg"
 inkscape:export-xdpi="96"
 inkscape:export-ydpi="96"
@@ -1068,7 +845,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
     r="9.5959549" />
  <text
     xml:space="preserve"
-    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.24258px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill-opacity:1;stroke:none;stroke-width:0.248;stroke-dasharray:none;stroke-opacity:1;fill-rule:nonzero"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill-opacity:1;stroke:none;stroke-width:0.248;stroke-dasharray:none;stroke-opacity:1;fill-rule:nonzero"
     x="4.5357599"
     y="14.063298"
     id="text11"
