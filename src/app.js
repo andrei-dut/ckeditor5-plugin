@@ -4,6 +4,7 @@ import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlu
 import { viewToModelElem } from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
+import { customSpecialCharacters } from './customPlugins/vars';
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -57,9 +58,12 @@ class Editor extends ClassicEditor {
         "link",
         "iconPickerButton",
         "customLink",
+        "specialCharacters",
       ],
     },
     language: "ru",
+    customSpecialCharacters,
+
   };
 }
 
