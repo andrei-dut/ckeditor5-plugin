@@ -24,5 +24,6 @@ export const KeystrokeHandler = ckeditor.KeystrokeHandler;
 export const ViewCollection = ckeditor.ViewCollection;
 export const ContextualBalloon = ckeditor.ContextualBalloon;
 export const clickOutsideHandler = ckeditor.clickOutsideHandler;
+export const toWidgetEditable = ckeditor.toWidgetEditable;
 
 

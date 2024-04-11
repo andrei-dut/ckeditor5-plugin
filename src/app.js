@@ -1,6 +1,7 @@
 import { ClassicEditor } from "./ckeditor";
 import { CopyCutPastePlugin } from "./customPlugins/copyCutPastePlugin/copyCutPastePlugin";
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
+import CustomListPlugin from "./customPlugins/customListPlugin/customListPlugin";
 import { viewToModelElem } from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
@@ -61,6 +62,7 @@ class Editor extends ClassicEditor {
         "specialCharacters",
         "Superscript",
         "Subscript",
+        "customList",
       ],
     },
     removePlugins:["ImageResize", "FontColor"],
@@ -72,6 +74,7 @@ class Editor extends ClassicEditor {
 Editor.builtinPlugins.push(IconPickerPlugin);
 Editor.builtinPlugins.push(CustomLinkPlugin);
 Editor.builtinPlugins.push(CopyCutPastePlugin);
+Editor.builtinPlugins.push(CustomListPlugin);
 
 // delete selected content editor.model.deleteContent(modelSelect)
 
