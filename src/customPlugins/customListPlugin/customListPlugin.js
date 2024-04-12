@@ -30,6 +30,7 @@ export default class CustomListPlugin extends Plugin {
       }
       const t2 = editor.editing.mapper.toModelElement(t1);
       eventdata.after = t2;
+
       editor.execute("insertCustomLi", eventdata);
       cancel?.();
     }

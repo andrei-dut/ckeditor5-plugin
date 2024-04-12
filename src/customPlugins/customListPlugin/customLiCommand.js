@@ -1,4 +1,5 @@
 import { Command } from "../../ckeditor";
+import { getModelElement, getTextFromElement } from "../editorUtils";
 
 export default class CustomLiCommand extends Command {
   _createNewWidget(widgetMetaData) {
@@ -59,6 +60,10 @@ export default class CustomLiCommand extends Command {
       isSibling: _isSibling,
       parentWidget: _parentWidget,
     };
+
+    console.log(88, widgetMetaData);
+
+    console.log(getTextFromElement(getModelElement( editor, widgetMetaData.parentWidget, 'span' )));
 
     callback(this, widgetMetaData);
     this.editor.config.selectedRequirementWidget = null;

@@ -1,3 +1,18 @@
+export function getModelElement( editor, containerElement, nameModelEle ) {
+  const range = editor.model.createRangeIn( containerElement );
+  for ( const modelElement of range.getItems( { ignoreElementEnd: true } ) ) {
+      if ( modelElement.name === nameModelEle  ) {
+          return modelElement;
+      }
+  }
+  return null;
+}
+
+export function getTextFromElement( element ) {
+  if(element) return element.getChild?.(0)?.data;
+  return null;
+}
+
 export function findParent(element, parentName) {
   let currentElement = element;
 
