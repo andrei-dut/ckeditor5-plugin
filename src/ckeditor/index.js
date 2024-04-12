@@ -26,4 +26,7 @@ export const ContextualBalloon = ckeditor.ContextualBalloon;
 export const clickOutsideHandler = ckeditor.clickOutsideHandler;
 export const toWidgetEditable = ckeditor.toWidgetEditable;
 
+export const Matcher = ckeditor.Matcher;
+
+
 

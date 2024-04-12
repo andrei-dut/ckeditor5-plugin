@@ -6,6 +6,7 @@ import { viewToModelElem } from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
 import { customSpecialCharacters } from "./customPlugins/vars";
+import "./customPlugins/styles/styles.css";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -65,7 +66,7 @@ class Editor extends ClassicEditor {
         "customList",
       ],
     },
-    removePlugins:["ImageResize", "FontColor"],
+    removePlugins: ["ImageResize", "FontColor"],
     language: "ru",
     customSpecialCharacters,
   };
@@ -96,8 +97,53 @@ Editor.create(document.querySelector("#editor"), {})
 
     const _htmlContent = createHtmlFromLiObjects(liObjects);
 
+
+
+    // const textTEst = `<div class="requirement ck-widget" style="outline:none;" revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
+    // <div class="aw-requirement-marker">
+    //   <typeicon class="aw-ckeditor-marker-element" title="Ревизия требования"><img class="aw-base-icon aw-aria-border" tabindex="0" alt="Ревизия требования" src="assets1712834111866/image/typeRequirementRevision48.svg"><br data-cke-filler="true"></typeicon>
+    //   <checkout class="aw-ckeditor-marker-element"></checkout>
+    //   <addelementicon class="aw-ckeditor-marker-element aw-ckeditor-linkAction aw-aria-border" tabindex="0" title="Добавить
+    // Одноуровневый элемент (Ctrl + Enter)
+    // Потомок (Shift + Enter)"><img class="aw-base-icon" src="assets1712834111866/image/cmdAdd24.svg" alt="Добавить
+    // Одноуровневый элемент (Ctrl + Enter)
+    // Потомок (Shift + Enter)"></addelementicon><tracelinkicon class="aw-requirement-sidebar-icon aw-commands-commandIconButton aw-requirement-create-tracelink aw-requirement-traceLinkIconButton aw-ckeditor-marker-element" title="Трассировка"><span><img class="aw-base-icon aw-aria-border" src="assets1712834111866/image/cmdCreateTraceLink24.svg" alt="Трассировка" tabindex="0"><br data-cke-filler="true"></span><div class="aw-requirement-tracelinkCount"></div></tracelinkicon></div><div class="aw-requirement-header" contenttype="TITLE" selected="false" isdirty="undefined"><h3><span class="aw-requirement-headerId aw-requirement-headerNonEditable">1 REQ-000004-</span><span class="aw-requirement-title aw-requirement-properties ck-editor__editable ck-editor__nested-editable" internalname="object_name" contenteditable="true">Заголовок</span></h3></div><div class="aw-requirement-content"><div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div></div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div></div></div>`;
+
+    // const textTEst = `<div class="requirement ck-widget" style="outline:none;" revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
+    // <div class="aw-requirement-marker">
+    
+    //   <typeicon class="aw-ckeditor-marker-element" title="Ревизия требования">
+    //     <img class="aw-base-icon aw-aria-border" tabindex="0" alt="Ревизия требования" src="src/customPlugins/icons/svg1.svg"><br data-cke-filler="true">
+    //   </typeicon>
+
+    //   <typeicon class="aw-ckeditor-marker-element" title="Ревизия требования">
+    //     <img class="aw-base-icon aw-aria-border" tabindex="0" alt="Ревизия требования" src="assets1712834111866/image/typeRequirementRevision48.svg"><br data-cke-filler="true">
+    //   </typeicon>
+
+    // <tracelinkicon class="aw-requirement-sidebar-icon aw-commands-commandIconButton aw-requirement-create-tracelink aw-requirement-traceLinkIconButton aw-ckeditor-marker-element" title="Трассировка">
+    //   <span><img class="aw-base-icon aw-aria-border" src="assets1712834111866/image/cmdCreateTraceLink24.svg" alt="Трассировка" tabindex="0"><br data-cke-filler="true"></span>
+    //   <div class="aw-requirement-tracelinkCount"></div></tracelinkicon></div><div class="aw-requirement-header" contenttype="TITLE" selected="false" isdirty="undefined"><h3><span class="aw-requirement-headerId aw-requirement-headerNonEditable">1 REQ-000004-</span><span class="aw-requirement-title aw-requirement-properties ck-editor__editable ck-editor__nested-editable" internalname="object_name" contenteditable="true">Заголовок</span></h3></div><div class="aw-requirement-content"><div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div></div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div></div></div>`;
+
+    const textTEst = `<div class="requirement ck-widget" style="outline:none;" revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
+    <div class="aw-requirement-marker">
+    
+      <span class="aw-ckeditor-marker-element" title="1">11</span>   
+      </div>
+      
+      <div class="aw-requirement-content">
+        <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div>
+        </div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div>
+      
+      
+      </div></div>`;
+
     setTimeout(() => {
-      editor.setData(_htmlContent);
+      editor.setData(
+        _htmlContent +
+          " " +
+          " " +
+          textTEst 
+      );
     }, 500);
 
     console.log("Editor was initialized", editor);
