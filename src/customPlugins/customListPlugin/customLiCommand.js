@@ -1,11 +1,12 @@
 import { Command } from "../../ckeditor";
-import { getModelElement, getTextFromElement } from "../editorUtils";
+import { findAllElementsByName, getModelElement, getTextFromElement } from "../editorUtils";
+import { getLastElemFromArray, incrementWithLetter } from "../utils";
 
 export default class CustomLiCommand extends Command {
   _createNewWidget(widgetMetaData) {
     const editor = this.editor;
 
-    const parentRequirement = widgetMetaData.parentWidget;
+    const prevRequirement = widgetMetaData.prevWidget;
     let requirement;
 
     editor.model.change((writer) => {
@@ -13,10 +14,10 @@ export default class CustomLiCommand extends Command {
 
       requirement = writer.createElement("requirement", {
         class: "requirement",
-        parentid: parentRequirement.getAttribute("id"),
+        parentid: prevRequirement.getAttribute("id"),
         itemtype: "Requirement",
         objecttype: "Requirement",
-        parenttype: parentRequirement.getAttribute("itemtype"),
+        parenttype: prevRequirement.getAttribute("itemtype"),
         id: getRandomId(),
       });
 
@@ -27,9 +28,12 @@ export default class CustomLiCommand extends Command {
 
       writer.insert(requirementBodyText, writer.createPositionAt(requirementContent, 0));
 
-      insertPosition = writer.createPositionAfter(parentRequirement);
+      insertPosition = writer.createPositionAfter(prevRequirement);
 
-      const requirementMarker = _createMarkerWidget(writer);
+      const requirementMarker = _createMarkerWidget(
+        writer,
+        incrementWithLetter(widgetMetaData.prevWidgetMarker)
+      );
       writer.insert(requirementMarker, writer.createPositionAt(requirement, 0));
 
       writer.insert(requirementContent, writer.createPositionAt(requirement, 1));
@@ -39,34 +43,34 @@ export default class CustomLiCommand extends Command {
     return requirement;
   }
 
-
   getNewWidgetMetaData(editor, options, callback) {
     let _isChild;
     let _isSibling;
-    let _parentWidget;
+    let prevWidget;
+    let prevWidgetMarker;
+    // let _parentWidget;
 
-    let parentWidget = options.after;
+    const parentWidget = options.after;
 
-    if (!parentWidget) {
-      return;
-    }
-    _parentWidget = parentWidget;
+    prevWidget = parentWidget
+      ? parentWidget
+      : getLastElemFromArray(findAllElementsByName(editor, "requirement", true));
+    // _parentWidget = parentWidget;
     _isSibling = options.type === "SIBLING";
     _isChild = options.type === "CHILD";
+    prevWidgetMarker = getTextFromElement(getModelElement(editor, prevWidget, "span"));
 
-
-    let widgetMetaData = {
+    const widgetMetaData = {
       isChild: _isChild,
       isSibling: _isSibling,
-      parentWidget: _parentWidget,
+      prevWidget,
+      prevWidgetMarker,
     };
 
-    console.log(88, widgetMetaData);
-
-    console.log(getTextFromElement(getModelElement( editor, widgetMetaData.parentWidget, 'span' )));
+    console.log("widgetMetaData", widgetMetaData);
 
     callback(this, widgetMetaData);
-    this.editor.config.selectedRequirementWidget = null;
+    // this.editor.config.selectedRequirementWidget = null;
   }
 
   execute(options) {
@@ -75,7 +79,6 @@ export default class CustomLiCommand extends Command {
     const parentRequirement = options.after;
     if (!parentRequirement) {
       console.warn("No parent requirement passed.");
-      return;
     }
 
     // inserting RAT data for toggle Button
@@ -87,7 +90,6 @@ export default class CustomLiCommand extends Command {
     });
   }
 }
-
 
 const scrollToNewWidget = function (requirement, editor) {
   let view = editor.editing.view;
@@ -104,12 +106,10 @@ function getRandomId() {
   return "RM::NEW::" + randomId;
 }
 
-function _createMarkerWidget(writer) {
-    let requirementMarker = writer.createElement("requirementMarker");
-    let markerSpan = writer.createElement("span");
-    writer.insertText("44", markerSpan);
-    writer.insert(markerSpan, writer.createPositionAt(requirementMarker, 0));
-    return requirementMarker;
-  }
-
-
+function _createMarkerWidget(writer, marker) {
+  let requirementMarker = writer.createElement("requirementMarker");
+  let markerSpan = writer.createElement("span");
+  writer.insertText(marker || "-", markerSpan);
+  writer.insert(markerSpan, writer.createPositionAt(requirementMarker, 0));
+  return requirementMarker;
+}

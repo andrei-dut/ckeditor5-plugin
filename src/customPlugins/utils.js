@@ -102,20 +102,11 @@ export function cloneElem(viewWriter, sourceNode) {
   }
   if (sourceNode.is("element")) {
     if (sourceNode.is("emptyElement")) {
-      return viewWriter.createEmptyElement(
-        sourceNode.name,
-        sourceNode.getAttributes()
-      );
+      return viewWriter.createEmptyElement(sourceNode.name, sourceNode.getAttributes());
     }
-    const element = viewWriter.createContainerElement(
-      sourceNode.name,
-      sourceNode.getAttributes()
-    );
+    const element = viewWriter.createContainerElement(sourceNode.name, sourceNode.getAttributes());
     for (const child of sourceNode.getChildren()) {
-      viewWriter.insert(
-        viewWriter.createPositionAt(element, "end"),
-        cloneElem(viewWriter, child)
-      );
+      viewWriter.insert(viewWriter.createPositionAt(element, "end"), cloneElem(viewWriter, child));
     }
     return element;
   }
@@ -185,11 +176,9 @@ export function checkClick(cb) {
   lastClickTime = currentTime;
 }
 
-const SAFE_URL =
-  /^(?:(?:https?|ftps?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.:-]|$))/i;
+const SAFE_URL = /^(?:(?:https?|ftps?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.:-]|$))/i;
 
-const ATTRIBUTE_WHITESPACES =
-  /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205f\u3000]/g; // eslint-disable-line no-control-regex
+const ATTRIBUTE_WHITESPACES = /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205f\u3000]/g; // eslint-disable-line no-control-regex
 
 function isSafeUrl(url) {
   const normalizedUrl = url.replace(ATTRIBUTE_WHITESPACES, "");
@@ -198,7 +187,7 @@ function isSafeUrl(url) {
 }
 
 export function ensureSafeUrl(url) {
-  url = url ? String(url) : '';
+  url = url ? String(url) : "";
 
   return isSafeUrl(url) ? url : "#";
 }
@@ -209,51 +198,87 @@ export function parseStringToObject(input) {
   const result = {};
 
   while ((matches = regex.exec(input)) !== null) {
-      const propertyName = matches[1];
-      const propertyValue = matches[2];
-      result[propertyName] = propertyValue;
+    const propertyName = matches[1];
+    const propertyValue = matches[2];
+    result[propertyName] = propertyValue;
   }
 
   return result;
 }
 
 export function convertObjectToString(obj = {}) {
-  let result = '';
+  let result = "";
 
   for (const key in obj) {
-      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-          result += `${key}:{{${obj[key]}}} `;
-      }
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      result += `${key}:{{${obj[key]}}} `;
+    }
   }
 
   return result.trim();
 }
 
 export function extractAltImgFromHTML(htmlString) {
-  const tempElement = document.createElement('div');
+  const tempElement = document.createElement("div");
   tempElement.innerHTML = htmlString;
-  
-  const imgElements = tempElement.querySelectorAll('img');
-  
+
+  const imgElements = tempElement.querySelectorAll("img");
+
   const altValues = [];
-  
-  imgElements.forEach(img => {
-      altValues.push(img.alt);
+
+  imgElements.forEach((img) => {
+    altValues.push(img.alt);
   });
-  
+
   return altValues;
 }
 
 export function getArrayImgObjByHtmlString(htmlString) {
   try {
-    if(htmlString) {
+    if (htmlString) {
       const altArrays = extractAltImgFromHTML(htmlString);
       return altArrays.map((alt) => parseStringToObject(alt));
     }
   } catch (error) {
     console.log(error);
-    return null
+    return null;
   }
 }
 
+export function getLastElemFromArray(array) {
+  if (array && array.length > 0) {
+    return array[array.length - 1];
+  } else {
+    console.log("Массив пуст");
+  }
+}
 
+export function incrementWithLetter(input) {
+  let num = input;
+  let _nextLetter;
+  const nextLetter = (char) => {
+    const code = char.toLowerCase().charCodeAt(0);
+    const nextCode = code + 1;
+    if (nextCode > "я".charCodeAt(0)) {
+      return "а";
+    }
+    return String.fromCharCode(nextCode);
+  };
+
+  if (typeof input === "string") {
+    const match = input.match(/[а-я]/i);
+    if (match) {
+      num = parseInt(input.replace(/[а-я]/i, ""));
+      _nextLetter = nextLetter(match[0]);   
+    } else {
+      num = parseInt(input);
+    }
+  }
+
+  if (isNaN(num)) {
+    return undefined;
+  } else {
+    num += 1;
+    return _nextLetter ? num.toString() + _nextLetter : `${num}`;
+  }
+}

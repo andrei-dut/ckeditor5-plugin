@@ -24,7 +24,7 @@ export default class CustomListPlugin extends Plugin {
       }
       const eventdata = { after: "", ...option };
       let t1 = editor.editing.view.document.selection.editableElement.parent?.parent;
-
+console.log('editEl', editor.editing.view.document.selection.editableElement);
       if (t1 && !t1?.hasClass("requirement")) {
         t1 = t1.parent;
       }

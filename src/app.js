@@ -127,7 +127,20 @@ Editor.create(document.querySelector("#editor"), {})
     const textTEst = `<div class="requirement ck-widget" style="outline:none;" revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
     <div class="aw-requirement-marker">
     
-      <span class="aw-ckeditor-marker-element" title="1">11</span>   
+      <span class="aw-ckeditor-marker-element" title="1">1</span>   
+      </div>
+      
+      <div class="aw-requirement-content">
+        <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div>
+        </div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div>
+      
+      
+      </div></div>`;
+
+    const textTEst2 = `<div class="requirement ck-widget" style="outline:none;" revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
+    <div class="aw-requirement-marker">
+    
+      <span class="aw-ckeditor-marker-element" title="1">1а</span>   
       </div>
       
       <div class="aw-requirement-content">
@@ -142,7 +155,9 @@ Editor.create(document.querySelector("#editor"), {})
         _htmlContent +
           " " +
           " " +
-          textTEst 
+          textTEst +
+          " " +
+          textTEst2 
       );
     }, 500);
 

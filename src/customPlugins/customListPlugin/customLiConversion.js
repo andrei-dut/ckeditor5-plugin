@@ -106,7 +106,6 @@ function _defineBodyTextConversion() {
             name: "div",
             classes: "aw-requirement-bodytext",
           });
-
           // This will be usually just one pattern but we support matchers with many patterns too.
           const match = matcher.match(data.viewItem);
 

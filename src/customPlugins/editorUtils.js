@@ -1,15 +1,34 @@
-export function getModelElement( editor, containerElement, nameModelEle ) {
-  const range = editor.model.createRangeIn( containerElement );
-  for ( const modelElement of range.getItems( { ignoreElementEnd: true } ) ) {
-      if ( modelElement.name === nameModelEle  ) {
-          return modelElement;
-      }
+export function getModelElement(editor, containerElement, nameModelEle) {
+  const range = editor.model.createRangeIn(containerElement);
+  for (const modelElement of range.getItems({ ignoreElementEnd: true })) {
+    if (modelElement.name === nameModelEle) {
+      return modelElement;
+    }
   }
   return null;
 }
 
-export function getTextFromElement( element ) {
-  if(element) return element.getChild?.(0)?.data;
+export function findAllElementsByName(editor, elementName, parentRoot) {
+  const findElements = [];
+  const range = editor.model.createRangeIn(editor.model.document.getRoot());
+  for (const value of range.getWalker({ ignoreElementEnd: true })) {
+    if (
+      value.item.is("element") &&
+      value.item.name === elementName &&
+      (parentRoot ? isParentRoot(value.item) : true)
+    ) {
+      findElements.push(value.item);
+    }
+  }
+  return findElements;
+}
+
+export function isParentRoot(element) {
+  return element?.parent && element.parent.name === "$root";
+}
+
+export function getTextFromElement(element) {
+  if (element) return element.getChild?.(0)?.data;
   return null;
 }
 
@@ -37,8 +56,8 @@ export function findParent(element, parentName) {
 
 export function executeEditorCmd(editor, cmdName, arg) {
   const indentCommand = editor ? editor.commands.get(cmdName) : null;
-  if(indentCommand?.execute) {
-          indentCommand.execute(arg);
+  if (indentCommand?.execute) {
+    indentCommand.execute(arg);
   }
 }
 
@@ -105,7 +124,11 @@ export function moveListItemInParent(source, direction, editor) {
 
           const fullRange = writer.createRange(
             range.start,
-            rangeNextSibling ? rangeNextSibling.start : rangeLastChild ? rangeLastChild.end : range.end
+            rangeNextSibling
+              ? rangeNextSibling.start
+              : rangeLastChild
+              ? rangeLastChild.end
+              : range.end
           );
 
           // const position = writer.createPositionAt(nextSiblingModel, 'after'); // can be used instead of the element
@@ -138,7 +161,7 @@ export function removeListItemInParent(source, editor) {
 
 export function addListItemInParent(source, editor) {
   const anchor = source?.anchor;
-  if (anchor &&  editor) { 
+  if (anchor && editor) {
     setTimeout(() => {
       const selectLi = findParent(source.anchor, "li");
       if (!selectLi) return;
@@ -166,7 +189,7 @@ export function getSelectedLinkElement(customPropName, nodeIsName) {
   function isCustomLinkElement(node) {
     return node.is(nodeIsName || "containerElement") && !!node.getCustomProperty(customPropName);
   }
-  
+
   function findLinkElementAncestor(position) {
     return position.getAncestors().find((ancestor) => isCustomLinkElement(ancestor));
   }
@@ -204,9 +227,7 @@ export function getSelectedLinkElement(customPropName, nodeIsName) {
 function _findBound(position, attributeName, value, lookBack, model) {
   // Get node before or after position (depends on `lookBack` flag).
   // When position is inside text node then start searching from text node.
-  let node =
-    position.textNode ||
-    (lookBack ? position.nodeBefore : position.nodeAfter);
+  let node = position.textNode || (lookBack ? position.nodeBefore : position.nodeAfter);
 
   let lastNode = null;
 
@@ -215,9 +236,7 @@ function _findBound(position, attributeName, value, lookBack, model) {
     node = lookBack ? node.previousSibling : node.nextSibling;
   }
 
-  return lastNode
-    ? model.createPositionAt(lastNode, lookBack ? "before" : "after")
-    : position;
+  return lastNode ? model.createPositionAt(lastNode, lookBack ? "before" : "after") : position;
 }
 
 export function findAttributeRange(position, attributeName, value, model) {
@@ -234,10 +253,7 @@ export function viewToPlainText(viewItem) {
   if (viewItem.is("$text") || viewItem.is("$textProxy")) {
     // If item is `Text` or `TextProxy` simple take its text data.
     text = viewItem.data;
-  } else if (
-    viewItem.is("element", "img") &&
-    viewItem.hasAttribute("alt")
-  ) {
+  } else if (viewItem.is("element", "img") && viewItem.hasAttribute("alt")) {
     // Special case for images - use alt attribute if it is provided.
     text = viewItem.getAttribute("alt");
   } else if (viewItem.is("element", "br")) {
@@ -252,14 +268,8 @@ export function viewToPlainText(viewItem) {
       const childText = viewToPlainText(child);
 
       // Separate container element children with one or more new-line characters.
-      if (
-        prev &&
-        (prev.is("containerElement") || child.is("containerElement"))
-      ) {
-        if (
-          smallPaddingElements.includes(prev.name) ||
-          smallPaddingElements.includes(child.name)
-        ) {
+      if (prev && (prev.is("containerElement") || child.is("containerElement"))) {
+        if (smallPaddingElements.includes(prev.name) || smallPaddingElements.includes(child.name)) {
           text += "\n";
         } else {
           text += "\n\n";
@@ -277,24 +287,21 @@ export function viewToPlainText(viewItem) {
 export function normalizeClipboardData(data) {
   return (
     data
-      .replace(
-        /<span(?: class="Apple-converted-space"|)>(\s+)<\/span>/g,
-        (fullMatch, spaces) => {
-          // Handle the most popular and problematic case when even a single space becomes an nbsp;.
-          // Decode those to normal spaces. Read more in https://github.com/ckeditor/ckeditor5-clipboard/issues/2.
-          if (spaces.length == 1) {
-            return " ";
-          }
-
-          return spaces;
+      .replace(/<span(?: class="Apple-converted-space"|)>(\s+)<\/span>/g, (fullMatch, spaces) => {
+        // Handle the most popular and problematic case when even a single space becomes an nbsp;.
+        // Decode those to normal spaces. Read more in https://github.com/ckeditor/ckeditor5-clipboard/issues/2.
+        if (spaces.length == 1) {
+          return " ";
         }
-      )
+
+        return spaces;
+      })
       // Remove all HTML comments.
       .replace(/<!--[\s\S]*?-->/g, "")
   );
 }
 
-export  function plainTextToHtml(text) {
+export function plainTextToHtml(text) {
   text = text
     // Encode <>.
     .replace(/</g, "&lt;")
