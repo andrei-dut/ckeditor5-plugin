@@ -14,3 +14,194 @@ export const customIcons = [
     icon: text,
   },
 ] 
+
+export const addIcon = `      <svg
+width="32"
+height="32"
+viewBox="0 0 32 32"
+version="1.1"
+id="svg1"
+inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+sodipodi:docname="circlePlus.svg"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:svg="http://www.w3.org/2000/svg"
+>
+<defs id="defs1">
+  <pattern
+    id="EMFhbasepattern"
+    patternUnits="userSpaceOnUse"
+    width="6"
+    height="6"
+    x="0"
+    y="0"
+  />
+</defs>
+<g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1">
+  <ellipse
+    style="
+      fill: none;
+      stroke: #000000;
+      stroke-width: 1.541;
+      stroke-dasharray: none;
+      stroke-opacity: 1;
+    "
+    id="path1"
+    cx="16.052013"
+    cy="15.973102"
+    rx="14.72966"
+    ry="14.729659"
+  />
+  <path
+    style="
+      fill: none;
+      fill-rule: evenodd;
+      stroke: #000000;
+      stroke-width: 1.55;
+      stroke-linecap: butt;
+      stroke-linejoin: miter;
+      stroke-opacity: 1;
+      stroke-dasharray: none;
+    "
+    d="M 15.804425,8.3448486 15.865615,24.20549"
+    id="path2"
+    inkscape:connector-type="polyline"
+    inkscape:connector-curvature="0"
+  />
+  <path
+    style="
+      fill: none;
+      fill-rule: evenodd;
+      stroke: #000000;
+      stroke-width: 1.552;
+      stroke-linecap: butt;
+      stroke-linejoin: miter;
+      stroke-opacity: 1;
+      stroke-dasharray: none;
+    "
+    d="m 7.969816,16.264103 15.742042,-0.06134"
+    id="path3"
+    inkscape:connector-type="polyline"
+    inkscape:connector-curvature="0"
+  />
+</g>
+</svg>`
+
+export const moveUpIcon = `          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+<path d="M12 8l-8 8 1.41 1.41L12 10.83l6.59 6.58L20 16z" />
+<path d="M0 0h24v24H0z" fill="none" />
+</svg>
+`
+
+export const moveDownIcon = `          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+<path d="M12 16l-8-8 1.41-1.41L12 13.17l6.59-6.59L20 8z" />
+<path d="M0 0h24v24H0z" fill="none" />
+</svg>
+`
+
+export const removeIcon = `          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+<svg
+width="32"
+height="32"
+viewBox="0 0 32 32"
+version="1.1"
+id="svg1"
+inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+sodipodi:docname="circleMinus.svg"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:svg="http://www.w3.org/2000/svg"
+>
+<defs id="defs1">
+  <pattern
+    id="EMFhbasepattern"
+    patternUnits="userSpaceOnUse"
+    width="6"
+    height="6"
+    x="0"
+    y="0"
+  />
+</defs>
+<g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1">
+  <ellipse
+    style="
+      fill: none;
+      stroke: #000000;
+      stroke-width: 1.541;
+      stroke-dasharray: none;
+      stroke-opacity: 1;
+    "
+    id="path1"
+    cx="16.052013"
+    cy="15.973102"
+    rx="14.72966"
+    ry="14.729659"
+  />
+  <path
+    style="
+      fill: none;
+      fill-rule: evenodd;
+      stroke: #000000;
+      stroke-width: 1.552;
+      stroke-linecap: butt;
+      stroke-linejoin: miter;
+      stroke-opacity: 1;
+      stroke-dasharray: none;
+    "
+    d="m 7.969816,16.264103 15.742042,-0.06134"
+    id="path3"
+    inkscape:connector-type="polyline"
+    inkscape:connector-curvature="0"
+  />
+</g>
+</svg>
+`
+
+export const levelUpIcon = `          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+<svg
+viewBox="0 0 24 24"
+width="24"
+height="24"
+version="1.1"
+id="svg2"
+sodipodi:docname="arrowMore24.svg"
+inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:svg="http://www.w3.org/2000/svg"
+>
+<defs id="defs2" />
+<path
+  d="m 16.705,12.705 -8,-8 -1.41,1.41 6.58,6.59 -6.58,6.59 1.41,1.41 z"
+  id="path1"
+/>
+<path d="M0 0h24v24H0z" fill="none" id="path2" />
+</svg>
+`
+
+export const levelDownIcon = `          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+<svg
+viewBox="0 0 24 24"
+width="24"
+height="24"
+version="1.1"
+id="svg2"
+sodipodi:docname="arrowLess24.svg"
+inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:svg="http://www.w3.org/2000/svg"
+>
+<defs id="defs2" />
+<path
+  d="m 7.295,12.705 8,8 1.41,-1.41 -6.58,-6.59 6.58,-6.59 -1.41,-1.41 z"
+  id="path1"
+/>
+<path d="M0 0h24v24H0z" fill="none" id="path2" />
+</svg>
+`

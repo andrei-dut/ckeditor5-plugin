@@ -1,4 +1,6 @@
 import { ButtonView, Plugin,   } from "../../ckeditor";
+import { createTestItemToolbar } from "../../createTestItemToolbar";
+import { addIcon, levelDownIcon, levelUpIcon, moveDownIcon, moveUpIcon, removeIcon } from "../../icons";
 import CustomLiCommand from "./customLiCommand";
 import {
   _defineContentConversion,
@@ -51,6 +53,25 @@ console.log('editEl', editor.editing.view.document.selection.editableElement);
 
       return button;
     });
+
+    createTestItemToolbar(editor, "add", addIcon, () => { createNewRequirement(undefined, undefined, { type: "addNew" });})
+    createTestItemToolbar(editor, "remove", removeIcon, () => {
+      createNewRequirement(undefined, undefined, { type: "remove" });
+    })
+    createTestItemToolbar(editor, "moveUp", moveUpIcon, () => {
+      createNewRequirement(undefined, undefined, { type: "moveUp" });
+
+    })
+    createTestItemToolbar(editor, "moveDown", moveDownIcon, () => {
+      createNewRequirement(undefined, undefined, { type: "moveDown" });
+
+    })
+    createTestItemToolbar(editor, "levelUp", levelUpIcon, () => {
+      createNewRequirement(undefined, undefined, { type: "levelUp" });
+    })
+    createTestItemToolbar(editor, "levelDown", levelDownIcon, () => {
+      createNewRequirement(undefined, undefined, { type: "levelDown" });
+    })
 
     // function handleKeystrokeEvents() {
     //     editor.keystrokes.set( 'Ctrl+Enter', ( data, cancel ) => {
@@ -139,6 +160,7 @@ console.log('editEl', editor.editing.view.document.selection.editableElement);
       ],
       isObject: true,
       isBlock: true,
+      allowIn: "requirement",
     });
 
     schema.register("requirementMarker", {

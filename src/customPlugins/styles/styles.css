@@ -285,7 +285,6 @@ p {
   background-color: #ddd;
 }
 
-
 .ck-editor__main h3 {
   display: block;
   font-size: 1.17em;
@@ -302,17 +301,28 @@ p {
   position: relative;
   margin-left: 40px;
   margin-right: 40px;
-  margin-bottom: 30px;
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
 }
+.ck-editor__main .requirement .requirement {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 31px;
+}
+.ck-editor__main .requirement .requirement .aw-requirement-marker,
+.ck-editor__main .requirement .requirement .aw-requirement-content {
+  border-top: none;
+}
+
 .ck-editor__main .aw-requirement-header h3 {
   margin-top: auto;
   margin-bottom: auto;
   flex: 1;
 }
 .ck-editor__main .aw-requirement-marker {
-  position: absolute;
-  left: -41px;
+  border: 1px solid grey;
+  border-right: none;
+  position: initial;
   width: 30px;
   display: flex;
   flex-direction: column;
@@ -320,6 +330,17 @@ p {
 .ck-editor__main .aw-requirement-marker > * {
   margin: auto;
 }
+.ck-editor__main .aw-requirement-marker .aw-ckeditor-marker-element {
+  font-weight: bold;
+  margin: 13px auto;
+}
+
+.ck-editor__main .aw-requirement-content {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid grey;
+}
+
 .ck-editor__main .aw-requirement-a4SizePaper {
   padding: 20px;
   padding-left: 40px;
@@ -336,17 +357,11 @@ p {
   height: 16px;
   cursor: pointer;
 }
-.ck-editor__main .aw-requirement-properties {
-  height: 100%;
-  padding: 2px;
-  -webkit-appearance: textfield;
-  cursor: text;
-  min-width: 100px;
-  display: inline-block;
-}
-.ck-editor__main .aw-requirement-content span[contenteditable=true] {
+
+.ck-editor__main .aw-requirement-content span[contenteditable="true"] {
   outline: 2px solid;
 }
+
 .ck-editor__main .aw-requirement-bodytext {
   outline: none;
   min-height: 20px;
@@ -377,7 +392,10 @@ p {
 .ck-editor__main .ck-content .aw-requirement-oleImage.image.image_resized > figcaption {
   display: none;
 }
-.ck-editor__main .ck-focused .aw-requirement-oleImage.ck-widget_with-resizer.ck-widget_selected > .ck-widget__resizer {
+.ck-editor__main
+  .ck-focused
+  .aw-requirement-oleImage.ck-widget_with-resizer.ck-widget_selected
+  > .ck-widget__resizer {
   display: none;
 }
 .ck-editor__main .ck-content .aw-requirement-oleImage.image {
@@ -449,14 +467,74 @@ p {
   line-height: 1.5;
   font-family: Arial, Helvetica, sans-serif;
 }
-.ck-editor__main .ck.ck-content div, .ck-editor__main .ck.ck-content span, .ck-editor__main .ck.ck-content h1, .ck-editor__main .ck.ck-content h2, .ck-editor__main .ck.ck-content h3, .ck-editor__main .ck.ck-content h4, .ck-editor__main .ck.ck-content h5, .ck-editor__main .ck.ck-content h6, .ck-editor__main .ck.ck-content p, .ck-editor__main .ck.ck-content blockquote, .ck-editor__main .ck.ck-content pre, .ck-editor__main .ck.ck-content a, .ck-editor__main .ck.ck-content abbr, .ck-editor__main .ck.ck-content acronym, .ck-editor__main .ck.ck-content address, .ck-editor__main .ck.ck-content big, .ck-editor__main .ck.ck-content cite, .ck-editor__main .ck.ck-content code, .ck-editor__main .ck.ck-content del, .ck-editor__main .ck.ck-content dfn, .ck-editor__main .ck.ck-content em, .ck-editor__main .ck.ck-content img, .ck-editor__main .ck.ck-content ins, .ck-editor__main .ck.ck-content small, .ck-editor__main .ck.ck-content strike, .ck-editor__main .ck.ck-content strong, .ck-editor__main .ck.ck-content sub, .ck-editor__main .ck.ck-content sup, .ck-editor__main .ck.ck-content b, .ck-editor__main .ck.ck-content u, .ck-editor__main .ck.ck-content i, .ck-editor__main .ck.ck-content dl, .ck-editor__main .ck.ck-content dt, .ck-editor__main .ck.ck-content dd, .ck-editor__main .ck.ck-content ol, .ck-editor__main .ck.ck-content ul, .ck-editor__main .ck.ck-content li, .ck-editor__main .ck.ck-content fieldset, .ck-editor__main .ck.ck-content form, .ck-editor__main .ck.ck-content label, .ck-editor__main .ck.ck-content legend, .ck-editor__main .ck.ck-content table, .ck-editor__main .ck.ck-content caption, .ck-editor__main .ck.ck-content tfoot, .ck-editor__main .ck.ck-content thead, .ck-editor__main .ck.ck-content tr, .ck-editor__main .ck.ck-content th, .ck-editor__main .ck.ck-content td, .ck-editor__main .ck.ck-content embed, .ck-editor__main .ck.ck-content figure, .ck-editor__main .ck.ck-content figcaption, .ck-editor__main .ck.ck-content footer, .ck-editor__main .ck.ck-content header, .ck-editor__main .ck.ck-content hgroup, .ck-editor__main .ck.ck-content menu, .ck-editor__main .ck.ck-content nav, .ck-editor__main .ck.ck-content output, .ck-editor__main .ck.ck-content section, .ck-editor__main .ck.ck-content summary, .ck-editor__main .ck.ck-content time, .ck-editor__main .ck.ck-content mark, .ck-editor__main .ck.ck-content button {
+.ck-editor__main .ck.ck-content div,
+.ck-editor__main .ck.ck-content span,
+.ck-editor__main .ck.ck-content h1,
+.ck-editor__main .ck.ck-content h2,
+.ck-editor__main .ck.ck-content h3,
+.ck-editor__main .ck.ck-content h4,
+.ck-editor__main .ck.ck-content h5,
+.ck-editor__main .ck.ck-content h6,
+.ck-editor__main .ck.ck-content p,
+.ck-editor__main .ck.ck-content blockquote,
+.ck-editor__main .ck.ck-content pre,
+.ck-editor__main .ck.ck-content a,
+.ck-editor__main .ck.ck-content abbr,
+.ck-editor__main .ck.ck-content acronym,
+.ck-editor__main .ck.ck-content address,
+.ck-editor__main .ck.ck-content big,
+.ck-editor__main .ck.ck-content cite,
+.ck-editor__main .ck.ck-content code,
+.ck-editor__main .ck.ck-content del,
+.ck-editor__main .ck.ck-content dfn,
+.ck-editor__main .ck.ck-content em,
+.ck-editor__main .ck.ck-content img,
+.ck-editor__main .ck.ck-content ins,
+.ck-editor__main .ck.ck-content small,
+.ck-editor__main .ck.ck-content strike,
+.ck-editor__main .ck.ck-content strong,
+.ck-editor__main .ck.ck-content sub,
+.ck-editor__main .ck.ck-content sup,
+.ck-editor__main .ck.ck-content b,
+.ck-editor__main .ck.ck-content u,
+.ck-editor__main .ck.ck-content i,
+.ck-editor__main .ck.ck-content dl,
+.ck-editor__main .ck.ck-content dt,
+.ck-editor__main .ck.ck-content dd,
+.ck-editor__main .ck.ck-content ol,
+.ck-editor__main .ck.ck-content ul,
+.ck-editor__main .ck.ck-content li,
+.ck-editor__main .ck.ck-content fieldset,
+.ck-editor__main .ck.ck-content form,
+.ck-editor__main .ck.ck-content label,
+.ck-editor__main .ck.ck-content legend,
+.ck-editor__main .ck.ck-content table,
+.ck-editor__main .ck.ck-content caption,
+.ck-editor__main .ck.ck-content tfoot,
+.ck-editor__main .ck.ck-content thead,
+.ck-editor__main .ck.ck-content tr,
+.ck-editor__main .ck.ck-content th,
+.ck-editor__main .ck.ck-content td,
+.ck-editor__main .ck.ck-content embed,
+.ck-editor__main .ck.ck-content figure,
+.ck-editor__main .ck.ck-content figcaption,
+.ck-editor__main .ck.ck-content footer,
+.ck-editor__main .ck.ck-content header,
+.ck-editor__main .ck.ck-content hgroup,
+.ck-editor__main .ck.ck-content menu,
+.ck-editor__main .ck.ck-content nav,
+.ck-editor__main .ck.ck-content output,
+.ck-editor__main .ck.ck-content section,
+.ck-editor__main .ck.ck-content summary,
+.ck-editor__main .ck.ck-content time,
+.ck-editor__main .ck.ck-content mark,
+.ck-editor__main .ck.ck-content button {
   font-family: inherit;
 }
 .ck-editor__main .ck.ck-content p {
   margin: 5px 0 5px 0;
 }
-.ck-editor__main .aw-requirement-bodytext,
-.ck-editor__main .aw-requirement-properties {
+.ck-editor__main .aw-requirement-bodytext {
   font-size: 14px;
 }
 .ck-editor__main .aw-requirements-readOnly,
@@ -489,7 +567,9 @@ p {
 .aw-richtexteditor-widePanelBody .ck-editor__main .ck .ck-widget_selected,
 .aw-richtexteditor-widePanelBody .ck-editor__main .ck .ck-widget:hover,
 .aw-richtexteditor-widePanelBody .ck-editor__main .ck .ck-widget_selected:hover,
-.aw-richtexteditor-widePanelBody .ck-editor__main .aw-requirement-bodytext.ck-editor__editable.ck-editor__nested-editable.ck-editor__nested-editable_focused {
+.aw-richtexteditor-widePanelBody
+  .ck-editor__main
+  .aw-requirement-bodytext.ck-editor__editable.ck-editor__nested-editable.ck-editor__nested-editable_focused {
   outline: none;
   border: none;
   box-shadow: none;
@@ -498,8 +578,14 @@ p {
   outline: none;
   border: none;
 }
-.aw-richtexteditor-widePanelBody .ck-editor__main .ck.ck-editor__main > .ck-editor__editable:not(.ck-focused),
-.aw-richtexteditor-widePanelBody .ck-editor__main .ck.ck-editor__main > .ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
+.aw-richtexteditor-widePanelBody
+  .ck-editor__main
+  .ck.ck-editor__main
+  > .ck-editor__editable:not(.ck-focused),
+.aw-richtexteditor-widePanelBody
+  .ck-editor__main
+  .ck.ck-editor__main
+  > .ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
   border: none;
   box-shadow: none;
 }

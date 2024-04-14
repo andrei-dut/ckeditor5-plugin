@@ -8,9 +8,9 @@ export function getModelElement(editor, containerElement, nameModelEle) {
   return null;
 }
 
-export function findAllElementsByName(editor, elementName, parentRoot) {
+export function findAllElementsByName(editor, elementName, parentRoot, rangeIn) {
   const findElements = [];
-  const range = editor.model.createRangeIn(editor.model.document.getRoot());
+  const range = editor.model.createRangeIn( rangeIn ||editor.model.document.getRoot());
   for (const value of range.getWalker({ ignoreElementEnd: true })) {
     if (
       value.item.is("element") &&
@@ -325,4 +325,10 @@ export function plainTextToHtml(text) {
   // * What about '\nfoo' vs ' foo'?
 
   return text;
+}
+
+export function _createRange(writer, elem) {
+  const before = writer.createPositionBefore(elem)
+  const after = writer.createPositionAfter(elem)
+  return writer.createRange(before, after)
 }

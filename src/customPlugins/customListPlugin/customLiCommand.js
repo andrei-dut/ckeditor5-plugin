@@ -1,5 +1,12 @@
 import { Command } from "../../ckeditor";
-import { findAllElementsByName, getModelElement, getTextFromElement } from "../editorUtils";
+import {
+  findAllElementsByName,
+  getModelElement,
+  getNextSibling,
+  getPreviousSibling,
+  getTextFromElement,
+  isParentRoot,
+} from "../editorUtils";
 import { getLastElemFromArray, incrementWithLetter } from "../utils";
 
 export default class CustomLiCommand extends Command {
@@ -30,6 +37,31 @@ export default class CustomLiCommand extends Command {
 
       insertPosition = writer.createPositionAfter(prevRequirement);
 
+      function setChildReq(parent) {
+        const _parent = parent || prevRequirement;
+        const lastChild = getLastElemFromArray(
+          findAllElementsByName(editor, "requirement", null, _parent)
+        );
+        if (lastChild) {
+          insertPosition = writer.createPositionAfter(lastChild);
+        } else {
+          const prevRequirementContent = getModelElement(editor, _parent, "requirementContent");
+          if (prevRequirementContent)
+            insertPosition = writer.createPositionAfter(prevRequirementContent);
+        }
+
+        // editor.model.insertContent(parent, insertPosition);
+      }
+
+      // console.group("pos")
+      // console.log(getPreviousSibling(prevRequirement));
+      // console.log(insertPosition);
+      // console.groupEnd()
+
+      // if(getPreviousSibling(prevRequirement)?.name === "requirement") {
+      //   setChildReq(getPreviousSibling(prevRequirement))
+      // }
+
       const requirementMarker = _createMarkerWidget(
         writer,
         incrementWithLetter(widgetMetaData.prevWidgetMarker)
@@ -41,6 +73,64 @@ export default class CustomLiCommand extends Command {
       editor.model.insertContent(requirement, insertPosition);
     });
     return requirement;
+  }
+
+  levelUpReq(parent) {
+    const editor = this.editor;
+    editor.model.change((writer) => {
+      const prevSibling = getPreviousSibling(parent);
+      if (prevSibling?.name !== "requirement") {
+        return;
+      }
+      const lastChild = getLastElemFromArray(
+        findAllElementsByName(editor, "requirement", null, prevSibling)
+      );
+      const prevRequirementContent = getModelElement(editor, prevSibling, "requirementContent");
+      writer.move(writer.createRangeOn(parent), lastChild || prevRequirementContent, "after");
+    });
+  }
+
+  leveDownReq(parent) {
+    const editor = this.editor;
+    editor.model.change((writer) => {
+      if (parent && !isParentRoot(parent) && parent.parent?.name === "requirement") {
+        writer.move(writer.createRangeOn(parent), parent.parent, "after");
+        return;
+      }
+    });
+  }
+
+  removeReq(parent) {
+    const editor = this.editor;
+    editor.model.change((writer) => {
+      if (parent) {
+        writer.remove(parent);
+        return;
+      }
+    });
+  }
+
+  moveUpReq(parent) {
+    const editor = this.editor;
+    editor.model.change((writer) => {
+      const prevSibling = getPreviousSibling(parent);
+      if (prevSibling?.name !== "requirement") {
+        return;
+      }
+      writer.move(writer.createRangeOn(parent), prevSibling, "before");
+
+    });
+  }
+
+  moveDownReq(parent) {
+    const editor = this.editor;
+    editor.model.change((writer) => {
+      const nextSibling = getNextSibling(parent);
+      if (nextSibling?.name !== "requirement") {
+        return;
+      }
+      writer.move(writer.createRangeOn(parent), nextSibling, "after");
+    });
   }
 
   getNewWidgetMetaData(editor, options, callback) {
@@ -65,6 +155,8 @@ export default class CustomLiCommand extends Command {
       isSibling: _isSibling,
       prevWidget,
       prevWidgetMarker,
+      isLevelUp: options.type === "levelUp",
+      isLevelDown: options.type === "levelDown",
     };
 
     console.log("widgetMetaData", widgetMetaData);
@@ -84,9 +176,34 @@ export default class CustomLiCommand extends Command {
     // inserting RAT data for toggle Button
     editor.RATData.isNewRequirement = true;
 
+    if (options.type === "moveUp") {
+      this.moveUpReq(parentRequirement);
+      return;
+    }
+
+    if (options.type === "moveDown") {
+      this.moveDownReq(parentRequirement);
+      return;
+    }
+    if (options.type === "levelUp") {
+      this.levelUpReq(parentRequirement);
+      return;
+    }
+
+    if (options.type === "remove") {
+      this.removeReq(parentRequirement);
+      return;
+    }
+
+    if (options.type === "levelDown") {
+      this.leveDownReq(parentRequirement);
+      return;
+    }
+
     this.getNewWidgetMetaData(editor, options, function (obj, widgetMetaData) {
       let req = obj._createNewWidget(widgetMetaData);
-      scrollToNewWidget(req, editor);
+
+      if (req && !1) scrollToNewWidget(req, editor);
     });
   }
 }
