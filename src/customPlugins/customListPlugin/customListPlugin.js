@@ -5,6 +5,7 @@ import {
   _defineMarkerConversion,
   _defineRequirementConversion,
 } from "./customLiConversion";
+import "../styles/stylesCustomListPl.css";
 
 let editor;
 export default class CustomListPlugin extends Plugin {
