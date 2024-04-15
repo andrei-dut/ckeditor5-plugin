@@ -8,7 +8,7 @@ import {
 import "../styles/stylesCustomListPl.css";
 
 let editor;
-export default class CustomListPlugin extends Plugin {
+export class CustomListPlugin extends Plugin {
   init() {
     editor = this.editor;
     this.editor.RATData = {};
