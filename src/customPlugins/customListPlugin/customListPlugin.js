@@ -1,13 +1,4 @@
 import { Plugin } from "../../ckeditor";
-import { createTestItemToolbar } from "../../createTestItemToolbar";
-import {
-  addIcon,
-  levelDownIcon,
-  levelUpIcon,
-  moveDownIcon,
-  moveUpIcon,
-  removeIcon,
-} from "../../icons";
 import CustomLiCommand from "./customLiCommand";
 import {
   _defineContentConversion,
@@ -25,24 +16,6 @@ export default class CustomListPlugin extends Plugin {
 
     editor.commands.add("insertCustomLi", new CustomLiCommand(editor));
 
-    createTestItemToolbar(editor, "add", addIcon, () => {
-      editor.execute("insertCustomLi", { type: "addNew" });
-    });
-    createTestItemToolbar(editor, "remove", removeIcon, () => {
-      editor.execute("insertCustomLi", { type: "remove" });
-    });
-    createTestItemToolbar(editor, "moveUp", moveUpIcon, () => {
-      editor.execute("insertCustomLi", { type: "moveUp" });
-    });
-    createTestItemToolbar(editor, "moveDown", moveDownIcon, () => {
-      editor.execute("insertCustomLi", { type: "moveDown" });
-    });
-    createTestItemToolbar(editor, "levelUp", levelUpIcon, () => {
-      editor.execute("insertCustomLi", { type: "levelUp" });
-    });
-    createTestItemToolbar(editor, "levelDown", levelDownIcon, () => {
-      editor.execute("insertCustomLi", { type: "levelDown" });
-    });
 
     // function handleKeystrokeEvents() {
     //     editor.keystrokes.set( 'Ctrl+Enter', ( data, cancel ) => {

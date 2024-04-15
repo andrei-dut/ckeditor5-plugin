@@ -34,7 +34,6 @@ export function registerCustomLink(editor) {
   editor.conversion.for("editingDowncast").attributeToElement({
     model: "customLink",
     view: (data, conversionApi) => {
-      console.log(data);
       const { href, text } = data || {};
       return createLinkElement(
         { href: ensureSafeUrl(href), text },
