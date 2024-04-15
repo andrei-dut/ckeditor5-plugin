@@ -1,4 +1,5 @@
 import { Command } from "../../ckeditor";
+import { dataSvgToXml } from "../icons/utils";
 import svg64 from "../svg64";
 
 export default class InsertIconCommand extends Command {
@@ -17,7 +18,7 @@ export default class InsertIconCommand extends Command {
       const imageElement = writer.createElement("imageInline", {
         src: svg64(iconData.icon),
         alt: iconData.iconName,
-        'data-json': JSON.stringify(iconData.svgValues || {})
+        "data-json": JSON.stringify(dataSvgToXml(iconData.iconName, iconData.svgValues)),
       });
 
       model.insertContent(imageElement, selection);
@@ -26,4 +27,3 @@ export default class InsertIconCommand extends Command {
     });
   }
 }
-

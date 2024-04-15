@@ -132,8 +132,20 @@ export default class CustomLiCommand extends Command {
     return newReq;
   }
 
-  execute(options) {
+  execute(_options) {
     const editor = this.editor;
+
+    const options = { after: "", ..._options };
+
+    let t1 = editor.editing.view.document.selection.editableElement?.parent?.parent;
+
+    console.log(editor.editing.view.document.selection, t1);
+
+    if (t1 && !t1?.hasClass("requirement")) {
+      t1 = t1.parent;
+    }
+    const t2 = editor.editing.mapper.toModelElement(t1);
+    options.after = t2;
 
     const parentRequirement = options.after;
     if (!parentRequirement) {
@@ -174,13 +186,16 @@ export default class CustomLiCommand extends Command {
 }
 
 const scrollToNewWidget = function (requirement, editor) {
-  let view = editor.editing.view;
-  let reqDomElement = document.getElementById(requirement.getAttribute("id"));
-  let reqViewElement = editor.editing.view.domConverter.domToView(reqDomElement);
-
-  let newselection = view.createSelection(reqViewElement, 0, { fake: true });
-  view.document.selection._setTo(newselection);
-  view.scrollToTheSelection();
+  try {
+    const view = editor.editing.view;
+    const newselection = view.createSelection(editor.editing.mapper.toViewElement(requirement), 0, {
+      fake: true,
+    });
+    view.document.selection._setTo(newselection);
+    view.scrollToTheSelection();
+  } catch (error) {
+    console.warn(error);
+  }
 };
 
 function getRandomId() {

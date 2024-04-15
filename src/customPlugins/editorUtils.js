@@ -338,3 +338,4 @@ export function _createRange(writer, elem) {
   const after = writer.createPositionAfter(elem);
   return writer.createRange(before, after);
 }
+

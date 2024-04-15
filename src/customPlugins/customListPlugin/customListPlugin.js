@@ -1,4 +1,4 @@
-import { ButtonView, Plugin } from "../../ckeditor";
+import { Plugin } from "../../ckeditor";
 import { createTestItemToolbar } from "../../createTestItemToolbar";
 import {
   addIcon,
@@ -25,59 +25,23 @@ export default class CustomListPlugin extends Plugin {
 
     editor.commands.add("insertCustomLi", new CustomLiCommand(editor));
 
-    function createNewRequirement(data, cancel, option) {
-      // var requirementAncestor = getNestedEditable( data.domTarget );
-      const requirementAncestor = true;
-      if (!requirementAncestor) {
-        return;
-      }
-      const eventdata = { after: "", ...option };
-      let t1 = editor.editing.view.document.selection.editableElement.parent?.parent;
-      console.log("editEl", editor.editing.view.document.selection.editableElement);
-      if (t1 && !t1?.hasClass("requirement")) {
-        t1 = t1.parent;
-      }
-      const t2 = editor.editing.mapper.toModelElement(t1);
-      eventdata.after = t2;
-
-      editor.execute("insertCustomLi", eventdata);
-      cancel?.();
-    }
-
-    editor.ui.componentFactory.add("customList", (locale) => {
-      const button = new ButtonView(locale);
-
-      button.set({
-        label: "Numbered List",
-        icon: '<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7H6V5H4V7ZM4 11H6V9H4V11ZM4 15H6V13H4V15ZM10 5V7H20V5H10ZM10 9V11H20V9H10ZM10 13V15H20V13H10ZM6 19V17H4V19H6ZM8 17H18V19H8V17ZM22 3V21H2V3H22Z"/></svg>',
-        tooltip: true,
-      });
-
-      button.on("execute", () => {
-        createNewRequirement(undefined, undefined, { type: "CHILD" });
-        // createNewRequirement( data, cancel, {type: 'SIBLING'} );
-      });
-
-      return button;
-    });
-
     createTestItemToolbar(editor, "add", addIcon, () => {
-      createNewRequirement(undefined, undefined, { type: "addNew" });
+      editor.execute("insertCustomLi", { type: "addNew" });
     });
     createTestItemToolbar(editor, "remove", removeIcon, () => {
-      createNewRequirement(undefined, undefined, { type: "remove" });
+      editor.execute("insertCustomLi", { type: "remove" });
     });
     createTestItemToolbar(editor, "moveUp", moveUpIcon, () => {
-      createNewRequirement(undefined, undefined, { type: "moveUp" });
+      editor.execute("insertCustomLi", { type: "moveUp" });
     });
     createTestItemToolbar(editor, "moveDown", moveDownIcon, () => {
-      createNewRequirement(undefined, undefined, { type: "moveDown" });
+      editor.execute("insertCustomLi", { type: "moveDown" });
     });
     createTestItemToolbar(editor, "levelUp", levelUpIcon, () => {
-      createNewRequirement(undefined, undefined, { type: "levelUp" });
+      editor.execute("insertCustomLi", { type: "levelUp" });
     });
     createTestItemToolbar(editor, "levelDown", levelDownIcon, () => {
-      createNewRequirement(undefined, undefined, { type: "levelDown" });
+      editor.execute("insertCustomLi", { type: "levelDown" });
     });
 
     // function handleKeystrokeEvents() {
@@ -88,12 +52,6 @@ export default class CustomListPlugin extends Plugin {
     //         createNewRequirement( data, cancel, 'CHILD' );
     //     } );
     // }
-
-    editor.model.document.on("change", () => {
-      //   const selection = editor.model.document.selection;
-      //   const blocks = selection.getSelectedBlocks();
-      //   console.log("change_cusLi", blocks);
-    });
 
     [
       "click",

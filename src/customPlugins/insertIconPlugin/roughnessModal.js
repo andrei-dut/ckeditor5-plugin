@@ -46,6 +46,8 @@ const ra_All = {
   ra3_6,
 };
 
+let _selectedRaID = "ra1";
+
 function addModal(content) {
   var modal = document.createElement("div");
   var closeButton = document.createElement("button");
@@ -97,7 +99,7 @@ function addModal(content) {
     saveBtn.onclick = function () {
       const svgElement = document.querySelector("#wrapSvg svg");
       if (svgElement?.outerHTML)
-        emitter.emit("insertIcon", svgElement, 'roughness', getCurrentValues());
+        emitter.emit("insertIcon", svgElement, 'roughness', Object.assign(getCurrentValues(), {type:_selectedRaID}));
       modal.remove();
     };
   }
@@ -237,6 +239,7 @@ const changePreviewSvg = (selectedRaID) => {
   }
 
   wrapPreviewElem?.appendChild(newWrapWithSvg);
+  _selectedRaID = selectedRaID;
 };
 
 function onInputForSvg() {
