@@ -1,4 +1,6 @@
 export function getModelElement(editor, containerElement, nameModelEle) {
+  if(!containerElement) 
+    return null;
   const range = editor.model.createRangeIn(containerElement);
   for (const modelElement of range.getItems({ ignoreElementEnd: true })) {
     if (modelElement.name === nameModelEle) {
@@ -10,12 +12,16 @@ export function getModelElement(editor, containerElement, nameModelEle) {
 
 export function findAllElementsByName(editor, elementName, parentRoot, rangeIn) {
   const findElements = [];
-  const range = editor.model.createRangeIn( rangeIn ||editor.model.document.getRoot());
+  const range = editor.model.createRangeIn(rangeIn || editor.model.document.getRoot());
   for (const value of range.getWalker({ ignoreElementEnd: true })) {
     if (
       value.item.is("element") &&
       value.item.name === elementName &&
-      (parentRoot ? isParentRoot(value.item) : true)
+      (rangeIn
+        ? value.item.parent?.name === rangeIn.name
+        : parentRoot
+        ? isParentRoot(value.item)
+        : true)
     ) {
       findElements.push(value.item);
     }
@@ -328,7 +334,7 @@ export function plainTextToHtml(text) {
 }
 
 export function _createRange(writer, elem) {
-  const before = writer.createPositionBefore(elem)
-  const after = writer.createPositionAfter(elem)
-  return writer.createRange(before, after)
+  const before = writer.createPositionBefore(elem);
+  const after = writer.createPositionAfter(elem);
+  return writer.createRange(before, after);
 }

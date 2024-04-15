@@ -18,6 +18,7 @@ export default class InsertIconCommand extends Command {
       const imageElement = writer.createElement("imageInline", {
         src: svg64(iconData.icon),
         alt: `icon-name:{{${iconData.iconName}}} ${convertObjectToString(iconData.svgValues)}`,
+        'data-json': JSON.stringify({x1:1, x2:2})
       });
 
       model.insertContent(imageElement, selection);

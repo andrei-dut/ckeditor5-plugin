@@ -7,72 +7,26 @@ import {
   getTextFromElement,
   isParentRoot,
 } from "../editorUtils";
-import { getLastElemFromArray, incrementWithLetter } from "../utils";
+import { getLastElemFromArray, incrementWithLetter, numberToRussianLetter } from "../utils";
 
 export default class CustomLiCommand extends Command {
-  _createNewWidget(widgetMetaData) {
+  updateMarkers(elem) {
+    if (!elem) return;
     const editor = this.editor;
-
-    const prevRequirement = widgetMetaData.prevWidget;
-    let requirement;
-
-    editor.model.change((writer) => {
-      let insertPosition = null;
-
-      requirement = writer.createElement("requirement", {
-        class: "requirement",
-        parentid: prevRequirement.getAttribute("id"),
-        itemtype: "Requirement",
-        objecttype: "Requirement",
-        parenttype: prevRequirement.getAttribute("itemtype"),
-        id: getRandomId(),
-      });
-
-      const requirementContent = writer.createElement("requirementContent");
-      const requirementBodyText = writer.createElement("requirementBodyText", {
-        class: "aw-requirement-bodytext",
-      });
-
-      writer.insert(requirementBodyText, writer.createPositionAt(requirementContent, 0));
-
-      insertPosition = writer.createPositionAfter(prevRequirement);
-
-      function setChildReq(parent) {
-        const _parent = parent || prevRequirement;
-        const lastChild = getLastElemFromArray(
-          findAllElementsByName(editor, "requirement", null, _parent)
+    const _parent = elem.parent;
+    const isReqParent = _parent?.name === "requirement";
+    const parentOfMarkers = findAllElementsByName(editor, "requirement", false, _parent);
+    parentOfMarkers.forEach((parentOfMarker, i) => {
+      const number = i + 1;
+      const elemMarker = getModelElement(editor, parentOfMarker, "span");
+      editor.model.change((writer) => {
+        writer.remove(elemMarker.getChild(0));
+        writer.insertText(
+          `${number}${isReqParent ? numberToRussianLetter(number) : ""}` || "-",
+          elemMarker
         );
-        if (lastChild) {
-          insertPosition = writer.createPositionAfter(lastChild);
-        } else {
-          const prevRequirementContent = getModelElement(editor, _parent, "requirementContent");
-          if (prevRequirementContent)
-            insertPosition = writer.createPositionAfter(prevRequirementContent);
-        }
-
-        // editor.model.insertContent(parent, insertPosition);
-      }
-
-      // console.group("pos")
-      // console.log(getPreviousSibling(prevRequirement));
-      // console.log(insertPosition);
-      // console.groupEnd()
-
-      // if(getPreviousSibling(prevRequirement)?.name === "requirement") {
-      //   setChildReq(getPreviousSibling(prevRequirement))
-      // }
-
-      const requirementMarker = _createMarkerWidget(
-        writer,
-        incrementWithLetter(widgetMetaData.prevWidgetMarker)
-      );
-      writer.insert(requirementMarker, writer.createPositionAt(requirement, 0));
-
-      writer.insert(requirementContent, writer.createPositionAt(requirement, 1));
-
-      editor.model.insertContent(requirement, insertPosition);
+      });
     });
-    return requirement;
   }
 
   levelUpReq(parent) {
@@ -88,6 +42,8 @@ export default class CustomLiCommand extends Command {
       const prevRequirementContent = getModelElement(editor, prevSibling, "requirementContent");
       writer.move(writer.createRangeOn(parent), lastChild || prevRequirementContent, "after");
     });
+    this.updateMarkers(parent);
+    this.updateMarkers(parent?.parent);
   }
 
   leveDownReq(parent) {
@@ -98,6 +54,7 @@ export default class CustomLiCommand extends Command {
         return;
       }
     });
+    this.updateMarkers(parent);
   }
 
   removeReq(parent) {
@@ -108,6 +65,7 @@ export default class CustomLiCommand extends Command {
         return;
       }
     });
+    this.updateMarkers(parent);
   }
 
   moveUpReq(parent) {
@@ -118,7 +76,7 @@ export default class CustomLiCommand extends Command {
         return;
       }
       writer.move(writer.createRangeOn(parent), prevSibling, "before");
-
+      this.updateMarkers(parent);
     });
   }
 
@@ -131,38 +89,47 @@ export default class CustomLiCommand extends Command {
       }
       writer.move(writer.createRangeOn(parent), nextSibling, "after");
     });
+    this.updateMarkers(parent);
   }
 
-  getNewWidgetMetaData(editor, options, callback) {
-    let _isChild;
-    let _isSibling;
-    let prevWidget;
-    let prevWidgetMarker;
-    // let _parentWidget;
-
-    const parentWidget = options.after;
-
-    prevWidget = parentWidget
-      ? parentWidget
+  createNewReq(options) {
+    const editor = this.editor;
+    const req = options.after
+      ? options.after
       : getLastElemFromArray(findAllElementsByName(editor, "requirement", true));
-    // _parentWidget = parentWidget;
-    _isSibling = options.type === "SIBLING";
-    _isChild = options.type === "CHILD";
-    prevWidgetMarker = getTextFromElement(getModelElement(editor, prevWidget, "span"));
+    const reqMarker = getTextFromElement(getModelElement(editor, req, "span"));
+    let newReq;
 
-    const widgetMetaData = {
-      isChild: _isChild,
-      isSibling: _isSibling,
-      prevWidget,
-      prevWidgetMarker,
-      isLevelUp: options.type === "levelUp",
-      isLevelDown: options.type === "levelDown",
-    };
+    editor.model.change((writer) => {
+      let insertPosition = null;
 
-    console.log("widgetMetaData", widgetMetaData);
+      newReq = writer.createElement("requirement", {
+        class: "requirement",
+        parentid: req?.getAttribute("id"),
+        itemtype: "Requirement",
+        objecttype: "Requirement",
+        parenttype: req?.getAttribute("itemtype"),
+        id: getRandomId(),
+      });
 
-    callback(this, widgetMetaData);
-    // this.editor.config.selectedRequirementWidget = null;
+      const requirementMarker = _createMarkerWidget(writer, incrementWithLetter(reqMarker || 0));
+      const requirementContent = writer.createElement("requirementContent");
+      const requirementBodyText = writer.createElement("requirementBodyText", {
+        class: "aw-requirement-bodytext",
+      });
+
+      writer.insert(requirementBodyText, writer.createPositionAt(requirementContent, 0));
+      writer.insert(requirementMarker, writer.createPositionAt(newReq, 0));
+      writer.insert(requirementContent, writer.createPositionAt(newReq, 1));
+
+      insertPosition = req
+        ? writer.createPositionAfter(req)
+        : writer.createPositionAt(editor.model.document.getRoot(), "end");
+
+      editor.model.insertContent(newReq, insertPosition);
+    });
+
+    return newReq;
   }
 
   execute(options) {
@@ -173,38 +140,36 @@ export default class CustomLiCommand extends Command {
       console.warn("No parent requirement passed.");
     }
 
-    // inserting RAT data for toggle Button
     editor.RATData.isNewRequirement = true;
 
-    if (options.type === "moveUp") {
-      this.moveUpReq(parentRequirement);
-      return;
-    }
+    switch (options.type) {
+      case "moveUp":
+        this.moveUpReq(parentRequirement);
+        break;
+      case "moveDown":
+        this.moveDownReq(parentRequirement);
+        break;
+      case "levelUp":
+        this.levelUpReq(parentRequirement);
+        break;
+      case "remove":
+        this.removeReq(parentRequirement);
+        break;
+      case "levelDown":
+        this.leveDownReq(parentRequirement);
+        break;
 
-    if (options.type === "moveDown") {
-      this.moveDownReq(parentRequirement);
-      return;
+      case "addNew": {
+        const req = this.createNewReq(options);
+        if (req) {
+          this.updateMarkers(req);
+          scrollToNewWidget(req, editor);
+        }
+        break;
+      }
+      default:
+        break;
     }
-    if (options.type === "levelUp") {
-      this.levelUpReq(parentRequirement);
-      return;
-    }
-
-    if (options.type === "remove") {
-      this.removeReq(parentRequirement);
-      return;
-    }
-
-    if (options.type === "levelDown") {
-      this.leveDownReq(parentRequirement);
-      return;
-    }
-
-    this.getNewWidgetMetaData(editor, options, function (obj, widgetMetaData) {
-      let req = obj._createNewWidget(widgetMetaData);
-
-      if (req && !1) scrollToNewWidget(req, editor);
-    });
   }
 }
 

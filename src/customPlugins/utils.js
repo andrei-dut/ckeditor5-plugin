@@ -282,3 +282,10 @@ export function incrementWithLetter(input) {
     return _nextLetter ? num.toString() + _nextLetter : `${num}`;
   }
 }
+
+export function numberToRussianLetter(number) {
+  const firstCharCode = 'а'.charCodeAt(0);
+  number = (((number - 1) % 32));
+  return String.fromCharCode(firstCharCode + number);
+}
+

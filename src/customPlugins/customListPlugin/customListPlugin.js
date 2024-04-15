@@ -1,6 +1,13 @@
-import { ButtonView, Plugin,   } from "../../ckeditor";
+import { ButtonView, Plugin } from "../../ckeditor";
 import { createTestItemToolbar } from "../../createTestItemToolbar";
-import { addIcon, levelDownIcon, levelUpIcon, moveDownIcon, moveUpIcon, removeIcon } from "../../icons";
+import {
+  addIcon,
+  levelDownIcon,
+  levelUpIcon,
+  moveDownIcon,
+  moveUpIcon,
+  removeIcon,
+} from "../../icons";
 import CustomLiCommand from "./customLiCommand";
 import {
   _defineContentConversion,
@@ -26,7 +33,7 @@ export default class CustomListPlugin extends Plugin {
       }
       const eventdata = { after: "", ...option };
       let t1 = editor.editing.view.document.selection.editableElement.parent?.parent;
-console.log('editEl', editor.editing.view.document.selection.editableElement);
+      console.log("editEl", editor.editing.view.document.selection.editableElement);
       if (t1 && !t1?.hasClass("requirement")) {
         t1 = t1.parent;
       }
@@ -54,24 +61,24 @@ console.log('editEl', editor.editing.view.document.selection.editableElement);
       return button;
     });
 
-    createTestItemToolbar(editor, "add", addIcon, () => { createNewRequirement(undefined, undefined, { type: "addNew" });})
+    createTestItemToolbar(editor, "add", addIcon, () => {
+      createNewRequirement(undefined, undefined, { type: "addNew" });
+    });
     createTestItemToolbar(editor, "remove", removeIcon, () => {
       createNewRequirement(undefined, undefined, { type: "remove" });
-    })
+    });
     createTestItemToolbar(editor, "moveUp", moveUpIcon, () => {
       createNewRequirement(undefined, undefined, { type: "moveUp" });
-
-    })
+    });
     createTestItemToolbar(editor, "moveDown", moveDownIcon, () => {
       createNewRequirement(undefined, undefined, { type: "moveDown" });
-
-    })
+    });
     createTestItemToolbar(editor, "levelUp", levelUpIcon, () => {
       createNewRequirement(undefined, undefined, { type: "levelUp" });
-    })
+    });
     createTestItemToolbar(editor, "levelDown", levelDownIcon, () => {
       createNewRequirement(undefined, undefined, { type: "levelDown" });
-    })
+    });
 
     // function handleKeystrokeEvents() {
     //     editor.keystrokes.set( 'Ctrl+Enter', ( data, cancel ) => {
@@ -83,9 +90,9 @@ console.log('editEl', editor.editing.view.document.selection.editableElement);
     // }
 
     editor.model.document.on("change", () => {
-    //   const selection = editor.model.document.selection;
-    //   const blocks = selection.getSelectedBlocks();
-    //   console.log("change_cusLi", blocks);
+      //   const selection = editor.model.document.selection;
+      //   const blocks = selection.getSelectedBlocks();
+      //   console.log("change_cusLi", blocks);
     });
 
     [
