@@ -1,0 +1,303 @@
+.ck-editor__main .requirement {
+  position: relative;
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.ck-editor__main .requirement .requirement {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 31px;
+}
+.ck-editor__main .requirement .requirement .aw-requirement-marker,
+.ck-editor__main .requirement .requirement .aw-requirement-content {
+  border-top: none;
+}
+
+.ck-editor__main .aw-requirement-header h3 {
+  margin-top: auto;
+  margin-bottom: auto;
+  flex: 1;
+}
+.ck-editor__main .aw-requirement-marker {
+  border: 1px solid grey;
+  border-right: none;
+  position: initial;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.ck-editor__main .aw-requirement-marker > * {
+  margin: auto;
+}
+.ck-editor__main .aw-requirement-marker .aw-ckeditor-marker-element {
+  font-weight: bold;
+  margin: 13px auto;
+}
+
+.ck-editor__main .aw-requirement-content {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid grey;
+}
+
+.ck-editor__main .aw-requirement-a4SizePaper {
+  padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 700px;
+  margin: auto;
+  border: 1px solid;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+}
+.ck-editor__main .aw-requirement-marker svg,
+.ck-editor__main .aw-requirement-marker img {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.ck-editor__main .aw-requirement-content span[contenteditable="true"] {
+  outline: 2px solid;
+}
+
+.ck-editor__main .aw-requirement-bodytext {
+  outline: none;
+  min-height: 20px;
+  cursor: auto !important;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.ck-editor__main .ck-content .aw-requirement-bodytext .table,
+.ck-editor__main .ck-content .aw-requirement-bodytext .table table {
+  max-width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  width: auto !important;
+}
+.ck-editor__main .ck-content .aw-requirement-bodytext .table table tr td {
+  white-space: normal;
+}
+.ck-editor__main .ck-content .aw-requirement-bodytext .table table tr td .image > img {
+  min-width: 50px;
+}
+.ck-editor__main .ck-widget__type-around {
+  display: none;
+}
+.ck-editor__main figure .ck-widget__type-around {
+  display: block;
+}
+.ck-editor__main .ck-content .aw-requirement-oleImage.image.image_resized > figcaption {
+  display: none;
+}
+.ck-editor__main
+  .ck-focused
+  .aw-requirement-oleImage.ck-widget_with-resizer.ck-widget_selected
+  > .ck-widget__resizer {
+  display: none;
+}
+.ck-editor__main .ck-content .aw-requirement-oleImage.image {
+  margin: unset;
+}
+.ck-editor__main .ck .aw-requirement-oleImage.ck-widget_selected,
+.ck-editor__main .ck .aw-requirement-oleImage.ck-widget_selected:hover,
+.ck-editor__main .ck .aw-requirement-oleImage:hover {
+  outline: none;
+}
+.ck-editor__main .aw-requirement-headerNonEditable {
+  cursor: pointer;
+}
+.ck-editor__main a {
+  display: inline;
+}
+.ck-editor__main .aw-requirement-marker .aw-requirement-tracelinkCount {
+  margin-right: -39px;
+  position: relative;
+  top: -13px;
+  left: 12px;
+  font-size: 12px;
+  float: left;
+}
+.ck-editor__main .aw-requirement-crossRefLink img {
+  padding: 2px 4px 2px 0;
+  width: 16px;
+  height: 16px;
+}
+.ck-editor__main .aw-requirement-crossRefLink {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.ck-editor__main .pen-red {
+  font-weight: bold;
+}
+.ck-editor__main .aw-requirement-tocsettings svg {
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+}
+.ck-editor__main .aw-requirement-tocsettings {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 16px;
+  max-height: 16px;
+  float: left;
+  margin-left: -37px;
+  margin-top: 17px;
+  cursor: pointer;
+}
+.ck-editor__main .aw-requirement-tocUnderlineOnHover:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.ck-editor__main .aw-requirement-tocFont {
+  font-style: italic;
+  margin-top: 35px;
+}
+.ck-editor__main .ck.ck-content .aw-requirement-toconHover ol {
+  list-style-type: none;
+  margin-block-start: auto;
+  font-size: inherit;
+  padding-left: 0;
+  overflow: unset;
+}
+.ck-editor__main .ck.ck-content {
+  font-size: 13px;
+  line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ck-editor__main .ck.ck-content div,
+.ck-editor__main .ck.ck-content span,
+.ck-editor__main .ck.ck-content h1,
+.ck-editor__main .ck.ck-content h2,
+.ck-editor__main .ck.ck-content h3,
+.ck-editor__main .ck.ck-content h4,
+.ck-editor__main .ck.ck-content h5,
+.ck-editor__main .ck.ck-content h6,
+.ck-editor__main .ck.ck-content p,
+.ck-editor__main .ck.ck-content blockquote,
+.ck-editor__main .ck.ck-content pre,
+.ck-editor__main .ck.ck-content a,
+.ck-editor__main .ck.ck-content abbr,
+.ck-editor__main .ck.ck-content acronym,
+.ck-editor__main .ck.ck-content address,
+.ck-editor__main .ck.ck-content big,
+.ck-editor__main .ck.ck-content cite,
+.ck-editor__main .ck.ck-content code,
+.ck-editor__main .ck.ck-content del,
+.ck-editor__main .ck.ck-content dfn,
+.ck-editor__main .ck.ck-content em,
+.ck-editor__main .ck.ck-content img,
+.ck-editor__main .ck.ck-content ins,
+.ck-editor__main .ck.ck-content small,
+.ck-editor__main .ck.ck-content strike,
+.ck-editor__main .ck.ck-content strong,
+.ck-editor__main .ck.ck-content sub,
+.ck-editor__main .ck.ck-content sup,
+.ck-editor__main .ck.ck-content b,
+.ck-editor__main .ck.ck-content u,
+.ck-editor__main .ck.ck-content i,
+.ck-editor__main .ck.ck-content dl,
+.ck-editor__main .ck.ck-content dt,
+.ck-editor__main .ck.ck-content dd,
+.ck-editor__main .ck.ck-content ol,
+.ck-editor__main .ck.ck-content ul,
+.ck-editor__main .ck.ck-content li,
+.ck-editor__main .ck.ck-content fieldset,
+.ck-editor__main .ck.ck-content form,
+.ck-editor__main .ck.ck-content label,
+.ck-editor__main .ck.ck-content legend,
+.ck-editor__main .ck.ck-content table,
+.ck-editor__main .ck.ck-content caption,
+.ck-editor__main .ck.ck-content tfoot,
+.ck-editor__main .ck.ck-content thead,
+.ck-editor__main .ck.ck-content tr,
+.ck-editor__main .ck.ck-content th,
+.ck-editor__main .ck.ck-content td,
+.ck-editor__main .ck.ck-content embed,
+.ck-editor__main .ck.ck-content figure,
+.ck-editor__main .ck.ck-content figcaption,
+.ck-editor__main .ck.ck-content footer,
+.ck-editor__main .ck.ck-content header,
+.ck-editor__main .ck.ck-content hgroup,
+.ck-editor__main .ck.ck-content menu,
+.ck-editor__main .ck.ck-content nav,
+.ck-editor__main .ck.ck-content output,
+.ck-editor__main .ck.ck-content section,
+.ck-editor__main .ck.ck-content summary,
+.ck-editor__main .ck.ck-content time,
+.ck-editor__main .ck.ck-content mark,
+.ck-editor__main .ck.ck-content button {
+  font-family: inherit;
+}
+.ck-editor__main .ck.ck-content p {
+  margin: 5px 0 5px 0;
+}
+.ck-editor__main .aw-requirement-bodytext {
+  font-size: 14px;
+}
+.ck-editor__main .aw-requirements-readOnly,
+.ck-editor__main .aw-requirements-masterChanged,
+.ck-editor__main .aw-requirements-editable,
+.ck-editor__main .aw-requirements-frozenToLatest {
+  border-left-width: 5px;
+  margin-left: -40px;
+  height: 100%;
+  position: absolute;
+}
+.ck-editor__main .aw-requirements-readOnly {
+  border-style: dotted;
+}
+.ck-editor__main .aw-requirements-masterChanged,
+.ck-editor__main .aw-requirements-frozenToLatest {
+  border: dashed;
+}
+.ck-editor__main .aw-requirements-editable {
+  border-style: outset;
+}
+.ck-editor__main .aw-requirement-lovProperties select {
+  font-size: 16px;
+}
+.ck-editor__main .aw-requirement-lovProperties select:focus {
+  border-color: none;
+}
+
+.aw-richtexteditor-widePanelBody .ck-editor__main .ck .ck-widget,
+.aw-richtexteditor-widePanelBody .ck-editor__main .ck .ck-widget_selected,
+.aw-richtexteditor-widePanelBody .ck-editor__main .ck .ck-widget:hover,
+.aw-richtexteditor-widePanelBody .ck-editor__main .ck .ck-widget_selected:hover,
+.aw-richtexteditor-widePanelBody
+  .ck-editor__main
+  .aw-requirement-bodytext.ck-editor__editable.ck-editor__nested-editable.ck-editor__nested-editable_focused {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+.aw-richtexteditor-widePanelBody .ck-editor__main .ck.ck-content div {
+  outline: none;
+  border: none;
+}
+.aw-richtexteditor-widePanelBody
+  .ck-editor__main
+  .ck.ck-editor__main
+  > .ck-editor__editable:not(.ck-focused),
+.aw-richtexteditor-widePanelBody
+  .ck-editor__main
+  .ck.ck-editor__main
+  > .ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
+  border: none;
+  box-shadow: none;
+}
+.aw-richtexteditor-widePanelBody .ck-editor__main .ck.ck-editor__top .ck-sticky-panel .ck-toolbar {
+  border-bottom-width: unset;
+}
+
+.ck.ck-balloon-panel {
+  z-index: 1000000 !important;
+}
+
+.aw-requirement-content a[name]:hover {
+  cursor: default;
+}

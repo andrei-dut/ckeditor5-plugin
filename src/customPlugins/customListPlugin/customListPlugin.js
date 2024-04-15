@@ -1,4 +1,12 @@
 import { Plugin } from "../../ckeditor";
+import CustomLiCommand from "./customLiCommand";
+import {
+  _defineContentConversion,
+  _defineMarkerConversion,
+  _defineRequirementConversion,
+} from "./customLiConversion";
+import "../styles/stylesCustomListPl.css";
+
 import { createTestItemToolbar } from "../../createTestItemToolbar";
 import {
   addIcon,
@@ -8,12 +16,6 @@ import {
   moveUpIcon,
   removeIcon,
 } from "../../icons";
-import CustomLiCommand from "./customLiCommand";
-import {
-  _defineContentConversion,
-  _defineMarkerConversion,
-  _defineRequirementConversion,
-} from "./customLiConversion";
 
 let editor;
 export default class CustomListPlugin extends Plugin {
@@ -43,6 +45,7 @@ export default class CustomListPlugin extends Plugin {
     createTestItemToolbar(editor, "levelDown", levelDownIcon, () => {
       editor.execute("insertCustomLi", { type: "levelDown" });
     });
+
 
     // function handleKeystrokeEvents() {
     //     editor.keystrokes.set( 'Ctrl+Enter', ( data, cancel ) => {
