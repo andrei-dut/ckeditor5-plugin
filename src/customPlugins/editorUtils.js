@@ -38,10 +38,12 @@ export function getTextFromElement(element) {
   return null;
 }
 
-export function findParent(element, parentName) {
+export function findParent(element, parentName, thisElem) {
   let currentElement = element;
 
   if (!currentElement) return null;
+
+  if(thisElem && currentElement.name === parentName) return currentElement;
 
   while (currentElement) {
     const parentElement = currentElement.parent;
@@ -99,6 +101,13 @@ export function getNextSibling(selectedSubling) {
 export function viewToModelElem(editor, viewElem) {
   if (editor && viewElem) {
     return editor.editing.mapper.toModelElement(viewElem);
+  }
+  return null;
+}
+
+export function modelToViewElem(editor, modelElem) {
+  if (editor && modelElem) {
+    return editor.editing.mapper.toViewElement(modelElem);
   }
   return null;
 }

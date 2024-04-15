@@ -6,6 +6,7 @@ import {
   _defineRequirementConversion,
 } from "./customLiConversion";
 import "../styles/stylesCustomListPl.css";
+import { findParent, modelToViewElem, viewToModelElem } from "../editorUtils";
 
 let editor;
 export class CustomListPlugin extends Plugin {
@@ -17,6 +18,21 @@ export class CustomListPlugin extends Plugin {
 
     editor.commands.add("insertCustomLi", new CustomLiCommand(editor));
 
+    this.listenTo(editor.editing.view.document, "click", () => {
+      const view = editor.editing.view;
+      const selection = view.document.selection;
+      const findReqElem = findParent(
+        viewToModelElem(editor, selection.editableElement),
+        "requirement",
+        true
+      );
+
+      if (findReqElem) {
+        console.log("click", findReqElem, modelToViewElem(editor, findReqElem));
+
+        editor.fire("selectionReqElem", { value: modelToViewElem(editor, findReqElem) });
+      }
+    });
 
     // function handleKeystrokeEvents() {
     //     editor.keystrokes.set( 'Ctrl+Enter', ( data, cancel ) => {
