@@ -1,6 +1,5 @@
 import { Command } from "../../ckeditor";
 import svg64 from "../svg64";
-import { convertObjectToString } from "../utils";
 
 export default class InsertIconCommand extends Command {
   refresh() {
@@ -17,8 +16,8 @@ export default class InsertIconCommand extends Command {
     model.change((writer) => {
       const imageElement = writer.createElement("imageInline", {
         src: svg64(iconData.icon),
-        alt: `icon-name:{{${iconData.iconName}}} ${convertObjectToString(iconData.svgValues)}`,
-        'data-json': JSON.stringify({x1:1, x2:2})
+        alt: iconData.iconName,
+        'data-json': JSON.stringify(iconData.svgValues || {})
       });
 
       model.insertContent(imageElement, selection);
