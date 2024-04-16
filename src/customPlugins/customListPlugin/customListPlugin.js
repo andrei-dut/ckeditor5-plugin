@@ -100,18 +100,15 @@ export class CustomListPlugin extends Plugin {
         "id",
         "lmd",
         "objecttype",
-        "itemtype",
-        "parentid",
-        "parenttype",
         "siblingid",
         "siblingtype",
-        "parentitemtype",
         "contenteditable",
         "revisionid",
         "top_line",
         "style",
         "checkedoutby",
         "checkedouttime",
+        "data-custom_comment",
       ],
       isObject: true,
       isBlock: true,
@@ -235,16 +232,16 @@ export class CustomListPlugin extends Plugin {
       },
     });
 
-    editor.conversion.attributeToAttribute({
-      model: {
-        name: "requirement",
-        key: "parentid",
-      },
-      view: {
-        name: "div",
-        key: "parentid",
-      },
-    });
+    // editor.conversion.attributeToAttribute({
+    //   model: {
+    //     name: "requirement",
+    //     key: "parentid",
+    //   },
+    //   view: {
+    //     name: "div",
+    //     key: "parentid",
+    //   },
+    // });
 
     schema.extend("$text", { allowIn: ["span", "div"], allowAttributes: "highlight" });
     schema.extend("$block", { allowIn: ["requirementContent", "requirementBodyText"] });

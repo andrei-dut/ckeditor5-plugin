@@ -105,10 +105,7 @@ export default class CustomLiCommand extends Command {
 
       newReq = writer.createElement("requirement", {
         class: "requirement",
-        parentid: req?.getAttribute("id"),
-        itemtype: "Requirement",
         objecttype: "Requirement",
-        parenttype: req?.getAttribute("itemtype"),
         id: getRandomId(),
       });
 
