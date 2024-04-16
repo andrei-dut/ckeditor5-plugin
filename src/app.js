@@ -163,7 +163,7 @@ Editor.create(document.querySelector("#editor"), {})
     const textTEst2 = `<div class="requirement ck-widget"  revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
     <div class="aw-requirement-marker">
     
-      <span class="aw-ckeditor-marker-element" title="1">1а</span>   
+      <span class="aw-ckeditor-marker-element" title="3">3</span>   
       </div>
       
       <div class="aw-requirement-content">

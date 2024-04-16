@@ -10,10 +10,16 @@ export function parseReqDivTags(htmlContent) {
 
   const requirementElements = tempElement.querySelectorAll(".requirement");
 
-  const directChildRequirementElements = Array.from(requirementElements).filter(element => element.parentElement === tempElement);
+  const directChildRequirementElements = Array.from(requirementElements).filter(
+    (element) => element.parentElement === tempElement
+  );
 
   for (const child of directChildRequirementElements) {
-    if (child.tagName && child.tagName.toLowerCase() === "div" && child.className.includes("requirement")) {
+    if (
+      child.tagName &&
+      child.tagName.toLowerCase() === "div" &&
+      child.className.includes("requirement")
+    ) {
       const reqNumber = Object.keys(reqObjects).length + 1;
       const reqContent = child.outerHTML;
       reqObjects[reqNumber] = {
@@ -29,24 +35,42 @@ export function parseReqDivTags(htmlContent) {
 export function parseAllReqDivTags(htmlContent) {
   const reqObjects = {};
 
+  function getDataReq(req, options) {
+    const { onlyMarker, parentMarker } = options;
+    const markerElement = req.querySelector(".aw-ckeditor-marker-element");
+    const bodyText = req.querySelector(".aw-requirement-bodytext");
+
+    if (!(markerElement && bodyText)) {
+      return;
+    }
+    const markerElementContent = markerElement.textContent;
+    const bodyTextContent = bodyText.innerHTML;
+    return onlyMarker
+      ? markerElementContent
+      : { [`${parentMarker ? `${parentMarker}.` : ""}${markerElementContent}`]: bodyTextContent };
+  }
+
+  function isReq(req) {
+    return (
+      req &&
+      req.tagName &&
+      req.tagName.toLowerCase() === "div" &&
+      req.className.includes("requirement")
+    );
+  }
+
   const tempElement = document.createElement("div");
   tempElement.innerHTML = htmlContent;
-
   const requirementElements = tempElement.querySelectorAll(".requirement");
 
   for (const child of requirementElements) {
-    if (child.tagName && child.tagName.toLowerCase() === "div" && child.className.includes("requirement")) {
+    if (isReq(child)) {
+      const parent = child.parentElement;
+      const parentIsReq = isReq(parent);
+      const parentMarkerReq = parentIsReq ? getDataReq(parent, { onlyMarker: true }) : null;
 
-      const markerElement = child.querySelector(".aw-ckeditor-marker-element");
-      const bodyText = child.querySelector(".aw-requirement-bodytext");
-   
-
-    if(markerElement && bodyText) {
-      const markerElementContent =  markerElement.textContent;
-      const bodyTextContent =  bodyText.innerHTML;
-      reqObjects[markerElementContent] = bodyTextContent;
-    }
-
+      const dataReq = getDataReq(child, { parentMarker: parentMarkerReq });
+      if (dataReq) Object.assign(reqObjects, dataReq);
     }
   }
 
@@ -87,7 +111,7 @@ export function getAttsAndContentFromElDom(element) {
 
 export function createViewSvg(modelElement, { writer }) {
   // const _parseSvg = parseSvg(modelElement.getAttribute("data-icon"));
-  const svgData =  getAttsAndContentFromElDom(modelElement.getAttribute("data-icon")) || {};
+  const svgData = getAttsAndContentFromElDom(modelElement.getAttribute("data-icon")) || {};
   return writer.createRawElement(
     "svg",
     {
@@ -109,20 +133,11 @@ export function cloneElem(viewWriter, sourceNode) {
   }
   if (sourceNode.is("element")) {
     if (sourceNode.is("emptyElement")) {
-      return viewWriter.createEmptyElement(
-        sourceNode.name,
-        sourceNode.getAttributes()
-      );
+      return viewWriter.createEmptyElement(sourceNode.name, sourceNode.getAttributes());
     }
-    const element = viewWriter.createContainerElement(
-      sourceNode.name,
-      sourceNode.getAttributes()
-    );
+    const element = viewWriter.createContainerElement(sourceNode.name, sourceNode.getAttributes());
     for (const child of sourceNode.getChildren()) {
-      viewWriter.insert(
-        viewWriter.createPositionAt(element, "end"),
-        cloneElem(viewWriter, child)
-      );
+      viewWriter.insert(viewWriter.createPositionAt(element, "end"), cloneElem(viewWriter, child));
     }
     return element;
   }
