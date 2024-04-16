@@ -2,6 +2,57 @@ import Emittery from "emittery";
 
 export const emitter = new Emittery();
 
+export function parseReqDivTags(htmlContent) {
+  const reqObjects = {};
+
+  const tempElement = document.createElement("div");
+  tempElement.innerHTML = htmlContent;
+
+  const requirementElements = tempElement.querySelectorAll(".requirement");
+
+  const directChildRequirementElements = Array.from(requirementElements).filter(element => element.parentElement === tempElement);
+
+  for (const child of directChildRequirementElements) {
+    if (child.tagName && child.tagName.toLowerCase() === "div" && child.className.includes("requirement")) {
+      const reqNumber = Object.keys(reqObjects).length + 1;
+      const reqContent = child.outerHTML;
+      reqObjects[reqNumber] = {
+        number: reqNumber,
+        content: reqContent,
+      };
+    }
+  }
+
+  return reqObjects;
+}
+
+export function parseAllReqDivTags(htmlContent) {
+  const reqObjects = {};
+
+  const tempElement = document.createElement("div");
+  tempElement.innerHTML = htmlContent;
+
+  const requirementElements = tempElement.querySelectorAll(".requirement");
+
+  for (const child of requirementElements) {
+    if (child.tagName && child.tagName.toLowerCase() === "div" && child.className.includes("requirement")) {
+
+      const markerElement = child.querySelector(".aw-ckeditor-marker-element");
+      const bodyText = child.querySelector(".aw-requirement-bodytext");
+   
+
+    if(markerElement && bodyText) {
+      const markerElementContent =  markerElement.textContent;
+      const bodyTextContent =  bodyText.innerHTML;
+      reqObjects[markerElementContent] = bodyTextContent;
+    }
+
+    }
+  }
+
+  return reqObjects;
+}
+
 export function parseSvg(svgString) {
   const parser = new DOMParser();
   const xmlDoc = parser.parseFromString(`${svgString}`, "image/svg+xml");

@@ -7,6 +7,7 @@ import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlu
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
 import { customSpecialCharacters } from "./customPlugins/vars";
 import "./customPlugins/styles/styles.css";
+import { parseAllReqDivTags, parseReqDivTags } from "./utils/utils";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -241,7 +242,14 @@ Editor.create(document.querySelector("#editor"), {})
         //     console.log(e, args, newVal, oldVal);
         //   });
 
-        console.log(editor.getData());
+
+
+
+console.log("parseReqDivTags", parseAllReqDivTags(editor.getData()));
+
+
+
+        // console.log(editor.getData());
         console.log(getArrayImgObjByHtmlString(editor.getData()));
 
         console.log("openModal", value);

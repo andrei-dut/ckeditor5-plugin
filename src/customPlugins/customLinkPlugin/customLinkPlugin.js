@@ -80,10 +80,6 @@ export class CustomLinkPlugin extends Plugin {
 
       this.listenTo(button, "execute", () => {
         editor.fire("customLinkEvent", { eventType: "openModal" });
-        executeEditorCmd(editor, "insertCustomLink", {
-          href: 'uid',
-          text: 'cellHeader1',
-        })
       });
       button.bind("isOn", "isEnabled").to(command, "value", "isEnabled");
       return button;
