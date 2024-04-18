@@ -26,7 +26,7 @@ export const ra_manual = `<svg data-xer="xer" xmlns="http://www.w3.org/2000/svg"
 export const ra1_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;">
 
-<g transform="translate(-20, -18)">
+<g transform="translate(-20, -17)">
     <path   d="M 45 29 L 108 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <ellipse cx="34" cy="41" rx="4" ry="4" fill="rgba(0,0,0,0)" stroke="rgb(0, 0, 0)" pointer-events="all" />
     <path   d="M 35 50 L 25 37" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
@@ -172,7 +172,7 @@ version="1.1" width="27px" height="37px" viewBox="0 0 27 37">
 export const ra2_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;">
 
-<g transform="translate(-20, -18)">
+<g transform="translate(-20, -17)">
     <path   d="M 45 29 L 108 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path   d="M 35 50 L 25 37" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <text id="y" x="45" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
@@ -315,7 +315,7 @@ export const ra3_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http:
 height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;"
 >
 
-<g transform="translate(-20, -18)">
+<g transform="translate(-20, -17)">
     <path d="M 45 29 L 108 29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <path d="M 35 50 L 25 37" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke" />
     <text id="y" x="45" y="26" fill="rgb(0, 0, 0)" font-family="Helvetica"font-size="inherit"
