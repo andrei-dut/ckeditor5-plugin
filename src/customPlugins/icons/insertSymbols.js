@@ -476,38 +476,13 @@ width="36"
 height="21"
 viewBox="0 0 36 21"
 version="1.1"
-id="svg1"
+id="mult1"
 style="font-size:12px;"
-inkscape:export-filename="bitmap.svg"
-inkscape:export-xdpi="96"
-inkscape:export-ydpi="96"
-inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
-sodipodi:docname="drawing1.svg"
 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
 xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
 xmlns="http://www.w3.org/2000/svg"
 xmlns:svg="http://www.w3.org/2000/svg">
-<sodipodi:namedview
-  id="namedview1"
-  pagecolor="#ffffff"
-  bordercolor="#000000"
-  borderopacity="0.25"
-  inkscape:showpageshadow="2"
-  inkscape:pageopacity="0.0"
-  inkscape:pagecheckerboard="0"
-  inkscape:deskcolor="#d1d1d1"
-  inkscape:document-units="px"
-  inkscape:zoom="25.345359"
-  inkscape:cx="20.279847"
-  inkscape:cy="17.774457"
-  inkscape:window-width="2400"
-  inkscape:window-height="1271"
-  inkscape:window-x="6391"
-  inkscape:window-y="216"
-  inkscape:window-maximized="1"
-  inkscape:current-layer="layer1" />
-<defs
-  id="defs1" />
+
 <g
   inkscape:label="Layer 1"
   inkscape:groupmode="layer"
@@ -518,7 +493,8 @@ xmlns:svg="http://www.w3.org/2000/svg">
     x="0.071719833"
     y="13.80837"
     id="text1"
-    transform="scale(0.99648908,1.0035233)"><tspan
+    transform="scale(0.99648908,1.0035233)">
+    <tspan
       sodipodi:role="line"
       id="tspan1"
       x="0.071719833"
@@ -533,8 +509,8 @@ xmlns:svg="http://www.w3.org/2000/svg">
     transform="scale(1.0072517,0.99280051)"><tspan
       sodipodi:role="line"
       id="tspan2"
-      x="17.743065"
-      y="9.3944159"
+      x="18.26631"
+      y="8.3944159"
       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.921777">bb</tspan></text>
  <text
     xml:space="preserve"
@@ -546,7 +522,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
       sodipodi:role="line"
       id="tspan3"
       x="18.26631"
-      y="20.013704"
+      y="21.013704"
       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.410603">cc</tspan></text>
  <path
     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.78038px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"

@@ -24,6 +24,7 @@ import {
   ra3_5,
   ra3_6,
 } from "../icons/insertSymbols";
+import { replaceElemAttr } from "../icons/utils";
 
 const ra_All = {
   ra1_1,
@@ -51,7 +52,7 @@ let _selectedRaID = "ra1";
 function setSizesSvg() {
   try {
     const svgElement = document.querySelector("#wrapSvg svg");
-    
+
     const findSvgTextWithLongestContent = () => {
       const texts = svgElement.querySelectorAll("svg text");
 
@@ -76,18 +77,16 @@ function setSizesSvg() {
 
     const { xEndTextLongest } = findSvgTextWithLongestContent();
     const path = svgElement.querySelector("path");
-    const pathAttrD = path.getAttribute("d");
     const svgChild_g = svgElement.querySelector("svg > g");
     const svgChild_gWidth = svgChild_g.getBBox().width;
     const viewBox = svgElement.getAttribute("viewBox");
     const viewBoxValues = viewBox.split(" ");
-    const newPathValue = pathAttrD.replace(/L\s+\d+/, `L ${xEndTextLongest}`);
 
     if (!(viewBoxValues.length === 4 && viewBoxValues[2])) {
       return;
     }
 
-    path.setAttribute("d", newPathValue);
+    replaceElemAttr(/L\s+\d+/, path, "d", `L ${xEndTextLongest}`);
     viewBoxValues[2] = (Math.floor(svgChild_gWidth) + 15).toString();
     const newViewBox = viewBoxValues.join(" ");
     svgElement.setAttribute("viewBox", newViewBox);
