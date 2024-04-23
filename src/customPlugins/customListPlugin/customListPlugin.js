@@ -7,15 +7,10 @@ import {
 } from "./customListConversion";
 import "../styles/stylesCustomListPl.css";
 import {
-  executeEditorCmd,
   findParent,
-  getEditElemByClassFromSelection,
   modelToViewElem,
-  updateMarkers,
   viewToModelElem,
 } from "../editorUtils";
-import icon from "../../icons/RA1_1.svg";
-import { createTestItemToolbar } from "../../createTestItemToolbar";
 
 let editor;
 export class CustomListPlugin extends Plugin {
@@ -26,39 +21,6 @@ export class CustomListPlugin extends Plugin {
     this._defineConversion();
 
     editor.commands.add("insertCustomList", new CustomListCommand(editor));
-
-    createTestItemToolbar(editor, "test", icon, () => {
-      executeEditorCmd(editor, "copyCutPasteCmd", {
-        typeCmd: "copy",
-        contentIncludes: "requirement",
-      });
-    });
-
-    createTestItemToolbar(editor, "test1", icon, () => {
-      executeEditorCmd(editor, "copyCutPasteCmd", {
-        typeCmd: "paste",
-        contentIncludes: "requirement",
-        pasteCb: (pasteFragment) => {
-          const reqElem = getEditElemByClassFromSelection(editor, "requirement");
-          const model = editor.model;
-          const reqModelElem = reqElem ? editor.editing.mapper.toModelElement(reqElem) : null;
-          model.change((writer) => {
-            const insertPosition = reqModelElem
-              ? writer.createPositionAfter(reqModelElem)
-              : writer.createPositionAt(editor.model.document.getRoot(), "end");
-            model.insertContent(pasteFragment, insertPosition);
-            updateMarkers(editor,reqModelElem);
-          });
-        },
-      });
-    });
-
-    createTestItemToolbar(editor, "test2", icon, () => {
-      executeEditorCmd(editor, "copyCutPasteCmd", {
-        typeCmd: "cut",
-        contentIncludes: "requirement",
-      });
-    });
 
     this.listenTo(editor.editing.view.document, "click", () => {
       const view = editor.editing.view;

@@ -8,6 +8,7 @@ import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
 import { customSpecialCharacters } from "./customPlugins/vars";
 import "./customPlugins/styles/styles.css";
 import { parseAllReqDivTags, parseReqDivTags } from "./utils/utils";
+import { TestPlugin } from "./testPlugin";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -88,6 +89,7 @@ Editor.builtinPlugins.push(IconPickerPlugin);
 Editor.builtinPlugins.push(CustomLinkPlugin);
 Editor.builtinPlugins.push(CopyCutPastePlugin);
 Editor.builtinPlugins.push(CustomListPlugin);
+Editor.builtinPlugins.push(TestPlugin);
 
 // delete selected content editor.model.deleteContent(modelSelect)
 
