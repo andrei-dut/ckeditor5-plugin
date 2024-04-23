@@ -1,6 +1,43 @@
+import { numberToRussianLetter } from "./utils";
+
+export function updateMarkers(editor, elem) {
+  const _parent = elem?.parent;
+  const isReqParent = _parent?.name === "requirement";
+  const parentOfMarkers = findAllElementsByName(editor, "requirement", elem ? false : true, _parent);
+  parentOfMarkers.forEach((parentOfMarker, i) => {
+    const number = i + 1;
+    const elemMarker = getModelElement(editor, parentOfMarker, "span");
+    editor.model.change((writer) => {
+      writer.remove(elemMarker.getChild(0));
+      writer.insertText(
+        `${number}${isReqParent ? numberToRussianLetter(number) : ""}` || "-",
+        elemMarker
+      );
+    });
+  });
+}
+
+export function getEditElemByClassFromSelection(editor, _class) {
+  if (!editor && !editor.editing.view.document.selection) return null;
+  let elem = editor.editing.view.document.selection.editableElement;
+
+  while (elem) {
+    if (elem && _class) {
+      if (elem?.hasClass(_class)) {
+        return elem;
+      } else {
+        elem = elem?.parent;
+      }
+    } else {
+      return _class ? null : elem;
+    }
+  }
+
+  return null;
+}
+
 export function getModelElement(editor, containerElement, nameModelEle) {
-  if(!containerElement) 
-    return null;
+  if (!containerElement) return null;
   const range = editor.model.createRangeIn(containerElement);
   for (const modelElement of range.getItems({ ignoreElementEnd: true })) {
     if (modelElement.name === nameModelEle) {
@@ -43,7 +80,7 @@ export function findParent(element, parentName, thisElem) {
 
   if (!currentElement) return null;
 
-  if(thisElem && currentElement.name === parentName) return currentElement;
+  if (thisElem && currentElement.name === parentName) return currentElement;
 
   while (currentElement) {
     const parentElement = currentElement.parent;
@@ -347,4 +384,3 @@ export function _createRange(writer, elem) {
   const after = writer.createPositionAfter(elem);
   return writer.createRange(before, after);
 }
-

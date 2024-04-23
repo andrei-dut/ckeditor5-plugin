@@ -17,3 +17,6 @@ export function createTestItemToolbar(editor, name, icon, cb) {
         return button;
       });
 }
+
+// example 
+// createTestItemToolbar(editor, "test", icon, () => {})

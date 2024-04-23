@@ -1,12 +1,16 @@
 import { Plugin } from "../../ckeditor";
-import CustomLiCommand from "./customLiCommand";
+import CustomListCommand from "./CustomListCommand";
 import {
   _defineContentConversion,
   _defineMarkerConversion,
   _defineRequirementConversion,
-} from "./customLiConversion";
+} from "./customListConversion";
 import "../styles/stylesCustomListPl.css";
-import { findParent, modelToViewElem, viewToModelElem } from "../editorUtils";
+import {
+  findParent,
+  modelToViewElem,
+  viewToModelElem,
+} from "../editorUtils";
 
 let editor;
 export class CustomListPlugin extends Plugin {
@@ -16,7 +20,8 @@ export class CustomListPlugin extends Plugin {
     this._defineSchema();
     this._defineConversion();
 
-    editor.commands.add("insertCustomLi", new CustomLiCommand(editor));
+    editor.commands.add("insertCustomList", new CustomListCommand(editor));
+
 
     this.listenTo(editor.editing.view.document, "click", () => {
       const view = editor.editing.view;
@@ -26,10 +31,8 @@ export class CustomListPlugin extends Plugin {
         "requirement",
         true
       );
-
       if (findReqElem) {
-        console.log("click", findReqElem, modelToViewElem(editor, findReqElem));
-
+        // console.log("click", findReqElem, modelToViewElem(editor, findReqElem));
         editor.fire("selectionReqElem", { value: modelToViewElem(editor, findReqElem) });
       }
     });

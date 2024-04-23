@@ -66,7 +66,9 @@ class Editor extends ClassicEditor {
         "Subscript",
         "customList",
 
-
+        "test",
+        "test1",
+        "test2",
 
         "add",
         "remove",

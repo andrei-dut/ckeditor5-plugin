@@ -1,33 +1,17 @@
 import { Command } from "../../ckeditor";
 import {
   findAllElementsByName,
+  getEditElemByClassFromSelection,
   getModelElement,
   getNextSibling,
   getPreviousSibling,
   getTextFromElement,
   isParentRoot,
+  updateMarkers,
 } from "../editorUtils";
-import { getLastElemFromArray, incrementWithLetter, numberToRussianLetter } from "../utils";
+import { getLastElemFromArray, incrementWithLetter } from "../utils";
 
-export default class CustomLiCommand extends Command {
-  updateMarkers(elem) {
-    if (!elem) return;
-    const editor = this.editor;
-    const _parent = elem.parent;
-    const isReqParent = _parent?.name === "requirement";
-    const parentOfMarkers = findAllElementsByName(editor, "requirement", false, _parent);
-    parentOfMarkers.forEach((parentOfMarker, i) => {
-      const number = i + 1;
-      const elemMarker = getModelElement(editor, parentOfMarker, "span");
-      editor.model.change((writer) => {
-        writer.remove(elemMarker.getChild(0));
-        writer.insertText(
-          `${number}${isReqParent ? numberToRussianLetter(number) : ""}` || "-",
-          elemMarker
-        );
-      });
-    });
-  }
+export default class CustomListCommand extends Command {
 
   levelUpReq(parent) {
     const editor = this.editor;
@@ -42,8 +26,8 @@ export default class CustomLiCommand extends Command {
       const prevRequirementContent = getModelElement(editor, prevSibling, "requirementContent");
       writer.move(writer.createRangeOn(parent), lastChild || prevRequirementContent, "after");
     });
-    this.updateMarkers(parent);
-    this.updateMarkers(parent?.parent);
+    updateMarkers(editor,parent);
+    updateMarkers(editor,parent?.parent);
   }
 
   leveDownReq(parent) {
@@ -54,7 +38,7 @@ export default class CustomLiCommand extends Command {
         return;
       }
     });
-    this.updateMarkers(parent);
+    updateMarkers(editor,parent);
   }
 
   removeReq(parent) {
@@ -65,7 +49,7 @@ export default class CustomLiCommand extends Command {
         return;
       }
     });
-    this.updateMarkers(parent);
+    updateMarkers(editor,parent);
   }
 
   moveUpReq(parent) {
@@ -76,7 +60,7 @@ export default class CustomLiCommand extends Command {
         return;
       }
       writer.move(writer.createRangeOn(parent), prevSibling, "before");
-      this.updateMarkers(parent);
+      updateMarkers(editor,parent);
     });
   }
 
@@ -89,15 +73,15 @@ export default class CustomLiCommand extends Command {
       }
       writer.move(writer.createRangeOn(parent), nextSibling, "after");
     });
-    this.updateMarkers(parent);
+    updateMarkers(editor,parent);
   }
 
   createNewReq(options) {
     const editor = this.editor;
-    const req = options.after
+    const _req = options.after
       ? options.after
       : getLastElemFromArray(findAllElementsByName(editor, "requirement", true));
-    const reqMarker = getTextFromElement(getModelElement(editor, req, "span"));
+    const reqMarker = getTextFromElement(getModelElement(editor, _req, "span"));
     let newReq;
 
     editor.model.change((writer) => {
@@ -119,8 +103,8 @@ export default class CustomLiCommand extends Command {
       writer.insert(requirementMarker, writer.createPositionAt(newReq, 0));
       writer.insert(requirementContent, writer.createPositionAt(newReq, 1));
 
-      insertPosition = req
-        ? writer.createPositionAfter(req)
+      insertPosition = _req
+        ? writer.createPositionAfter(_req)
         : writer.createPositionAt(editor.model.document.getRoot(), "end");
 
       editor.model.insertContent(newReq, insertPosition);
@@ -133,15 +117,9 @@ export default class CustomLiCommand extends Command {
     const editor = this.editor;
 
     const options = { after: "", ..._options };
+    const editElem = getEditElemByClassFromSelection(editor, "requirement");
 
-    let t1 = editor.editing.view.document.selection.editableElement?.parent?.parent;
-
-    console.log(editor.editing.view.document.selection, t1);
-
-    if (t1 && !t1?.hasClass("requirement")) {
-      t1 = t1.parent;
-    }
-    const t2 = editor.editing.mapper.toModelElement(t1);
+    const t2 = editor.editing.mapper.toModelElement(editElem);
     options.after = t2;
 
     const parentRequirement = options.after;
@@ -171,7 +149,7 @@ export default class CustomLiCommand extends Command {
       case "addNew": {
         const req = this.createNewReq(options);
         if (req) {
-          this.updateMarkers(req);
+          updateMarkers(editor,req);
           scrollToNewWidget(req, editor);
         }
         break;
