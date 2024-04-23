@@ -7,7 +7,7 @@ export default class CopyCutPasteCmd extends Command {
     this.isEnabled = true;
   }
 
-  execute({ typeCmd, contentIncludes, pasteCb } = {}) {
+  totalExecute({ typeCmd, contentIncludes, pasteCb } = {}) {
     const editor = this.editor;
     const model = editor.model;
     const modelDocument = model.document;
@@ -94,5 +94,13 @@ export default class CopyCutPasteCmd extends Command {
     } else {
       _onCopyCut(typeCmd);
     }
+  }
+
+  executeForReadOnlyMode(args) {
+    this.totalExecute(args)
+  }
+
+  execute(args) {
+    this.totalExecute(args)
   }
 }

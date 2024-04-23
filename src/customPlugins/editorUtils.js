@@ -102,7 +102,11 @@ export function findParent(element, parentName, thisElem) {
 export function executeEditorCmd(editor, cmdName, arg) {
   const indentCommand = editor ? editor.commands.get(cmdName) : null;
   if (indentCommand?.execute) {
-    indentCommand.execute(arg);
+    if(editor.isReadOnly && indentCommand.executeForReadOnlyMode) {
+      indentCommand.executeForReadOnlyMode(arg);
+    } else {
+      indentCommand.execute(arg);
+    }
   }
 }
 

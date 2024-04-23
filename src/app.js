@@ -146,6 +146,7 @@ Editor.create(document.querySelector("#editor"), {})
           " " +
           textTEst2 
       );
+      // editor.set("isReadOnly", true);
     }, 500);
 
     console.log("Editor was initialized", editor);
