@@ -3,7 +3,12 @@ import { numberToRussianLetter } from "./utils";
 export function updateMarkers(editor, elem) {
   const _parent = elem?.parent;
   const isReqParent = _parent?.name === "requirement";
-  const parentOfMarkers = findAllElementsByName(editor, "requirement", elem ? false : true, _parent);
+  const parentOfMarkers = findAllElementsByName(
+    editor,
+    "requirement",
+    elem ? false : true,
+    _parent
+  );
   parentOfMarkers.forEach((parentOfMarker, i) => {
     const number = i + 1;
     const elemMarker = getModelElement(editor, parentOfMarker, "span");
@@ -36,15 +41,20 @@ export function getEditElemByClassFromSelection(editor, _class) {
   return null;
 }
 
-export function getModelElement(editor, containerElement, nameModelEle) {
+export function getModelElement(editor, containerElement, nameModelEle, isResArray) {
   if (!containerElement) return null;
   const range = editor.model.createRangeIn(containerElement);
+  const resArray = [];
   for (const modelElement of range.getItems({ ignoreElementEnd: true })) {
     if (modelElement.name === nameModelEle) {
-      return modelElement;
+      if (isResArray) {
+        resArray.push(modelElement);
+      } else {
+        return modelElement;
+      }
     }
   }
-  return null;
+  return isResArray ? resArray : null;
 }
 
 export function findAllElementsByName(editor, elementName, parentRoot, rangeIn) {
@@ -102,7 +112,7 @@ export function findParent(element, parentName, thisElem) {
 export function executeEditorCmd(editor, cmdName, arg) {
   const indentCommand = editor ? editor.commands.get(cmdName) : null;
   if (indentCommand?.execute) {
-    if(editor.isReadOnly && indentCommand.executeForReadOnlyMode) {
+    if (editor.isReadOnly && indentCommand.executeForReadOnlyMode) {
       indentCommand.executeForReadOnlyMode(arg);
     } else {
       indentCommand.execute(arg);

@@ -30,7 +30,7 @@ export class CustomListPlugin extends Plugin {
         "requirement",
         true
       );
-        console.log("click", findReqElem, selection);
+        // console.log("click", findReqElem, selection);
 
       if (findReqElem) {
         editor.fire("selectionReqElem", { value: modelToViewElem(editor, findReqElem) });

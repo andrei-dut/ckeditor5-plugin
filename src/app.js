@@ -1,14 +1,15 @@
 import { ClassicEditor } from "./ckeditor";
 import { CopyCutPastePlugin } from "./customPlugins/copyCutPastePlugin/copyCutPastePlugin";
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
-import {CustomListPlugin} from "./customPlugins/customListPlugin/customListPlugin";
+import { CustomListPlugin } from "./customPlugins/customListPlugin/customListPlugin";
 import { viewToModelElem } from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
 import { customSpecialCharacters } from "./customPlugins/vars";
 import "./customPlugins/styles/styles.css";
 import { parseAllReqDivTags, parseReqDivTags } from "./utils/utils";
-import { TestPlugin } from "./testPlugin";
+import { TestPlugin } from "./testPlugin/testPlugin";
+
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -95,9 +96,6 @@ Editor.builtinPlugins.push(TestPlugin);
 
 Editor.create(document.querySelector("#editor"), {})
   .then((editor) => {
-
-
-
     const textTEst = `<div class="requirement ck-widget"  contenteditable="false"   >
     <div class="aw-requirement-marker">
     
@@ -105,7 +103,15 @@ Editor.create(document.querySelector("#editor"), {})
       </div>
       
       <div class="aw-requirement-content">
-        <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div>
+        <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true">
+        <p>Содержи        <span class="aw-req-allowance">
+      
+        <span class="allowance-number">1</span>
+        <span class="allowance-number">2</span>
+
+      </span>моеcv</p>
+
+        </div>
         </div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div>
       
       
@@ -138,16 +144,7 @@ Editor.create(document.querySelector("#editor"), {})
       </div></div>`;
 
     setTimeout(() => {
-      editor.setData(
-
-          " " +
-          " " +
-          textTEst +
-          " " +
-          textTEst01 +
-          " " +
-          textTEst2 
-      );
+      editor.setData(" " + " " + textTEst + " " + textTEst01 + " " + textTEst2);
       // editor.set("isReadOnly", true);
     }, 500);
 
@@ -220,12 +217,7 @@ Editor.create(document.querySelector("#editor"), {})
         //     console.log(e, args, newVal, oldVal);
         //   });
 
-
-
-
-console.log("parseReqDivTags",editor.getData(), parseAllReqDivTags(editor.getData()));
-
-
+        console.log("parseReqDivTags", editor.getData(), parseAllReqDivTags(editor.getData()));
 
         // console.log(editor.getData());
         console.log(getArrayImgObjByHtmlString(editor.getData()));
