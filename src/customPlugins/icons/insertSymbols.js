@@ -532,6 +532,50 @@ xmlns:svg="http://www.w3.org/2000/svg">
 </g>
 </svg>
 `;
+
+export const allowance = `<svg
+width="26"
+height="21"
+viewBox="0 0 26 21"
+version="1.1"
+id="mult1"
+style="font-size:12px;"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:svg="http://www.w3.org/2000/svg">
+
+<g
+  inkscape:label="Layer 1"
+  inkscape:groupmode="layer"
+  id="layer1">
+<text
+    xml:space="preserve"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.921777"
+    x="0.071719833"
+    y="9.3944159"
+    id="text2"
+    transform="scale(1.0072517,0.99280051)"><tspan
+      sodipodi:role="line"
+      id="tspan2"
+      x="0.071719833"
+      y="8.3944159"
+      style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.921777">+ X</tspan></text>
+ <text
+    xml:space="preserve"
+    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.410603"
+    x="0.071719833"
+    y="20.013704"
+    id="text3"
+    transform="scale(0.98086086,1.0195126)"><tspan
+      sodipodi:role="line"
+      id="tspan3"
+      x="0.071719833"
+      y="21.013704"
+      style="font-style:normal;font-variant:normal;font-weight:700;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.410603">-\u0020 <tspan x="11" style="font-weight:inherit;">Y</tspan> </tspan></text>
+</g>
+</svg>
+`;
 export const mult2 = `<svg
 width="36"
 height="21"

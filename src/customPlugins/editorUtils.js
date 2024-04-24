@@ -1,4 +1,23 @@
+import { ButtonView } from "../ckeditor";
 import { numberToRussianLetter } from "./utils";
+
+export function createItemToolbar(editor, name, icon, cb) {
+  editor.ui.componentFactory.add(name, (locale) => {
+      const button = new ButtonView(locale);
+
+      button.set({
+        label: name,
+        icon,
+        tooltip: true,
+      });
+
+      button.on("execute", () => {
+        cb();
+       });
+
+      return button;
+    });
+}
 
 export function updateMarkers(editor, elem) {
   const _parent = elem?.parent;

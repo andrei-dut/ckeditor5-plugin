@@ -1,9 +1,15 @@
 import { Plugin, toWidget } from "../ckeditor";
 import {
+  createItemToolbar,
+  executeEditorCmd,
   getModelElement,
   getTextFromElement,
   viewToModelElem,
 } from "../customPlugins/editorUtils";
+import { allowance } from "../customPlugins/icons/insertSymbols";
+import { emitter } from "../customPlugins/utils";
+import { showAllowanceModal } from "./allowanceModal";
+import InsertAllowanceCommand from "./InsertIconCommand";
 import "./test.css";
 
 export class AllowancePlugin extends Plugin {
@@ -15,10 +21,17 @@ export class AllowancePlugin extends Plugin {
     return [];
   }
 
+  destroy() {
+    emitter.clearEvent("insertAllowance");
+  }
+
   init() {
     const editor = this.editor;
     this._defineConversion();
     this._defineSchema();
+    let modelSpans;
+
+    editor.commands.add("insertAllowanceCmd", new InsertAllowanceCommand(editor));
 
     this.listenTo(editor.editing.view.document, "click", () => {
       const view = editor.editing.view;
@@ -28,23 +41,38 @@ export class AllowancePlugin extends Plugin {
       if (!selectedElement?.hasClass("aw-req-allowance")) {
         return;
       }
-      const modelSpans = getModelElement(
+
+      modelSpans = getModelElement(
         editor,
         viewToModelElem(editor, selectedElement),
         "allowanceText",
         true
       );
+      const oldValues = {};
       modelSpans.forEach((span, i) => {
-        editor.model.change((writer) => {
-          writer.remove(span.getChild(0));
-          writer.insertText(`R${i}`, span);
-        });
-
         const text = getTextFromElement(span);
-        console.log(221, span, text);
+        oldValues[i === 0 ? "x" : "y"] = text;
       });
+      showAllowanceModal({ oldValues });
     });
 
+    function insertAllowance(values) {
+      if (modelSpans) {
+        modelSpans.forEach((span, i) => {
+          editor.model.change((writer) => {
+            writer.remove(span.getChild(0));
+            writer.insertText(`${i === 0 ? values.x : values.y}`, span);
+          });
+        });
+      } else {
+        executeEditorCmd(editor, "insertAllowanceCmd", values);
+      }
+
+      modelSpans = undefined;
+    }
+
+    emitter.on("insertAllowance", insertAllowance);
+    createItemToolbar(editor, "allowance", allowance, showAllowanceModal);
   }
 
   _defineSchema() {
@@ -53,12 +81,14 @@ export class AllowancePlugin extends Plugin {
     schema.register("allowanceText", {
       allowIn: ["paragraph", "allowance"],
       allowChildren: ["$text"],
+      allowAttributes: ["class"],
     });
 
     schema.register("allowance", {
       allowIn: ["requirementBodyText", "paragraph"],
       allowChildren: ["allowanceText"],
       isInline: true,
+      allowAttributes: ["class"],
     });
 
     // schema.extend("$text", { allowIn: ["span", "div"], allowAttributes: "highlight" });
@@ -73,7 +103,6 @@ export class AllowancePlugin extends Plugin {
         classes: "aw-req-allowance",
       },
       model: (viewElement, conversionApi) => {
-        console.log("aw-req-allowance");
         const modelWriter = conversionApi.writer;
         return modelWriter.createElement("allowance", viewElement.getAttributes());
       },
@@ -82,7 +111,6 @@ export class AllowancePlugin extends Plugin {
     conversion.for("downcast").elementToElement({
       model: "allowance",
       view: (modelElement, conversionApi) => {
-        console.log("allowance", modelElement.getAttributes());
         const viewWriter = conversionApi.writer;
         return toWidget(
           viewWriter.createContainerElement("span", modelElement.getAttributes()),
@@ -90,6 +118,8 @@ export class AllowancePlugin extends Plugin {
         );
       },
     });
+
+
 
     conversion.for("editingDowncast").elementToElement({
       model: "allowance",
@@ -109,7 +139,6 @@ export class AllowancePlugin extends Plugin {
         classes: "allowance-number",
       },
       model: (viewElement, conversionApi) => {
-        console.log("allowanceText");
         const modelWriter = conversionApi.writer;
         return modelWriter.createElement("allowanceText", viewElement.getAttributes());
       },
@@ -118,8 +147,6 @@ export class AllowancePlugin extends Plugin {
     conversion.for("downcast").elementToElement({
       model: "allowanceText",
       view: (modelElement, conversionApi) => {
-        console.log("span_downcast");
-
         const viewWriter = conversionApi.writer;
         return viewWriter.createContainerElement("span", modelElement.getAttributes());
       },

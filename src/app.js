@@ -71,6 +71,7 @@ class Editor extends ClassicEditor {
         "test",
         "test1",
         "test2",
+        "allowance",
 
         "add",
         "remove",
