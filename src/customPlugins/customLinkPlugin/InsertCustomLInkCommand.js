@@ -15,7 +15,7 @@ function toMap(data) {
   return objectToMap(data);
 }
 
-export default class InsertCustomLInkCommand extends Command {
+export default class InsertCustomLinkCommand extends Command {
   refresh() {
     const model = this.editor.model;
     const selection = model.document.selection;

@@ -10,7 +10,7 @@ import { allowance } from "../icons/insertSymbols";
 import { emitter } from "../utils";
 import { showAllowanceModal } from "./allowanceModal";
 import InsertAllowanceCommand from "./InsertAllowanceCommand";
-import "./allowance.css";
+import "../styles/allowance.css";
 
 export class AllowancePlugin extends Plugin {
   static get pluginName() {

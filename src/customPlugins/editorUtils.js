@@ -4,13 +4,13 @@ import { numberToRussianLetter } from "./utils";
 export function createItemToolbar(editor, name, icon, cb) {
   editor.ui.componentFactory.add(name, (locale) => {
       const button = new ButtonView(locale);
-
       button.set({
         label: name,
         icon,
         tooltip: true,
+        isEnabled: true,
       });
-
+      button.bind("isEnabled").to(editor, "isReadOnly", (value) => !value);
       button.on("execute", () => {
         cb();
        });

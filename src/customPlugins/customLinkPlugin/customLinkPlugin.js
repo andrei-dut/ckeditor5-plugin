@@ -7,7 +7,7 @@ import {
   clickOutsideHandler,
 } from "../../ckeditor";
 import { registerCustomLink } from "./registerCustomLink";
-import InsertCustomLInkCommand from "./InsertCustomLInkCommand";
+import InsertCustomLinkCommand from "./InsertCustomLinkCommand";
 import {
   executeEditorCmd,
   findAttributeRange,
@@ -30,7 +30,7 @@ export class CustomLinkPlugin extends Plugin {
 
     editor.commands.add(
       "insertCustomLink",
-      new InsertCustomLInkCommand(editor)
+      new InsertCustomLinkCommand(editor)
     );
 
     this.actionsView = this._createActionsView();
@@ -81,6 +81,8 @@ export class CustomLinkPlugin extends Plugin {
       this.listenTo(button, "execute", () => {
         editor.fire("customLinkEvent", { eventType: "openModal" });
       });
+
+
       button.bind("isOn", "isEnabled").to(command, "value", "isEnabled");
       return button;
     });
