@@ -1,5 +1,5 @@
-import { Command } from "../ckeditor";
 
+import { Command } from "../../ckeditor";
 
 export default class InsertAllowanceCommand extends Command {
   refresh() {

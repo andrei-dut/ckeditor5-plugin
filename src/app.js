@@ -9,6 +9,7 @@ import { customSpecialCharacters } from "./customPlugins/vars";
 import "./customPlugins/styles/styles.css";
 import { parseAllReqDivTags, parseReqDivTags } from "./utils/utils";
 import { TestPlugin } from "./testPlugin/testPlugin";
+import { AllowancePlugin } from './customPlugins/allowancePlugin/allowancePlugin';
 
 
 // Ваша обычная HTML разметка
@@ -92,6 +93,7 @@ Editor.builtinPlugins.push(CustomLinkPlugin);
 Editor.builtinPlugins.push(CopyCutPastePlugin);
 Editor.builtinPlugins.push(CustomListPlugin);
 Editor.builtinPlugins.push(TestPlugin);
+Editor.builtinPlugins.push(AllowancePlugin);
 
 // delete selected content editor.model.deleteContent(modelSelect)
 

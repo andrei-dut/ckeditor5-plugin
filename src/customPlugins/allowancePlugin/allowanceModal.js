@@ -1,5 +1,5 @@
-import { emitter } from "../customPlugins/utils";
-import "./allowance.css";
+
+import { emitter } from '../utils';
 
 function addModal(content) {
   const modal = document.createElement("div");

@@ -1,16 +1,16 @@
-import { Plugin, toWidget } from "../ckeditor";
+import { Plugin, toWidget } from "../../ckeditor";
 import {
   createItemToolbar,
   executeEditorCmd,
   getModelElement,
   getTextFromElement,
   viewToModelElem,
-} from "../customPlugins/editorUtils";
-import { allowance } from "../customPlugins/icons/insertSymbols";
-import { emitter } from "../customPlugins/utils";
+} from "../editorUtils";
+import { allowance } from "../icons/insertSymbols";
+import { emitter } from "../utils";
 import { showAllowanceModal } from "./allowanceModal";
-import InsertAllowanceCommand from "./InsertIconCommand";
-import "./test.css";
+import InsertAllowanceCommand from "./InsertAllowanceCommand";
+import "./allowance.css";
 
 export class AllowancePlugin extends Plugin {
   static get pluginName() {

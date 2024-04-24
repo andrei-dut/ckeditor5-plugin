@@ -4,7 +4,6 @@ import {
   executeEditorCmd,
 } from "../customPlugins/editorUtils";
 import icon from "../icons/sign.svg";
-import { AllowancePlugin } from "./allowancePlugin";
 import "./test.css";
 
 export class TestPlugin extends Plugin {
@@ -12,9 +11,9 @@ export class TestPlugin extends Plugin {
     return "TestPlugin";
   }
 
-  static get requires() {
-    return [AllowancePlugin];
-  }
+  // static get requires() {
+  //   return [AllowancePlugin];
+  // }
 
   init() {
     const editor = this.editor;
