@@ -7,12 +7,12 @@ export default class CopyCutPasteCmd extends Command {
     this.isEnabled = true;
   }
 
-  totalExecute({ typeCmd, contentIncludes, pasteCb } = {}) {
+  totalExecute({ typeCmd, contentIncludes, pasteCb, hardContent } = {}) {
     const editor = this.editor;
     const model = editor.model;
     const modelDocument = model.document;
 
-    function _onPaste() {
+    function _onPaste(_hardContent) {
       let content = "";
       let contentString = "";
 
@@ -27,8 +27,12 @@ export default class CopyCutPasteCmd extends Command {
           content = copyCutReq;
         }
         contentString = content;
-        content = editor.data.htmlProcessor.toView(content);
       }
+
+      if(_hardContent?.length) {
+        content = hardContent;
+      }
+      content = editor.data.htmlProcessor.toView(content);
 
       function inputTransformation(_data) {
         if (_data.content.isEmpty) {
@@ -90,7 +94,7 @@ export default class CopyCutPasteCmd extends Command {
     }
 
     if (typeCmd === "paste") {
-      _onPaste();
+      _onPaste(hardContent);
     } else {
       _onCopyCut(typeCmd);
     }
