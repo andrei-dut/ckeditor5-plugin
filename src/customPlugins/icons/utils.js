@@ -51,6 +51,7 @@ export function replaceElemAttr(reg, elem, attr, replacement) {
     return;
   }
   const elemAttrD = elem.getAttribute(attr);
+  console.log(elemAttrD.match(reg));
   const newValue = reg ? elemAttrD.replace(reg, replacement) : replacement;
   elem.setAttribute(attr, newValue);
 }

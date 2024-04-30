@@ -18,6 +18,7 @@ export default class InsertIconCommand extends Command {
       const imageElement = writer.createElement("imageInline", {
         src: svg64(iconData.icon),
         alt: iconData.iconName,
+        id: iconData.iconName,
         "data-json": JSON.stringify(dataSvgToXml(iconData.iconName, iconData.svgValues)),
       });
 

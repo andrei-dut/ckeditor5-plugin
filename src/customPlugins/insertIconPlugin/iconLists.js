@@ -1,14 +1,18 @@
 import {
   mult1,
   mult2,
-  param,
   spec1,
   spec2,
   spec3,
   spec4,
   spec5,
+  spec6,
+  spec7,
+  spec8,
+  spec9,
   circleXXX,
   ra1_temp,
+  customTextIcon
 } from "../icons/insertSymbols";
 
 export const insertIconList = [
@@ -28,12 +32,6 @@ export const insertIconList = [
     label: "mult2",
     icon: mult2,
     iconName: "mult2",
-    isComplexSymbol: true,
-  },
-  {
-    label: "param",
-    icon: param,
-    iconName: "param",
     isComplexSymbol: true,
   },
   {
@@ -62,9 +60,35 @@ export const insertIconList = [
     iconName: "spec5",
   },
   {
+    label: "spec6",
+    icon: spec6,
+    iconName: "spec6",
+  },
+  {
+    label: "spec7",
+    icon: spec7,
+    iconName: "spec7",
+  },
+  {
+    label: "spec8",
+    icon: spec8,
+    iconName: "spec8",
+  },
+  {
+    label: "spec9",
+    icon: spec9,
+    iconName: "spec9",
+  },
+  {
     label: "circleXXX",
     icon: circleXXX,
     iconName: "circleXXX",
+    isComplexSymbol: true,
+  },
+  {
+    label: "customTextIcon",
+    icon: customTextIcon,
+    iconName: "customTextIcon",
     isComplexSymbol: true,
   },
 ];

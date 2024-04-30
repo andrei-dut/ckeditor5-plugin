@@ -2,6 +2,24 @@ import { replaceElemAttr, setViewBoxWidthSvgByG } from "../icons/utils";
 import { emitter } from "../utils";
 let variances;
 
+function setSizesSvg_customTextIcon(wrapSvg) {
+  try {
+    const svg = wrapSvg.querySelector("svg");
+
+    const path = svg.querySelector("path");
+    const longestText = svg.querySelector("text tspan") || svg.querySelector("text")
+    const svgRectTextLongest = longestText.getBBox();
+    const xEndText = Math.ceil(svgRectTextLongest.width + svgRectTextLongest.x);
+
+    console.log("svgRectTextLongest", svgRectTextLongest);
+    const newValue = Math.round(xEndText - 26);
+    replaceElemAttr(/(?<=,.*\s)\d+/, path, "d", `${newValue < 10 ? 10 : newValue}`);
+    setViewBoxWidthSvgByG(svg, 5);
+  } catch (error) {
+    console.log("setSizesSvg_error", error);
+  }
+}
+
 function setSizesSvg_mult1(wrapSvg, id) {
   try {
     const svg = wrapSvg.querySelector("svg");
@@ -192,6 +210,7 @@ function addModal(content, svgName) {
         textElement.textContent = newText;
       }
 
+      if (_svg.id === "customTextIcon") setSizesSvg_customTextIcon(wrapSvgTempElem, textElement.id);
       if (_svg.id === "mult1") setSizesSvg_mult1(wrapSvgTempElem, textElement.id);
       if (_svg.id === "mult2") setSizesSvg_mult2(wrapSvgTempElem, textElement.id);
     });

@@ -2,6 +2,14 @@
   width: 45px;
 }
 
+.ck-button.customTextIcon > svg {
+  /* width: auto; */
+}
+
+.image-inline#spec8, .image-inline#spec9 {
+  width: auto;
+}
+
 .ck.ck-reset_all svg.ck-button__icon text > tspan {
   font-size: inherit;
 }

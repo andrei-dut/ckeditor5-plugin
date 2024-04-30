@@ -32,6 +32,7 @@ export class IconPickerPlugin extends Plugin {
         listItem.set({
           label: icon.label,
           icon: icon.icon,
+          class: icon.iconName
         });
 
         function insertIconFc(svgEl, iconName, svgValues) {
