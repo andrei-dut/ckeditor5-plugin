@@ -19,6 +19,7 @@ export default class InsertIconCommand extends Command {
         src: svg64(iconData.icon),
         alt: iconData.iconName,
         id: iconData.iconName,
+        "data-id": iconData.iconName,
         "data-json": JSON.stringify(dataSvgToXml(iconData.iconName, iconData.svgValues)),
       });
 
