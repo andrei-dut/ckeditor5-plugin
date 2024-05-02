@@ -10,6 +10,8 @@ import {
   spec7,
   spec8,
   spec9,
+  arc,
+  triangleRight,
   circleXXX,
   ra1_temp,
   customTextIcon
@@ -78,6 +80,16 @@ export const insertIconList = [
     label: "spec9",
     icon: spec9,
     iconName: "spec9",
+  },
+  {
+    label: "triangleRight",
+    icon: triangleRight,
+    iconName: "triangleRight",
+  },
+  {
+    label: "arc",
+    icon: arc,
+    iconName: "arc",
   },
   {
     label: "circleXXX",

@@ -6,8 +6,9 @@
   /* width: auto; */
 }
 
-.image-inline#spec8, .image-inline#spec9 {
+.image-inline#spec8, .image-inline#spec9, .image-inline#triangleRight, .image-inline#arc {
   width: auto;
+  vertical-align: middle;
 }
 
 .ck.ck-reset_all svg.ck-button__icon text > tspan {
