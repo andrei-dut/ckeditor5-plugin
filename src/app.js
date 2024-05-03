@@ -7,7 +7,7 @@ import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlu
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
 import { customSpecialCharacters } from "./customPlugins/vars";
 import "./customPlugins/styles/styles.css";
-import { parseAllReqDivTags, parseReqDivTags } from "./utils/utils";
+import { parseAllReqDivTags } from "./utils/utils";
 import { TestPlugin } from "./testPlugin/testPlugin";
 import { AllowancePlugin } from './customPlugins/allowancePlugin/allowancePlugin';
 
@@ -73,6 +73,10 @@ class Editor extends ClassicEditor {
         "test1",
         "test2",
         "allowance",
+
+        'copy',
+        'cut',
+        'paste',
 
         "add",
         "remove",
@@ -155,7 +159,7 @@ Editor.create(document.querySelector("#editor"), {})
       </div></div>`;
 
     setTimeout(() => {
-      editor.setData(" " + " " + textTEst + " " + textTEst01 + " " + textTEst2);
+      editor.setData(`<p>${" " + " " + textTEst + " " + textTEst01 + " " + textTEst2}</p>`);
       // editor.set("isReadOnly", true);
     }, 500);
 
