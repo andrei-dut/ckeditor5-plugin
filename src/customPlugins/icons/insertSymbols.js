@@ -1054,7 +1054,7 @@ height="37px" viewBox="0 0 27 37"
 
 export const mult1 = `<svg
 width="36"
-height="21"
+height="25"
 viewBox="0 0 36 21"
 version="1.1"
 id="mult1"
@@ -1103,7 +1103,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
       sodipodi:role="line"
       id="tspan3"
       x="18.26631"
-      y="21.013704"
+      y="23.013704"
       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:inherit;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.410603">cc</tspan></text>
  <path
     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.78038px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1160,7 +1160,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
 `;
 export const mult2 = `<svg
 width="36"
-height="21"
+height="25"
 viewBox="0 0 36 21"
 version="1.1"
 id="mult2"
@@ -1293,7 +1293,7 @@ width="22"
 height="21"
 viewBox="0 0 22 21"
 version="1.1"
-id="svg1"
+id="circleXXX"
 style="font-size:7.5px;"
 inkscape:export-filename="bitmap.svg"
 inkscape:export-xdpi="96"

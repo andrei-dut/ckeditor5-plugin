@@ -164,6 +164,11 @@ function addModal(content, svgName) {
     inputElement.value = "";
     inputElement.placeholder = _textContent;
     inputElement.className = "parametr__input";
+
+    if (_svg.id === "circleXXX") {
+      inputElement.maxLength = 3;
+    }
+
     inputElement.addEventListener("input", function () {
       if (_svg.id === "mult2" && !variances) {
         const tspan1 = _svg.querySelector("#tspan1");

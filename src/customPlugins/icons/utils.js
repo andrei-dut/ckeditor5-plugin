@@ -40,10 +40,11 @@ export function setViewBoxWidthSvgByG(svg, addWidth) {
   if (!(viewBoxValues.length === 4 && viewBoxValues[2])) {
     return;
   }
-
-  viewBoxValues[2] = Math.floor(svgChild_gWidth + (addWidth || 0)).toString();
+  const widthSvg = Math.floor(svgChild_gWidth + (addWidth || 0)).toString();
+  viewBoxValues[2] = widthSvg
   const newViewBox = viewBoxValues.join(" ");
   svg.setAttribute("viewBox", newViewBox);
+  svg.setAttribute("width", widthSvg);
 }
 
 export function replaceElemAttr(reg, elem, attr, replacement) {
