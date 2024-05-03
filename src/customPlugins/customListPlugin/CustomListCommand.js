@@ -1,12 +1,11 @@
 import { Command } from "../../ckeditor";
 import {
   findAllElementsByName,
-  getEditElemByClassFromSelection,
+  findElemInSelectionByName,
   getModelElement,
   getNextSibling,
   getPreviousSibling,
   getTextFromElement,
-  isParentRoot,
   updateMarkers,
 } from "../editorUtils";
 import { getLastElemFromArray, incrementWithLetter } from "../utils";
@@ -20,25 +19,32 @@ export default class CustomListCommand extends Command {
       if (prevSibling?.name !== "requirement") {
         return;
       }
-      const lastChild = getLastElemFromArray(
-        findAllElementsByName(editor, "requirement", null, prevSibling)
-      );
-      const prevRequirementContent = getModelElement(editor, prevSibling, "requirementContent");
-      writer.move(writer.createRangeOn(parent), lastChild || prevRequirementContent, "after");
+      writer.setAttribute("data-is-child", "true", parent);
+
+      // const lastChild = getLastElemFromArray(
+      //   findAllElementsByName(editor, "requirement", null, prevSibling)
+      // );
+
+      // const prevRequirementContent = getModelElement(editor, prevSibling, "requirementContent");
+      
+      // writer.move(writer.createRangeOn(parent), lastChild || prevRequirementContent, "after");
+
     });
-    updateMarkers(editor,parent);
-    updateMarkers(editor,parent?.parent);
+
+    updateMarkers(editor, parent);
+    // updateMarkers(editor, parent?.parent);
   }
 
   leveDownReq(parent) {
     const editor = this.editor;
     editor.model.change((writer) => {
-      if (parent && !isParentRoot(parent) && parent.parent?.name === "requirement") {
-        writer.move(writer.createRangeOn(parent), parent.parent, "after");
+      if (parent && parent?.name === "requirement" && parent.hasAttribute("data-is-child")) {
+        writer.removeAttribute("data-is-child", parent);
         return;
       }
     });
-    updateMarkers(editor,parent);
+
+    updateMarkers(editor, parent);
   }
 
   removeReq(parent) {
@@ -49,18 +55,25 @@ export default class CustomListCommand extends Command {
         return;
       }
     });
-    updateMarkers(editor,parent);
+    updateMarkers(editor, parent);
   }
 
   moveUpReq(parent) {
     const editor = this.editor;
     editor.model.change((writer) => {
       const prevSibling = getPreviousSibling(parent);
+      // const isReqChild = parent?.getAttribute("data-is-child")?.includes("true");
+      // const isPrevReqChild = prevSibling?.getAttribute("data-is-child")?.includes("true");
+
+      // if(isReqChild && !isPrevReqChild) {
+        
+      // }
+
       if (prevSibling?.name !== "requirement") {
         return;
       }
       writer.move(writer.createRangeOn(parent), prevSibling, "before");
-      updateMarkers(editor,parent);
+      updateMarkers(editor, parent);
     });
   }
 
@@ -73,7 +86,7 @@ export default class CustomListCommand extends Command {
       }
       writer.move(writer.createRangeOn(parent), nextSibling, "after");
     });
-    updateMarkers(editor,parent);
+    updateMarkers(editor, parent);
   }
 
   createNewReq(options) {
@@ -117,11 +130,8 @@ export default class CustomListCommand extends Command {
     const editor = this.editor;
 
     const options = { after: "", ..._options };
-    const editElem = getEditElemByClassFromSelection(editor, "requirement");
-
-    const t2 = editor.editing.mapper.toModelElement(editElem);
-    options.after = t2;
-
+    const foundModelReq = findElemInSelectionByName(editor, "requirement", undefined, true);
+    options.after = foundModelReq;
     const parentRequirement = options.after;
     if (!parentRequirement) {
       console.warn("No parent requirement passed.");
@@ -149,7 +159,7 @@ export default class CustomListCommand extends Command {
       case "addNew": {
         const req = this.createNewReq(options);
         if (req) {
-          updateMarkers(editor,req);
+          updateMarkers(editor, req);
           scrollToNewWidget(req, editor);
         }
         break;
@@ -163,11 +173,12 @@ export default class CustomListCommand extends Command {
 const scrollToNewWidget = function (requirement, editor) {
   try {
     const view = editor.editing.view;
-    const newselection = view.createSelection(editor.editing.mapper.toViewElement(requirement), 0, {
-      fake: true,
-    });
+    const newselection = view.createSelection(editor.editing.mapper.toViewElement(requirement), 0);
     view.document.selection._setTo(newselection);
     view.scrollToTheSelection();
+    editor.model.change((writer) => {
+      writer.setSelection(requirement, "on");
+    });
   } catch (error) {
     console.warn(error);
   }

@@ -1,5 +1,5 @@
 import { Command } from "../../ckeditor";
-import { normalizeClipboardData, plainTextToHtml, viewToPlainText } from "../editorUtils";
+import { findElemInSelectionByName, normalizeClipboardData, plainTextToHtml, viewToPlainText } from "../editorUtils";
 import { dataTransfer } from "../manageDataTransfer";
 
 export default class CopyCutPasteCmd extends Command {
@@ -71,15 +71,23 @@ export default class CopyCutPasteCmd extends Command {
         if (_data.content.isEmpty) {
           return;
         }
-        const contentHtmlString = editor.data.htmlProcessor.toData(_data.content);
+        let contentHtmlString = editor.data.htmlProcessor.toData(_data.content);
 
         if (contentIncludes && !contentHtmlString?.includes(contentIncludes)) return;
+
+        contentHtmlString = (contentHtmlString || '').replace(`data-is-child="true"`, '')
 
         _data.dataTransfer.setData("text/html", contentHtmlString);
         _data.dataTransfer.setData("text/plain", viewToPlainText(_data.content));
 
         if (_data.method == "cut") {
-          editor.model.deleteContent(modelDocument.selection);
+          editor.model.change((writer) => {
+            const foundModelReq = findElemInSelectionByName(editor, "requirement");
+            if (foundModelReq) {
+              writer.remove(foundModelReq);
+              return;
+            }
+          });
         }
         if (contentIncludes && contentHtmlString?.includes(contentIncludes)) {
           window.localStorage.setItem("copyCutReq", contentHtmlString);

@@ -42,10 +42,8 @@ class Editor extends ClassicEditor {
         "Undo",
         "Redo",
         "|",
-        "Bold",
-        "|",
-        "RemoveFormat",
-        "|",
+
+
         "/",
         "NumberedList",
         "BulletedList",
@@ -56,7 +54,6 @@ class Editor extends ClassicEditor {
         "FontBackgroundColor",
         "|",
         "/",
-        "Heading",
         "FontFamily",
         "FontSize",
         "|",
@@ -78,6 +75,12 @@ class Editor extends ClassicEditor {
         'cut',
         'paste',
         "addReq",
+        "removeReq",
+        "levelUpReq",
+        "levelDownReq",
+        "moveUpReq",
+        "moveDownReq",
+
 
         "add",
         "remove",
@@ -104,7 +107,7 @@ Editor.builtinPlugins.push(AllowancePlugin);
 
 Editor.create(document.querySelector("#editor"), {})
   .then((editor) => {
-    const textTEst = `<div class="requirement ck-widget"  contenteditable="false"   >
+    const textTEst = `<div class="requirement ck-widget"  contenteditable="false"  id="req_1" >
     <div class="aw-requirement-marker">
     
       <span class="aw-ckeditor-marker-element" title="1">1</span>   
@@ -155,8 +158,6 @@ Editor.create(document.querySelector("#editor"), {})
       <div class="aw-requirement-content">
         <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div>
         </div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div>
-      
-      ${textTEst}
       </div></div>`;
 
     setTimeout(() => {

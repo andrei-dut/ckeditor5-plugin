@@ -34,29 +34,37 @@ export function createItemToolbar(editor, name, icon, cb) {
   });
 }
 
-export function updateMarkers(editor, elem) {
-  const _parent = elem?.parent;
-  const isReqParent = _parent?.name === "requirement";
-  const parentOfMarkers = findAllElementsByName(
-    editor,
-    "requirement",
-    elem ? false : true,
-    _parent
-  );
-  parentOfMarkers.forEach((parentOfMarker, i) => {
-    const number = i + 1;
-    const elemMarker = getModelElement(editor, parentOfMarker, "span");
+export function updateMarkers(editor) {
+  const allReq = findAllElementsByName(editor, "requirement");
+  let countChild = 0;
+  allReq.forEach((req,) => {
+    const prevReq = getPreviousSibling(req);
+    const isReqChild = req?.getAttribute("data-is-child")?.includes("true");
+    const isPrevReqChild = prevReq?.getAttribute("data-is-child")?.includes("true");
+    const elemMarker = getModelElement(editor, req, "span");
+    const prevElemMarker = getModelElement(editor, prevReq, "span");
+    const prevMarkerContent = getTextFromElement(prevElemMarker);
+    const prevMarkerNumber = prevMarkerContent ? parseInt(prevMarkerContent) : 0;
+
+    if (isReqChild) {
+      ++countChild;
+    }
+    if (isPrevReqChild && !isReqChild) {
+      countChild = 0;
+    }
     editor.model.change((writer) => {
       writer.remove(elemMarker.getChild(0));
       writer.insertText(
-        `${number}${isReqParent ? numberToRussianLetter(number) : ""}` || "-",
+        `${isReqChild ? prevMarkerNumber : prevMarkerNumber + 1}${
+          isReqChild ? numberToRussianLetter(countChild) : ""
+        }` || "-",
         elemMarker
       );
     });
   });
 }
 
-export function findElemInSelectionByName(editor, name, offConvertToModel) {
+export function findElemInSelectionByName(editor, name, offConvertToModel, isFirstElem) {
   if (!editor && !editor.editing.view.document.selection) return null;
   const selection = editor.editing.view.document.selection;
   const fRange = selection.getFirstRange();
@@ -66,7 +74,7 @@ export function findElemInSelectionByName(editor, name, offConvertToModel) {
     for (const viewElem of fRange.getItems({ ignoreElementEnd: true })) {
       const modelElem = offConvertToModel ? viewElem : viewToModelElem(editor, viewElem);
       if (modelElem?.name === name) {
-        foundElem = modelElem;
+        foundElem = isFirstElem && foundElem ? foundElem : modelElem;
       }
     }
   }

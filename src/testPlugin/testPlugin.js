@@ -16,6 +16,11 @@ import cutIcon from "./icons/cut.svg";
 import copyIcon from "./icons/copy.svg";
 import pasteIcon from "./icons/paste.svg";
 import addIcon from "./icons/addIcon.svg";
+import removeIcon from "./icons/removeIcon.svg";
+import moreIcon from "./icons/moreIcon.svg";
+import lessIcon from "./icons/lessIcon.svg";
+import moveUpIcon from "./icons/moveUpIcon.svg";
+import moveDownIcon from "./icons/moveDownIcon.svg";
 import "./test.css";
 
 export class TestPlugin extends Plugin {
@@ -44,7 +49,6 @@ export class TestPlugin extends Plugin {
         typeCmd: "cut",
         contentIncludes: "requirement",
       });
-      removeParagraphBetweenReq(editor)
       updateMarkers(editor);
     });
 
@@ -54,7 +58,6 @@ export class TestPlugin extends Plugin {
         contentIncludes: "requirement",
         pasteCb: (pasteFragment) => {
           const foundModelReq = findElemInSelectionByName(editor, "requirement");
-          console.log("foundModelReq", foundModelReq);
           const model = editor.model;
           model.change((writer) => {
             const insertPosition = foundModelReq
@@ -72,7 +75,22 @@ export class TestPlugin extends Plugin {
   _handlerReqTools() {
     const editor = this.editor;
     createTestItemToolbar(editor, "addReq", addIcon, () => {
-
+      executeEditorCmd(editor, "insertCustomList", { type: "addNew" });
+    });
+    createTestItemToolbar(editor, "removeReq", removeIcon, () => {
+      executeEditorCmd(editor, "insertCustomList", { type: "remove" });
+    });
+    createTestItemToolbar(editor, "levelUpReq", moreIcon, () => {
+      executeEditorCmd(editor, "insertCustomList", { type: "levelUp" });
+    });
+    createTestItemToolbar(editor, "levelDownReq", lessIcon, () => {
+      executeEditorCmd(editor, "insertCustomList", { type: "levelDown" });
+    });
+    createTestItemToolbar(editor, "moveUpReq", moveUpIcon, () => {
+      executeEditorCmd(editor, "insertCustomList", { type: "moveUp" });
+    });
+    createTestItemToolbar(editor, "moveDownReq", moveDownIcon, () => {
+      executeEditorCmd(editor, "insertCustomList", { type: "moveDown" });
     });
   }
 

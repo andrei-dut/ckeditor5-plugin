@@ -112,10 +112,10 @@ export class CustomListPlugin extends Plugin {
         "checkedoutby",
         "checkedouttime",
         "data-custom_comment",
+        "data-is-child"
       ],
       isObject: true,
       isBlock: true,
-      allowIn: "requirement",
     });
 
     schema.register("requirementMarker", {
