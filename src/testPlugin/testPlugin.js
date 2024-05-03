@@ -3,15 +3,19 @@ import { createTestItemToolbar } from "../createTestItemToolbar";
 import {
   executeEditorCmd,
   findAllElementsByName,
+  findElemInSelectionByName,
   getEditElemByClassFromSelection,
   getNextSibling,
   getPreviousSibling,
   isParentRoot,
+  removeParagraphBetweenReq,
   updateMarkers,
+  viewToModelElem,
 } from "../customPlugins/editorUtils";
 import cutIcon from "./icons/cut.svg";
 import copyIcon from "./icons/copy.svg";
 import pasteIcon from "./icons/paste.svg";
+import addIcon from "./icons/addIcon.svg";
 import "./test.css";
 
 export class TestPlugin extends Plugin {
@@ -26,6 +30,8 @@ export class TestPlugin extends Plugin {
   init() {
     const editor = this.editor;
 
+    this._handlerReqTools()
+
     createTestItemToolbar(editor, "copy", copyIcon, () => {
       executeEditorCmd(editor, "copyCutPasteCmd", {
         typeCmd: "copy",
@@ -38,18 +44,7 @@ export class TestPlugin extends Plugin {
         typeCmd: "cut",
         contentIncludes: "requirement",
       });
-      const allParagraph = findAllElementsByName(editor, "paragraph");
-      allParagraph.forEach((paragraph) => {
-        if (
-          isParentRoot(paragraph) &&
-          getNextSibling(paragraph)?.name === "requirement" &&
-          getPreviousSibling(paragraph)?.name === "requirement"
-        ) {
-          editor.model.change((writer) => {
-            writer.remove(paragraph);
-          });
-        }
-      });
+      removeParagraphBetweenReq(editor)
       updateMarkers(editor);
     });
 
@@ -58,18 +53,27 @@ export class TestPlugin extends Plugin {
         typeCmd: "paste",
         contentIncludes: "requirement",
         pasteCb: (pasteFragment) => {
-          const reqElem = getEditElemByClassFromSelection(editor, "requirement");
+          const foundModelReq = findElemInSelectionByName(editor, "requirement");
+          console.log("foundModelReq", foundModelReq);
           const model = editor.model;
-          const reqModelElem = reqElem ? editor.editing.mapper.toModelElement(reqElem) : null;
           model.change((writer) => {
-            const insertPosition = reqModelElem
-              ? writer.createPositionAfter(reqModelElem)
+            const insertPosition = foundModelReq
+              ? writer.createPositionAfter(foundModelReq)
               : writer.createPositionAt(editor.model.document.getRoot(), "end");
             model.insertContent(pasteFragment, insertPosition);
-            updateMarkers(editor, reqModelElem);
+            updateMarkers(editor, foundModelReq);
           });
         },
       });
+      removeParagraphBetweenReq(editor);
     });
   }
+
+  _handlerReqTools() {
+    const editor = this.editor;
+    createTestItemToolbar(editor, "addReq", addIcon, () => {
+
+    });
+  }
+
 }

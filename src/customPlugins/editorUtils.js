@@ -1,22 +1,37 @@
 import { ButtonView } from "../ckeditor";
 import { numberToRussianLetter } from "./utils";
 
+export function removeParagraphBetweenReq(editor) {
+  const allParagraph = findAllElementsByName(editor, "paragraph");
+  allParagraph.forEach((paragraph) => {
+    if (
+      isParentRoot(paragraph) &&
+      getNextSibling(paragraph)?.name === "requirement" &&
+      getPreviousSibling(paragraph)?.name === "requirement"
+    ) {
+      editor.model.change((writer) => {
+        writer.remove(paragraph);
+      });
+    }
+  });
+}
+
 export function createItemToolbar(editor, name, icon, cb) {
   editor.ui.componentFactory.add(name, (locale) => {
-      const button = new ButtonView(locale);
-      button.set({
-        label: name,
-        icon,
-        tooltip: true,
-        isEnabled: true,
-      });
-      button.bind("isEnabled").to(editor, "isReadOnly", (value) => !value);
-      button.on("execute", () => {
-        cb();
-       });
-
-      return button;
+    const button = new ButtonView(locale);
+    button.set({
+      label: name,
+      icon,
+      tooltip: true,
+      isEnabled: true,
     });
+    button.bind("isEnabled").to(editor, "isReadOnly", (value) => !value);
+    button.on("execute", () => {
+      cb();
+    });
+
+    return button;
+  });
 }
 
 export function updateMarkers(editor, elem) {
@@ -39,6 +54,23 @@ export function updateMarkers(editor, elem) {
       );
     });
   });
+}
+
+export function findElemInSelectionByName(editor, name, offConvertToModel) {
+  if (!editor && !editor.editing.view.document.selection) return null;
+  const selection = editor.editing.view.document.selection;
+  const fRange = selection.getFirstRange();
+  let foundElem;
+
+  if (fRange) {
+    for (const viewElem of fRange.getItems({ ignoreElementEnd: true })) {
+      const modelElem = offConvertToModel ? viewElem : viewToModelElem(editor, viewElem);
+      if (modelElem?.name === name) {
+        foundElem = modelElem;
+      }
+    }
+  }
+  return foundElem;
 }
 
 export function getEditElemByClassFromSelection(editor, _class) {

@@ -77,6 +77,7 @@ class Editor extends ClassicEditor {
         'copy',
         'cut',
         'paste',
+        "addReq",
 
         "add",
         "remove",
