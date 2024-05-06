@@ -87,9 +87,11 @@ function setSizesSvg() {
     }
 
     replaceElemAttr(/L\s+\d+/, path, "d", `L ${xEndTextLongest}`);
-    viewBoxValues[2] = (Math.floor(svgChild_gWidth) + 15).toString();
+    const widthSvg = (Math.floor(svgChild_gWidth) + 15).toString();
+    viewBoxValues[2] = widthSvg;
     const newViewBox = viewBoxValues.join(" ");
     svgElement.setAttribute("viewBox", newViewBox);
+    svgElement.setAttribute("width", widthSvg);
   } catch (error) {
     console.log("setSizesSvg_error", error);
   }
