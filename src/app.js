@@ -107,7 +107,7 @@ Editor.builtinPlugins.push(AllowancePlugin);
 
 Editor.create(document.querySelector("#editor"), {})
   .then((editor) => {
-    const textTEst = `<div class="requirement ck-widget"  contenteditable="false"  id="req_1" >
+    const textTEst = `<div class="requirement ck-widget" data-custom_comment="111"  contenteditable="false"  id="req_1" >
     <div class="aw-requirement-marker">
     
       <span class="aw-ckeditor-marker-element" title="1">1</span>   
@@ -196,7 +196,7 @@ Editor.create(document.querySelector("#editor"), {})
       console.log("selectionReqElem", currentData);
       const value = currentData.value;
       const model = editor.model;
-      model.change((writer) => {
+            model.change((writer) => {
         if (value) {
           value._setAttribute("data-custom_comment", 222);
           writer.setAttribute("data-custom_comment", 222, viewToModelElem(editor, value));

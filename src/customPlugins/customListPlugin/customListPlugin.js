@@ -6,11 +6,7 @@ import {
   _defineRequirementConversion,
 } from "./customListConversion";
 import "../styles/stylesCustomListPl.css";
-import {
-  findParent,
-  modelToViewElem,
-  viewToModelElem,
-} from "../editorUtils";
+import { findElemInSelectionByName } from "../editorUtils";
 
 let editor;
 export class CustomListPlugin extends Plugin {
@@ -23,17 +19,9 @@ export class CustomListPlugin extends Plugin {
     editor.commands.add("insertCustomList", new CustomListCommand(editor));
 
     this.listenTo(editor.editing.view.document, "click", () => {
-      const view = editor.editing.view;
-      const selection = view.document.selection;
-      const findReqElem = findParent(
-        viewToModelElem(editor, selection.editableElement),
-        "requirement",
-        true
-      );
-        // console.log("click", findReqElem, selection);
-
-      if (findReqElem) {
-        editor.fire("selectionReqElem", { value: modelToViewElem(editor, findReqElem) });
+      const foundModelReq = findElemInSelectionByName(editor, "requirement", true, true);
+      if (foundModelReq) {
+        editor.fire("selectionReqElem", { value: foundModelReq });
       }
     });
 
@@ -112,7 +100,7 @@ export class CustomListPlugin extends Plugin {
         "checkedoutby",
         "checkedouttime",
         "data-custom_comment",
-        "data-is-child"
+        "data-is-child",
       ],
       isObject: true,
       isBlock: true,

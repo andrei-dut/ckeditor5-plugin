@@ -72,9 +72,10 @@ export function findElemInSelectionByName(editor, name, offConvertToModel, isFir
 
   if (fRange) {
     for (const viewElem of fRange.getItems({ ignoreElementEnd: true })) {
-      const modelElem = offConvertToModel ? viewElem : viewToModelElem(editor, viewElem);
+      const modelElem = viewToModelElem(editor, viewElem);
+      const result = offConvertToModel ? viewElem : modelElem
       if (modelElem?.name === name) {
-        foundElem = isFirstElem && foundElem ? foundElem : modelElem;
+        foundElem = isFirstElem && foundElem ? foundElem : result;
       }
     }
   }
