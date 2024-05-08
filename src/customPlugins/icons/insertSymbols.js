@@ -1289,8 +1289,8 @@ xmlns:svg="http://www.w3.org/2000/svg">
 </svg>
 `;
 export const circleXXX = `<svg
-width="22"
-height="21"
+width="44"
+height="44"
 viewBox="0 0 22 21"
 version="1.1"
 id="circleXXX"
