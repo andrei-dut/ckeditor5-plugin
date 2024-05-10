@@ -11,7 +11,6 @@ import {
 import { getLastElemFromArray, incrementWithLetter } from "../utils";
 
 export default class CustomListCommand extends Command {
-
   levelUpReq(parent) {
     const editor = this.editor;
     editor.model.change((writer) => {
@@ -26,9 +25,8 @@ export default class CustomListCommand extends Command {
       // );
 
       // const prevRequirementContent = getModelElement(editor, prevSibling, "requirementContent");
-      
-      // writer.move(writer.createRangeOn(parent), lastChild || prevRequirementContent, "after");
 
+      // writer.move(writer.createRangeOn(parent), lastChild || prevRequirementContent, "after");
     });
 
     updateMarkers(editor, parent);
@@ -66,12 +64,22 @@ export default class CustomListCommand extends Command {
       // const isPrevReqChild = prevSibling?.getAttribute("data-is-child")?.includes("true");
 
       // if(isReqChild && !isPrevReqChild) {
-        
+
       // }
 
       if (prevSibling?.name !== "requirement") {
         return;
       }
+      
+    // const isReqChild = parent?.getAttribute("data-is-child")?.includes("true");
+    // const elemMarker = getModelElement(editor, parent, "span");
+    //   if(isReqChild && elemMarker && elemMarker.getChild(0)) {
+    //     const data = elemMarker.getChild(0).data;
+    //     const is1a = data?.includes('1а')
+    //     if(is1a);
+    //     console.log(data, is1a);
+    //   }
+
       writer.move(writer.createRangeOn(parent), prevSibling, "before");
       updateMarkers(editor, parent);
     });

@@ -37,7 +37,7 @@ export function createItemToolbar(editor, name, icon, cb) {
 export function updateMarkers(editor) {
   const allReq = findAllElementsByName(editor, "requirement");
   let countChild = 0;
-  allReq.forEach((req,) => {
+  allReq.forEach((req) => {
     const prevReq = getPreviousSibling(req);
     const isReqChild = req?.getAttribute("data-is-child")?.includes("true");
     const isPrevReqChild = prevReq?.getAttribute("data-is-child")?.includes("true");
@@ -52,14 +52,18 @@ export function updateMarkers(editor) {
     if (isPrevReqChild && !isReqChild) {
       countChild = 0;
     }
+
     editor.model.change((writer) => {
-      writer.remove(elemMarker.getChild(0));
-      writer.insertText(
-        `${isReqChild ? prevMarkerNumber : prevMarkerNumber + 1}${
-          isReqChild ? numberToRussianLetter(countChild) : ""
-        }` || "-",
-        elemMarker
-      );
+      const markerText = `${isReqChild ? prevMarkerNumber : prevMarkerNumber + 1}${
+        isReqChild ? numberToRussianLetter(countChild) : ""
+      }`;
+      if(markerText.includes('0а')) {
+        writer.removeAttribute("data-is-child", req);
+        updateMarkers(editor)
+      } else {
+        writer.remove(elemMarker.getChild(0));
+        writer.insertText(markerText || "-", elemMarker);
+      }
     });
   });
 }
@@ -73,7 +77,7 @@ export function findElemInSelectionByName(editor, name, offConvertToModel, isFir
   if (fRange) {
     for (const viewElem of fRange.getItems({ ignoreElementEnd: true })) {
       const modelElem = viewToModelElem(editor, viewElem);
-      const result = offConvertToModel ? viewElem : modelElem
+      const result = offConvertToModel ? viewElem : modelElem;
       if (modelElem?.name === name) {
         foundElem = isFirstElem && foundElem ? foundElem : result;
       }
