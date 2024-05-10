@@ -11,6 +11,7 @@ import { findElemInSelectionByName } from "../editorUtils";
 let editor;
 export class CustomListPlugin extends Plugin {
   init() {
+    console.log('INIT_CustomListPlugin');
     editor = this.editor;
     this.editor.RATData = {};
     this._defineSchema();
