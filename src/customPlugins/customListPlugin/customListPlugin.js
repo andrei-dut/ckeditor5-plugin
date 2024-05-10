@@ -20,6 +20,7 @@ export class CustomListPlugin extends Plugin {
 
     this.listenTo(editor.editing.view.document, "click", () => {
       const foundModelReq = findElemInSelectionByName(editor, "requirement", true, true);
+      console.log("click_selectionReqElem", foundModelReq);
       if (foundModelReq) {
         editor.fire("selectionReqElem", { value: foundModelReq });
       }
