@@ -1054,7 +1054,7 @@ height="37px" viewBox="0 0 27 37"
 
 export const mult1 = `<svg
 width="36"
-height="25"
+height="30"
 viewBox="0 0 36 25"
 version="1.1"
 id="mult1"

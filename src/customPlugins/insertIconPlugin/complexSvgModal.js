@@ -77,22 +77,27 @@ function setSizesSvg_mult2(wrapSvg, id) {
     const path = svg.querySelector("path");
     if (id === "tspan1") {
       const tspan1_BBox = tspan1.getBBox();
-      const tspan2_BBox = tspan2.getBBox();
       const tspan1_x2 = Math.round(tspan1_BBox.x + tspan1_BBox.width);
 
-      replaceElemAttr(/M\s+\d+/, path, "d", `M ${tspan1_x2 + variances.varianceTspan_1_path_x1}`);
-      replaceElemAttr(/(?<=,.*\s)\d+/, path, "d", `${tspan1_x2 + variances.varianceTspan_1_path_x2}`);
-      replaceElemAttr(null, tspan2, "x", `${(tspan1_x2 + variances.varianceTspan_1_2) - tspan2_BBox.width}`);
-      replaceElemAttr(null, tspan3, "x", `${tspan1_x2 + variances.varianceTspan_1_3 + 3}`);
+      replaceElemAttr(null, tspan2, "x", `${(tspan1_x2)}`);
+      const tspan2_BBox = tspan2.getBBox();
+
+      const tspan2_x2 = Math.round(tspan2_BBox.x + tspan2_BBox.width);
+      replaceElemAttr(/M\s+\d+/, path, "d", `M ${tspan2_x2 + variances.varianceTspan_2_path_x1 + 4}`);
+      replaceElemAttr(/(?<=,.*\s)\d+/, path, "d", `${tspan2_x2 + variances.varianceTspan_2_path_x2 + 4}`);
+
+      replaceElemAttr(null, tspan3, "x", `${tspan2_x2 + variances.varianceTspan_2_3 + 10}`);
 
     } else if (id === "tspan2") {
       const tspan1_BBox = tspan1.getBBox();
       const tspan2_BBox = tspan2.getBBox();
+      const tspan2_x1 = Math.round(tspan2_BBox.x);
       const tspan2_x2 = Math.round(tspan2_BBox.x + tspan2_BBox.width);
-      replaceElemAttr(/M\s+\d+/, path, "d", `M ${tspan2_x2 + variances.varianceTspan_2_path_x1}`);
-      replaceElemAttr(/(?<=,.*\s)\d+/, path, "d", `${tspan2_x2 + variances.varianceTspan_2_path_x2}`);
-      replaceElemAttr(null, tspan1, "x", `${tspan2_x2 - (variances.varianceTspan_2_1 + tspan1_BBox.width)}`);
-      replaceElemAttr(null, tspan3, "x", `${tspan2_x2 + variances.varianceTspan_2_3 + 3}`);
+      console.log(tspan2_x1, tspan1_BBox.width);
+      replaceElemAttr(/M\s+\d+/, path, "d", `M ${tspan2_x2 + variances.varianceTspan_2_path_x1 +4}`);
+      replaceElemAttr(/(?<=,.*\s)\d+/, path, "d", `${tspan2_x2 + variances.varianceTspan_2_path_x2 +4}`);
+      // replaceElemAttr(null, tspan1, "x", `${tspan2_x2 - (variances.varianceTspan_2_1 + tspan1_BBox.width)}`);
+      replaceElemAttr(null, tspan3, "x", `${tspan2_x2 + variances.varianceTspan_2_3 + 10}`);
 
     }
     const g2 = svg.querySelector("#layer1");
