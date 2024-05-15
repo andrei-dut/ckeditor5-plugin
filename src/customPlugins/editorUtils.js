@@ -18,13 +18,15 @@ export function removeParagraphBetweenReq(editor) {
 
 export function removeAllParagraph(editor) {
   const allParagraph = findAllElementsByName(editor, "paragraph");
-  allParagraph.forEach((paragraph) => {
-    if (isParentRoot(paragraph)) {
-      editor.model.change((writer) => {
-        writer.remove(paragraph);
-      });
-    }
-  });
+  if (allParagraph && allParagraph.length) {
+    allParagraph.forEach((paragraph) => {
+      if (isParentRoot(paragraph)) {
+        editor.model.change((writer) => {
+          writer.remove(paragraph);
+        });
+      }
+    });
+  }
 }
 
 export function createItemToolbar(editor, name, icon, cb) {

@@ -5,6 +5,11 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.ck.ck-editor__editable_inline {
+  padding-top: var(--ck-spacing-large) !important;
+}
+
 .ck-editor__main .requirement .requirement {
   width: 100%;
   margin-right: 0;

@@ -81,7 +81,6 @@ export class TestPlugin extends Plugin {
     createTestItemToolbar(editor, "removeReq", removeIcon, () => {
       executeEditorCmd(editor, "insertCustomList", { type: "remove" });
       removeAllParagraph(editor)
-      editor.set("isReadOnly", true);
     });
     createTestItemToolbar(editor, "levelUpReq", moreIcon, () => {
       executeEditorCmd(editor, "insertCustomList", { type: "levelUp" });

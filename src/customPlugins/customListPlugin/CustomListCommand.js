@@ -6,6 +6,7 @@ import {
   getNextSibling,
   getPreviousSibling,
   getTextFromElement,
+  removeAllParagraph,
   updateMarkers,
 } from "../editorUtils";
 import { getLastElemFromArray, incrementWithLetter } from "../utils";
@@ -170,6 +171,7 @@ export default class CustomListCommand extends Command {
           updateMarkers(editor, req);
           scrollToNewWidget(req, editor);
         }
+        removeAllParagraph(editor);
         break;
       }
       default:
