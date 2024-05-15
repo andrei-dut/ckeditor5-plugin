@@ -7,9 +7,10 @@ import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlu
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
 import { customSpecialCharacters } from "./customPlugins/vars";
 import "./customPlugins/styles/styles.css";
-import { parseAllReqDivTags } from "./utils/utils";
+import { parseAllReqDivTags, parseReqDivTags } from "./utils/utils";
 import { TestPlugin } from "./testPlugin/testPlugin";
 import { AllowancePlugin } from './customPlugins/allowancePlugin/allowancePlugin';
+import './style.css'
 
 
 // Ваша обычная HTML разметка
@@ -234,7 +235,7 @@ Editor.create(document.querySelector("#editor"), {})
         //     console.log(e, args, newVal, oldVal);
         //   });
 
-        console.log("parseReqDivTags", editor.getData(), parseAllReqDivTags(editor.getData()));
+        console.log("parseReqDivTags", editor.getData(), parseReqDivTags(editor.getData()));
 
         // console.log(editor.getData());
         console.log(getArrayImgObjByHtmlString(editor.getData()));

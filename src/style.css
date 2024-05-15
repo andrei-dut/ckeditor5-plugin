@@ -1,0 +1,12 @@
+.wrap-preview-reqs {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrap-preview-reqs .requirement {
+    margin-bottom: 10px;
+}
+
+.wrap-preview-reqs .aw-requirement-bodytext > p {
+    margin: 0;
+}

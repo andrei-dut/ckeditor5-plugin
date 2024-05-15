@@ -10,16 +10,10 @@ export function parseReqDivTags(htmlContent) {
 
   const requirementElements = tempElement.querySelectorAll(".requirement");
 
-  const directChildRequirementElements = Array.from(requirementElements).filter(
-    (element) => element.parentElement === tempElement
-  );
+  const directChildRequirementElements = Array.from(requirementElements).filter(element => element.parentElement === tempElement);
 
   for (const child of directChildRequirementElements) {
-    if (
-      child.tagName &&
-      child.tagName.toLowerCase() === "div" &&
-      child.className.includes("requirement")
-    ) {
+    if (child.tagName && child.tagName.toLowerCase() === "div" && child.className.includes("requirement")) {
       const reqNumber = Object.keys(reqObjects).length + 1;
       const reqContent = child.outerHTML;
       reqObjects[reqNumber] = {
