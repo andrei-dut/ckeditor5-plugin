@@ -2,7 +2,7 @@ import { ClassicEditor } from "./ckeditor";
 import { CopyCutPastePlugin } from "./customPlugins/copyCutPastePlugin/copyCutPastePlugin";
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
 import { CustomListPlugin } from "./customPlugins/customListPlugin/customListPlugin";
-import { viewToModelElem } from "./customPlugins/editorUtils";
+import { removeAllParagraph, viewToModelElem } from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
 import { customSpecialCharacters } from "./customPlugins/vars";
@@ -159,6 +159,7 @@ Editor.create(document.querySelector("#editor"), {})
 
     setTimeout(() => {
       editor.setData(`<p>${" " + " " + textTEst + " " + textTEst01 + " " + textTEst2}</p>`);
+      removeAllParagraph(editor)
       // editor.set("isReadOnly", true);
     }, 500);
 
@@ -198,7 +199,7 @@ Editor.create(document.querySelector("#editor"), {})
 
       const reqString = reqDom.outerHTML;
 
-      console.log("moveReqToLib_contents", reqDom, reqString, ck_reset_all);
+      console.log("moveReqToLib_contents", reqDom, reqString);
 
       const model = editor.model;
       model.change((writer) => {

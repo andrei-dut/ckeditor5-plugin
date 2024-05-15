@@ -16,6 +16,17 @@ export function removeParagraphBetweenReq(editor) {
   });
 }
 
+export function removeAllParagraph(editor) {
+  const allParagraph = findAllElementsByName(editor, "paragraph");
+  allParagraph.forEach((paragraph) => {
+    if (isParentRoot(paragraph)) {
+      editor.model.change((writer) => {
+        writer.remove(paragraph);
+      });
+    }
+  });
+}
+
 export function createItemToolbar(editor, name, icon, cb) {
   editor.ui.componentFactory.add(name, (locale) => {
     const button = new ButtonView(locale);
@@ -57,9 +68,9 @@ export function updateMarkers(editor) {
       const markerText = `${isReqChild ? prevMarkerNumber : prevMarkerNumber + 1}${
         isReqChild ? numberToRussianLetter(countChild) : ""
       }`;
-      if(markerText.includes('0а')) {
+      if (markerText.includes("0а")) {
         writer.removeAttribute("data-is-child", req);
-        updateMarkers(editor)
+        updateMarkers(editor);
       } else {
         writer.remove(elemMarker.getChild(0));
         writer.insertText(markerText || "-", elemMarker);
