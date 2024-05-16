@@ -5,7 +5,7 @@ import {
   KeystrokeHandler,
   View,
   ViewCollection,
-} from "../ckeditor";
+} from "../reqCkeditor.service";
 import { pencilIcon, unlinkIcon } from "./icons/insertSymbols";
 
 export class CustomLinkActionsView extends View {

@@ -1,4 +1,4 @@
-import { ButtonView } from "../ckeditor";
+import { ButtonView } from "../reqCkeditor.service";
 import { numberToRussianLetter } from "./utils";
 
 export function removeParagraphBetweenReq(editor) {

@@ -1,4 +1,4 @@
-import { DomEventObserver } from "../ckeditor";
+import { DomEventObserver } from "../reqCkeditor.service";
 
 export class MouseObserver extends DomEventObserver {
   constructor(view) {
