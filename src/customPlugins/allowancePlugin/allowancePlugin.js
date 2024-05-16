@@ -1,4 +1,4 @@
-import { Plugin, toWidget } from "../../ckeditor";
+import { Plugin, toWidget } from "../../reqCkeditor.service";
 import {
   createItemToolbar,
   executeEditorCmd,

@@ -1,4 +1,4 @@
-import { Command } from "../../ckeditor";
+import { Command } from "../../reqCkeditor.service";
 import { findAttributeRange } from "../editorUtils";
 
 function objectToMap(obj) {

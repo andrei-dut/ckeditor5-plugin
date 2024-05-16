@@ -5,7 +5,7 @@ import {
   ContextualBalloon,
   Plugin,
   clickOutsideHandler,
-} from "../../ckeditor";
+} from "../../reqCkeditor.service";
 import { registerCustomLink } from "./registerCustomLink";
 import InsertCustomLinkCommand from "./InsertCustomLinkCommand";
 import {

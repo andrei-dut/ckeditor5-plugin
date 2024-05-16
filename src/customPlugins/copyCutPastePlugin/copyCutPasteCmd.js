@@ -1,4 +1,4 @@
-import { Command } from "../../ckeditor";
+import { Command } from "../../reqCkeditor.service";
 import { findElemInSelectionByName, normalizeClipboardData, plainTextToHtml, viewToPlainText } from "../editorUtils";
 import { dataTransfer } from "../manageDataTransfer";
 

@@ -1,4 +1,4 @@
-import { Matcher, toWidget, toWidgetEditable } from "../../ckeditor";
+import { Matcher, toWidget, toWidgetEditable } from "../../reqCkeditor.service";
 
 export function _defineRequirementConversion(conversion) {
   conversion.for("upcast").elementToElement({

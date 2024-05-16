@@ -1,4 +1,4 @@
-import { Command } from "../../ckeditor";
+import { Command } from "../../reqCkeditor.service";
 import { dataSvgToXml } from "../icons/utils";
 import svg64 from "../svg64";
 

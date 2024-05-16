@@ -5,7 +5,7 @@ import {
   Plugin,
   addToolbarToDropdown,
   createDropdown,
-} from "../../ckeditor";
+} from "../../reqCkeditor.service";
 import { showModal } from "./roughnessModal";
 import { emitter } from "../utils";
 import InsertIconCommand from "./InsertIconCommand";
