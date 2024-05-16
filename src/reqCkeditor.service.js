@@ -1,13 +1,5 @@
 
 import ckeditor from './ckeditor/ckeditor'
-
-
-
-console.log(ckeditor);
-console.log(ckeditor.ClassicEditor);
-
-export const ClassicEditor = ckeditor.ClassicEditor;
-
 export const Plugin = ckeditor.Plugin;
 export const Widget = ckeditor.Widget;
 export const ButtonView = ckeditor.ButtonView;
