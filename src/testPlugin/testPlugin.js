@@ -2,16 +2,10 @@ import { Plugin } from "../reqCkeditor.service";
 import { createTestItemToolbar } from "../createTestItemToolbar";
 import {
   executeEditorCmd,
-  findAllElementsByName,
   findElemInSelectionByName,
-  getEditElemByClassFromSelection,
-  getNextSibling,
-  getPreviousSibling,
-  isParentRoot,
   removeAllParagraph,
   removeParagraphBetweenReq,
   updateMarkers,
-  viewToModelElem,
 } from "../customPlugins/editorUtils";
 import cutIcon from "./icons/cut.svg";
 import copyIcon from "./icons/copy.svg";

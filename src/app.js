@@ -11,7 +11,7 @@ import { parseAllReqDivTags, parseReqDivTags } from "./utils/utils";
 import { TestPlugin } from "./testPlugin/testPlugin";
 import { AllowancePlugin } from "./customPlugins/allowancePlugin/allowancePlugin";
 import "./style.css";
-import { ParametrPlugin } from "./testPlugin/parametrPlugin/parametrPlugin";
+import { ParametrPlugin } from "./customPlugins/parametrPlugin/parametrPlugin";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -121,7 +121,7 @@ Editor.create(document.querySelector("#editor"), {})
         <span class="allowance-number">1</span>
         <span class="allowance-number">2</span>
 
-      </span>моеcv
+      </span>моеcv <span class="aw-req-parametrText ck-widget" data-type="text" contenteditable="false">ghghg</span>
       
 
       <img src="data:image/svg+xml;base64,CjxzdmcKICAgd2lkdGg9IjExLjUiCiAgIGhlaWdodD0iMTIuNSIKICAgdmlld0JveD0iMCAwIDExLjUwMDAwMSAxMi41IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmcxIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMuMiAoMDkxZTIwZSwgMjAyMy0xMS0yNSwgY3VzdG9tKSIKICAgc29kaXBvZGk6ZG9jbmFtZT0idHJpYW5nbGVSaWdodC5zdmciCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHNvZGlwb2RpOm5hbWVkdmlldwogICAgIGlkPSJuYW1lZHZpZXcxIgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6ZG9jdW1lbnQtdW5pdHM9InB4IgogICAgIGlua3NjYXBlOnpvb209IjQ1LjI1NDgzNCIKICAgICBpbmtzY2FwZTpjeD0iNS45MjIwMTkzIgogICAgIGlua3NjYXBlOmN5PSI1LjI5MjI1MjMiCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxOTIwIgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjEwMTciCiAgICAgaW5rc2NhcGU6d2luZG93LXg9Ii04IgogICAgIGlua3NjYXBlOndpbmRvdy15PSItOCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzEiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIiAvPgogIDxkZWZzCiAgICAgaWQ9ImRlZnMxIiAvPgogIDxnCiAgICAgaW5rc2NhcGU6bGFiZWw9ItCh0LvQvtC5IDEiCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yLjUzNTkyMTQsLTIuNzk5NzUwMikiIC8+CiAgPHBhdGgKICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgIGlua3NjYXBlOmxhYmVsPSJUcmlhbmdsZSIKICAgICBkPSJtIDAuOTUxMzAwOTUsMS4wNTM1MTcgdiAxMSBsIDkuNTI2Mjc5MDUsLTUuNSB6IgogICAgIGlkPSJwYXRoMTEiIC8+Cjwvc3ZnPgoK" alt="triangleRight" data-id="triangleRight" data-json="{}">

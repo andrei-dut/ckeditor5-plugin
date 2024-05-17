@@ -29,11 +29,11 @@ export function removeAllParagraph(editor) {
   }
 }
 
-export function createItemToolbar(editor, name, icon, cb) {
+export function createItemToolbar(editor, name, icon, cb, label) {
   editor.ui.componentFactory.add(name, (locale) => {
     const button = new ButtonView(locale);
     button.set({
-      label: name,
+      label: label || name,
       icon,
       tooltip: true,
       isEnabled: true,

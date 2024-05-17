@@ -1,11 +1,8 @@
 import { Plugin, toWidget } from "../../reqCkeditor.service";
-
-
-
 import InsertAllowanceCommand from "./InsertParametrCommand";
 import "../../customPlugins/styles/parametr.css";
-import { createItemToolbar, executeEditorCmd, getTextFromElement } from "../../customPlugins/editorUtils";
-import { emitter } from "../../customPlugins/utils";
+import { createItemToolbar, executeEditorCmd, getTextFromElement } from "../editorUtils";
+import { emitter } from "../utils";
 import { showParametrModal } from "./parametrModal";
 
 export class ParametrPlugin extends Plugin {
@@ -36,12 +33,8 @@ export class ParametrPlugin extends Plugin {
       if (!selectedElement?.hasClass("aw-req-parametrText")) {
         return;
       }
-
-      console.log(selectedElement, getTextFromElement(selectedElement));
       
       const oldValues = {parametr: getTextFromElement(selectedElement) || '', type: selectedElement.getAttribute("data-type")};
-
-console.log(oldValues);
 
       showParametrModal(oldValues);
     });
@@ -51,7 +44,7 @@ console.log(oldValues);
     }
 
     emitter.on("insertParametr", insertParametr);
-    createItemToolbar(editor, "parametr", undefined, showParametrModal);
+    createItemToolbar(editor, "parametr", undefined, showParametrModal, '[123]');
   }
 
   _defineSchema() {

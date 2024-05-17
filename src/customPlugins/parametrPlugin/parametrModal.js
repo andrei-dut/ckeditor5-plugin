@@ -1,4 +1,4 @@
-import { emitter } from "../../customPlugins/utils";
+import { emitter } from "../utils";
 
 
 function addModal(content) {
