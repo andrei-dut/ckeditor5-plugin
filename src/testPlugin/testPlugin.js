@@ -94,6 +94,9 @@ export class TestPlugin extends Plugin {
     createTestItemToolbar(editor, "moveDownReq", moveDownIcon, () => {
       executeEditorCmd(editor, "insertCustomList", { type: "moveDown" });
     });
+    // createTestItemToolbar(editor, "parametr", undefined, () => {
+    //   executeEditorCmd(editor, "insertCustomList", { type: "moveDown" });
+    // });
   }
 
 }

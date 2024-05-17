@@ -37,6 +37,7 @@ export function createItemToolbar(editor, name, icon, cb) {
       icon,
       tooltip: true,
       isEnabled: true,
+      withText: icon ? false : true
     });
     button.bind("isEnabled").to(editor, "isReadOnly", (value) => !value);
     button.on("execute", () => {

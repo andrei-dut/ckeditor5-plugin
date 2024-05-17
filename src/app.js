@@ -11,6 +11,7 @@ import { parseAllReqDivTags, parseReqDivTags } from "./utils/utils";
 import { TestPlugin } from "./testPlugin/testPlugin";
 import { AllowancePlugin } from "./customPlugins/allowancePlugin/allowancePlugin";
 import "./style.css";
+import { ParametrPlugin } from "./testPlugin/parametrPlugin/parametrPlugin";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -79,6 +80,7 @@ class Editor extends ClassicEditor {
         "levelDownReq",
         "moveUpReq",
         "moveDownReq",
+        "parametr",
 
         "add",
         "remove",
@@ -100,6 +102,7 @@ Editor.builtinPlugins.push(CopyCutPastePlugin);
 Editor.builtinPlugins.push(CustomListPlugin);
 Editor.builtinPlugins.push(TestPlugin);
 Editor.builtinPlugins.push(AllowancePlugin);
+Editor.builtinPlugins.push(ParametrPlugin);
 
 // delete selected content editor.model.deleteContent(modelSelect)
 
