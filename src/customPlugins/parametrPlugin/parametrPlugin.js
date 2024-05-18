@@ -1,6 +1,6 @@
 import { Plugin, toWidget } from "../../reqCkeditor.service";
 import InsertAllowanceCommand from "./InsertParametrCommand";
-import "../../customPlugins/styles/parametr.css";
+import "../styles/parametr.css";
 import { createItemToolbar, executeEditorCmd, getTextFromElement } from "../editorUtils";
 import { emitter } from "../utils";
 import { showParametrModal } from "./parametrModal";
