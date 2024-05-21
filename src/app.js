@@ -12,6 +12,7 @@ import { TestPlugin } from "./testPlugin/testPlugin";
 import { AllowancePlugin } from "./customPlugins/allowancePlugin/allowancePlugin";
 import "./style.css";
 import { ParametrPlugin } from "./customPlugins/parametrPlugin/parametrPlugin";
+import { CustomLinkPositionPlugin } from "./customPlugins/customLinkPositionPlugin/customLinkPositionPlugin";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -81,13 +82,15 @@ class Editor extends ClassicEditor {
         "moveUpReq",
         "moveDownReq",
         "parametr",
-
+        "|",
         "add",
         "remove",
         "moveUp",
         "moveDown",
         "levelUp",
         "levelDown",
+        "|",
+        "customLinkPosition",
       ],
     },
     removePlugins: ["ImageResize", "FontColor"],
@@ -103,6 +106,7 @@ Editor.builtinPlugins.push(CustomListPlugin);
 Editor.builtinPlugins.push(TestPlugin);
 Editor.builtinPlugins.push(AllowancePlugin);
 Editor.builtinPlugins.push(ParametrPlugin);
+Editor.builtinPlugins.push(CustomLinkPositionPlugin);
 
 // delete selected content editor.model.deleteContent(modelSelect)
 
@@ -355,3 +359,48 @@ function createHtmlFromLiObjects(liObjectsOrArray) {
 // const __htmlContent = createHtmlFromLiObjects(["a", "b", "c"]);
 // console.log(_htmlContent);
 // console.log(__htmlContent);
+
+
+function promiseArray(array, cb, args) {
+  if (!(array && array.length)) return Promise.resolve(null);
+
+  const res = [];
+  let promise = Promise.resolve();
+
+  array.forEach(item => {
+    const pr1 = promise.then(() => cb(item, args));
+    const pr2 = pr1.then(resCb => {
+      res.push(resCb);
+    });
+
+    promise = pr2;
+    console.group('pr')
+    console.log(pr1);
+    console.log(pr2);
+    console.log(promise);
+    console.log(Promise.resolve().then());
+    console.groupEnd();
+  });
+console.log(promise);
+  return promise.then(() => res);
+}
+
+
+// Пример асинхронной функции
+function cb(item, args) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`Processed ${item} with arg ${args}`);
+    }, 1000);
+  });
+}
+
+// Массив данных
+const array = ['item1', 'item2', 'item3'];
+
+// Использование функции promiseArray
+promiseArray(array, cb, 'exampleArg').then((result) => {
+  console.log('Results:', result);
+}).catch((error) => {
+  console.error('Error:', error);
+});
