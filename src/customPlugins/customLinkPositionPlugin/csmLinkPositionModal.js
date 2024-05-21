@@ -16,7 +16,7 @@ function addModal(content) {
 
   const wrapAllowanceInputs = modalContent.querySelector(".wrap-allowance-inputs");
   const wrapAllowance = modalContent.querySelector(".aw-req-allowance-icon");
-  const allowanceInputs = wrapAllowanceInputs.querySelectorAll("input");
+  const allowanceInputs = wrapAllowanceInputs?.querySelectorAll("input");
 
   const _values = {};
   allowanceInputs?.forEach(function (input) {
@@ -66,8 +66,8 @@ function addModal(content) {
 export const showLinkPositionModal = (items) => {
   const checkboxesHtml = items.map(item => `
     <label>
-      <input type="checkbox" id="${item.uid}" name="${item.название}" />
-      ${item.название}
+      <input type="checkbox" id="${item.uid}" name="${item.value}" />
+      ${item.position} - ${item.value}
     </label>
   `).join('');
 

@@ -16,6 +16,7 @@ import {
 import { checkClick } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
 import { showLinkPositionModal } from "./csmLinkPositionModal";
+import "../styles/linkPosition.css";
 
 export class CustomLinkPositionPlugin extends Plugin {
   static get pluginName() {
@@ -80,7 +81,12 @@ export class CustomLinkPositionPlugin extends Plugin {
       button.isToggleable = true;
 
       this.listenTo(button, "execute", () => {
-        showLinkPositionModal({uid: 1, value: 'value' , position: 'position'})
+        showLinkPositionModal([
+          {uid: 1, value: 'value' , position: '10'},
+          {uid: 2, value: 'value2' , position: '20'},
+          {uid: 3, value: 'value3' , position: '30'},
+          {uid: 4, value: 'value4' , position: '40'},
+        ])
         // editor.fire("customLinkEvent", { eventType: "openModal" });
       });
 
