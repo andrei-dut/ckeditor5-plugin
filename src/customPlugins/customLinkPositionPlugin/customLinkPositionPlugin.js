@@ -13,7 +13,7 @@ import {
   findAttributeRange,
   getSelectedLinkElement,
 } from "../editorUtils";
-import { checkClick } from "../utils";
+import { checkClick, emitter } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
 import { showLinkPositionModal } from "./csmLinkPositionModal";
 import "../styles/linkPosition.css";
@@ -46,9 +46,9 @@ export class CustomLinkPositionPlugin extends Plugin {
 
     this.listenTo(editor.editing.view.document, "click", () => {
       checkClick(() => {
-        const customLink = getSelectedLinkElement.call(
+        const customLinkPosition = getSelectedLinkElement.call(
           this,
-          "customLink",
+          "customLinkPosition",
           "attributeElement"
         );
         // const view = editor.editing.view;
@@ -56,16 +56,16 @@ export class CustomLinkPositionPlugin extends Plugin {
         // const findLiElem = findParent(selection.anchor, "li");
 
         // console.log("findElem", findLiElem);
-        console.log("customLink", customLink);
+        console.log("customLinkPosition", customLinkPosition);
 
-        if (customLink) {
+        if (customLinkPosition) {
           this._addActionsView();
         }
 
         // if (findLiElem) {
         //   editor.fire('selectionLiElem', { value: findLiElem } )
         // }
-        // openLinkInNewWindow(customLink);
+        // openLinkInNewWindow(customLinkPosition);
       });
     });
 
@@ -94,6 +94,13 @@ export class CustomLinkPositionPlugin extends Plugin {
       button.bind("isOn", "isEnabled").to(command, "value", "isEnabled");
       return button;
     });
+
+    function onInsertLinkPosition(values) {
+      executeEditorCmd(editor, "insertCsmLinkPosition", values);
+    }
+
+    emitter.on("onInsertLinkPosition", onInsertLinkPosition);
+
   }
 
   _enableClickingAfterLink() {
@@ -101,7 +108,7 @@ export class CustomLinkPositionPlugin extends Plugin {
     const model = editor.model;
 
     function removeLinkAttributesFromSelection(writer, linkAttributes) {
-      writer.removeSelectionAttribute("customLink");
+      writer.removeSelectionAttribute("customLinkPosition");
 
       for (const attribute of linkAttributes) {
         writer.removeSelectionAttribute(attribute);
@@ -140,15 +147,15 @@ export class CustomLinkPositionPlugin extends Plugin {
       }
 
       // ...and clicked text is the link...
-      if (!selection.hasAttribute("customLink")) {
+      if (!selection.hasAttribute("customLinkPosition")) {
         return;
       }
 
       const position = selection.getFirstPosition();
       const linkRange = findAttributeRange(
         position,
-        "customLink",
-        selection.getAttribute("customLink"),
+        "customLinkPosition",
+        selection.getAttribute("customLinkPosition"),
         model
       );
 
@@ -202,7 +209,7 @@ export class CustomLinkPositionPlugin extends Plugin {
       target = () => {
         const targetLink = getSelectedLinkElement.call(
           this,
-          "customLink",
+          "customLinkPosition",
           "attributeElement"
         );
 

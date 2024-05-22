@@ -1,7 +1,6 @@
-
 import { emitter } from '../utils';
 
-function addModal(content) {
+function addModal(content, items) {
   const modal = document.createElement("div");
   modal.className = "modal-background";
 
@@ -14,19 +13,15 @@ function addModal(content) {
   const closeButton = modalContent.querySelector("#closeBtn");
   closeButton.innerHTML = "&times;";
 
-  const wrapAllowanceInputs = modalContent.querySelector(".wrap-allowance-inputs");
-  const wrapAllowance = modalContent.querySelector(".aw-req-allowance-icon");
-  const allowanceInputs = wrapAllowanceInputs?.querySelectorAll("input");
+  const wrapInputs = modalContent.querySelector(".radio-container");
+  const _Inputs = wrapInputs.querySelectorAll("input");
 
-  const _values = {};
-  allowanceInputs?.forEach(function (input) {
-    const allowanceSpan = wrapAllowance.querySelector(`#allowance_${input.id}`);
+  let _values = { };
+  _Inputs?.forEach(function (input) {
     input.addEventListener("input", function () {
-      const newText = this.value;
-      if (allowanceSpan) {
-        _values[input.id] = newText;
-        allowanceSpan.textContent = newText;
-      }
+      const id = this.id;
+      const selectedItem = items.find(item => String(item.uid) === String(id));
+      _values = Object.assign({}, selectedItem);
     });
   });
 
@@ -34,8 +29,8 @@ function addModal(content) {
 
   if (saveBtn) {
     saveBtn.onclick = function () {
-      if (_values.x && _values.y) {
-        emitter.emit("insertAllowance", _values);
+      if(_values.uid) {
+        emitter.emit("onInsertLinkPosition", _values);
         modal.remove();
       }
     };
@@ -64,19 +59,19 @@ function addModal(content) {
 }
 
 export const showLinkPositionModal = (items) => {
-  const checkboxesHtml = items.map(item => `
+  const radioButtonsHtml = items.map(item => `
     <label>
-      <input type="checkbox" id="${item.uid}" name="${item.value}" />
+      <input type="radio" id="${item.uid}" name="radioGroup" value="${item.value}" />
       ${item.position} - ${item.value}
     </label>
   `).join('');
 
   addModal(
-    `<h2 style="text-align: center;font-size: 20px;margin: 0;">Выберите значения:</h2>
-    <div class="checkbox-container">
-      ${checkboxesHtml}
+    `<h2 style="text-align: center;font-size: 20px;margin: 0;">Выберите значение:</h2>
+    <div class="radio-container">
+      ${radioButtonsHtml}
     </div>
-    <button id="saveBtn" type="button">Сохранить</button>
+    <button id="saveBtn" type="button">Добавить</button>
     <button id="closeBtn" type="button">Закрыть</button>
-  `);
+  `, items);
 };

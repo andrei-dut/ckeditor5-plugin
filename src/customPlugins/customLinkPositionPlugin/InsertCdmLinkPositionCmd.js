@@ -19,42 +19,44 @@ export default class InsertCdmLinkPositionCmd extends Command {
   refresh() {
     const model = this.editor.model;
     const selection = model.document.selection;
-    const { href, text } = selection.getAttribute("customLink") || {};
+    const { href, text } = selection.getAttribute("customLinkPosition") || {};
     this.value = href;
     this.set('linkLabel', text)
     this.isEnabled = true;
   }
 
   execute(linkData = {}) {
-    const { href = '', text = '', isRemoveLink } = linkData;
+    const { uid, value, position, isRemoveLink } = linkData;
+    const href = String(uid);
+    const text = String(position);
     const model = this.editor.model;
     const selection = model.document.selection;
+console.log( uid, value, position );
 
-
-    if (href || isRemoveLink) {
+    if (uid || isRemoveLink) {
       model.deleteContent(selection);
 
       model.change((writer) => {
         const position = selection.getFirstPosition();
         const attributes = toMap(selection.getAttributes());
 
-        if (selection.hasAttribute("customLink")) {
+        if (selection.hasAttribute("customLinkPosition")) {
           const position = selection.getFirstPosition();
           const linkRange = findAttributeRange(
             position,
-            "customLink",
-            selection.getAttribute("customLink"),
+            "customLinkPosition",
+            selection.getAttribute("customLinkPosition"),
             model
           );
 
-          writer.setAttribute("customLink", {href, text}, linkRange);
+          writer.setAttribute("customLinkPosition", {href, text}, linkRange);
           writer.remove(linkRange);
           if(isRemoveLink) return;
-          attributes.set("customLink", {href, text});
+          attributes.set("customLinkPosition", {href, text});
           writer.insertText(text, attributes, linkRange.start)
         } else {
 
-          attributes.set("customLink", {href, text});
+          attributes.set("customLinkPosition", {href, text});
           const { end: positionAfter } = model.insertContent(
             writer.createText(text, attributes),
             position

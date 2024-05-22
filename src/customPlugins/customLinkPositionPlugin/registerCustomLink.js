@@ -16,23 +16,23 @@ function createLinkElement(data, { writer }) {
     { href, "data-text": text },
     { priority: 5 }
   );
-  writer.setCustomProperty("customLink", true, linkElement);
+  writer.setCustomProperty("customLinkPosition", true, linkElement);
 
   return linkElement;
 }
 
 export function registerCustomLink(editor) {
   editor.model.schema.extend("$text", {
-    allowAttributes: ["customLink", "linkLabel"],
+    allowAttributes: ["customLinkPosition", "linkLabel"],
   });
 
   editor.conversion.for("dataDowncast").attributeToElement({
-    model: "customLink",
+    model: "customLinkPosition",
     view: createLinkElement,
   });
 
   editor.conversion.for("editingDowncast").attributeToElement({
-    model: "customLink",
+    model: "customLinkPosition",
     view: (data, conversionApi) => {
       const { href, text } = data || {};
       return createLinkElement(
@@ -50,7 +50,7 @@ export function registerCustomLink(editor) {
       },
     },
     model: {
-      key: "customLink",
+      key: "customLinkPosition",
       value: (viewElement) => {
         const href = viewElement.getAttribute("href");
         const _text = viewElement.getAttribute("data-text");
