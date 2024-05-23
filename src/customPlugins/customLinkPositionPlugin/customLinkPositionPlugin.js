@@ -1,7 +1,5 @@
 // CustomLinkPositionPlugin.js
-import { linkIcon } from "../icons/insertSymbols";
 import {
-  ButtonView,
   ContextualBalloon,
   Plugin,
   clickOutsideHandler,
@@ -9,6 +7,7 @@ import {
 import { registerCustomLink } from "./registerCustomLink";
 import InsertCdmLinkPositionCmd from "./InsertCdmLinkPositionCmd";
 import {
+  createItemToolbar,
   executeEditorCmd,
   findAttributeRange,
   getSelectedLinkElement,
@@ -62,25 +61,11 @@ export class CustomLinkPositionPlugin extends Plugin {
         });
     });
 
-    editor.ui.componentFactory.add("customLinkPosition", (locale) => {
-      const command = editor.commands.get("insertCsmLinkPosition");
-      const button = new ButtonView(locale);
 
-      button.isEnabled = true;
-      button.label = "link";
-      button.icon = linkIcon;
-      // button.keystroke = LINK_KEYSTROKE;
-      button.tooltip = true;
-      button.isToggleable = true;
+    createItemToolbar(editor, "customLinkPosition", undefined, () => {
+      editor.fire("csmLinkPositionEv", { eventType: "openModal" });
+    }, "Позиция");
 
-      this.listenTo(button, "execute", () => {
-        editor.fire("csmLinkPositionEv", { eventType: "openModal" });
-      });
-
-
-      button.bind("isOn", "isEnabled").to(command, "value", "isEnabled");
-      return button;
-    });
 
     function onInsertLinkPosition(values) {
       executeEditorCmd(editor, "insertCsmLinkPosition", values);
