@@ -1,6 +1,6 @@
 import { emitter } from '../utils';
 
-function addModal(content, items) {
+function addModal(content, items, defaultSelectedUid) {
   const modal = document.createElement("div");
   modal.className = "modal-background";
 
@@ -16,7 +16,8 @@ function addModal(content, items) {
   const wrapInputs = modalContent.querySelector(".radio-container");
   const _Inputs = wrapInputs.querySelectorAll("input");
 
-  let _values = { };
+  const defDelectedItem = items.find(item => String(item.uid) === String(defaultSelectedUid));
+  let _values = defDelectedItem ? Object.assign({}, defDelectedItem) : { };
   _Inputs?.forEach(function (input) {
     input.addEventListener("input", function () {
       const id = this.id;
@@ -58,10 +59,10 @@ function addModal(content, items) {
   return openModal;
 }
 
-export const showLinkPositionModal = (items) => {
+export const showLinkPositionModal = (items, defaultSelectedUid) => {
   const radioButtonsHtml = items.map(item => `
     <label>
-      <input type="radio" id="${item.uid}" name="radioGroup" value="${item.value}" />
+      <input type="radio" id="${item.uid}" name="radioGroup" ${String(defaultSelectedUid) === String(item.uid) ? 'checked' : ''} value="${item.value}" />
       ${item.position} - ${item.value}
     </label>
   `).join('');
@@ -73,5 +74,5 @@ export const showLinkPositionModal = (items) => {
     </div>
     <button id="saveBtn" type="button">Добавить</button>
     <button id="closeBtn" type="button">Закрыть</button>
-  `, items);
+  `, items, defaultSelectedUid);
 };

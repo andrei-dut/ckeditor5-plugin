@@ -15,7 +15,6 @@ import {
 } from "../editorUtils";
 import { checkClick, emitter } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
-import { showLinkPositionModal } from "./csmLinkPositionModal";
 import "../styles/linkPosition.css";
 
 export class CustomLinkPositionPlugin extends Plugin {
@@ -25,6 +24,10 @@ export class CustomLinkPositionPlugin extends Plugin {
 
   get _areActionsInPanel() {
     return this._balloon.hasView(this.actionsView);
+  }
+
+  destroy() {
+    emitter.clearEvent("onInsertLinkPosition");
   }
 
   init() {
@@ -45,28 +48,18 @@ export class CustomLinkPositionPlugin extends Plugin {
     registerCustomLink(editor);
 
     this.listenTo(editor.editing.view.document, "click", () => {
-      checkClick(() => {
-        const customLinkPosition = getSelectedLinkElement.call(
-          this,
-          "customLinkPosition",
-          "attributeElement"
-        );
-        // const view = editor.editing.view;
-        // const selection = view.document.selection;
-        // const findLiElem = findParent(selection.anchor, "li");
+      const customLinkPosition = getSelectedLinkElement.call(
+        this,
+        "customLinkPosition",
+        "attributeElement"
+      );
 
-        // console.log("findElem", findLiElem);
-        console.log("customLinkPosition", customLinkPosition);
-
-        if (customLinkPosition) {
-          this._addActionsView();
-        }
-
-        // if (findLiElem) {
-        //   editor.fire('selectionLiElem', { value: findLiElem } )
-        // }
-        // openLinkInNewWindow(customLinkPosition);
-      });
+      if (customLinkPosition)
+        checkClick(() => {
+          if (customLinkPosition) {
+            this._addActionsView();
+          }
+        });
     });
 
     editor.ui.componentFactory.add("customLinkPosition", (locale) => {
@@ -81,13 +74,7 @@ export class CustomLinkPositionPlugin extends Plugin {
       button.isToggleable = true;
 
       this.listenTo(button, "execute", () => {
-        showLinkPositionModal([
-          {uid: 1, value: 'value' , position: '10'},
-          {uid: 2, value: 'value2' , position: '20'},
-          {uid: 3, value: 'value3' , position: '30'},
-          {uid: 4, value: 'value4' , position: '40'},
-        ])
-        // editor.fire("customLinkEvent", { eventType: "openModal" });
+        editor.fire("csmLinkPositionEv", { eventType: "openModal" });
       });
 
 
@@ -266,8 +253,11 @@ export class CustomLinkPositionPlugin extends Plugin {
     actionsView.unlinkButtonView.bind("isEnabled").to(unlinkCommand);
 
     // Execute unlink command after clicking on the "Edit" button.
-    this.listenTo(actionsView, "edit", () => {
-      editor.fire("customLinkEvent", { eventType: "editSelectedLink" });
+    this.listenTo(actionsView, "edit", (e) => {
+      const currentUid = e?.source?.href;
+      if(currentUid){
+        editor.fire("csmLinkPositionEv", { eventType: "editLinkPos", value: e?.source?.href });
+      }
       this._hideUI();
     });
 
@@ -280,7 +270,6 @@ export class CustomLinkPositionPlugin extends Plugin {
 
     // Execute unlink command after clicking on the "Unlink" button.
     this.listenTo(actionsView, "unlink", () => {
-      editor.fire("customLinkEvent", { eventType: "removeSelectedLink" });
       executeEditorCmd(editor, "insertCsmLinkPosition", {
         isRemoveLink: true,
       });

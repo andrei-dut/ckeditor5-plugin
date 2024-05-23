@@ -1,10 +1,8 @@
-/* eslint-disable no-extra-boolean-cast */
-// import { cloneElem } from "./utils";
 
 import { ensureSafeUrl } from "../utils";
 
 function createLinkElement(data, { writer }) {
-  // console.log("createLinkElement", data, { writer });
+
   let href;
   let text;
   if (data) {

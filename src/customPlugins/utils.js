@@ -165,6 +165,7 @@ let lastClickTime = 0;
 let clickTimeout;
 
 export function checkClick(cb) {
+  console.log('checkClick');
   const currentTime = new Date().getTime();
 
   if (currentTime - lastClickTime > 250) {

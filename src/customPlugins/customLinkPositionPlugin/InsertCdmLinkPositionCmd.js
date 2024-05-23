@@ -26,12 +26,11 @@ export default class InsertCdmLinkPositionCmd extends Command {
   }
 
   execute(linkData = {}) {
-    const { uid, value, position, isRemoveLink } = linkData;
+    const { uid, position, isRemoveLink } = linkData;
     const href = String(uid);
     const text = String(position);
     const model = this.editor.model;
     const selection = model.document.selection;
-console.log( uid, value, position );
 
     if (uid || isRemoveLink) {
       model.deleteContent(selection);

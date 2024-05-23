@@ -8,11 +8,7 @@ import {
 } from "../../reqCkeditor.service";
 import { registerCustomLink } from "./registerCustomLink";
 import InsertCustomLinkCommand from "./InsertCustomLinkCommand";
-import {
-  executeEditorCmd,
-  findAttributeRange,
-  getSelectedLinkElement,
-} from "../editorUtils";
+import { executeEditorCmd, findAttributeRange, getSelectedLinkElement } from "../editorUtils";
 import { checkClick } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
 
@@ -28,10 +24,7 @@ export class CustomLinkPlugin extends Plugin {
   init() {
     const editor = this.editor;
 
-    editor.commands.add(
-      "insertCustomLink",
-      new InsertCustomLinkCommand(editor)
-    );
+    editor.commands.add("insertCustomLink", new InsertCustomLinkCommand(editor));
 
     this.actionsView = this._createActionsView();
     this._balloon = editor.plugins.get(ContextualBalloon);
@@ -43,28 +36,14 @@ export class CustomLinkPlugin extends Plugin {
     registerCustomLink(editor);
 
     this.listenTo(editor.editing.view.document, "click", () => {
-      checkClick(() => {
-        const customLink = getSelectedLinkElement.call(
-          this,
-          "customLink",
-          "attributeElement"
-        );
-        // const view = editor.editing.view;
-        // const selection = view.document.selection;
-        // const findLiElem = findParent(selection.anchor, "li");
+      const customLink = getSelectedLinkElement.call(this, "customLink", "attributeElement");
 
-        // console.log("findElem", findLiElem);
-        console.log("customLink", customLink);
-
-        if (customLink) {
-          this._addActionsView();
-        }
-
-        // if (findLiElem) {
-        //   editor.fire('selectionLiElem', { value: findLiElem } )
-        // }
-        // openLinkInNewWindow(customLink);
-      });
+      if (customLink)
+        checkClick(() => {
+          if (customLink) {
+            this._addActionsView();
+          }
+        });
     });
 
     editor.ui.componentFactory.add("customLink", (locale) => {
@@ -81,7 +60,6 @@ export class CustomLinkPlugin extends Plugin {
       this.listenTo(button, "execute", () => {
         editor.fire("customLinkEvent", { eventType: "openModal" });
       });
-
 
       button.bind("isOn", "isEnabled").to(command, "value", "isEnabled");
       return button;
@@ -144,15 +122,9 @@ export class CustomLinkPlugin extends Plugin {
         model
       );
 
-      if (
-        position.isTouching(linkRange.start) ||
-        position.isTouching(linkRange.end)
-      ) {
+      if (position.isTouching(linkRange.start) || position.isTouching(linkRange.end)) {
         model.change((writer) => {
-          removeLinkAttributesFromSelection(
-            writer,
-            getLinkAttributesAllowedOnText(model.schema)
-          );
+          removeLinkAttributesFromSelection(writer, getLinkAttributesAllowedOnText(model.schema));
         });
       }
     });
@@ -178,33 +150,23 @@ export class CustomLinkPlugin extends Plugin {
     if (model.markers.has(VISUAL_SELECTION_MARKER_NAME)) {
       // There are cases when we highlight selection using a marker (#7705, #4721).
       const markerViewElements = Array.from(
-        this.editor.editing.mapper.markerNameToElements(
-          VISUAL_SELECTION_MARKER_NAME
-        )
+        this.editor.editing.mapper.markerNameToElements(VISUAL_SELECTION_MARKER_NAME)
       );
       const newRange = view.createRange(
         view.createPositionBefore(markerViewElements[0]),
-        view.createPositionAfter(
-          markerViewElements[markerViewElements.length - 1]
-        )
+        view.createPositionAfter(markerViewElements[markerViewElements.length - 1])
       );
 
       target = view.domConverter.viewRangeToDom(newRange);
     } else {
       target = () => {
-        const targetLink = getSelectedLinkElement.call(
-          this,
-          "customLink",
-          "attributeElement"
-        );
+        const targetLink = getSelectedLinkElement.call(this, "customLink", "attributeElement");
 
         return targetLink
           ? // When selection is inside link element, then attach panel to this element.
             view.domConverter.mapViewToDom(targetLink)
           : // Otherwise attach panel to the selection.
-            view.domConverter.viewRangeToDom(
-              viewDocument.selection.getFirstRange()
-            );
+            view.domConverter.viewRangeToDom(viewDocument.selection.getFirstRange());
       };
     }
 
@@ -257,7 +219,7 @@ export class CustomLinkPlugin extends Plugin {
     });
 
     this.listenTo(actionsView, "clickedPreviewLink", (e) => {
-      if (e?.source?.href ) {
+      if (e?.source?.href) {
         editor.fire("customLinkEvent", { eventType: "onNavLink", value: e?.source?.href });
       }
       this._hideUI();

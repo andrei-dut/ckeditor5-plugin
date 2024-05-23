@@ -31,7 +31,8 @@ export class CustomLinkActionsView extends View {
     this.editButtonView = this._createButton(
       t("Edit link"),
       pencilIcon,
-      "edit"
+      "edit",
+      "href"
     );
 
     this.set("href");
@@ -97,7 +98,7 @@ export class CustomLinkActionsView extends View {
     this._focusCycler.focusFirst();
   }
 
-  _createButton(label, icon, eventName) {
+  _createButton(label, icon, eventName, addProp) {
     const button = new ButtonView(this.locale);
 
     button.set({
@@ -105,6 +106,14 @@ export class CustomLinkActionsView extends View {
       icon,
       tooltip: true,
     });
+
+    if(addProp) {
+      button.bind(addProp).to(this, addProp, (text) => {
+        return text;
+      });
+    }
+
+
 
     button.delegate("execute").to(this, eventName);
 

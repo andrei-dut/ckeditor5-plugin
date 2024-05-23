@@ -2,7 +2,7 @@ import { ClassicEditor } from "./ckeditor";
 import { CopyCutPastePlugin } from "./customPlugins/copyCutPastePlugin/copyCutPastePlugin";
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
 import { CustomListPlugin } from "./customPlugins/customListPlugin/customListPlugin";
-import { removeAllParagraph, viewToModelElem } from "./customPlugins/editorUtils";
+import { executeEditorCmd, removeAllParagraph, viewToModelElem } from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
 import { customSpecialCharacters } from "./customPlugins/vars";
@@ -13,6 +13,7 @@ import { AllowancePlugin } from "./customPlugins/allowancePlugin/allowancePlugin
 import "./style.css";
 import { ParametrPlugin } from "./customPlugins/parametrPlugin/parametrPlugin";
 import { CustomLinkPositionPlugin } from "./customPlugins/customLinkPositionPlugin/customLinkPositionPlugin";
+import { showLinkPositionModal } from "./customPlugins/customLinkPositionPlugin/csmLinkPositionModal";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -218,6 +219,30 @@ Editor.create(document.querySelector("#editor"), {})
       });
     });
 
+    editor.on("csmLinkPositionEv", (e, currentData) => {
+      const { eventType, value } = currentData || {};
+      if (eventType === "editLinkPos") {
+        console.log("editLinkPos", value);
+        showLinkPositionModal([
+          {uid: 1, value: 'value' , position: '10'},
+          {uid: 2, value: 'value2' , position: '20'},
+          {uid: 3, value: 'value3' , position: '30'},
+          {uid: 4, value: 'value4' , position: '40'},
+        ], value)
+      }
+
+      if (eventType === "openModal") {
+        showLinkPositionModal([
+          {uid: 1, value: 'value' , position: '10'},
+          {uid: 2, value: 'value2' , position: '20'},
+          {uid: 3, value: 'value3' , position: '30'},
+          {uid: 4, value: 'value4' , position: '40'},
+        ])
+      }
+    })
+
+
+
     editor.on("customLinkEvent", (e, currentData) => {
       console.log("call_customLinkEvent");
 
@@ -253,6 +278,10 @@ Editor.create(document.querySelector("#editor"), {})
         console.log(getArrayImgObjByHtmlString(editor.getData()));
 
         console.log("openModal", value);
+        executeEditorCmd(editor, "insertCustomLink", {
+          href: 123,
+          text: 'textLink',
+        });
       }
 
       // const currentData = _.find(arg)
