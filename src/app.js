@@ -13,7 +13,6 @@ import { AllowancePlugin } from "./customPlugins/allowancePlugin/allowancePlugin
 import "./style.css";
 import { ParametrPlugin } from "./customPlugins/parametrPlugin/parametrPlugin";
 import { CustomLinkPositionPlugin } from "./customPlugins/customLinkPositionPlugin/customLinkPositionPlugin";
-import { showLinkPositionModal } from "./customPlugins/customLinkPositionPlugin/csmLinkPositionModal";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -185,6 +184,54 @@ Editor.create(document.querySelector("#editor"), {})
     //   window.selec = selection;
     // });
 
+    let isCtrlPressed = false;
+
+    function keyDownHandler(event) {
+      // Проверяем, нажата ли клавиша Ctrl (или Cmd для macOS)
+      const _isCtrlPressed = event.ctrlKey || event.metaKey; // metaKey для macOS
+      isCtrlPressed = _isCtrlPressed
+  console.log('isCtrlPressed', isCtrlPressed, event);
+
+  }
+  
+  function keyUpHandler(event) {
+    // Проверяем, была ли отпущена клавиша Ctrl (или Cmd для macOS)
+    const _isCtrlPressed = event.ctrlKey || event.metaKey; // metaKey для macOS
+    isCtrlPressed = _isCtrlPressed
+  
+    console.log('isCtrlPressed', isCtrlPressed, event);
+  }
+
+  document.addEventListener('keydown', keyDownHandler);
+  document.addEventListener('keyup', keyUpHandler);
+// Функция для проверки нажатия клавиши Ctrl
+function checkCtrlPressed() {
+  return isCtrlPressed;
+}
+
+// Функция для удаления обработчиков событий
+function removeEventListeners() {
+  document.removeEventListener('keydown', keyDownHandler);
+  document.removeEventListener('keyup', keyUpHandler);
+}
+
+
+
+    editor.model.document.on( 'keydown', () => {
+      console.log('keydown');
+    }, { priority: 'high' } );
+
+    editor.on( 'keyup', () => {
+      console.log('keyup');
+    }, { priority: 'high' } );
+
+
+    editor.keystrokes.set("CTRL", ()=> {
+
+      console.log('keystrokes');
+      
+    });
+
     editor.on("selectionLiElem", (e, currentData) => {
       console.log("selectionLiElem", currentData);
       const value = currentData.value;
@@ -306,6 +353,9 @@ Editor.create(document.querySelector("#editor"), {})
     editor.editing.view.document.on("blur", (...arg) => {
       console.log("foc", arg);
     });
+    // Пример использования функции
+const distance = calculateDistanceToBottomOfWindow('.ck-editor__top');
+console.log("Расстояние от нижней точки элемента до нижней точки окна:", distance);
   })
   .catch((error) => {
     console.error(error.stack);
@@ -388,3 +438,35 @@ function createHtmlFromLiObjects(liObjectsOrArray) {
 // const __htmlContent = createHtmlFromLiObjects(["a", "b", "c"]);
 // console.log(_htmlContent);
 // console.log(__htmlContent);
+
+function calculateDistanceToBottomOfWindow(className) {
+  // Находим элемент по классу
+  const element = document.querySelector(`${className}`);
+  
+  console.log(element);
+  
+  // Если элемент не найден, возвращаем null или другое значение
+  if (!element) {
+      console.warn(`Элемент с классом ${className} не найден.`);
+      return null;
+  }
+
+  // Получаем координаты и размеры элемента
+  const rect = element.getBoundingClientRect();
+  
+  console.log(rect);
+  
+  // Нижняя точка элемента
+  const elementBottom = rect.bottom;
+  
+  // Высота окна
+  const windowHeight = window.innerHeight;
+
+  // Расчет расстояния от нижней точки элемента до нижней точки окна
+  const distance = Math.floor(windowHeight - elementBottom) - 20;
+
+  return distance;
+}
+
+
+
