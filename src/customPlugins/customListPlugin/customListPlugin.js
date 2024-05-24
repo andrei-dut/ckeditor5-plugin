@@ -31,6 +31,7 @@ export class CustomListPlugin extends Plugin {
           const hasClassSelected = foundModelReq.hasClass(selectedClass);
       
           const updateSelection = (req, add) => {
+            console.log(req, add, isCtrlPressed, reqsSelected);
             if (add) {
               reqsSelected.push(req);
               writer.addClass(selectedClass, req);
@@ -47,7 +48,7 @@ export class CustomListPlugin extends Plugin {
             reqsSelected.forEach((req) => writer.removeClass(selectedClass, req));
             reqsSelected.length = 0; 
           }
-      
+          foundModelReq._setStyle('--ck-widget-outline-thickness', 'inherit')
           updateSelection(foundModelReq, !hasClassSelected);
         });
         editor.fire("selectionReqElem", { value: reqsSelected });
@@ -112,6 +113,8 @@ export class CustomListPlugin extends Plugin {
   }
 
   _keyDownHandler(event) {
+
+
     // Проверяем, нажата ли клавиша Ctrl (или Cmd для macOS)
     const _isCtrlPressed = event.ctrlKey || event.metaKey; // metaKey для macOS
     isCtrlPressed = _isCtrlPressed;
