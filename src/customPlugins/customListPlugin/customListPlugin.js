@@ -42,14 +42,13 @@ export class CustomListPlugin extends Plugin {
               }
             }
           };
-      
-          if (isCtrlPressed) {
-            updateSelection(foundModelReq, !hasClassSelected);
-          } else {
+
+          if(!isCtrlPressed) {
             reqsSelected.forEach((req) => writer.removeClass(selectedClass, req));
             reqsSelected.length = 0; 
-            updateSelection(foundModelReq, !hasClassSelected);
           }
+      
+          updateSelection(foundModelReq, !hasClassSelected);
         });
         editor.fire("selectionReqElem", { value: reqsSelected });
       }

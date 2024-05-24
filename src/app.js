@@ -240,7 +240,7 @@ Editor.create(document.querySelector("#editor"), {})
       const model = editor.model;
       model.change((writer) => {
 
-        if (value) {
+        if (!Array.isArray(value)) {
 
           console.log(value.addClass);
 
