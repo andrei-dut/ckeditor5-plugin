@@ -96,6 +96,14 @@ class Editor extends ClassicEditor {
     removePlugins: ["ImageResize", "FontColor"],
     language: "ru",
     customSpecialCharacters,
+    style: [
+      {
+        name: 'backgroung: red;',
+        element: 'p',
+        classes: [  ]
+      }
+      
+    ]
   };
 }
 
@@ -184,36 +192,9 @@ Editor.create(document.querySelector("#editor"), {})
     //   window.selec = selection;
     // });
 
-    let isCtrlPressed = false;
-
-    function keyDownHandler(event) {
-      // Проверяем, нажата ли клавиша Ctrl (или Cmd для macOS)
-      const _isCtrlPressed = event.ctrlKey || event.metaKey; // metaKey для macOS
-      isCtrlPressed = _isCtrlPressed
-  console.log('isCtrlPressed', isCtrlPressed, event);
-
-  }
-  
-  function keyUpHandler(event) {
-    // Проверяем, была ли отпущена клавиша Ctrl (или Cmd для macOS)
-    const _isCtrlPressed = event.ctrlKey || event.metaKey; // metaKey для macOS
-    isCtrlPressed = _isCtrlPressed
-  
-    console.log('isCtrlPressed', isCtrlPressed, event);
-  }
-
-  document.addEventListener('keydown', keyDownHandler);
-  document.addEventListener('keyup', keyUpHandler);
-// Функция для проверки нажатия клавиши Ctrl
-function checkCtrlPressed() {
-  return isCtrlPressed;
-}
-
-// Функция для удаления обработчиков событий
-function removeEventListeners() {
-  document.removeEventListener('keydown', keyDownHandler);
-  document.removeEventListener('keyup', keyUpHandler);
-}
+// setTimeout(() => {
+//   editor.destroy()
+// }, 10000);
 
 
 
@@ -249,16 +230,20 @@ function removeEventListeners() {
       console.log("selectionReqElem", currentData);
       const value = currentData.value;
 
-      const reqDom = editor.editing.view.domConverter.mapViewToDom(value);
+      // const reqDom = editor.editing.view.domConverter.mapViewToDom(value);
 
 
-      const reqString = reqDom.outerHTML;
+      // const reqString = reqDom.outerHTML;
 
-      console.log("moveReqToLib_contents", reqDom, reqString);
+      // console.log("moveReqToLib_contents", reqDom, reqString);
 
       const model = editor.model;
       model.change((writer) => {
+
         if (value) {
+
+          console.log(value.addClass);
+
           value._setAttribute("data-custom_comment", 222);
           writer.setAttribute("data-custom_comment", 222, viewToModelElem(editor, value));
           console.log("data-custom_comment", 222, value);

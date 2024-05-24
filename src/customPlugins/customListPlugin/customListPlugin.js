@@ -9,22 +9,52 @@ import "../styles/stylesCustomListPl.css";
 import { findElemInSelectionByName } from "../editorUtils";
 
 let editor;
+let isCtrlPressed = false;
+const reqsSelected = [];
 export class CustomListPlugin extends Plugin {
   init() {
-    console.log('INIT_CustomListPlugin');
+    console.log("INIT_CustomListPlugin");
     editor = this.editor;
     this.editor.RATData = {};
     this._defineSchema();
     this._defineConversion();
+    this._addEventListeners();
 
     editor.commands.add("insertCustomList", new CustomListCommand(editor));
 
     this.listenTo(editor.editing.view.document, "click", () => {
       const foundModelReq = findElemInSelectionByName(editor, "requirement", true, true);
-      console.log("click_selectionReqElem", foundModelReq);
+
       if (foundModelReq) {
-        editor.fire("selectionReqElem", { value: foundModelReq });
+        editor.editing.view.change((writer) => {
+          const selectedClass = "ck-requirement_selected";
+          const hasClassSelected = foundModelReq.hasClass(selectedClass);
+      
+          const updateSelection = (req, add) => {
+            if (add) {
+              reqsSelected.push(req);
+              writer.addClass(selectedClass, req);
+            } else {
+              const index = reqsSelected.indexOf(req);
+              if (index > -1) {
+                reqsSelected.splice(index, 1);
+                writer.removeClass(selectedClass, req);
+              }
+            }
+          };
+      
+          if (isCtrlPressed) {
+            updateSelection(foundModelReq, !hasClassSelected);
+          } else {
+            reqsSelected.forEach((req) => writer.removeClass(selectedClass, req));
+            reqsSelected.length = 0; 
+            updateSelection(foundModelReq, !hasClassSelected);
+          }
+        });
+        editor.fire("selectionReqElem", { value: reqsSelected });
       }
+      
+      console.log("click_selectionReqElem", foundModelReq, reqsSelected);
     });
 
     // function handleKeystrokeEvents() {
@@ -78,7 +108,30 @@ export class CustomListPlugin extends Plugin {
   }
 
   destroy() {
+    alert();
+    this._removeEventListeners()
     super.destroy();
+  }
+
+  _keyDownHandler(event) {
+    // Проверяем, нажата ли клавиша Ctrl (или Cmd для macOS)
+    const _isCtrlPressed = event.ctrlKey || event.metaKey; // metaKey для macOS
+    isCtrlPressed = _isCtrlPressed;
+  }
+  _keyUpHandler(event) {
+    // Проверяем, была ли отпущена клавиша Ctrl (или Cmd для macOS)
+    const _isCtrlPressed = event.ctrlKey || event.metaKey; // metaKey для macOS
+    isCtrlPressed = _isCtrlPressed;
+  }
+
+  _addEventListeners() {
+    document.addEventListener("keydown", this._keyDownHandler);
+    document.addEventListener("keyup", this._keyUpHandler);
+  }
+
+  _removeEventListeners() {
+    document.removeEventListener("keydown", this._keyDownHandler);
+    document.removeEventListener("keyup", this._keyUpHandler);
   }
 
   _defineSchema() {
