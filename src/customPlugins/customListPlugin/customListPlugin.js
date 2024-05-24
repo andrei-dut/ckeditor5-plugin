@@ -107,7 +107,6 @@ export class CustomListPlugin extends Plugin {
   }
 
   destroy() {
-    alert();
     this._removeEventListeners()
     super.destroy();
   }
