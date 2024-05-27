@@ -16,12 +16,14 @@ function toMap(data) {
 }
 
 export default class InsertCdmLinkPositionCmd extends Command {
-  refresh() {
+  refresh(cleckedLink) {
     const model = this.editor.model;
     const selection = model.document.selection;
     const { href, text } = selection.getAttribute("customLinkPosition") || {};
-    this.value = href;
-    this.set('linkLabel', text)
+    const _href = href || cleckedLink?.getAttribute('href');
+    const _text = text || cleckedLink?.getAttribute('data-text');
+    this.value = _href;
+    this.set('linkLabel', _text)
     this.isEnabled = true;
   }
 

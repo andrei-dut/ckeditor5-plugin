@@ -1,8 +1,6 @@
-
 import { ensureSafeUrl } from "../utils";
 
 function createLinkElement(data, { writer }) {
-
   let href;
   let text;
   if (data) {
@@ -11,7 +9,7 @@ function createLinkElement(data, { writer }) {
   }
   const linkElement = writer.createAttributeElement(
     "a",
-    { href, "data-text": text },
+    { href, "data-text": text, class: "custom-link-position" },
     { priority: 5 }
   );
   writer.setCustomProperty("customLinkPosition", true, linkElement);
@@ -33,10 +31,7 @@ export function registerCustomLink(editor) {
     model: "customLinkPosition",
     view: (data, conversionApi) => {
       const { href, text } = data || {};
-      return createLinkElement(
-        { href: ensureSafeUrl(href), text },
-        conversionApi
-      );
+      return createLinkElement({ href: ensureSafeUrl(href), text }, conversionApi);
     },
   });
 
@@ -45,6 +40,7 @@ export function registerCustomLink(editor) {
       name: "a",
       attributes: {
         href: true,
+        class: "custom-link-position",
       },
     },
     model: {
@@ -53,8 +49,7 @@ export function registerCustomLink(editor) {
         const href = viewElement.getAttribute("href");
         const _text = viewElement.getAttribute("data-text");
 
-        const text =
-          viewElement.getChildren()?.find?.((el) => el.data)?.data || _text ||  href;
+        const text = viewElement.getChildren()?.find?.((el) => el.data)?.data || _text || href;
 
         return { href, text };
       },

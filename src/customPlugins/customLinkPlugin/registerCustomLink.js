@@ -13,7 +13,7 @@ function createLinkElement(data, { writer }) {
   }
   const linkElement = writer.createAttributeElement(
     "a",
-    { href, "data-text": text },
+    { href, "data-text": text, class: 'custom-link' },
     { priority: 5 }
   );
   writer.setCustomProperty("customLink", true, linkElement);
@@ -47,6 +47,7 @@ export function registerCustomLink(editor) {
       name: "a",
       attributes: {
         href: true,
+        class: 'custom-link',
       },
     },
     model: {
@@ -54,7 +55,6 @@ export function registerCustomLink(editor) {
       value: (viewElement) => {
         const href = viewElement.getAttribute("href");
         const _text = viewElement.getAttribute("data-text");
-
         const text =
           viewElement.getChildren()?.find?.((el) => el.data)?.data || _text ||  href;
 

@@ -4,8 +4,8 @@ import {
   Plugin,
   clickOutsideHandler,
 } from "../../reqCkeditor.service";
-import { registerCustomLink } from "./registerCustomLink";
-import InsertCdmLinkPositionCmd from "./InsertCdmLinkPositionCmd";
+import { registerCustomLink } from "./registerCustomLinkPosition";
+import InsertCdmLinkPositionCmd from "./InsertCsmLinkPositionCmd";
 import {
   createItemToolbar,
   executeEditorCmd,
@@ -46,17 +46,24 @@ export class CustomLinkPositionPlugin extends Plugin {
 
     registerCustomLink(editor);
 
-    this.listenTo(editor.editing.view.document, "click", () => {
-      const customLinkPosition = getSelectedLinkElement.call(
+    this.listenTo(editor.editing.view.document, "click", (e, domEventData) => {
+      domEventData.preventDefault();
+      const domTarget = domEventData.domTarget; // Получаем кликнутый элемент
+      const viewElement = editor.editing.view.domConverter.mapDomToView(domTarget); // Преобразуем DOM элемент в view элемент CKEditor
+      const viewIsCsmLink = viewElement?.getAttribute("class") === "custom-link-position";
+
+      let customLinkPosition = getSelectedLinkElement.call(
         this,
         "customLinkPosition",
         "attributeElement"
       );
 
+      customLinkPosition = customLinkPosition || (viewIsCsmLink ? viewElement : null);
+
       if (customLinkPosition)
         checkClick(() => {
           if (customLinkPosition) {
-            this._addActionsView();
+            this._addActionsView(customLinkPosition);
           }
         });
     });
@@ -145,17 +152,21 @@ export class CustomLinkPositionPlugin extends Plugin {
     });
   }
 
-  _addActionsView() {
+  _addActionsView(clickedElement) {
     if (this._areActionsInPanel) {
       return;
     }
+
+    const linkCommand = this.editor.commands.get("insertCsmLinkPosition");
+    linkCommand.refresh(clickedElement);
+
     this._balloon.add({
       view: this.actionsView,
-      position: this._getBalloonPositionData(),
+      position: this._getBalloonPositionData(clickedElement),
     });
   }
 
-  _getBalloonPositionData() {
+  _getBalloonPositionData(clickedElement) {
     const view = this.editor.editing.view;
     const model = this.editor.model;
     const viewDocument = view.document;
@@ -183,7 +194,7 @@ export class CustomLinkPositionPlugin extends Plugin {
           this,
           "customLinkPosition",
           "attributeElement"
-        );
+        ) || clickedElement;
 
         return targetLink
           ? // When selection is inside link element, then attach panel to this element.

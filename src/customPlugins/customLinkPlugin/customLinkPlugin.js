@@ -35,13 +35,19 @@ export class CustomLinkPlugin extends Plugin {
 
     registerCustomLink(editor);
 
-    this.listenTo(editor.editing.view.document, "click", () => {
-      const customLink = getSelectedLinkElement.call(this, "customLink", "attributeElement");
+    this.listenTo(editor.editing.view.document, "click", (e, domEventData) => {
+      domEventData.preventDefault();
+      const domTarget = domEventData.domTarget; // Получаем кликнутый элемент
+      const viewElement = editor.editing.view.domConverter.mapDomToView(domTarget); // Преобразуем DOM элемент в view элемент CKEditor
+      const viewIsCsmLink = viewElement?.getAttribute("class") === "custom-link";
+
+      let customLink = getSelectedLinkElement.call(this, "customLink", "attributeElement");
+      customLink = customLink || (viewIsCsmLink ? viewElement : null);
 
       if (customLink)
         checkClick(() => {
           if (customLink) {
-            this._addActionsView();
+            this._addActionsView(customLink);
           }
         });
     });
@@ -130,17 +136,21 @@ export class CustomLinkPlugin extends Plugin {
     });
   }
 
-  _addActionsView() {
+  _addActionsView(clickedElement) {
     if (this._areActionsInPanel) {
       return;
     }
+
+    const linkCommand = this.editor.commands.get("insertCustomLink");
+    linkCommand.refresh(clickedElement);
+
     this._balloon.add({
       view: this.actionsView,
-      position: this._getBalloonPositionData(),
+      position: this._getBalloonPositionData(clickedElement),
     });
   }
 
-  _getBalloonPositionData() {
+  _getBalloonPositionData(clickedElement) {
     const view = this.editor.editing.view;
     const model = this.editor.model;
     const viewDocument = view.document;
@@ -160,7 +170,7 @@ export class CustomLinkPlugin extends Plugin {
       target = view.domConverter.viewRangeToDom(newRange);
     } else {
       target = () => {
-        const targetLink = getSelectedLinkElement.call(this, "customLink", "attributeElement");
+        const targetLink = getSelectedLinkElement.call(this, "customLink", "attributeElement") || clickedElement;
 
         return targetLink
           ? // When selection is inside link element, then attach panel to this element.
@@ -169,7 +179,6 @@ export class CustomLinkPlugin extends Plugin {
             view.domConverter.viewRangeToDom(viewDocument.selection.getFirstRange());
       };
     }
-
     return { target };
   }
 
