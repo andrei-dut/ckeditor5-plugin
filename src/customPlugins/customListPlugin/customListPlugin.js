@@ -12,6 +12,15 @@ let editor;
 let isCtrlPressed = false;
 const reqsSelected = [];
 export class CustomListPlugin extends Plugin {
+
+  static get pluginName() {
+    return "CustomListPlugin";
+  }
+
+  get _reqsSelected() {
+    return reqsSelected;
+  }
+
   init() {
     console.log("INIT_CustomListPlugin");
     editor = this.editor;
@@ -19,6 +28,7 @@ export class CustomListPlugin extends Plugin {
     this._defineSchema();
     this._defineConversion();
     this._addEventListeners();
+    this.
 
     editor.commands.add("insertCustomList", new CustomListCommand(editor));
 

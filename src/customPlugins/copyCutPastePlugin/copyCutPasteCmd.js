@@ -1,5 +1,9 @@
 import { Command } from "../../reqCkeditor.service";
-import { findElemInSelectionByName, normalizeClipboardData, plainTextToHtml, viewToPlainText } from "../editorUtils";
+import {
+  normalizeClipboardData,
+  plainTextToHtml,
+  viewToModelElem,
+} from "../editorUtils";
 import { dataTransfer } from "../manageDataTransfer";
 
 export default class CopyCutPasteCmd extends Command {
@@ -10,7 +14,6 @@ export default class CopyCutPasteCmd extends Command {
   totalExecute({ typeCmd, contentIncludes, pasteCb, hardContent } = {}) {
     const editor = this.editor;
     const model = editor.model;
-    const modelDocument = model.document;
 
     function _onPaste(_hardContent) {
       let content = "";
@@ -29,7 +32,7 @@ export default class CopyCutPasteCmd extends Command {
         contentString = content;
       }
 
-      if(_hardContent?.length) {
+      if (_hardContent?.length) {
         content = hardContent;
       }
       content = editor.data.htmlProcessor.toView(content);
@@ -65,38 +68,55 @@ export default class CopyCutPasteCmd extends Command {
     }
 
     function _onCopyCut(type) {
-      const content = editor.data.toView(editor.model.getSelectedContent(modelDocument.selection));
+      const reqsSelected = editor.plugins.get("CustomListPlugin")?._reqsSelected;
+      let reqsSelectedHtmlString = "";
 
-      function clipboardOutput(_data) {
-        if (_data.content.isEmpty) {
-          return;
-        }
-        let contentHtmlString = editor.data.htmlProcessor.toData(_data.content);
+      if (reqsSelected?.length) {
+        model.change((writer) => {
+          reqsSelected.forEach((req) => {
+            const modelReq = viewToModelElem(editor, req);
+            const range = writer.createRange(
+              writer.createPositionBefore(modelReq),
+              writer.createPositionAfter(modelReq),
+              {
+                fake: true,
+              }
+            );
+            const selection = writer.createSelection(range, { fake: true, label: "req" });
+            const docFragmentFake = editor.data.toView(editor.model.getSelectedContent(selection));
+            let contentHtmlString = editor.data.htmlProcessor.toData(docFragmentFake);
 
-        if (contentIncludes && !contentHtmlString?.includes(contentIncludes)) return;
+            if (contentIncludes && !contentHtmlString?.includes(contentIncludes)) return;
 
-        contentHtmlString = (contentHtmlString || '').replace(`data-is-child="true"`, '')
+            contentHtmlString = (contentHtmlString || "").replace(`data-is-child="true"`, "");
 
-        _data.dataTransfer.setData("text/html", contentHtmlString);
-        _data.dataTransfer.setData("text/plain", viewToPlainText(_data.content));
+            reqsSelectedHtmlString += contentHtmlString;
 
-        if (_data.method == "cut") {
-          editor.model.change((writer) => {
-            const foundModelReq = findElemInSelectionByName(editor, "requirement");
-            if (foundModelReq) {
-              writer.remove(foundModelReq);
+            if (type == "cut") {
+              writer.remove(modelReq);
               return;
             }
           });
+        });
+        console.log("reqsSelectedHtmlString", reqsSelectedHtmlString);
+      }
+
+      function clipboardOutput(_data) {
+
+        if (!_data.contentHtmlString?.length) {
+          return;
         }
-        if (contentIncludes && contentHtmlString?.includes(contentIncludes)) {
-          window.localStorage.setItem("copyCutReq", contentHtmlString);
+
+        _data.dataTransfer.setData("text/html", _data.contentHtmlString);
+
+        if (contentIncludes && _data.contentHtmlString?.includes(contentIncludes)) {
+          window.localStorage.setItem("copyCutReq", _data.contentHtmlString);
         }
       }
 
       clipboardOutput({
         dataTransfer,
-        content,
+        contentHtmlString: reqsSelectedHtmlString,
         method: type,
       });
     }
@@ -109,10 +129,10 @@ export default class CopyCutPasteCmd extends Command {
   }
 
   executeForReadOnlyMode(args) {
-    this.totalExecute(args)
+    this.totalExecute(args);
   }
 
   execute(args) {
-    this.totalExecute(args)
+    this.totalExecute(args);
   }
 }
