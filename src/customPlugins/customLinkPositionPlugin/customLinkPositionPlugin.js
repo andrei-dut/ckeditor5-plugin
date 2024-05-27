@@ -245,7 +245,7 @@ export class CustomLinkPositionPlugin extends Plugin {
 
     actionsView.bind("href").to(linkCommand, "value");
     actionsView.bind("text").to(linkCommand, "linkLabel");
-    // actionsView.editButtonView.bind("isEnabled").to(linkCommand);
+    actionsView.editButtonView.bind("isEnabled").to(linkCommand);
     actionsView.unlinkButtonView.bind("isEnabled").to(unlinkCommand);
 
     // Execute unlink command after clicking on the "Edit" button.

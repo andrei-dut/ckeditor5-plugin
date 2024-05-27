@@ -6,7 +6,7 @@ import {
   _defineRequirementConversion,
 } from "./customListConversion";
 import "../styles/stylesCustomListPl.css";
-import { findElemInSelectionByName } from "../editorUtils";
+import { findElemInSelectionByName, findParent, modelToViewElem, viewToModelElem } from "../editorUtils";
 
 let editor;
 let isCtrlPressed = false;
@@ -22,8 +22,17 @@ export class CustomListPlugin extends Plugin {
 
     editor.commands.add("insertCustomList", new CustomListCommand(editor));
 
-    this.listenTo(editor.editing.view.document, "click", () => {
-      const foundModelReq = findElemInSelectionByName(editor, "requirement", true, true);
+    this.listenTo(editor.editing.view.document, "click", (e, domEventData) => {
+      let foundModelReq = findElemInSelectionByName(editor, "requirement", true, true);
+
+      const domTarget = domEventData.domTarget; // Получаем кликнутый элемент
+      const viewElement = editor.editing.view.domConverter.mapDomToView(domTarget); // Преобразуем DOM элемент в view элемент CKEditor
+      const modelElement = viewToModelElem(editor, viewElement);
+      const parentReq = modelToViewElem(editor, findParent(modelElement, 'requirement')); 
+
+      const clickedSelectedReq = parentReq === foundModelReq;
+
+      foundModelReq = !clickedSelectedReq && parentReq ? parentReq : foundModelReq;
 
       if (foundModelReq) {
         editor.editing.view.change((writer) => {
@@ -31,7 +40,6 @@ export class CustomListPlugin extends Plugin {
           const hasClassSelected = foundModelReq.hasClass(selectedClass);
       
           const updateSelection = (req, add) => {
-            console.log(req, add, isCtrlPressed, reqsSelected);
             if (add) {
               reqsSelected.push(req);
               writer.addClass(selectedClass, req);
