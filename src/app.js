@@ -177,7 +177,7 @@ Editor.create(document.querySelector("#editor"), {})
     setTimeout(() => {
       editor.setData(`<p>${" " + " " + textTEst + " " + textTEst01 + " " + textTEst2}</p>`);
       removeAllParagraph(editor)
-      editor.set("isReadOnly", true);
+      // editor.set("isReadOnly", true);
     }, 500);
 
     console.log("Editor was initialized", editor);

@@ -71,7 +71,7 @@ export default class CopyCutPasteCmd extends Command {
       const reqsSelected = editor.plugins.get("CustomListPlugin")?._reqsSelected;
       let reqsSelectedHtmlString = "";
 
-      if (reqsSelected?.length) {
+      if (reqsSelected?.length && ! hardContent) {
         model.change((writer) => {
           reqsSelected.forEach((req) => {
             const modelReq = viewToModelElem(editor, req);
@@ -100,6 +100,9 @@ export default class CopyCutPasteCmd extends Command {
         });
         console.log("reqsSelectedHtmlString", reqsSelectedHtmlString);
       }
+
+      console.log("hardContent", hardContent);
+      reqsSelectedHtmlString = hardContent?.length ? hardContent : reqsSelectedHtmlString;
 
       function clipboardOutput(_data) {
 
