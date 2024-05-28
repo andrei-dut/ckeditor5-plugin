@@ -1,9 +1,5 @@
 import { Command } from "../../reqCkeditor.service";
-import {
-  normalizeClipboardData,
-  plainTextToHtml,
-  viewToModelElem,
-} from "../editorUtils";
+import { normalizeClipboardData, plainTextToHtml, viewToModelElem } from "../editorUtils";
 import { dataTransfer } from "../manageDataTransfer";
 
 export default class CopyCutPasteCmd extends Command {
@@ -35,13 +31,14 @@ export default class CopyCutPasteCmd extends Command {
       if (_hardContent?.length) {
         content = hardContent;
       }
+
+      content = (content || "").replace(`<divider/>`, "");
       content = editor.data.htmlProcessor.toView(content);
 
       function inputTransformation(_data) {
         if (_data.content.isEmpty) {
           return;
         }
-
         const dataController = editor.data;
         const modelFragment = dataController.toModel(_data.content, "$clipboardHolder");
 
@@ -71,9 +68,9 @@ export default class CopyCutPasteCmd extends Command {
       const reqsSelected = editor.plugins.get("CustomListPlugin")?._reqsSelected;
       let reqsSelectedHtmlString = "";
 
-      if (reqsSelected?.length && ! hardContent) {
+      if (reqsSelected?.length && !hardContent) {
         model.change((writer) => {
-          reqsSelected.forEach((req) => {
+          reqsSelected.forEach((req, i, array) => {
             const modelReq = viewToModelElem(editor, req);
             const range = writer.createRange(
               writer.createPositionBefore(modelReq),
@@ -89,7 +86,7 @@ export default class CopyCutPasteCmd extends Command {
             if (contentIncludes && !contentHtmlString?.includes(contentIncludes)) return;
 
             contentHtmlString = (contentHtmlString || "").replace(`data-is-child="true"`, "");
-
+            if (i < array.length - 1) contentHtmlString += "<divider/>";
             reqsSelectedHtmlString += contentHtmlString;
 
             if (type == "cut") {
@@ -98,14 +95,17 @@ export default class CopyCutPasteCmd extends Command {
             }
           });
         });
-        console.log("reqsSelectedHtmlString", reqsSelectedHtmlString);
+        // console.log(
+        //   "reqsSelectedHtmlString",
+        //   reqsSelectedHtmlString,
+        //   reqsSelectedHtmlString.split("<divider/>")
+        // );
       }
 
       console.log("hardContent", hardContent);
       reqsSelectedHtmlString = hardContent?.length ? hardContent : reqsSelectedHtmlString;
 
       function clipboardOutput(_data) {
-
         if (!_data.contentHtmlString?.length) {
           return;
         }
