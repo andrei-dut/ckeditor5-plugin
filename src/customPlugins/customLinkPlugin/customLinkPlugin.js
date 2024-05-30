@@ -171,7 +171,6 @@ export class CustomLinkPlugin extends Plugin {
     } else {
       target = () => {
         const targetLink = getSelectedLinkElement.call(this, "customLink", "attributeElement") || clickedElement;
-
         return targetLink
           ? // When selection is inside link element, then attach panel to this element.
             view.domConverter.mapViewToDom(targetLink)

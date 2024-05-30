@@ -88,7 +88,7 @@ export class AllowancePlugin extends Plugin {
       allowIn: ["requirementBodyText", "paragraph"],
       allowChildren: ["allowanceText"],
       isInline: true,
-      allowAttributes: ["class"],
+      allowAttributes: ["class", "data-json"],
     });
 
     // schema.extend("$text", { allowIn: ["span", "div"], allowAttributes: "highlight" });

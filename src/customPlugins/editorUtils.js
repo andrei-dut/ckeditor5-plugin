@@ -37,7 +37,7 @@ export function createItemToolbar(editor, name, icon, cb, label) {
       icon,
       tooltip: true,
       isEnabled: true,
-      withText: icon ? false : true
+      withText: icon ? false : true,
     });
     button.bind("isEnabled").to(editor, "isReadOnly", (value) => !value);
     button.on("execute", () => {
@@ -133,6 +133,35 @@ export function getModelElement(editor, containerElement, nameModelEle, isResArr
     }
   }
   return isResArray ? resArray : null;
+}
+
+export function getArrayDataJsonAttrIcons(editor) {
+  const root = editor.model.document.getRoot();
+  const rootChildren = root.getChildren();
+  const fullArrayJson = [];
+  rootChildren.forEach((req) => {
+    if (req.name !== "requirement") return;
+    const dataJsonStringArrray = getValueAttrsByWrapElem(editor, req, "data-json");
+    const dataJsonArray = [];
+    dataJsonStringArrray.forEach((data) => {
+      const _parse = JSON.parse(data);
+      if (Object.keys(_parse).length) dataJsonArray.push(_parse);
+    });
+    fullArrayJson.push(dataJsonArray);
+  });
+  return fullArrayJson;
+}
+
+export function getValueAttrsByWrapElem(editor, containerElement, attr) {
+  if (!containerElement) return null;
+  const range = editor.model.createRangeIn(containerElement);
+  const resArray = [];
+  for (const modelElement of range.getItems({ ignoreElementEnd: true })) {
+    if (modelElement.hasAttribute(attr)) {
+      resArray.push(modelElement.getAttribute(attr));
+    }
+  }
+  return resArray;
 }
 
 export function findAllElementsByName(editor, elementName, parentRoot, rangeIn) {

@@ -9,7 +9,12 @@ function createLinkElement(data, { writer }) {
   }
   const linkElement = writer.createAttributeElement(
     "a",
-    { href, "data-text": text, class: "custom-link-position" },
+    {
+      href,
+      "data-text": text,
+      class: "custom-link-position",
+      "data-json": JSON.stringify({ name: "customLinkPosition", value: text }),
+    },
     { priority: 5 }
   );
   writer.setCustomProperty("customLinkPosition", true, linkElement);

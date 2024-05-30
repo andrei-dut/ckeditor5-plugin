@@ -2,18 +2,29 @@ import { ClassicEditor } from "./ckeditor";
 import { CopyCutPastePlugin } from "./customPlugins/copyCutPastePlugin/copyCutPastePlugin";
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
 import { CustomListPlugin } from "./customPlugins/customListPlugin/customListPlugin";
-import { executeEditorCmd, removeAllParagraph, viewToModelElem } from "./customPlugins/editorUtils";
+import {
+  executeEditorCmd,
+  getArrayDataJsonAttrIcons,
+  getModelElement,
+  getTextFromElement,
+  getValueAttrsByWrapElem,
+  modelToViewElem,
+  removeAllParagraph,
+  viewToModelElem,
+} from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
 import { customSpecialCharacters } from "./customPlugins/vars";
 import "./customPlugins/styles/styles.css";
-import { parseAllReqDivTags, parseReqDivTags } from "./utils/utils";
+import { parseReqDivTags } from "./utils/utils";
 import { TestPlugin } from "./testPlugin/testPlugin";
 import { AllowancePlugin } from "./customPlugins/allowancePlugin/allowancePlugin";
 import "./style.css";
 import { ParametrPlugin } from "./customPlugins/parametrPlugin/parametrPlugin";
 import { CustomLinkPositionPlugin } from "./customPlugins/customLinkPositionPlugin/customLinkPositionPlugin";
 import { showLinkPositionModal } from "./customPlugins/customLinkPositionPlugin/csmLinkPositionModal";
+import { dataSvgToXml, replaceStringToNX } from "./customPlugins/icons/utils";
+import { replaceElementsWithJsonContent } from "./customPlugins/handlerElemsToNX";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -99,12 +110,11 @@ class Editor extends ClassicEditor {
     customSpecialCharacters,
     style: [
       {
-        name: 'backgroung: red;',
-        element: 'p',
-        classes: [  ]
-      }
-      
-    ]
+        name: "backgroung: red;",
+        element: "p",
+        classes: [],
+      },
+    ],
   };
 }
 
@@ -129,7 +139,7 @@ Editor.create(document.querySelector("#editor"), {})
       
       <div class="aw-requirement-content">
         <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true">
-        <p>Содержи        <span class="aw-req-allowance">
+        <p>Содержи        <span class="aw-req-allowance" data-json="{&quot;name&quot;:&quot;allowance&quot;,&quot;value&quot;:&quot;<C0.5000><T+45!-45><C>&quot;}">
       
         <span class="allowance-number">1</span>
         <span class="allowance-number">2</span>
@@ -138,7 +148,7 @@ Editor.create(document.querySelector("#editor"), {})
       
 
       <img src="data:image/svg+xml;base64,CjxzdmcKICAgd2lkdGg9IjExLjUiCiAgIGhlaWdodD0iMTIuNSIKICAgdmlld0JveD0iMCAwIDExLjUwMDAwMSAxMi41IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmcxIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMuMiAoMDkxZTIwZSwgMjAyMy0xMS0yNSwgY3VzdG9tKSIKICAgc29kaXBvZGk6ZG9jbmFtZT0idHJpYW5nbGVSaWdodC5zdmciCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHNvZGlwb2RpOm5hbWVkdmlldwogICAgIGlkPSJuYW1lZHZpZXcxIgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6ZG9jdW1lbnQtdW5pdHM9InB4IgogICAgIGlua3NjYXBlOnpvb209IjQ1LjI1NDgzNCIKICAgICBpbmtzY2FwZTpjeD0iNS45MjIwMTkzIgogICAgIGlua3NjYXBlOmN5PSI1LjI5MjI1MjMiCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxOTIwIgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjEwMTciCiAgICAgaW5rc2NhcGU6d2luZG93LXg9Ii04IgogICAgIGlua3NjYXBlOndpbmRvdy15PSItOCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzEiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIiAvPgogIDxkZWZzCiAgICAgaWQ9ImRlZnMxIiAvPgogIDxnCiAgICAgaW5rc2NhcGU6bGFiZWw9ItCh0LvQvtC5IDEiCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yLjUzNTkyMTQsLTIuNzk5NzUwMikiIC8+CiAgPHBhdGgKICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgIGlua3NjYXBlOmxhYmVsPSJUcmlhbmdsZSIKICAgICBkPSJtIDAuOTUxMzAwOTUsMS4wNTM1MTcgdiAxMSBsIDkuNTI2Mjc5MDUsLTUuNSB6IgogICAgIGlkPSJwYXRoMTEiIC8+Cjwvc3ZnPgoK" alt="triangleRight" data-id="triangleRight" data-json="{}">
-      <a class="custom-link" href="123" data-text="textLink">textLink</a>
+      <a class="custom-link" href="123" data-text="textLink" data-json="21312">textLink</a>
       </p>
 
         </div>
@@ -176,7 +186,7 @@ Editor.create(document.querySelector("#editor"), {})
 
     setTimeout(() => {
       editor.setData(`<p>${" " + " " + textTEst + " " + textTEst01 + " " + textTEst2}</p>`);
-      removeAllParagraph(editor)
+      removeAllParagraph(editor);
       // editor.set("isReadOnly", true);
     }, 500);
 
@@ -194,25 +204,28 @@ Editor.create(document.querySelector("#editor"), {})
     //   window.selec = selection;
     // });
 
-// setTimeout(() => {
-//   editor.destroy()
-// }, 10000);
+    // setTimeout(() => {
+    //   editor.destroy()
+    // }, 10000);
 
+    editor.model.document.on(
+      "keydown",
+      () => {
+        console.log("keydown");
+      },
+      { priority: "high" }
+    );
 
+    editor.on(
+      "keyup",
+      () => {
+        console.log("keyup");
+      },
+      { priority: "high" }
+    );
 
-    editor.model.document.on( 'keydown', () => {
-      console.log('keydown');
-    }, { priority: 'high' } );
-
-    editor.on( 'keyup', () => {
-      console.log('keyup');
-    }, { priority: 'high' } );
-
-
-    editor.keystrokes.set("CTRL", ()=> {
-
-      console.log('keystrokes');
-      
+    editor.keystrokes.set("CTRL", () => {
+      console.log("keystrokes");
     });
 
     editor.on("selectionLiElem", (e, currentData) => {
@@ -232,18 +245,13 @@ Editor.create(document.querySelector("#editor"), {})
       console.log("selectionReqElem", currentData);
       const value = currentData.value;
 
-      // const reqDom = editor.editing.view.domConverter.mapViewToDom(value);
-
-
       // const reqString = reqDom.outerHTML;
 
       // console.log("moveReqToLib_contents", reqDom, reqString);
 
       const model = editor.model;
       model.change((writer) => {
-
         if (!Array.isArray(value)) {
-
           console.log(value.addClass);
 
           value._setAttribute("data-custom_comment", 222);
@@ -257,25 +265,26 @@ Editor.create(document.querySelector("#editor"), {})
       const { eventType, value } = currentData || {};
       if (eventType === "editLinkPos") {
         console.log("editLinkPos", value);
-        showLinkPositionModal([
-          {uid: 1, value: 'value' , position: '10'},
-          {uid: 2, value: 'value2' , position: '20'},
-          {uid: 3, value: 'value3' , position: '30'},
-          {uid: 4, value: 'value4' , position: '40'},
-        ], value)
+        showLinkPositionModal(
+          [
+            { uid: 1, value: "value", position: "10" },
+            { uid: 2, value: "value2", position: "20" },
+            { uid: 3, value: "value3", position: "30" },
+            { uid: 4, value: "value4", position: "40" },
+          ],
+          value
+        );
       }
 
       if (eventType === "openModal") {
         showLinkPositionModal([
-          {uid: 1, value: 'value' , position: '10'},
-          {uid: 2, value: 'value2' , position: '20'},
-          {uid: 3, value: 'value3' , position: '30'},
-          {uid: 4, value: 'value4' , position: '40'},
-        ])
+          { uid: 1, value: "value", position: "10" },
+          { uid: 2, value: "value2", position: "20" },
+          { uid: 3, value: "value3", position: "30" },
+          { uid: 4, value: "value4", position: "40" },
+        ]);
       }
-    })
-
-
+    });
 
     editor.on("customLinkEvent", (e, currentData) => {
       console.log("call_customLinkEvent");
@@ -306,15 +315,33 @@ Editor.create(document.querySelector("#editor"), {})
         //     console.log(e, args, newVal, oldVal);
         //   });
 
-        console.log("parseReqDivTags", editor.getData(), parseReqDivTags(editor.getData()));
+        const htmlString = editor.getData();
 
-        // console.log(editor.getData());
-        console.log(getArrayImgObjByHtmlString(editor.getData()));
+        const nx = replaceElementsWithJsonContent(editor)
+  
+        console.log("replaceElementsWithJsonContent", nx,  );
+
+        const modelFragment = editor.data.processor.toView(htmlString);
+
+        const reqDom = editor.editing.view.domConverter.mapViewToDom(modelFragment);
+        console.log("reqDom", reqDom, editor.model.document.getRoot());
+
+        // const viewFragment = editor.editing.view.createDocumentFragment();
+        // const dom = editor.editing.view.domConverter.viewToDom( modelFragment, document, { bind: true } );
+
+        const arrayDataJsonAttrIcons = getArrayDataJsonAttrIcons(editor);
+        console.log("arrayDataJsonAttrIcons", arrayDataJsonAttrIcons);
+
+        console.log("parseReqDivTags", htmlString, parseReqDivTags(htmlString));
+
+        // console.log(modelFragment, dom);
+
+        console.log(getArrayImgObjByHtmlString(htmlString));
 
         console.log("openModal", value);
         executeEditorCmd(editor, "insertCustomLink", {
           href: 123,
-          text: 'textLink',
+          text: "textLink",
         });
       }
 
@@ -341,8 +368,8 @@ Editor.create(document.querySelector("#editor"), {})
       console.log("foc", arg);
     });
     // Пример использования функции
-const distance = calculateDistanceToBottomOfWindow('.ck-editor__top');
-console.log("Расстояние от нижней точки элемента до нижней точки окна:", distance);
+    const distance = calculateDistanceToBottomOfWindow(".ck-editor__top");
+    console.log("Расстояние от нижней точки элемента до нижней точки окна:", distance);
   })
   .catch((error) => {
     console.error(error.stack);
@@ -429,23 +456,23 @@ function createHtmlFromLiObjects(liObjectsOrArray) {
 function calculateDistanceToBottomOfWindow(className) {
   // Находим элемент по классу
   const element = document.querySelector(`${className}`);
-  
+
   console.log(element);
-  
+
   // Если элемент не найден, возвращаем null или другое значение
   if (!element) {
-      console.warn(`Элемент с классом ${className} не найден.`);
-      return null;
+    console.warn(`Элемент с классом ${className} не найден.`);
+    return null;
   }
 
   // Получаем координаты и размеры элемента
   const rect = element.getBoundingClientRect();
-  
+
   console.log(rect);
-  
+
   // Нижняя точка элемента
   const elementBottom = rect.bottom;
-  
+
   // Высота окна
   const windowHeight = window.innerHeight;
 
@@ -454,6 +481,3 @@ function calculateDistanceToBottomOfWindow(className) {
 
   return distance;
 }
-
-
-
