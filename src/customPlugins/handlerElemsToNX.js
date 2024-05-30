@@ -66,7 +66,6 @@ export const replaceElementsWithJsonContent = function (editor) {
       const tags = ["sup", "sub"];
       tags.forEach((tagName) => {
         const elements = elementCopy.querySelectorAll(tagName);
-        console.log("elements", elements, tagName);
         elements.forEach((element) => {
           try {
             const letter = tagName === "sup" ? "H" : "L";
@@ -112,7 +111,6 @@ export const replaceElementsWithJsonContent = function (editor) {
 };
 
 export function dataSvgToXml(key, values = {}, onlyValue) {
-  console.log(values);
   switch (key) {
     case "mult1":
       return {
