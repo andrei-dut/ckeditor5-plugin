@@ -12,7 +12,7 @@ import {
   findAttributeRange,
   getSelectedLinkElement,
 } from "../editorUtils";
-import { checkClick, emitter } from "../utils";
+import { createClickChecker, emitter } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
 import "../styles/linkPosition.css";
 
@@ -31,6 +31,7 @@ export class CustomLinkPositionPlugin extends Plugin {
 
   init() {
     const editor = this.editor;
+    const checkClick = createClickChecker();
 
     editor.commands.add(
       "insertCsmLinkPosition",
@@ -59,7 +60,6 @@ export class CustomLinkPositionPlugin extends Plugin {
       );
 
       customLinkPosition = customLinkPosition || (viewIsCsmLink ? viewElement : null);
-
       if (customLinkPosition)
         checkClick(() => {
           if (customLinkPosition) {

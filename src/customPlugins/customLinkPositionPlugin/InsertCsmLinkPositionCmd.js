@@ -49,7 +49,7 @@ export default class InsertCdmLinkPositionCmd extends Command {
             selection.getAttribute("customLinkPosition"),
             model
           );
-
+          
           writer.setAttribute("customLinkPosition", {href, text}, linkRange);
           writer.remove(linkRange);
           if(isRemoveLink) return;

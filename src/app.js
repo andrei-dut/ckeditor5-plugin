@@ -4,6 +4,8 @@ import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlu
 import { CustomListPlugin } from "./customPlugins/customListPlugin/customListPlugin";
 import {
   executeEditorCmd,
+  findAllElementsByName,
+  getAllReqData,
   getArrayDataJsonAttrIcons,
   getModelElement,
   getTextFromElement,
@@ -25,6 +27,8 @@ import { CustomLinkPositionPlugin } from "./customPlugins/customLinkPositionPlug
 import { showLinkPositionModal } from "./customPlugins/customLinkPositionPlugin/csmLinkPositionModal";
 import { dataSvgToXml, replaceStringToNX } from "./customPlugins/icons/utils";
 import { replaceElementsWithJsonContent } from "./customPlugins/handlerElemsToNX";
+import { CustomLinkTTPlugin } from "./customPlugins/customLinkTTPlugin/customLinkTTPlugin";
+import { showLinkTTModal } from "./customPlugins/customLinkTTPlugin/csmLinkTTModal";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -103,6 +107,7 @@ class Editor extends ClassicEditor {
         "levelDown",
         "|",
         "customLinkPosition",
+        "customLinkTT",
       ],
     },
     removePlugins: ["ImageResize", "FontColor"],
@@ -126,11 +131,16 @@ Editor.builtinPlugins.push(TestPlugin);
 Editor.builtinPlugins.push(AllowancePlugin);
 Editor.builtinPlugins.push(ParametrPlugin);
 Editor.builtinPlugins.push(CustomLinkPositionPlugin);
+Editor.builtinPlugins.push(CustomLinkTTPlugin);
 
 // delete selected content editor.model.deleteContent(modelSelect)
 
 Editor.create(document.querySelector("#editor"), {})
   .then((editor) => {
+    setTimeout(() => {
+    editor.set("allReqData", getAllReqData(editor));
+    }, 2000);
+
     const textTEst = `<div class="requirement ck-widget" data-custom_comment="111"  contenteditable="false"  id="req_1" >
     <div class="aw-requirement-marker">
     
@@ -286,6 +296,21 @@ Editor.create(document.querySelector("#editor"), {})
       }
     });
 
+    editor.on("csmLinkTTEv", (e, currentData) => {
+      const { eventType, value } = currentData || {};
+      const allReq = findAllElementsByName(editor, "requirement");
+      const allReqData = editor.allReqData;
+      console.log("csmLinkTTEv", allReq, allReqData);
+      if (eventType === "editLinkTT") {
+        console.log("editLinkTT", value);
+        showLinkTTModal(allReqData, value);
+      }
+
+      if (eventType === "openModal") {
+        showLinkTTModal(allReqData);
+      }
+    });
+
     editor.on("customLinkEvent", (e, currentData) => {
       console.log("call_customLinkEvent");
 
@@ -317,9 +342,9 @@ Editor.create(document.querySelector("#editor"), {})
 
         const htmlString = editor.getData();
 
-        const nx = replaceElementsWithJsonContent(editor)
-  
-        console.log("replaceElementsWithJsonContent", nx,  );
+        const nx = replaceElementsWithJsonContent(editor);
+
+        console.log("replaceElementsWithJsonContent", nx);
 
         const modelFragment = editor.data.processor.toView(htmlString);
 

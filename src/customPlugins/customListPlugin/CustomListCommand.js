@@ -9,7 +9,7 @@ import {
   removeAllParagraph,
   updateMarkers,
 } from "../editorUtils";
-import { getLastElemFromArray, incrementWithLetter } from "../utils";
+import { getLastElemFromArray, getRandomId, incrementWithLetter } from "../utils";
 
 export default class CustomListCommand extends Command {
   levelUpReq(parent) {
@@ -193,11 +193,6 @@ const scrollToNewWidget = function (requirement, editor) {
     console.warn(error);
   }
 };
-
-function getRandomId() {
-  let randomId = Math.random().toString(36).substr(2, 10);
-  return "RM::NEW::" + randomId;
-}
 
 function _createMarkerWidget(writer, marker) {
   let requirementMarker = writer.createElement("requirementMarker");

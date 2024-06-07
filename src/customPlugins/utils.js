@@ -2,6 +2,17 @@ import EventEmitter from "./eventEmmitery";
 
 export const emitter = new EventEmitter();
 
+export function generateId() {
+
+  const timestamp = Date.now();
+
+  const randomNum = Math.floor(Math.random() * 10000);
+
+  const randomStr = randomNum.toString().padStart(4, '0');
+
+  return `${timestamp}-${randomStr}`;
+}
+
 export function convertBase64ToSvg(base64String) {
   // Ищем подстроку, которая начинается с "base64," и берем только часть после нее
   const base64Data = base64String.split(",")[1];
@@ -161,22 +172,23 @@ export function openLinkInNewWindow(linkElement) {
     }
   }
 }
-let lastClickTime = 0;
-let clickTimeout;
+export function createClickChecker() {
+  let lastClickTime = 0;
+  let clickTimeout;
 
-export function checkClick(cb) {
-  console.log('checkClick');
-  const currentTime = new Date().getTime();
+  return function checkClick(cb) {
+    console.log('checkClick');
+    const currentTime = new Date().getTime();
 
-  if (currentTime - lastClickTime > 250) {
-    clickTimeout = setTimeout(cb, 250);
-  } else {
-    clearTimeout(clickTimeout);
-  }
+    if (currentTime - lastClickTime > 250) {
+      clickTimeout = setTimeout(cb, 250);
+    } else {
+      clearTimeout(clickTimeout);
+    }
 
-  lastClickTime = currentTime;
+    lastClickTime = currentTime;
+  };
 }
-
 const SAFE_URL = /^(?:(?:https?|ftps?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.:-]|$))/i;
 
 const ATTRIBUTE_WHITESPACES = /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205f\u3000]/g; // eslint-disable-line no-control-regex
@@ -288,5 +300,10 @@ export function numberToRussianLetter(number) {
   const firstCharCode = 'а'.charCodeAt(0);
   number = (((number - 1) % 32));
   return String.fromCharCode(firstCharCode + number);
+}
+
+export function getRandomId() {
+  const randomId = Math.random().toString(36).substr(2, 10);
+  return "RM::NEW::" + randomId;
 }
 

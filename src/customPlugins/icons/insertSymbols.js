@@ -96,7 +96,7 @@ inkscape:transform-center-y="0.38984497"><tspan
   y="18.245249">TEXT</tspan></text>
 </g>
 </svg>
-`
+`;
 
 export const spec6 = `<svg
 width="34"
@@ -162,7 +162,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
     d="M 19.953731,9.921868 32.356669,9.866788"
     id="path4" />
 </g>
-</svg>`
+</svg>`;
 
 export const spec7 = `<svg
 width="51"
@@ -298,7 +298,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
 </g>
 </svg>
 
-`
+`;
 
 export const spec8 = `<svg
    width="12"
@@ -359,7 +359,7 @@ export const spec8 = `<svg
 
 
 
-`
+`;
 export const spec9 = `<svg
 width="12"
 height="12"
@@ -416,7 +416,7 @@ xmlns:svg="http://www.w3.org/2000/svg">
 
 
 
-`
+`;
 
 export const arc = `
 <svg
@@ -578,9 +578,9 @@ export const triangleRight = `
      id="path11" />
 </svg>
 
-`
+`;
 
-  export const unlinkIcon =
+export const unlinkIcon =
   '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m11.077 15 .991-1.416a.75.75 0 1 1 1.229.86l-1.148 1.64a.748.748 0 0 1-.217.206 5.251 5.251 0 0 1-8.503-5.955.741.741 0 0 1 .12-.274l1.147-1.639a.75.75 0 1 1 1.228.86L4.933 10.7l.006.003a3.75 3.75 0 0 0 6.132 4.294l.006.004zm5.494-5.335a.748.748 0 0 1-.12.274l-1.147 1.639a.75.75 0 1 1-1.228-.86l.86-1.23a3.75 3.75 0 0 0-6.144-4.301l-.86 1.229a.75.75 0 0 1-1.229-.86l1.148-1.64a.748.748 0 0 1 .217-.206 5.251 5.251 0 0 1 8.503 5.955zm-4.563-2.532a.75.75 0 0 1 .184 1.045l-3.155 4.505a.75.75 0 1 1-1.229-.86l3.155-4.506a.75.75 0 0 1 1.045-.184zm4.919 10.562-1.414 1.414a.75.75 0 1 1-1.06-1.06l1.414-1.415-1.415-1.414a.75.75 0 0 1 1.061-1.06l1.414 1.414 1.414-1.415a.75.75 0 0 1 1.061 1.061l-1.414 1.414 1.414 1.415a.75.75 0 0 1-1.06 1.06l-1.415-1.414z"/></svg>';
 
 export const pencilIcon =
@@ -1225,7 +1225,6 @@ xmlns:svg="http://www.w3.org/2000/svg">
 </svg>
 `;
 
-
 export const spec1 = `<svg
 width="17"
 height="14"
@@ -1410,5 +1409,21 @@ content="&lt;mxfile host=&quot;Electron&quot; modified=&quot;2024-02-01T06:15:29
     <image x="-0.5" y="-0.5" width="41.88" height="20"
         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAAgCAYAAABJqsWHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFxEAABcRAcom8z8AAAFESURBVGhD1daxjcNQDANQF269/zgZJGNkAMeE6M6AJcpMoAd8pDlR1DXJ4rBt2/v42F2P+WPsTsiPNTOwtgfyY80MrO2B/FgzA2t7ID/WzMDaHsiPNTOwtgfyY80MrO2B/FgzA2t7ID/W/Jj6A8rpat/de+qHGivkKTMVaicc08W4PGWmQu2EY7oYl6fMVKidcEwX4/KUmQq1E47pYlyeMlOhdsIxXYzLU2Yq1E445s7reOcfP/acrvY98PB/uMUKecpMhdoJx3QxLk+ZqVA74ZguxuUpMxVqJxzTxbg8ZaZC7YRjuhiXp8xUqJ1wTBfj8pSZCrUTjuliXJ4yU6F2wjEt67p+jo8zLP2crvbdPd7xF6ztgfxYMwNreyA/1szA2h7IjzUzsLYH8mPNDKztgfxYMwNreyA/1gygfh1nn+drclm+yNh970qwf7sAAAAASUVORK5CYII="
         preserveAspectRatio="none" />
+</g>
+</svg>`;
+export const linkTT = `<svg  viewBox="0 0 25 25"  xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com" data-name="Layer 1">
+<linearGradient id="linear-gradient" x1="-0.076389" x2="1.076389" y1="0.058511" y2="0.941489">
+ <stop offset="0" stop-color="#fff"/>
+ <stop offset="0.232" stop-color="#fafafa"/>
+ <stop offset="0.496" stop-color="#ededed"/>
+ <stop offset="0.775" stop-color="#d6d6d6"/>
+ <stop offset="1" stop-color="#bebebe"/>
+</linearGradient>
+<g class="layer">
+ <title>Layer 1</title>
+ <line fill="none" id="svg_5" stroke="#6f6f6f" stroke-miterlimit="10" x1="13.937282" x2="40.041813" y1="7.93554" y2="7.93554"/>
+ <line fill="none" id="svg_7" stroke="#6f6f6f" stroke-miterlimit="10" transform="matrix(1 0 0 1 0 0)" x1="14.216028" x2="36.414634" y1="17.91115" y2="17.91115"/>
+ <text fill="#6d6d6d" font-family="Helvetica" font-size="11" font-weight="bold" id="svg_10" stroke="#6f6f6f" stroke-width="0" text-anchor="middle" transform="matrix(1 0 0 1 0 0)" x="7.952305" xml:space="preserve" y="10.640382">1</text>
+ <text fill="#6d6d6d" font-family="Helvetica" font-size="11" font-weight="bold" id="svg_11" stroke="#6f6f6f" stroke-width="0" text-anchor="middle" transform="matrix(1 0 0 1 0 0)" x="8.486154" xml:space="preserve" y="21.223501">2</text>
 </g>
 </svg>`;

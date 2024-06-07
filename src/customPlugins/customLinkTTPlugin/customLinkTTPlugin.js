@@ -1,31 +1,37 @@
-// CustomLinkPlugin.js
-import { linkIcon } from "../icons/insertSymbols";
+// CustomLinkTTPlugin.js
+import { ContextualBalloon, Plugin, clickOutsideHandler } from "../../reqCkeditor.service";
+import { registerCustomLink } from "./registerCustomLinkTT";
+import InsertCdmLinkTTCmd from "./InsertCsmLinkTTCmd";
 import {
-  ButtonView,
-  ContextualBalloon,
-  Plugin,
-  clickOutsideHandler,
-} from "../../reqCkeditor.service";
-import { registerCustomLink } from "./registerCustomLink";
-import InsertCustomLinkCommand from "./InsertCustomLinkCommand";
-import { executeEditorCmd, findAttributeRange, getSelectedLinkElement } from "../editorUtils";
-import { createClickChecker } from "../utils";
+  createItemToolbar,
+  executeEditorCmd,
+  findAttributeRange,
+  getSelectedLinkElement,
+} from "../editorUtils";
+import { createClickChecker, emitter } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
+import "../styles/linkPosition.css";
+import { linkTT } from "../icons/insertSymbols";
 
-export class CustomLinkPlugin extends Plugin {
+export class CustomLinkTTPlugin extends Plugin {
   static get pluginName() {
-    return "CustomLinkPlugin";
+    return "CustomLinkTTPlugin";
   }
 
   get _areActionsInPanel() {
     return this._balloon.hasView(this.actionsView);
   }
 
+  destroy() {
+    emitter.clearEvent("onInsertLinkTT");
+  }
+
   init() {
     const editor = this.editor;
     const checkClick = createClickChecker();
 
-    editor.commands.add("insertCustomLink", new InsertCustomLinkCommand(editor));
+
+    editor.commands.add("insertCsmLinkTT", new InsertCdmLinkTTCmd(editor));
 
     this.actionsView = this._createActionsView();
     this._balloon = editor.plugins.get(ContextualBalloon);
@@ -40,37 +46,34 @@ export class CustomLinkPlugin extends Plugin {
       domEventData.preventDefault();
       const domTarget = domEventData.domTarget; // Получаем кликнутый элемент
       const viewElement = editor.editing.view.domConverter.mapDomToView(domTarget); // Преобразуем DOM элемент в view элемент CKEditor
-      const viewIsCsmLink = viewElement?.getAttribute("class") === "custom-link";
+      const viewIsCsmLink = viewElement?.getAttribute("class") === "custom-link-TT";
 
-      let customLink = getSelectedLinkElement.call(this, "customLink", "attributeElement");
-      customLink = customLink || (viewIsCsmLink ? viewElement : null);
+      let customLinkTT = getSelectedLinkElement.call(this, "customLinkTT", "attributeElement");
+      customLinkTT = customLinkTT || (viewIsCsmLink ? viewElement : null);
 
-      if (customLink)
+      if (customLinkTT)
         checkClick(() => {
-          if (customLink) {
-            this._addActionsView(customLink);
+          if (customLinkTT) {
+            this._addActionsView(customLinkTT);
           }
         });
     });
 
-    editor.ui.componentFactory.add("customLink", (locale) => {
-      const command = editor.commands.get("insertCustomLink");
-      const button = new ButtonView(locale);
+    createItemToolbar(
+      editor,
+      "customLinkTT",
+      linkTT,
+      () => {
+        editor.fire("csmLinkTTEv", { eventType: "openModal" });
+      },
+      "Позиция"
+    );
 
-      button.isEnabled = true;
-      button.label = "link";
-      button.icon = linkIcon;
-      // button.keystroke = LINK_KEYSTROKE;
-      button.tooltip = true;
-      button.isToggleable = true;
+    function onInsertLinkTT(values) {
+      executeEditorCmd(editor, "insertCsmLinkTT", values);
+    }
 
-      this.listenTo(button, "execute", () => {
-        editor.fire("customLinkEvent", { eventType: "openModal" });
-      });
-
-      button.bind("isOn", "isEnabled").to(command, "value", "isEnabled");
-      return button;
-    });
+    emitter.on("onInsertLinkTT", onInsertLinkTT);
   }
 
   _enableClickingAfterLink() {
@@ -78,7 +81,7 @@ export class CustomLinkPlugin extends Plugin {
     const model = editor.model;
 
     function removeLinkAttributesFromSelection(writer, linkAttributes) {
-      writer.removeSelectionAttribute("customLink");
+      writer.removeSelectionAttribute("customLinkTT");
 
       for (const attribute of linkAttributes) {
         writer.removeSelectionAttribute(attribute);
@@ -117,15 +120,15 @@ export class CustomLinkPlugin extends Plugin {
       }
 
       // ...and clicked text is the link...
-      if (!selection.hasAttribute("customLink")) {
+      if (!selection.hasAttribute("customLinkTT")) {
         return;
       }
 
       const position = selection.getFirstPosition();
       const linkRange = findAttributeRange(
         position,
-        "customLink",
-        selection.getAttribute("customLink"),
+        "customLinkTT",
+        selection.getAttribute("customLinkTT"),
         model
       );
 
@@ -142,7 +145,7 @@ export class CustomLinkPlugin extends Plugin {
       return;
     }
 
-    const linkCommand = this.editor.commands.get("insertCustomLink");
+    const linkCommand = this.editor.commands.get("insertCsmLinkTT");
     linkCommand.refresh(clickedElement);
 
     this._balloon.add({
@@ -171,7 +174,9 @@ export class CustomLinkPlugin extends Plugin {
       target = view.domConverter.viewRangeToDom(newRange);
     } else {
       target = () => {
-        const targetLink = getSelectedLinkElement.call(this, "customLink", "attributeElement") || clickedElement;
+        const targetLink =
+          getSelectedLinkElement.call(this, "customLinkTT", "attributeElement") || clickedElement;
+
         return targetLink
           ? // When selection is inside link element, then attach panel to this element.
             view.domConverter.mapViewToDom(targetLink)
@@ -179,6 +184,7 @@ export class CustomLinkPlugin extends Plugin {
             view.domConverter.viewRangeToDom(viewDocument.selection.getFirstRange());
       };
     }
+
     return { target };
   }
 
@@ -212,7 +218,7 @@ export class CustomLinkPlugin extends Plugin {
   _createActionsView() {
     const editor = this.editor;
     const actionsView = new CustomLinkActionsView(editor.locale, editor);
-    const linkCommand = editor.commands.get("insertCustomLink");
+    const linkCommand = editor.commands.get("insertCsmLinkTT");
     const unlinkCommand = editor.commands.get("unlink");
     const LINK_KEYSTROKE = "Ctrl+K";
 
@@ -222,22 +228,17 @@ export class CustomLinkPlugin extends Plugin {
     actionsView.unlinkButtonView.bind("isEnabled").to(unlinkCommand);
 
     // Execute unlink command after clicking on the "Edit" button.
-    this.listenTo(actionsView, "edit", () => {
-      editor.fire("customLinkEvent", { eventType: "editSelectedLink" });
-      this._hideUI();
-    });
-
-    this.listenTo(actionsView, "clickedPreviewLink", (e) => {
-      if (e?.source?.href) {
-        editor.fire("customLinkEvent", { eventType: "onNavLink", value: e?.source?.href });
+    this.listenTo(actionsView, "edit", (e) => {
+      const currentUid = e?.source?.href;
+      if (currentUid) {
+        editor.fire("csmLinkTTEv", { eventType: "editLinkTT", value: e?.source?.href });
       }
       this._hideUI();
     });
 
     // Execute unlink command after clicking on the "Unlink" button.
     this.listenTo(actionsView, "unlink", () => {
-      editor.fire("customLinkEvent", { eventType: "removeSelectedLink" });
-      executeEditorCmd(editor, "insertCustomLink", {
+      executeEditorCmd(editor, "insertCsmLinkTT", {
         isRemoveLink: true,
       });
       this._hideUI();

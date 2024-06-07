@@ -1,5 +1,5 @@
 import { ButtonView } from "../reqCkeditor.service";
-import { numberToRussianLetter } from "./utils";
+import { getRandomId, numberToRussianLetter } from "./utils";
 
 export function removeParagraphBetweenReq(editor) {
   const allParagraph = findAllElementsByName(editor, "paragraph");
@@ -80,6 +80,62 @@ export function updateMarkers(editor) {
       }
     });
   });
+  setTimeout(() => {
+    editor.set("allReqData", getAllReqData(editor));
+  }, 10);
+}
+
+function findAllCsmLinksByName(editor, name) {
+  const result = [];
+  const root = editor.model.document.getRoot();
+
+
+
+  const _getChildren = function(elem) {
+    elem.getChildren().forEach(element => {
+      if(element.getAttribute(name)) {
+        const viewElemParent = modelToViewElem(editor, element.parent)
+        console.log(element, element.getChildren?.()?.map((ancestor) => (ancestor)));
+        console.log(viewElemParent, );
+
+        for (const iterator of viewElemParent.getChildren()) {
+          console.log(iterator);
+        }
+
+      }
+
+      if(element.getChildren) {
+        _getChildren(element)
+      }       
+      });
+  };
+
+  _getChildren(root)
+
+
+
+}
+
+export function getAllReqData(editor) {
+  const allReq = findAllElementsByName(editor, "requirement");
+  const markerReqs = [];
+
+  findAllCsmLinksByName(editor, "customLinkPosition")
+
+  allReq.forEach((req) => {
+
+    const randomId = getRandomId();
+    let idReq = req.getAttribute("id");
+    if(!idReq) {
+      console.log("RANDOM!!");
+      req._setAttribute("id", randomId);
+      idReq = randomId;
+    }
+    const elemMarker = getModelElement(editor, req, "span");
+    markerReqs.push({id: idReq, markerModel: elemMarker, marker: getTextFromElement(elemMarker)});
+  });
+
+  return markerReqs
 }
 
 export function findElemInSelectionByName(editor, name, offConvertToModel, isFirstElem) {
@@ -168,6 +224,7 @@ export function findAllElementsByName(editor, elementName, parentRoot, rangeIn) 
   const findElements = [];
   const range = editor.model.createRangeIn(rangeIn || editor.model.document.getRoot());
   for (const value of range.getWalker({ ignoreElementEnd: true })) {
+    // console.log(value.item.is( 'attributeElement' ),value.item);
     if (
       value.item.is("element") &&
       value.item.name === elementName &&
@@ -180,6 +237,7 @@ export function findAllElementsByName(editor, elementName, parentRoot, rangeIn) 
       findElements.push(value.item);
     }
   }
+
   return findElements;
 }
 
