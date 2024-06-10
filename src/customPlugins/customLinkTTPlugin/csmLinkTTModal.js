@@ -60,7 +60,8 @@ function addModal(content, items, defaultSelectedId) {
 }
 
 export const showLinkTTModal = (items, defaultSelectedId) => {
-  const radioButtonsHtml = items.map(item => `
+  if(!items) return;
+  const radioButtonsHtml = items?.map(item => `
     <label>
       <input type="radio" id="${item.id}" name="radioGroup" ${String(defaultSelectedId) === String(item.id) ? 'checked' : ''} value="${item.marker}" />
       TT - ${item.marker}

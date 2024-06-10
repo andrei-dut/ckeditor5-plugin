@@ -41,7 +41,6 @@ export class CustomListPlugin extends Plugin {
       const parentReq = modelToViewElem(editor, findParent(modelElement, 'requirement')); 
 
       const clickedSelectedReq = parentReq === foundModelReq;
-
       foundModelReq = !clickedSelectedReq && parentReq ? parentReq : foundModelReq;
 
       if (foundModelReq) {
@@ -71,8 +70,6 @@ export class CustomListPlugin extends Plugin {
         });
         editor.fire("selectionReqElem", { value: reqsSelected });
       }
-      
-      console.log("click_selectionReqElem", foundModelReq, reqsSelected);
     });
 
     // function handleKeystrokeEvents() {

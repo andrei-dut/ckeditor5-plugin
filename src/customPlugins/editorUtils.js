@@ -82,60 +82,74 @@ export function updateMarkers(editor) {
   });
   setTimeout(() => {
     editor.set("allReqData", getAllReqData(editor));
+    findAllCsmLinksByName(editor, "customLinkTT");
   }, 10);
 }
 
 function findAllCsmLinksByName(editor, name) {
-  const result = [];
   const root = editor.model.document.getRoot();
 
-
-
-  const _getChildren = function(elem) {
-    elem.getChildren().forEach(element => {
-      if(element.getAttribute(name)) {
-        const viewElemParent = modelToViewElem(editor, element.parent)
-        console.log(element, element.getChildren?.()?.map((ancestor) => (ancestor)));
-        console.log(viewElemParent, );
-
+  const _getChildren = function (elem) {
+    elem.getChildren().forEach((element) => {
+      if (element.getAttribute(name)) {
+        const viewElemParent = modelToViewElem(editor, element.parent);
         for (const iterator of viewElemParent.getChildren()) {
-          console.log(iterator);
-        }
+          if (iterator.is("attributeElement") && editor.allReqData) {
+            const linkElement = iterator;
+            const elemMarkerReq = editor.allReqData.find(
+              (item) => item.id === linkElement.getAttribute("href")
+            );
+            if(elemMarkerReq) editor.model.change((writer) => {
+              function objectToMap(obj) {
+                const map = new Map();
 
+                for (const key in obj) {
+                  map.set(key, obj[key]);
+                }
+
+                return map;
+              }
+
+              function toMap(data) {
+                return objectToMap(data);
+              }
+              const selection = editor.model.document.selection;
+              const attributes = toMap(selection.getAttributes());
+              attributes.set("customLinkTT", { href: linkElement.getAttribute("href"), text: elemMarkerReq.marker });
+              editor.model.insertContent(
+                writer.createText(String(elemMarkerReq.marker), attributes),
+                writer.createPositionAfter(element)
+              );
+              writer.remove(element);
+            });
+          }
+        }
       }
 
-      if(element.getChildren) {
-        _getChildren(element)
-      }       
-      });
+      if (element.getChildren) {
+        _getChildren(element);
+      }
+    });
   };
 
-  _getChildren(root)
-
-
-
+  _getChildren(root);
 }
 
 export function getAllReqData(editor) {
   const allReq = findAllElementsByName(editor, "requirement");
   const markerReqs = [];
 
-  findAllCsmLinksByName(editor, "customLinkPosition")
-
   allReq.forEach((req) => {
-
     const randomId = getRandomId();
     let idReq = req.getAttribute("id");
-    if(!idReq) {
-      console.log("RANDOM!!");
+    if (!idReq) {
       req._setAttribute("id", randomId);
       idReq = randomId;
     }
     const elemMarker = getModelElement(editor, req, "span");
-    markerReqs.push({id: idReq, markerModel: elemMarker, marker: getTextFromElement(elemMarker)});
+    markerReqs.push({ id: idReq, markerModel: elemMarker, marker: getTextFromElement(elemMarker) });
   });
-
-  return markerReqs
+  return markerReqs;
 }
 
 export function findElemInSelectionByName(editor, name, offConvertToModel, isFirstElem) {

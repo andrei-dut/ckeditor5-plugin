@@ -8,6 +8,7 @@ import {
   getTextFromElement,
   removeAllParagraph,
   updateMarkers,
+  viewToModelElem,
 } from "../editorUtils";
 import { getLastElemFromArray, getRandomId, incrementWithLetter } from "../utils";
 
@@ -16,9 +17,13 @@ export default class CustomListCommand extends Command {
     const editor = this.editor;
     editor.model.change((writer) => {
       const prevSibling = getPreviousSibling(parent);
+      console.log(parent, prevSibling);
+
       if (prevSibling?.name !== "requirement") {
         return;
       }
+      console.log(parent, prevSibling);
+
       writer.setAttribute("data-is-child", "true", parent);
 
       // const lastChild = getLastElemFromArray(
@@ -71,15 +76,15 @@ export default class CustomListCommand extends Command {
       if (prevSibling?.name !== "requirement") {
         return;
       }
-      
-    // const isReqChild = parent?.getAttribute("data-is-child")?.includes("true");
-    // const elemMarker = getModelElement(editor, parent, "span");
-    //   if(isReqChild && elemMarker && elemMarker.getChild(0)) {
-    //     const data = elemMarker.getChild(0).data;
-    //     const is1a = data?.includes('1а')
-    //     if(is1a);
-    //     console.log(data, is1a);
-    //   }
+
+      // const isReqChild = parent?.getAttribute("data-is-child")?.includes("true");
+      // const elemMarker = getModelElement(editor, parent, "span");
+      //   if(isReqChild && elemMarker && elemMarker.getChild(0)) {
+      //     const data = elemMarker.getChild(0).data;
+      //     const is1a = data?.includes('1а')
+      //     if(is1a);
+      //     console.log(data, is1a);
+      //   }
 
       writer.move(writer.createRangeOn(parent), prevSibling, "before");
       updateMarkers(editor, parent);
@@ -141,42 +146,50 @@ export default class CustomListCommand extends Command {
     const options = { after: "", ..._options };
     const foundModelReq = findElemInSelectionByName(editor, "requirement", undefined, true);
     options.after = foundModelReq;
-    const parentRequirement = options.after;
-    if (!parentRequirement) {
+    let reqs =
+      editor.plugins.get("CustomListPlugin")?._reqsSelected ||
+      (options.after ? [options.after] : null) ||
+      [];
+    if (!reqs) {
       console.warn("No parent requirement passed.");
     }
 
     editor.RATData.isNewRequirement = true;
-
-    switch (options.type) {
-      case "moveUp":
-        this.moveUpReq(parentRequirement);
-        break;
-      case "moveDown":
-        this.moveDownReq(parentRequirement);
-        break;
-      case "levelUp":
-        this.levelUpReq(parentRequirement);
-        break;
-      case "remove":
-        this.removeReq(parentRequirement);
-        break;
-      case "levelDown":
-        this.leveDownReq(parentRequirement);
-        break;
-
-      case "addNew": {
-        const req = this.createNewReq(options);
-        if (req) {
-          updateMarkers(editor, req);
-          scrollToNewWidget(req, editor);
+    if (reqs?.length) {
+      reqs = reqs.map(re => viewToModelElem(editor, re))
+      reqs.forEach(element => {
+        switch (options.type) {
+          case "moveUp":
+            this.moveUpReq(element);
+            break;
+          case "moveDown":
+            this.moveDownReq(element);
+            break;
+          case "levelUp":
+            this.levelUpReq(element);
+            break;
+          case "remove":
+            this.removeReq(element);
+            break;
+          case "levelDown":
+            this.leveDownReq(element);
+            break;
+  
+          case "addNew": {
+            const req = this.createNewReq(options);
+            if (req) {
+              updateMarkers(editor, req);
+              scrollToNewWidget(req, editor);
+            }
+            removeAllParagraph(editor);
+            break;
+          }
+          default:
+            break;
         }
-        removeAllParagraph(editor);
-        break;
-      }
-      default:
-        break;
+      });
     }
+
   }
 }
 
