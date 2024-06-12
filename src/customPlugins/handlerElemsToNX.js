@@ -1,4 +1,5 @@
 import { getModelElement, getTextFromElement, modelToViewElem } from "./editorUtils";
+import iconv from "./lib/iconv-lite";
 
 export const replaceElementsWithJsonContent = function (editor) {
   const root = editor.model.document.getRoot();
@@ -107,7 +108,20 @@ export const replaceElementsWithJsonContent = function (editor) {
     result.push(handlerElems(reqBTDom, reqMarker));
   });
 
-  return {arrayString: result, doneString: result.join("\n\n")};
+  const doneString = result.join("\n\n");
+  let CP1251;
+
+  try {
+  
+  const toCP1251 = function(text) {
+    return iconv.encode(text, 'win1251');
+  }
+  CP1251 = toCP1251(doneString);
+  } catch (error) {
+    console.log("error_toCP1251", error);
+  }
+
+  return {arrayString: result, doneString, CP1251};
 };
 
 export function dataSvgToXml(key, values = {}, onlyValue) {
