@@ -6,19 +6,32 @@ import {
   _defineRequirementConversion,
 } from "./customListConversion";
 import "../styles/stylesCustomListPl.css";
-import { findElemInSelectionByName, findParent, modelToViewElem, viewToModelElem } from "../editorUtils";
+import {
+  findAllElementsByName,
+  findElemInSelectionByName,
+  findParent,
+  modelToViewElem,
+  viewToModelElem,
+} from "../editorUtils";
 
 let editor;
 let isCtrlPressed = false;
-const reqsSelected = [];
+let reqsSelected = [];
 export class CustomListPlugin extends Plugin {
-
   static get pluginName() {
     return "CustomListPlugin";
   }
 
   get _reqsSelected() {
     return reqsSelected;
+  }
+
+  _updateReqsSelected() {
+    setTimeout(() => {
+      let allReq = findAllElementsByName(editor, "requirement", undefined, undefined, true);
+      allReq = allReq.filter((re) => re.getAttribute("class")?.includes("ck-requirement_selected"));
+      if (allReq) reqsSelected = allReq;
+    });
   }
 
   init() {
@@ -28,9 +41,7 @@ export class CustomListPlugin extends Plugin {
     this._defineSchema();
     this._defineConversion();
     this._addEventListeners();
-    this.
-
-    editor.commands.add("insertCustomList", new CustomListCommand(editor));
+    this.editor.commands.add("insertCustomList", new CustomListCommand(editor));
 
     this.listenTo(editor.editing.view.document, "click", (e, domEventData) => {
       let foundModelReq = findElemInSelectionByName(editor, "requirement", true, true);
@@ -38,7 +49,7 @@ export class CustomListPlugin extends Plugin {
       const domTarget = domEventData.domTarget; // Получаем кликнутый элемент
       const viewElement = editor.editing.view.domConverter.mapDomToView(domTarget); // Преобразуем DOM элемент в view элемент CKEditor
       const modelElement = viewToModelElem(editor, viewElement);
-      const parentReq = modelToViewElem(editor, findParent(modelElement, 'requirement')); 
+      const parentReq = modelToViewElem(editor, findParent(modelElement, "requirement"));
 
       const clickedSelectedReq = parentReq === foundModelReq;
       foundModelReq = !clickedSelectedReq && parentReq ? parentReq : foundModelReq;
@@ -47,7 +58,7 @@ export class CustomListPlugin extends Plugin {
         editor.editing.view.change((writer) => {
           const selectedClass = "ck-requirement_selected";
           const hasClassSelected = foundModelReq.hasClass(selectedClass);
-      
+
           const updateSelection = (req, add) => {
             if (add) {
               reqsSelected.push(req);
@@ -59,13 +70,16 @@ export class CustomListPlugin extends Plugin {
                 writer.removeClass(selectedClass, req);
               }
             }
+            const classViewReq = req.getAttribute("class");
+            const modelReq = viewToModelElem(editor, req);
+            modelReq?._setAttribute("class", classViewReq);
           };
 
-          if(!isCtrlPressed) {
+          if (!isCtrlPressed) {
             reqsSelected.forEach((req) => writer.removeClass(selectedClass, req));
-            reqsSelected.length = 0; 
+            reqsSelected.length = 0;
           }
-          foundModelReq._setStyle('--ck-widget-outline-thickness', 'inherit')
+          foundModelReq._setStyle("--ck-widget-outline-thickness", "inherit");
           updateSelection(foundModelReq, !hasClassSelected);
         });
         editor.fire("selectionReqElem", { value: reqsSelected });
@@ -123,13 +137,11 @@ export class CustomListPlugin extends Plugin {
   }
 
   destroy() {
-    this._removeEventListeners()
+    this._removeEventListeners();
     super.destroy();
   }
 
   _keyDownHandler(event) {
-
-
     // Проверяем, нажата ли клавиша Ctrl (или Cmd для macOS)
     const _isCtrlPressed = event.ctrlKey || event.metaKey; // metaKey для macOS
     isCtrlPressed = _isCtrlPressed;

@@ -84,6 +84,7 @@ export function updateMarkers(editor) {
     editor.set("allReqData", getAllReqData(editor));
     findAllCsmLinksByName(editor, "customLinkTT");
   }, 10);
+  editor.plugins.get("CustomListPlugin")?._updateReqsSelected()
 }
 
 function findAllCsmLinksByName(editor, name) {
@@ -234,7 +235,7 @@ export function getValueAttrsByWrapElem(editor, containerElement, attr) {
   return resArray;
 }
 
-export function findAllElementsByName(editor, elementName, parentRoot, rangeIn) {
+export function findAllElementsByName(editor, elementName, parentRoot, rangeIn, convertToView) {
   const findElements = [];
   const range = editor.model.createRangeIn(rangeIn || editor.model.document.getRoot());
   for (const value of range.getWalker({ ignoreElementEnd: true })) {
@@ -248,7 +249,8 @@ export function findAllElementsByName(editor, elementName, parentRoot, rangeIn) 
         ? isParentRoot(value.item)
         : true)
     ) {
-      findElements.push(value.item);
+      const item = convertToView ? modelToViewElem(editor, value.item) : value.item;
+      findElements.push(item);
     }
   }
 

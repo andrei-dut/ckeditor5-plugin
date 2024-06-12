@@ -66,25 +66,9 @@ export default class CustomListCommand extends Command {
     const editor = this.editor;
     editor.model.change((writer) => {
       const prevSibling = getPreviousSibling(parent);
-      // const isReqChild = parent?.getAttribute("data-is-child")?.includes("true");
-      // const isPrevReqChild = prevSibling?.getAttribute("data-is-child")?.includes("true");
-
-      // if(isReqChild && !isPrevReqChild) {
-
-      // }
-
       if (prevSibling?.name !== "requirement") {
         return;
       }
-
-      // const isReqChild = parent?.getAttribute("data-is-child")?.includes("true");
-      // const elemMarker = getModelElement(editor, parent, "span");
-      //   if(isReqChild && elemMarker && elemMarker.getChild(0)) {
-      //     const data = elemMarker.getChild(0).data;
-      //     const is1a = data?.includes('1а')
-      //     if(is1a);
-      //     console.log(data, is1a);
-      //   }
 
       writer.move(writer.createRangeOn(parent), prevSibling, "before");
       updateMarkers(editor, parent);
@@ -153,11 +137,10 @@ export default class CustomListCommand extends Command {
     if (!reqs) {
       console.warn("No parent requirement passed.");
     }
-
     editor.RATData.isNewRequirement = true;
     if (reqs?.length) {
-      reqs = reqs.map(re => viewToModelElem(editor, re))
-      reqs.forEach(element => {
+      reqs = reqs.map((re) => viewToModelElem(editor, re));
+      reqs.forEach((element) => {
         switch (options.type) {
           case "moveUp":
             this.moveUpReq(element);
@@ -174,7 +157,7 @@ export default class CustomListCommand extends Command {
           case "levelDown":
             this.leveDownReq(element);
             break;
-  
+
           case "addNew": {
             const req = this.createNewReq(options);
             if (req) {
@@ -189,7 +172,6 @@ export default class CustomListCommand extends Command {
         }
       });
     }
-
   }
 }
 
