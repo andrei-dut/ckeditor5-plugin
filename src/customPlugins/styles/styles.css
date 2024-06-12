@@ -317,3 +317,7 @@ p {
 .ck-editor__main tr th {
   text-transform: inherit;
 }
+
+.ck-link-actions__preview.hidden {
+  display: none !important;
+}

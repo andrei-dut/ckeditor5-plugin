@@ -9,8 +9,8 @@ import {
 import { pencilIcon, unlinkIcon } from "./icons/insertSymbols";
 
 export class CustomLinkActionsView extends View {
-  constructor(locale, editor) {
-    super(locale, editor);
+  constructor(locale, editor, hiddenPreviewBtn) {
+    super(locale, editor, hiddenPreviewBtn);
 
     const t = locale.t;
 
@@ -20,7 +20,7 @@ export class CustomLinkActionsView extends View {
 
     this.keystrokes = new KeystrokeHandler();
 
-    this.previewButtonView = this._createPreviewButton();
+    this.previewButtonView = this._createPreviewButton(hiddenPreviewBtn);
 
     this.unlinkButtonView = this._createButton(
       t("Unlink"),
@@ -123,7 +123,7 @@ export class CustomLinkActionsView extends View {
   /**
    * Creates a link href preview button.
    */
-  _createPreviewButton() {
+  _createPreviewButton(hiddenPreviewBtn) {
     const button = new ButtonView(this.locale);
     const bind = this.bindTemplate;
     const t = this.t;
@@ -135,7 +135,7 @@ export class CustomLinkActionsView extends View {
 
     button.extendTemplate({
       attributes: {
-        class: ["ck", "ck-link-actions__preview"],
+        class: ["ck", "ck-link-actions__preview", hiddenPreviewBtn ? "hidden" : undefined],
         // href: bind.to("href", (href) => href && ensureSafeUrl(href)),
         // target: "_blank",
         rel: "noopener noreferrer",

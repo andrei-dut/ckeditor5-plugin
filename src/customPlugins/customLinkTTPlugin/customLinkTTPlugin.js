@@ -217,7 +217,7 @@ export class CustomLinkTTPlugin extends Plugin {
 
   _createActionsView() {
     const editor = this.editor;
-    const actionsView = new CustomLinkActionsView(editor.locale, editor);
+    const actionsView = new CustomLinkActionsView(editor.locale, editor, true);
     const linkCommand = editor.commands.get("insertCsmLinkTT");
     const unlinkCommand = editor.commands.get("unlink");
     const LINK_KEYSTROKE = "Ctrl+K";
