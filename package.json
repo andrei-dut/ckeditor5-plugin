@@ -9,7 +9,7 @@
     "build": "webpack",
     "lint": "eslint .",
     "deploy": "gh-pages -d dist",
-    "build-babel-plugin": "npx babel src/customPlugins --out-dir src/csmPlgsBabel && npx ncp src/customPlugins/styles src/csmPlgsBabel/styles"
+    "build-babel-plugin": "npx babel src/customPlugins --out-dir src/csmPlgsBabel --ignore \"src/customPlugins/lib/**/*\" && npx ncp src/customPlugins/styles src/csmPlgsBabel/styles"
   },
   "author": "Andrei Dutkovsky",
   "license": "ISC",
