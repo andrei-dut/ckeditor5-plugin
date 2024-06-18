@@ -100,13 +100,13 @@ export const replaceElementsWithJsonContent = function (editor) {
     return resultString;
   };
 
-  rootChildren.forEach((req) => {
+  for (const req of rootChildren) {
     const modelRequirementBodyText = getModelElement(editor, req, "requirementBodyText");
     const viewRequirementBodyText = modelToViewElem(editor, modelRequirementBodyText);
     const reqBTDom = editor.editing.view.domConverter.mapViewToDom(viewRequirementBodyText);
     const reqMarker = getTextFromElement(getModelElement(editor, req, "span"));
     result.push(handlerElems(reqBTDom, reqMarker));
-  });
+  }
 
   const doneString = result.join("\n\n");
   let CP1251;
