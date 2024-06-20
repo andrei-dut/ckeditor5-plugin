@@ -84,14 +84,14 @@ export function updateMarkers(editor) {
     editor.set("allReqData", getAllReqData(editor));
     findAllCsmLinksByName(editor, "customLinkTT");
   }, 10);
-  editor.plugins.get("CustomListPlugin")?._updateReqsSelected()
+  editor.plugins.get("CustomListPlugin")?._updateReqsSelected();
 }
 
 function findAllCsmLinksByName(editor, name) {
   const root = editor.model.document.getRoot();
 
   const _getChildren = function (elem) {
-    elem.getChildren().forEach((element) => {
+    for (const element of elem.getChildren()) {
       if (element.getAttribute(name)) {
         const viewElemParent = modelToViewElem(editor, element.parent);
         for (const iterator of viewElemParent.getChildren()) {
@@ -100,29 +100,33 @@ function findAllCsmLinksByName(editor, name) {
             const elemMarkerReq = editor.allReqData.find(
               (item) => item.id === linkElement.getAttribute("href")
             );
-            if(elemMarkerReq) editor.model.change((writer) => {
-              function objectToMap(obj) {
-                const map = new Map();
+            if (elemMarkerReq)
+              editor.model.change((writer) => {
+                function objectToMap(obj) {
+                  const map = new Map();
 
-                for (const key in obj) {
-                  map.set(key, obj[key]);
+                  for (const key in obj) {
+                    map.set(key, obj[key]);
+                  }
+
+                  return map;
                 }
 
-                return map;
-              }
-
-              function toMap(data) {
-                return objectToMap(data);
-              }
-              const selection = editor.model.document.selection;
-              const attributes = toMap(selection.getAttributes());
-              attributes.set("customLinkTT", { href: linkElement.getAttribute("href"), text: elemMarkerReq.marker });
-              editor.model.insertContent(
-                writer.createText(String(elemMarkerReq.marker), attributes),
-                writer.createPositionAfter(element)
-              );
-              writer.remove(element);
-            });
+                function toMap(data) {
+                  return objectToMap(data);
+                }
+                const selection = editor.model.document.selection;
+                const attributes = toMap(selection.getAttributes());
+                attributes.set("customLinkTT", {
+                  href: linkElement.getAttribute("href"),
+                  text: elemMarkerReq.marker,
+                });
+                editor.model.insertContent(
+                  writer.createText(String(elemMarkerReq.marker), attributes),
+                  writer.createPositionAfter(element)
+                );
+                writer.remove(element);
+              });
           }
         }
       }
@@ -130,7 +134,7 @@ function findAllCsmLinksByName(editor, name) {
       if (element.getChildren) {
         _getChildren(element);
       }
-    });
+    }
   };
 
   _getChildren(root);
