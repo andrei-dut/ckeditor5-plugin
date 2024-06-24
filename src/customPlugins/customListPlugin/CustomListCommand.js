@@ -129,7 +129,9 @@ export default class CustomListCommand extends Command {
 
     const options = { after: "", ..._options };
     const foundModelReq = findElemInSelectionByName(editor, "requirement", undefined, true);
-    options.after = foundModelReq;
+    options.after = foundModelReq?.getAttribute("class")?.includes("ck-widget_selected")
+      ? foundModelReq
+      : undefined;
     let reqs =
       editor.plugins.get("CustomListPlugin")?._reqsSelected ||
       (options.after ? [options.after] : null) ||
@@ -138,6 +140,17 @@ export default class CustomListCommand extends Command {
       console.warn("No parent requirement passed.");
     }
     editor.RATData.isNewRequirement = true;
+
+    if (options.type === "addNew") {
+      const req = this.createNewReq(options);
+
+      if (req) {
+        updateMarkers(editor, req);
+        scrollToNewWidget(req, editor);
+      }
+      removeAllParagraph(editor);
+    }
+
     if (reqs?.length) {
       reqs = reqs.map((re) => viewToModelElem(editor, re));
       reqs.forEach((element) => {
@@ -157,16 +170,6 @@ export default class CustomListCommand extends Command {
           case "levelDown":
             this.leveDownReq(element);
             break;
-
-          case "addNew": {
-            const req = this.createNewReq(options);
-            if (req) {
-              updateMarkers(editor, req);
-              scrollToNewWidget(req, editor);
-            }
-            removeAllParagraph(editor);
-            break;
-          }
           default:
             break;
         }
