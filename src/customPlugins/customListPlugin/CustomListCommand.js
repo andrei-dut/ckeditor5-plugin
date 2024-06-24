@@ -149,6 +149,7 @@ export default class CustomListCommand extends Command {
         scrollToNewWidget(req, editor);
       }
       removeAllParagraph(editor);
+      return;
     }
 
     if (reqs?.length) {
