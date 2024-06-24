@@ -1,5 +1,5 @@
 import { getModelElement, getTextFromElement, modelToViewElem } from "./editorUtils";
-import * as windows1251 from './lib/windows-1251/windows-1251.mjs';
+import iconv from "./lib/iconv-lite";
 
 export const replaceElementsWithJsonContent = function (editor) {
   const root = editor.model.document.getRoot();
@@ -114,7 +114,7 @@ export const replaceElementsWithJsonContent = function (editor) {
   try {
   
   const toCP1251 = function(text) {
-    return windows1251.encode(text);
+    return iconv.encode(text, 'win1251');
   }
   CP1251 = toCP1251(doneString);
   } catch (error) {
