@@ -12,6 +12,7 @@ export default class CopyCutPasteCmd extends Command {
     const model = editor.model;
 
     function _onPaste(_hardContent) {
+
       let content = "";
       let contentString = "";
 
@@ -22,7 +23,7 @@ export default class CopyCutPasteCmd extends Command {
           content = plainTextToHtml(dataTransfer.getData("text/plain"));
         }
         const copyCutReq = window.localStorage.getItem("copyCutReq");
-        if (!content?.includes(contentIncludes) && copyCutReq?.includes(contentIncludes)) {
+        if ((!content?.includes(contentIncludes) && copyCutReq?.includes(contentIncludes)) || copyCutReq?.includes(contentIncludes)) {
           content = copyCutReq;
         }
         contentString = content;
@@ -33,6 +34,7 @@ export default class CopyCutPasteCmd extends Command {
       }
 
       content = (content || "").replace(`<divider/>`, "");
+      content = (content || "").replace(`ck-requirement_selected`, "");
       content = editor.data.htmlProcessor.toView(content);
 
       function inputTransformation(_data) {
