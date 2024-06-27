@@ -88,6 +88,7 @@ export default class InsertCdmLinkTTCmd extends Command {
             writer.createText(text, attributes),
             position
           );
+          writer.insertText(' ', positionAfter);
 
           writer.setSelection(positionAfter);
         }

@@ -63,6 +63,8 @@ export default class InsertCdmLinkPositionCmd extends Command {
             position
           );
 
+          writer.insertText(' ', positionAfter);
+
           writer.setSelection(positionAfter);
         }
       });

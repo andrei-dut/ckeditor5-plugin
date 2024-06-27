@@ -62,6 +62,8 @@ export default class InsertCustomLinkCommand extends Command {
             position
           );
 
+          writer.insertText(' ', positionAfter);
+
           writer.setSelection(positionAfter);
         }
       });
