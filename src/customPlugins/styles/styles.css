@@ -183,11 +183,15 @@ p {
 .dropdown-designation {
   position: relative;
   border: 1px solid;
-  max-width: 40px;
+  max-width: 44px;
   display: flex;
   margin-right: auto;
   justify-content: space-between;
   cursor: pointer;
+}
+
+.dropdown-designation .dropdown-designation-value{
+  padding: 0 4px;
 }
 
 .dropdown-designation-content {

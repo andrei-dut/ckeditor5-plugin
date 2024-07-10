@@ -146,14 +146,17 @@ function addModal(content) {
 
   if (saveBtn) {
     saveBtn.onclick = function () {
+      const currentValues = getCurrentValues();
+      updateY(undefined, currentValues.y);
       const svgElement = document.querySelector("#wrapSvg svg");
       if (svgElement?.outerHTML)
         emitter.emit(
           "insertIcon",
           svgElement,
           "roughness",
-          Object.assign(getCurrentValues(), { type: _selectedRaID })
+          Object.assign(currentValues, { type: _selectedRaID })
         );
+
       modal.remove();
     };
   }
@@ -172,16 +175,19 @@ function addModal(content) {
       setSizesSvg();
     });
   }
+
+  function updateY(e, hardValue) {
+    const newText = hardValue !== undefined ? hardValue : this?.value;
+    const svgElement = document.querySelector("#wrapSvg svg");
+    const targetTextElement = findTextTagInSVG(svgElement, "y");
+    if (targetTextElement) {
+      targetTextElement.textContent = newText;
+    }
+    setSizesSvg();
+  }
+
   if (processingMethod) {
-    processingMethod.addEventListener("input", function () {
-      const newText = this.value;
-      const svgElement = document.querySelector("#wrapSvg svg");
-      const targetTextElement = findTextTagInSVG(svgElement, "y");
-      if (targetTextElement) {
-        targetTextElement.textContent = newText;
-      }
-      setSizesSvg();
-    });
+    processingMethod.addEventListener("input", updateY);
   }
 
   modalContent.appendChild(closeButton);
@@ -423,6 +429,7 @@ export const showModal = () =>
           <div>M</div>
           <div>C</div>
           <div>R</div>
+          <div>=</div>
         </div>
       </div>
       </div>
