@@ -95,7 +95,7 @@ export const mathSymbolsForEditor = [
   { character: "□", title: "" },
 ];
 
-export const customSpecialCharacters = [
+export const customSpecialCharactersItems = [
   {
     groupName: "Mathematical",
     items: mathSymbolsForEditor,

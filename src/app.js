@@ -4,9 +4,9 @@ import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlu
 import CustomListPlugin from "./customPlugins/customListPlugin/customListPlugin";
 import { viewToModelElem } from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
-import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
-import { customSpecialCharacters } from "./customPlugins/vars";
+import { getArrayImgObjByHtmlString } from "./customPlugins/utils";;
 import "./customPlugins/styles/styles.css";
+import { CustomSpecialCharactersPlugin } from "./customPlugins/customSpecialCharactersPlugin/customSpecialCharactersPlugin";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -65,7 +65,7 @@ class Editor extends ClassicEditor {
         "Subscript",
         "customList",
 
-
+"customSpecialCharacters",
 
         "add",
         "remove",
@@ -77,7 +77,6 @@ class Editor extends ClassicEditor {
     },
     removePlugins: ["ImageResize", "FontColor"],
     language: "ru",
-    customSpecialCharacters,
   };
 }
 
@@ -85,6 +84,9 @@ Editor.builtinPlugins.push(IconPickerPlugin);
 Editor.builtinPlugins.push(CustomLinkPlugin);
 Editor.builtinPlugins.push(CopyCutPastePlugin);
 Editor.builtinPlugins.push(CustomListPlugin);
+Editor.builtinPlugins.push(CustomSpecialCharactersPlugin);
+
+
 
 // delete selected content editor.model.deleteContent(modelSelect)
 
