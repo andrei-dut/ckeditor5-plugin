@@ -16,7 +16,6 @@ import {
 } from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";
-import { customSpecialCharacters } from "./customPlugins/vars";
 import "./customPlugins/styles/styles.css";
 import { parseReqDivTags } from "./utils/utils";
 import { TestPlugin } from "./testPlugin/testPlugin";
@@ -29,6 +28,7 @@ import { dataSvgToXml, replaceStringToNX } from "./customPlugins/icons/utils";
 import { replaceElementsWithJsonContent } from "./customPlugins/handlerElemsToNX";
 import { CustomLinkTTPlugin } from "./customPlugins/customLinkTTPlugin/customLinkTTPlugin";
 import { showLinkTTModal } from "./customPlugins/customLinkTTPlugin/csmLinkTTModal";
+import { CustomSpecialCharactersPlugin } from "./customPlugins/customSpecialCharactersPlugin/customSpecialCharactersPlugin";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -106,13 +106,13 @@ class Editor extends ClassicEditor {
         "levelUp",
         "levelDown",
         "|",
+        "customSpecialCharacters",
         "customLinkPosition",
         "customLinkTT",
       ],
     },
     removePlugins: ["ImageResize", "FontColor"],
     language: "ru",
-    customSpecialCharacters,
     style: [
       {
         name: "backgroung: red;",
@@ -132,6 +132,7 @@ Editor.builtinPlugins.push(AllowancePlugin);
 Editor.builtinPlugins.push(ParametrPlugin);
 Editor.builtinPlugins.push(CustomLinkPositionPlugin);
 Editor.builtinPlugins.push(CustomLinkTTPlugin);
+Editor.builtinPlugins.push(CustomSpecialCharactersPlugin);
 
 // delete selected content editor.model.deleteContent(modelSelect)
 

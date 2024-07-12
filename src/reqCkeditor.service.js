@@ -17,6 +17,9 @@ export const ViewCollection = ckeditor.ViewCollection;
 export const ContextualBalloon = ckeditor.ContextualBalloon;
 export const clickOutsideHandler = ckeditor.clickOutsideHandler;
 export const toWidgetEditable = ckeditor.toWidgetEditable;
+export const addListToDropdown = ckeditor.addListToDropdown;
+export const Model = ckeditor.Model;
+export const Collection = ckeditor.Collection;
 
 export const Matcher = ckeditor.Matcher;
 
