@@ -3,8 +3,20 @@
   margin-left: 40px;
   margin-right: 40px;
   display: flex;
-  flex-wrap: wrap;
 }
+
+.ck.ck-editor__editable_inline {
+  padding-top: var(--ck-spacing-large) !important;
+}
+
+.ck-editor__main .requirement.ck-widget_selected {
+  outline: none;
+}
+
+.ck-editor__main .requirement.ck-requirement_selected {
+  outline: var(--ck-widget-outline-thickness) solid var(--ck-color-focus-border) !important
+}
+
 .ck-editor__main .requirement .requirement {
   width: 100%;
   margin-right: 0;
@@ -138,16 +150,7 @@
   width: 16px;
   cursor: pointer;
 }
-.ck-editor__main .aw-requirement-tocsettings {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 16px;
-  max-height: 16px;
-  float: left;
-  margin-left: -37px;
-  margin-top: 17px;
-  cursor: pointer;
-}
+
 .ck-editor__main .aw-requirement-tocUnderlineOnHover:hover {
   text-decoration: underline;
   cursor: pointer;

@@ -2,6 +2,27 @@
   width: 45px;
 }
 
+.ck-button.customTextIcon > svg {
+  /* width: auto; */
+}
+
+.image-inline#spec8,
+.image-inline#spec9,
+.image-inline#triangleRight,
+.image-inline#arc,
+.image-inline#mult1,
+.image-inline#circleXXX,
+.image-inline#mult2 {
+  width: auto;
+  vertical-align: middle;
+}
+
+.image-inline#roughness {
+  width: auto;
+  /* width: 85px; */
+}
+
+
 .ck.ck-reset_all svg.ck-button__icon text > tspan {
   font-size: inherit;
 }
@@ -162,11 +183,15 @@ p {
 .dropdown-designation {
   position: relative;
   border: 1px solid;
-  max-width: 40px;
+  max-width: 44px;
   display: flex;
   margin-right: auto;
   justify-content: space-between;
   cursor: pointer;
+}
+
+.dropdown-designation .dropdown-designation-value{
+  padding: 0 4px;
 }
 
 .dropdown-designation-content {
@@ -246,10 +271,9 @@ p {
   padding-top: 36px;
 }
 .complexSvgModal-content-1 .wrap-svg-temp {
-  width: 80px;
+  width: auto;
 }
 .complexSvgModal-content-1 .wrap-svg-temp svg {
-  width: 100%;
   height: 100%;
 }
 
@@ -296,4 +320,8 @@ p {
 }
 .ck-editor__main tr th {
   text-transform: inherit;
+}
+
+.ck-link-actions__preview.hidden {
+  display: none !important;
 }

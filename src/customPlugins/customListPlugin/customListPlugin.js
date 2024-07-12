@@ -1,51 +1,90 @@
-import { Plugin } from "../../ckeditor";
-import CustomLiCommand from "./customLiCommand";
+import { Plugin } from "../../reqCkeditor.service";
+import CustomListCommand from "./CustomListCommand";
 import {
   _defineContentConversion,
   _defineMarkerConversion,
   _defineRequirementConversion,
-} from "./customLiConversion";
+} from "./customListConversion";
 import "../styles/stylesCustomListPl.css";
-
-import { createTestItemToolbar } from "../../createTestItemToolbar";
 import {
-  addIcon,
-  levelDownIcon,
-  levelUpIcon,
-  moveDownIcon,
-  moveUpIcon,
-  removeIcon,
-} from "../../icons";
+  findAllElementsByName,
+  findElemInSelectionByName,
+  findParent,
+  modelToViewElem,
+  viewToModelElem,
+} from "../editorUtils";
 
 let editor;
-export default class CustomListPlugin extends Plugin {
+let isCtrlPressed = false;
+let reqsSelected = [];
+export class CustomListPlugin extends Plugin {
+  static get pluginName() {
+    return "CustomListPlugin";
+  }
+
+  get _reqsSelected() {
+    return reqsSelected;
+  }
+
+  _updateReqsSelected() {
+    setTimeout(() => {
+      let allReq = findAllElementsByName(editor, "requirement", undefined, undefined, true);
+      allReq = allReq.filter((re) => re.getAttribute("class")?.includes("ck-requirement_selected"));
+      if (allReq) reqsSelected = allReq;
+    });
+  }
+
   init() {
+    console.log("INIT_CustomListPlugin");
     editor = this.editor;
     this.editor.RATData = {};
     this._defineSchema();
     this._defineConversion();
+    this._addEventListeners();
+    this.editor.commands.add("insertCustomList", new CustomListCommand(editor));
 
-    editor.commands.add("insertCustomLi", new CustomLiCommand(editor));
+    this.listenTo(editor.editing.view.document, "click", (e, domEventData) => {
+      let foundModelReq = findElemInSelectionByName(editor, "requirement", true, true);
 
-    createTestItemToolbar(editor, "add", addIcon, () => {
-      editor.execute("insertCustomLi", { type: "addNew" });
-    });
-    createTestItemToolbar(editor, "remove", removeIcon, () => {
-      editor.execute("insertCustomLi", { type: "remove" });
-    });
-    createTestItemToolbar(editor, "moveUp", moveUpIcon, () => {
-      editor.execute("insertCustomLi", { type: "moveUp" });
-    });
-    createTestItemToolbar(editor, "moveDown", moveDownIcon, () => {
-      editor.execute("insertCustomLi", { type: "moveDown" });
-    });
-    createTestItemToolbar(editor, "levelUp", levelUpIcon, () => {
-      editor.execute("insertCustomLi", { type: "levelUp" });
-    });
-    createTestItemToolbar(editor, "levelDown", levelDownIcon, () => {
-      editor.execute("insertCustomLi", { type: "levelDown" });
-    });
+      const domTarget = domEventData.domTarget; // Получаем кликнутый элемент
+      const viewElement = editor.editing.view.domConverter.mapDomToView(domTarget); // Преобразуем DOM элемент в view элемент CKEditor
+      const modelElement = viewToModelElem(editor, viewElement);
+      const parentReq = modelToViewElem(editor, findParent(modelElement, "requirement"));
 
+      const clickedSelectedReq = parentReq === foundModelReq;
+      foundModelReq = !clickedSelectedReq && parentReq ? parentReq : foundModelReq;
+
+      if (foundModelReq) {
+        editor.editing.view.change((writer) => {
+          const selectedClass = "ck-requirement_selected";
+          const hasClassSelected = foundModelReq.hasClass(selectedClass);
+
+          const updateSelection = (req, add) => {
+            if (add) {
+              reqsSelected.push(req);
+              writer.addClass(selectedClass, req);
+            } else {
+              const index = reqsSelected.indexOf(req);
+              if (index > -1) {
+                reqsSelected.splice(index, 1);
+                writer.removeClass(selectedClass, req);
+              }
+            }
+            const classViewReq = req.getAttribute("class");
+            const modelReq = viewToModelElem(editor, req);
+            modelReq?._setAttribute("class", classViewReq);
+          };
+
+          if (!isCtrlPressed) {
+            reqsSelected.forEach((req) => writer.removeClass(selectedClass, req));
+            reqsSelected.length = 0;
+          }
+          foundModelReq._setStyle("--ck-widget-outline-thickness", "inherit");
+          updateSelection(foundModelReq, !hasClassSelected);
+        });
+        editor.fire("selectionReqElem", { value: reqsSelected });
+      }
+    });
 
     // function handleKeystrokeEvents() {
     //     editor.keystrokes.set( 'Ctrl+Enter', ( data, cancel ) => {
@@ -98,7 +137,29 @@ export default class CustomListPlugin extends Plugin {
   }
 
   destroy() {
+    this._removeEventListeners();
     super.destroy();
+  }
+
+  _keyDownHandler(event) {
+    // Проверяем, нажата ли клавиша Ctrl (или Cmd для macOS)
+    const _isCtrlPressed = event.ctrlKey || event.metaKey; // metaKey для macOS
+    isCtrlPressed = _isCtrlPressed;
+  }
+  _keyUpHandler(event) {
+    // Проверяем, была ли отпущена клавиша Ctrl (или Cmd для macOS)
+    const _isCtrlPressed = event.ctrlKey || event.metaKey; // metaKey для macOS
+    isCtrlPressed = _isCtrlPressed;
+  }
+
+  _addEventListeners() {
+    document.addEventListener("keydown", this._keyDownHandler);
+    document.addEventListener("keyup", this._keyUpHandler);
+  }
+
+  _removeEventListeners() {
+    document.removeEventListener("keydown", this._keyDownHandler);
+    document.removeEventListener("keyup", this._keyUpHandler);
   }
 
   _defineSchema() {
@@ -113,22 +174,19 @@ export default class CustomListPlugin extends Plugin {
         "id",
         "lmd",
         "objecttype",
-        "itemtype",
-        "parentid",
-        "parenttype",
         "siblingid",
         "siblingtype",
-        "parentitemtype",
         "contenteditable",
         "revisionid",
         "top_line",
         "style",
         "checkedoutby",
         "checkedouttime",
+        "data-custom_comment",
+        "data-is-child",
       ],
       isObject: true,
       isBlock: true,
-      allowIn: "requirement",
     });
 
     schema.register("requirementMarker", {
@@ -248,16 +306,16 @@ export default class CustomListPlugin extends Plugin {
       },
     });
 
-    editor.conversion.attributeToAttribute({
-      model: {
-        name: "requirement",
-        key: "parentid",
-      },
-      view: {
-        name: "div",
-        key: "parentid",
-      },
-    });
+    // editor.conversion.attributeToAttribute({
+    //   model: {
+    //     name: "requirement",
+    //     key: "parentid",
+    //   },
+    //   view: {
+    //     name: "div",
+    //     key: "parentid",
+    //   },
+    // });
 
     schema.extend("$text", { allowIn: ["span", "div"], allowAttributes: "highlight" });
     schema.extend("$block", { allowIn: ["requirementContent", "requirementBodyText"] });

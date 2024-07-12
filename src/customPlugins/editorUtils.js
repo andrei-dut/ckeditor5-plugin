@@ -1,21 +1,249 @@
+import { ButtonView } from "../reqCkeditor.service";
+import { getRandomId, numberToRussianLetter } from "./utils";
 
+export function removeParagraphBetweenReq(editor) {
+  const allParagraph = findAllElementsByName(editor, "paragraph");
+  allParagraph.forEach((paragraph) => {
+    if (
+      isParentRoot(paragraph) &&
+      getNextSibling(paragraph)?.name === "requirement" &&
+      getPreviousSibling(paragraph)?.name === "requirement"
+    ) {
+      editor.model.change((writer) => {
+        writer.remove(paragraph);
+      });
+    }
+  });
+}
 
-export function getModelElement(editor, containerElement, nameModelEle) {
-  if(!containerElement) 
-    return null;
-  const range = editor.model.createRangeIn(containerElement);
-  for (const modelElement of range.getItems({ ignoreElementEnd: true })) {
-    if (modelElement.name === nameModelEle) {
-      return modelElement;
+export function removeAllParagraph(editor) {
+  const allParagraph = findAllElementsByName(editor, "paragraph");
+  if (allParagraph && allParagraph.length) {
+    allParagraph.forEach((paragraph) => {
+      if (isParentRoot(paragraph)) {
+        editor.model.change((writer) => {
+          writer.remove(paragraph);
+        });
+      }
+    });
+  }
+}
+
+export function createItemToolbar(editor, name, icon, cb, label) {
+  editor.ui.componentFactory.add(name, (locale) => {
+    const button = new ButtonView(locale);
+    button.set({
+      label: label || name,
+      icon,
+      tooltip: true,
+      isEnabled: true,
+      withText: icon ? false : true,
+    });
+    button.bind("isEnabled").to(editor, "isReadOnly", (value) => !value);
+    button.on("execute", () => {
+      cb();
+    });
+
+    return button;
+  });
+}
+
+export function updateMarkers(editor) {
+  const allReq = findAllElementsByName(editor, "requirement");
+  let countChild = 0;
+  allReq.forEach((req) => {
+    const prevReq = getPreviousSibling(req);
+    const isReqChild = req?.getAttribute("data-is-child")?.includes("true");
+    const isPrevReqChild = prevReq?.getAttribute("data-is-child")?.includes("true");
+    const elemMarker = getModelElement(editor, req, "span");
+    const prevElemMarker = getModelElement(editor, prevReq, "span");
+    const prevMarkerContent = getTextFromElement(prevElemMarker);
+    const prevMarkerNumber = prevMarkerContent ? parseInt(prevMarkerContent) : 0;
+
+    if (isReqChild) {
+      ++countChild;
+    }
+    if (isPrevReqChild && !isReqChild) {
+      countChild = 0;
+    }
+
+    editor.model.change((writer) => {
+      const markerText = `${isReqChild ? prevMarkerNumber : prevMarkerNumber + 1}${
+        isReqChild ? numberToRussianLetter(countChild) : ""
+      }`;
+      if (markerText.includes("0а")) {
+        writer.removeAttribute("data-is-child", req);
+        updateMarkers(editor);
+      } else {
+        writer.remove(elemMarker.getChild(0));
+        writer.insertText(markerText || "-", elemMarker);
+      }
+    });
+  });
+  setTimeout(() => {
+    editor.set("allReqData", getAllReqData(editor));
+    findAllCsmLinksByName(editor, "customLinkTT");
+  }, 10);
+  editor.plugins.get("CustomListPlugin")?._updateReqsSelected();
+}
+
+function findAllCsmLinksByName(editor, name) {
+  const root = editor.model.document.getRoot();
+
+  const _getChildren = function (elem) {
+    for (const element of elem.getChildren()) {
+      if (element.getAttribute(name)) {
+        const viewElemParent = modelToViewElem(editor, element.parent);
+        for (const iterator of viewElemParent.getChildren()) {
+          if (iterator.is("attributeElement") && editor.allReqData) {
+            const linkElement = iterator;
+            const elemMarkerReq = editor.allReqData.find(
+              (item) => item.id === linkElement.getAttribute("href")
+            );
+            if (elemMarkerReq)
+              editor.model.change((writer) => {
+                function objectToMap(obj) {
+                  const map = new Map();
+
+                  for (const key in obj) {
+                    map.set(key, obj[key]);
+                  }
+
+                  return map;
+                }
+
+                function toMap(data) {
+                  return objectToMap(data);
+                }
+                const selection = editor.model.document.selection;
+                const attributes = toMap(selection.getAttributes());
+                attributes.set("customLinkTT", {
+                  href: linkElement.getAttribute("href"),
+                  text: elemMarkerReq.marker,
+                });
+                editor.model.insertContent(
+                  writer.createText(String(elemMarkerReq.marker), attributes),
+                  writer.createPositionAfter(element)
+                );
+                writer.remove(element);
+              });
+          }
+        }
+      }
+
+      if (element.getChildren) {
+        _getChildren(element);
+      }
+    }
+  };
+
+  _getChildren(root);
+}
+
+export function getAllReqData(editor) {
+  const allReq = findAllElementsByName(editor, "requirement");
+  const markerReqs = [];
+
+  allReq.forEach((req) => {
+    const randomId = getRandomId();
+    let idReq = req.getAttribute("id");
+    if (!idReq) {
+      req._setAttribute("id", randomId);
+      idReq = randomId;
+    }
+    const elemMarker = getModelElement(editor, req, "span");
+    markerReqs.push({ id: idReq, markerModel: elemMarker, marker: getTextFromElement(elemMarker) });
+  });
+  return markerReqs;
+}
+
+export function findElemInSelectionByName(editor, name, offConvertToModel, isFirstElem) {
+  if (!editor && !editor.editing.view.document.selection) return null;
+  const selection = editor.editing.view.document.selection;
+  const fRange = selection.getFirstRange();
+  let foundElem;
+
+  if (fRange) {
+    for (const viewElem of fRange.getItems({ ignoreElementEnd: true })) {
+      const modelElem = viewToModelElem(editor, viewElem);
+      const result = offConvertToModel ? viewElem : modelElem;
+      if (modelElem?.name === name) {
+        foundElem = isFirstElem && foundElem ? foundElem : result;
+      }
     }
   }
+  return foundElem;
+}
+
+export function getEditElemByClassFromSelection(editor, _class) {
+  if (!editor && !editor.editing.view.document.selection) return null;
+  let elem = editor.editing.view.document.selection.editableElement;
+
+  while (elem) {
+    if (elem && _class) {
+      if (elem?.hasClass(_class)) {
+        return elem;
+      } else {
+        elem = elem?.parent;
+      }
+    } else {
+      return _class ? null : elem;
+    }
+  }
+
   return null;
 }
 
-export function findAllElementsByName(editor, elementName, parentRoot, rangeIn) {
+export function getModelElement(editor, containerElement, nameModelEle, isResArray) {
+  if (!containerElement) return null;
+  const range = editor.model.createRangeIn(containerElement);
+  const resArray = [];
+  for (const modelElement of range.getItems({ ignoreElementEnd: true })) {
+    if (modelElement.name === nameModelEle) {
+      if (isResArray) {
+        resArray.push(modelElement);
+      } else {
+        return modelElement;
+      }
+    }
+  }
+  return isResArray ? resArray : null;
+}
+
+export function getArrayDataJsonAttrIcons(editor) {
+  const root = editor.model.document.getRoot();
+  const rootChildren = root.getChildren();
+  const fullArrayJson = [];
+  rootChildren.forEach((req) => {
+    if (req.name !== "requirement") return;
+    const dataJsonStringArrray = getValueAttrsByWrapElem(editor, req, "data-json");
+    const dataJsonArray = [];
+    dataJsonStringArrray.forEach((data) => {
+      const _parse = JSON.parse(data);
+      if (Object.keys(_parse).length) dataJsonArray.push(_parse);
+    });
+    fullArrayJson.push(dataJsonArray);
+  });
+  return fullArrayJson;
+}
+
+export function getValueAttrsByWrapElem(editor, containerElement, attr) {
+  if (!containerElement) return null;
+  const range = editor.model.createRangeIn(containerElement);
+  const resArray = [];
+  for (const modelElement of range.getItems({ ignoreElementEnd: true })) {
+    if (modelElement.hasAttribute(attr)) {
+      resArray.push(modelElement.getAttribute(attr));
+    }
+  }
+  return resArray;
+}
+
+export function findAllElementsByName(editor, elementName, parentRoot, rangeIn, convertToView) {
   const findElements = [];
   const range = editor.model.createRangeIn(rangeIn || editor.model.document.getRoot());
   for (const value of range.getWalker({ ignoreElementEnd: true })) {
+    // console.log(value.item.is( 'attributeElement' ),value.item);
     if (
       value.item.is("element") &&
       value.item.name === elementName &&
@@ -25,9 +253,11 @@ export function findAllElementsByName(editor, elementName, parentRoot, rangeIn) 
         ? isParentRoot(value.item)
         : true)
     ) {
-      findElements.push(value.item);
+      const item = convertToView ? modelToViewElem(editor, value.item) : value.item;
+      findElements.push(item);
     }
   }
+
   return findElements;
 }
 
@@ -40,10 +270,12 @@ export function getTextFromElement(element) {
   return null;
 }
 
-export function findParent(element, parentName) {
+export function findParent(element, parentName, thisElem) {
   let currentElement = element;
 
   if (!currentElement) return null;
+
+  if (thisElem && currentElement.name === parentName) return currentElement;
 
   while (currentElement) {
     const parentElement = currentElement.parent;
@@ -65,7 +297,11 @@ export function findParent(element, parentName) {
 export function executeEditorCmd(editor, cmdName, arg) {
   const indentCommand = editor ? editor.commands.get(cmdName) : null;
   if (indentCommand?.execute) {
-    indentCommand.execute(arg);
+    if (editor.isReadOnly && indentCommand.executeForReadOnlyMode) {
+      indentCommand.executeForReadOnlyMode(arg);
+    } else {
+      indentCommand.execute(arg);
+    }
   }
 }
 
@@ -101,6 +337,13 @@ export function getNextSibling(selectedSubling) {
 export function viewToModelElem(editor, viewElem) {
   if (editor && viewElem) {
     return editor.editing.mapper.toModelElement(viewElem);
+  }
+  return null;
+}
+
+export function modelToViewElem(editor, modelElem) {
+  if (editor && modelElem) {
+    return editor.editing.mapper.toViewElement(modelElem);
   }
   return null;
 }
@@ -340,4 +583,3 @@ export function _createRange(writer, elem) {
   const after = writer.createPositionAfter(elem);
   return writer.createRange(before, after);
 }
-

@@ -24,6 +24,7 @@ import {
   ra3_5,
   ra3_6,
 } from "../icons/insertSymbols";
+import { replaceElemAttr } from "../icons/utils";
 
 const ra_All = {
   ra1_1,
@@ -47,6 +48,54 @@ const ra_All = {
 };
 
 let _selectedRaID = "ra1";
+
+function setSizesSvg() {
+  try {
+    const svgElement = document.querySelector("#wrapSvg svg");
+
+    const findSvgTextWithLongestContent = () => {
+      const texts = svgElement.querySelectorAll("svg text");
+
+      let longestText = null;
+      let maxX_End = 0;
+      let svgRectTextLongest;
+
+      texts.forEach((text) => {
+        const svgRectText = text.getBBox();
+        const xEndText = Math.ceil(svgRectText.width + svgRectText.x);
+        if (xEndText <= maxX_End) {
+          return;
+        }
+
+        longestText = text;
+        maxX_End = xEndText;
+        svgRectTextLongest = svgRectText;
+      });
+
+      return { longestText, svgRectTextLongest, xEndTextLongest: maxX_End };
+    };
+
+    const { xEndTextLongest } = findSvgTextWithLongestContent();
+    const path = svgElement.querySelector("path");
+    const svgChild_g = svgElement.querySelector("svg > g");
+    const svgChild_gWidth = svgChild_g.getBBox().width;
+    const viewBox = svgElement.getAttribute("viewBox");
+    const viewBoxValues = viewBox.split(" ");
+
+    if (!(viewBoxValues.length === 4 && viewBoxValues[2])) {
+      return;
+    }
+
+    replaceElemAttr(/L\s+\d+/, path, "d", `L ${xEndTextLongest}`);
+    const widthSvg = (Math.floor(svgChild_gWidth) + 15).toString();
+    viewBoxValues[2] = widthSvg;
+    const newViewBox = viewBoxValues.join(" ");
+    svgElement.setAttribute("viewBox", newViewBox);
+    svgElement.setAttribute("width", widthSvg);
+  } catch (error) {
+    console.log("setSizesSvg_error", error);
+  }
+}
 
 function addModal(content) {
   var modal = document.createElement("div");
@@ -97,9 +146,17 @@ function addModal(content) {
 
   if (saveBtn) {
     saveBtn.onclick = function () {
+      const currentValues = getCurrentValues();
+      updateY(undefined, currentValues.y);
       const svgElement = document.querySelector("#wrapSvg svg");
       if (svgElement?.outerHTML)
-        emitter.emit("insertIcon", svgElement, 'roughness', Object.assign(getCurrentValues(), {type:_selectedRaID}));
+        emitter.emit(
+          "insertIcon",
+          svgElement,
+          "roughness",
+          Object.assign(currentValues, { type: _selectedRaID })
+        );
+
       modal.remove();
     };
   }
@@ -115,26 +172,29 @@ function addModal(content) {
       if (targetTextElement) {
         targetTextElement.textContent = newText;
       }
+      setSizesSvg();
     });
   }
+
+  function updateY(e, hardValue) {
+    const newText = hardValue !== undefined ? hardValue : this?.value;
+    const svgElement = document.querySelector("#wrapSvg svg");
+    const targetTextElement = findTextTagInSVG(svgElement, "y");
+    if (targetTextElement) {
+      targetTextElement.textContent = newText;
+    }
+    setSizesSvg();
+  }
+
   if (processingMethod) {
-    processingMethod.addEventListener("input", function () {
-      const newText = this.value;
-      const svgElement = document.querySelector("#wrapSvg svg");
-      const targetTextElement = findTextTagInSVG(svgElement, "y");
-      if (targetTextElement) {
-        targetTextElement.textContent = newText;
-      }
-    });
+    processingMethod.addEventListener("input", updateY);
   }
 
   modalContent.appendChild(closeButton);
   modal.appendChild(modalContent);
   document.body.appendChild(modal);
 
-  const designations = modal.querySelectorAll(
-    ".dropdown-designation-content div"
-  );
+  const designations = modal.querySelectorAll(".dropdown-designation-content div");
   if (designations) {
     designations.forEach((item) => {
       item.addEventListener("click", function () {
@@ -168,12 +228,7 @@ function addModal(content) {
       modal.style.display = "none";
     }
   });
-
-  function openModal() {
-    modal.style.display = "flex";
-  }
-
-  return openModal;
+  setSizesSvg();
 }
 
 const getCurrentValues = () => {
@@ -198,7 +253,7 @@ const getCurrentValues = () => {
     currentValues.y = processingMethod.value;
   }
   return currentValues;
-}
+};
 
 const changePreviewSvg = (selectedRaID) => {
   const wrapPreviewElem = document.querySelector(".content-1-wrap-preview");
@@ -207,7 +262,6 @@ const changePreviewSvg = (selectedRaID) => {
   const inputsLength = inputs && inputs.length;
 
   const currentValues = getCurrentValues();
-
 
   const newWrapWithSvg = document.createElement("span");
   newWrapWithSvg.id = "wrapSvg";
@@ -233,25 +287,23 @@ const changePreviewSvg = (selectedRaID) => {
     const svgElement = newWrapWithSvg.querySelector("svg");
     const targetTextElement = findTextTagInSVG(svgElement, prop);
     if (targetTextElement) {
-      targetTextElement.textContent =
-        currentValues[prop] || targetTextElement.textContent;
+      targetTextElement.textContent = currentValues[prop] || targetTextElement.textContent;
     }
   }
 
   wrapPreviewElem?.appendChild(newWrapWithSvg);
   _selectedRaID = selectedRaID;
+  setSizesSvg();
 };
 
 function onInputForSvg() {
   const newText = this.value;
   const svgElement = document.querySelector("#wrapSvg svg");
-  const targetTextElement = findTextTagInSVG(
-    svgElement,
-    `x${this.id.slice(-1)}`
-  );
+  const targetTextElement = findTextTagInSVG(svgElement, `x${this.id.slice(-1)}`);
   if (targetTextElement) {
     targetTextElement.textContent = newText;
   }
+  setSizesSvg();
 }
 
 function addInput() {
@@ -354,7 +406,7 @@ export const showModal = () =>
       </div>
       <div class="processing-method">
         <label for="processingMethod">Способ обработки:</label>
-        <input type="text" id="processingMethod" name="processing-method" required minlength="1" maxlength="12" size="10" />
+        <input type="text" id="processingMethod" name="processing-method" required minlength="1"  size="10" />
       </div>
       <div class="roughness-parameters">
         <p>Параметры шероховатости:</p>
@@ -377,6 +429,7 @@ export const showModal = () =>
           <div>M</div>
           <div>C</div>
           <div>R</div>
+          <div>=</div>
         </div>
       </div>
       </div>

@@ -1,5 +1,5 @@
 
-import { Plugin, toWidget } from "../ckeditor";
+import { Plugin, toWidget } from "../reqCkeditor.service";
 import { cloneElem, createViewSvg } from "../utils/utils";
 
 // Регистрируем новый тип элемента "iconSvg"

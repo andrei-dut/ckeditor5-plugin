@@ -1,4 +1,4 @@
-import { Command } from "../../ckeditor";
+import { Command } from "../../reqCkeditor.service";
 import { findAttributeRange } from "../editorUtils";
 
 function objectToMap(obj) {
@@ -15,13 +15,15 @@ function toMap(data) {
   return objectToMap(data);
 }
 
-export default class InsertCustomLInkCommand extends Command {
-  refresh() {
+export default class InsertCustomLinkCommand extends Command {
+  refresh(cleckedLink) {
     const model = this.editor.model;
     const selection = model.document.selection;
     const { href, text } = selection.getAttribute("customLink") || {};
-    this.value = href;
-    this.set('linkLabel', text)
+    const _href = href || cleckedLink?.getAttribute('href');
+    const _text = text || cleckedLink?.getAttribute('data-text');
+    this.value = _href;
+    this.set('linkLabel', _text)
     this.isEnabled = true;
   }
 
@@ -59,6 +61,8 @@ export default class InsertCustomLInkCommand extends Command {
             writer.createText(text, attributes),
             position
           );
+
+          writer.insertText(' ', positionAfter);
 
           writer.setSelection(positionAfter);
         }

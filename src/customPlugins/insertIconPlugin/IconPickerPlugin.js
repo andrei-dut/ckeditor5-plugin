@@ -5,7 +5,7 @@ import {
   Plugin,
   addToolbarToDropdown,
   createDropdown,
-} from "../../ckeditor";
+} from "../../reqCkeditor.service";
 import { showModal } from "./roughnessModal";
 import { emitter } from "../utils";
 import InsertIconCommand from "./InsertIconCommand";
@@ -32,6 +32,7 @@ export class IconPickerPlugin extends Plugin {
         listItem.set({
           label: icon.label,
           icon: icon.icon,
+          class: icon.iconName
         });
 
         function insertIconFc(svgEl, iconName, svgValues) {

@@ -1,12 +1,33 @@
 import { ClassicEditor } from "./ckeditor";
 import { CopyCutPastePlugin } from "./customPlugins/copyCutPastePlugin/copyCutPastePlugin";
 import { CustomLinkPlugin } from "./customPlugins/customLinkPlugin/customLinkPlugin";
-import CustomListPlugin from "./customPlugins/customListPlugin/customListPlugin";
-import { viewToModelElem } from "./customPlugins/editorUtils";
+import { CustomListPlugin } from "./customPlugins/customListPlugin/customListPlugin";
+import {
+  executeEditorCmd,
+  findAllElementsByName,
+  getAllReqData,
+  getArrayDataJsonAttrIcons,
+  getModelElement,
+  getTextFromElement,
+  getValueAttrsByWrapElem,
+  modelToViewElem,
+  removeAllParagraph,
+  viewToModelElem,
+} from "./customPlugins/editorUtils";
 import { IconPickerPlugin } from "./customPlugins/insertIconPlugin/IconPickerPlugin";
 import { getArrayImgObjByHtmlString } from "./customPlugins/utils";;
 import "./customPlugins/styles/styles.css";
-import { CustomSpecialCharactersPlugin } from "./customPlugins/customSpecialCharactersPlugin/customSpecialCharactersPlugin";
+import { parseReqDivTags } from "./utils/utils";
+import { TestPlugin } from "./testPlugin/testPlugin";
+import { AllowancePlugin } from "./customPlugins/allowancePlugin/allowancePlugin";
+import "./style.css";
+import { ParametrPlugin } from "./customPlugins/parametrPlugin/parametrPlugin";
+import { CustomLinkPositionPlugin } from "./customPlugins/customLinkPositionPlugin/customLinkPositionPlugin";
+import { showLinkPositionModal } from "./customPlugins/customLinkPositionPlugin/csmLinkPositionModal";
+import { dataSvgToXml, replaceStringToNX } from "./customPlugins/icons/utils";
+import { replaceElementsWithJsonContent } from "./customPlugins/handlerElemsToNX";
+import { CustomLinkTTPlugin } from "./customPlugins/customLinkTTPlugin/customLinkTTPlugin";
+import { showLinkTTModal } from "./customPlugins/customLinkTTPlugin/csmLinkTTModal";
 
 // Ваша обычная HTML разметка
 const htmlString = `
@@ -38,10 +59,7 @@ class Editor extends ClassicEditor {
         "Undo",
         "Redo",
         "|",
-        "Bold",
-        "|",
-        "RemoveFormat",
-        "|",
+
         "/",
         "NumberedList",
         "BulletedList",
@@ -52,7 +70,6 @@ class Editor extends ClassicEditor {
         "FontBackgroundColor",
         "|",
         "/",
-        "Heading",
         "FontFamily",
         "FontSize",
         "|",
@@ -65,18 +82,43 @@ class Editor extends ClassicEditor {
         "Subscript",
         "customList",
 
-"customSpecialCharacters",
+        "test",
+        "test1",
+        "test2",
+        "allowance",
 
+        "copy",
+        "cut",
+        "paste",
+        "addReq",
+        "removeReq",
+        "levelUpReq",
+        "levelDownReq",
+        "moveUpReq",
+        "moveDownReq",
+        "parametr",
+        "|",
         "add",
         "remove",
         "moveUp",
         "moveDown",
         "levelUp",
         "levelDown",
+        "|",
+        "customLinkPosition",
+        "customLinkTT",
       ],
     },
     removePlugins: ["ImageResize", "FontColor"],
     language: "ru",
+    customSpecialCharacters,
+    style: [
+      {
+        name: "backgroung: red;",
+        element: "p",
+        classes: [],
+      },
+    ],
   };
 }
 
@@ -84,107 +126,77 @@ Editor.builtinPlugins.push(IconPickerPlugin);
 Editor.builtinPlugins.push(CustomLinkPlugin);
 Editor.builtinPlugins.push(CopyCutPastePlugin);
 Editor.builtinPlugins.push(CustomListPlugin);
-Editor.builtinPlugins.push(CustomSpecialCharactersPlugin);
-
-
+Editor.builtinPlugins.push(TestPlugin);
+Editor.builtinPlugins.push(AllowancePlugin);
+Editor.builtinPlugins.push(ParametrPlugin);
+Editor.builtinPlugins.push(CustomLinkPositionPlugin);
+Editor.builtinPlugins.push(CustomLinkTTPlugin);
 
 // delete selected content editor.model.deleteContent(modelSelect)
 
 Editor.create(document.querySelector("#editor"), {})
   .then((editor) => {
-    const liObjects = {
-      1: {
-        number: 1,
-        content: `Mix flour, baking powder, sugar, and salt.`,
-      },
-      2: { number: 2, content: `In another bowl, mix eggs, milk, and oil.` },
-      3: { number: 3, content: "Stir <span>both mixtures</span> together." },
-      4: {
-        number: 4,
-        content: "Fill <a data-text='321' href='123'>321</a> muffin tray 3/4 full.",
-      },
-      5: { number: 5, content: "Bake for 20 minutes." },
-    };
+    setTimeout(() => {
+    editor.set("allReqData", getAllReqData(editor));
+    }, 2000);
 
-    const _htmlContent = createHtmlFromLiObjects(liObjects);
-
-
-
-    // const textTEst = `<div class="requirement ck-widget"  revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
-    // <div class="aw-requirement-marker">
-    //   <typeicon class="aw-ckeditor-marker-element" title="Ревизия требования"><img class="aw-base-icon aw-aria-border" tabindex="0" alt="Ревизия требования" src="assets1712834111866/image/typeRequirementRevision48.svg"><br data-cke-filler="true"></typeicon>
-    //   <checkout class="aw-ckeditor-marker-element"></checkout>
-    //   <addelementicon class="aw-ckeditor-marker-element aw-ckeditor-linkAction aw-aria-border" tabindex="0" title="Добавить
-    // Одноуровневый элемент (Ctrl + Enter)
-    // Потомок (Shift + Enter)"><img class="aw-base-icon" src="assets1712834111866/image/cmdAdd24.svg" alt="Добавить
-    // Одноуровневый элемент (Ctrl + Enter)
-    // Потомок (Shift + Enter)"></addelementicon><tracelinkicon class="aw-requirement-sidebar-icon aw-commands-commandIconButton aw-requirement-create-tracelink aw-requirement-traceLinkIconButton aw-ckeditor-marker-element" title="Трассировка"><span><img class="aw-base-icon aw-aria-border" src="assets1712834111866/image/cmdCreateTraceLink24.svg" alt="Трассировка" tabindex="0"><br data-cke-filler="true"></span><div class="aw-requirement-tracelinkCount"></div></tracelinkicon></div><div class="aw-requirement-header" contenttype="TITLE" selected="false" isdirty="undefined"><h3><span class="aw-requirement-headerId aw-requirement-headerNonEditable">1 REQ-000004-</span><span class="aw-requirement-title aw-requirement-properties ck-editor__editable ck-editor__nested-editable" internalname="object_name" contenteditable="true">Заголовок</span></h3></div><div class="aw-requirement-content"><div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div></div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div></div></div>`;
-
-    // const textTEst = `<div class="requirement ck-widget"  revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
-    // <div class="aw-requirement-marker">
-    
-    //   <typeicon class="aw-ckeditor-marker-element" title="Ревизия требования">
-    //     <img class="aw-base-icon aw-aria-border" tabindex="0" alt="Ревизия требования" src="src/customPlugins/icons/svg1.svg"><br data-cke-filler="true">
-    //   </typeicon>
-
-    //   <typeicon class="aw-ckeditor-marker-element" title="Ревизия требования">
-    //     <img class="aw-base-icon aw-aria-border" tabindex="0" alt="Ревизия требования" src="assets1712834111866/image/typeRequirementRevision48.svg"><br data-cke-filler="true">
-    //   </typeicon>
-
-    // <tracelinkicon class="aw-requirement-sidebar-icon aw-commands-commandIconButton aw-requirement-create-tracelink aw-requirement-traceLinkIconButton aw-ckeditor-marker-element" title="Трассировка">
-    //   <span><img class="aw-base-icon aw-aria-border" src="assets1712834111866/image/cmdCreateTraceLink24.svg" alt="Трассировка" tabindex="0"><br data-cke-filler="true"></span>
-    //   <div class="aw-requirement-tracelinkCount"></div></tracelinkicon></div><div class="aw-requirement-header" contenttype="TITLE" selected="false" isdirty="undefined"><h3><span class="aw-requirement-headerId aw-requirement-headerNonEditable">1 REQ-000004-</span><span class="aw-requirement-title aw-requirement-properties ck-editor__editable ck-editor__nested-editable" internalname="object_name" contenteditable="true">Заголовок</span></h3></div><div class="aw-requirement-content"><div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div></div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div></div></div>`;
-
-    const textTEst = `<div class="requirement ck-widget" revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
+    const textTEst = `<div class="requirement ck-widget" data-custom_comment="111"  contenteditable="false"  id="req_1" >
     <div class="aw-requirement-marker">
     
       <span class="aw-ckeditor-marker-element" title="1">1</span>   
       </div>
       
       <div class="aw-requirement-content">
-        <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div>
-        </div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div>
+        <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true">
+        <p>Содержи        <span class="aw-req-allowance" data-json="{&quot;name&quot;:&quot;allowance&quot;,&quot;value&quot;:&quot;<C0.5000><T+45!-45><C>&quot;}">
       
-      
-      </div></div>`;
+        <span class="allowance-number">1</span>
+        <span class="allowance-number">2</span>
 
-    const textTEst01 = `<div class="requirement ck-widget" revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
+      </span>моеcv <span class="aw-req-parametrText ck-widget" data-type="text" contenteditable="false">ghghg</span>
+      
+
+      <img src="data:image/svg+xml;base64,CjxzdmcKICAgd2lkdGg9IjExLjUiCiAgIGhlaWdodD0iMTIuNSIKICAgdmlld0JveD0iMCAwIDExLjUwMDAwMSAxMi41IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmcxIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMuMiAoMDkxZTIwZSwgMjAyMy0xMS0yNSwgY3VzdG9tKSIKICAgc29kaXBvZGk6ZG9jbmFtZT0idHJpYW5nbGVSaWdodC5zdmciCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHNvZGlwb2RpOm5hbWVkdmlldwogICAgIGlkPSJuYW1lZHZpZXcxIgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6ZG9jdW1lbnQtdW5pdHM9InB4IgogICAgIGlua3NjYXBlOnpvb209IjQ1LjI1NDgzNCIKICAgICBpbmtzY2FwZTpjeD0iNS45MjIwMTkzIgogICAgIGlua3NjYXBlOmN5PSI1LjI5MjI1MjMiCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxOTIwIgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjEwMTciCiAgICAgaW5rc2NhcGU6d2luZG93LXg9Ii04IgogICAgIGlua3NjYXBlOndpbmRvdy15PSItOCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzEiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIiAvPgogIDxkZWZzCiAgICAgaWQ9ImRlZnMxIiAvPgogIDxnCiAgICAgaW5rc2NhcGU6bGFiZWw9ItCh0LvQvtC5IDEiCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yLjUzNTkyMTQsLTIuNzk5NzUwMikiIC8+CiAgPHBhdGgKICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgIGlua3NjYXBlOmxhYmVsPSJUcmlhbmdsZSIKICAgICBkPSJtIDAuOTUxMzAwOTUsMS4wNTM1MTcgdiAxMSBsIDkuNTI2Mjc5MDUsLTUuNSB6IgogICAgIGlkPSJwYXRoMTEiIC8+Cjwvc3ZnPgoK" alt="triangleRight" data-id="triangleRight" data-json="{}">
+      <a class="custom-link" href="123" data-text="textLink" data-json="21312">textLink</a>
+      </p>
+
+        </div>
+        </div>
+      
+      
+     </div>`;
+
+    const textTEst01 = `<div class="requirement ck-widget"  contenteditable="false"     >
     <div class="aw-requirement-marker">
     
       <span class="aw-ckeditor-marker-element" title="2">2</span>   
       </div>
       
       <div class="aw-requirement-content">
-        <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div>
-        </div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div>
-      
-      
-      </div></div>`;
+        <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv
+        
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAzNSAyMSIgdmVyc2lvbj0iMS4xIiBpZD0ibXVsdDIiIHN0eWxlPSJmb250LXNpemU6MTJweDsiIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIiB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+Cgo8ZyBpbmtzY2FwZTpsYWJlbD0iTGF5ZXIgMSIgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIgaWQ9ImxheWVyMSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNS42NzUyMjk1NDk0MDc5NTksIDApIj4KCiA8dGV4dCB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zdHJldGNoOm5vcm1hbDtmb250LXNpemU6aW5oZXJpdDtmb250LWZhbWlseTpzYW5zLXNlcmlmOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246J3NhbnMtc2VyaWYsIE5vcm1hbCc7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7ZmlsbDojMDAwMDAwO3N0cm9rZS13aWR0aDowLjk1MDgwNCIgeD0iMC45MDMxOTMxMiIgeT0iMTguNDg3MDI0IiBpZD0idGV4dDEiIHRyYW5zZm9ybT0ic2NhbGUoMC45OTY0ODkwOSwxLjAwMzUyMzMpIj48dHNwYW4gc29kaXBvZGk6cm9sZT0ibGluZSIgaWQ9InRzcGFuMSIgeD0iLTUuNjc1MjI5NTQ5NDA3OTU5IiB5PSIyMSIgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOmluaGVyaXQ7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidzYW5zLXNlcmlmLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO3N0cm9rZS13aWR0aDowLjk1MDgwNCI+MTwvdHNwYW4+PC90ZXh0PgoKICAgICAgPHRleHQgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOmluaGVyaXQ7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidzYW5zLXNlcmlmLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2ZpbGw6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC45MjE3NzciIHg9IjEyLjcyOTE5MSIgeT0iMTAuMTQ5NDk2IiBpZD0idGV4dDIiIHRyYW5zZm9ybT0ic2NhbGUoMS4wMDcyNTE3LDAuOTkyODAwNTIpIj48dHNwYW4gc29kaXBvZGk6cm9sZT0ibGluZSIgaWQ9InRzcGFuMiIgeD0iNi42NTI1NzE2NzgxNjE2MjEiIHk9IjEwLjE0OTQ5NiIgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOmluaGVyaXQ7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidzYW5zLXNlcmlmLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO3N0cm9rZS13aWR0aDowLjkyMTc3NyI+MjwvdHNwYW4+PC90ZXh0PgogPHRleHQgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOmluaGVyaXQ7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidzYW5zLXNlcmlmLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2ZpbGw6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4zNjkxOTkiIHg9IjIzLjU2MTgzNCIgeT0iMTkuNDAyOTEyIiBpZD0idGV4dDMiIHRyYW5zZm9ybT0ic2NhbGUoMC45ODI0NDg5OSwxLjAxNzg2NDUpIj48dHNwYW4gc29kaXBvZGk6cm9sZT0ibGluZSIgaWQ9InRzcGFuMyIgeD0iMTQiIHk9IjE5LjQwMjkxMiIgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc3RyZXRjaDpub3JtYWw7Zm9udC1zaXplOmluaGVyaXQ7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOidzYW5zLXNlcmlmLCBOb3JtYWwnO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO3N0cm9rZS13aWR0aDowLjM2OTE5OSI+MzwvdHNwYW4+PC90ZXh0PgogPHBhdGggc3R5bGU9ImZpbGw6bm9uZTtmaWxsLXJ1bGU6ZXZlbm9kZDtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC45ODU2MDhweDtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2Utb3BhY2l0eToxIiBkPSJNIDUuMTI4MjAyLDE4LjgwNzEyNyAxOS44NjExNjYsNS44MTI3NjEzIiBpZD0icGF0aDQiIGlua3NjYXBlOmNvbm5lY3Rvci10eXBlPSJwb2x5bGluZSIgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCI+PC9wYXRoPgoKPC9nPgo8L3N2Zz4=" alt="mult2" data-id="mult2" data-json="{&quot;name&quot;:&quot;mult2&quot;,&quot;value&quot;:&quot;1 <Q2!3> &quot;}">
+        <a class="custom-link-position" href="1" data-text="10">10</a>
+        </p></div>
+        </div>
+        
+  </div>`;
 
-    const textTEst2 = `<div class="requirement ck-widget"  revisionid="QVOAAAjKJqA8xB" contenteditable="false" parentitemtype="RequirementSpec" parenttype="RequirementSpec Revision" parentid="SR::N::Arm0RequirementSpecElement..Fnd0RequirementBOMLine..7.yPQXsC4c8HXNJD.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB..1..,,AWBCB" itemtype="Requirement" objecttype="Requirement Revision" lmd="" id="SR::N::Arm0RequirementElement..Fnd0RequirementBOMLine..7.Zb1wHEjq8HHqbB.w5AAAAjCJqA8xB..Q1DAAAjKJqA8xB.Group:/Thid_Q5NAAAjKJqA8xB.1..,,AWBCB" hastracelink="FALSE">
+    const textTEst2 = `<div class="requirement ck-widget"   contenteditable="false"     >
     <div class="aw-requirement-marker">
     
-      <span class="aw-ckeditor-marker-element" title="1">1а</span>   
+      <span class="aw-ckeditor-marker-element" title="3">3</span>   
       </div>
       
       <div class="aw-requirement-content">
         <div class="aw-requirement-bodytext ck-editor__editable ck-editor__nested-editable" isdirty="false" contenteditable="true"><p>Содержимоеcv</p></div>
-        </div><div class="ck ck-reset_all ck-widget__type-around"><div class="ck ck-widget__type-around__button ck-widget__type-around__button_before" title="Вставить параграф перед блоком"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__button ck-widget__type-around__button_after" title="Вставить параграф после блока"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8"><path d="M9.055.263v3.972h-6.77M1 4.216l2-2.038m-2 2 2 2.038"></path></svg></div><div class="ck ck-widget__type-around__fake-caret"></div>
-      
-      ${textTEst}
-      </div></div>`;
+        </div>
+        </div>`;
 
     setTimeout(() => {
-      editor.setData(
-        _htmlContent +
-          " " +
-          " " +
-          textTEst +
-          " " +
-          textTEst01 +
-          " " +
-          textTEst2 
-      );
+      editor.setData(`<p>${" " + " " + textTEst + " " + textTEst01 + " " + textTEst2}</p>`);
+      removeAllParagraph(editor);
+      // editor.set("isReadOnly", true);
     }, 500);
 
     console.log("Editor was initialized", editor);
@@ -201,6 +213,30 @@ Editor.create(document.querySelector("#editor"), {})
     //   window.selec = selection;
     // });
 
+    // setTimeout(() => {
+    //   editor.destroy()
+    // }, 10000);
+
+    editor.model.document.on(
+      "keydown",
+      () => {
+        console.log("keydown");
+      },
+      { priority: "high" }
+    );
+
+    editor.on(
+      "keyup",
+      () => {
+        console.log("keyup");
+      },
+      { priority: "high" }
+    );
+
+    editor.keystrokes.set("CTRL", () => {
+      console.log("keystrokes");
+    });
+
     editor.on("selectionLiElem", (e, currentData) => {
       console.log("selectionLiElem", currentData);
       const value = currentData.value;
@@ -208,10 +244,70 @@ Editor.create(document.querySelector("#editor"), {})
       model.change((writer) => {
         if (value) {
           value._setAttribute("data-custom_comment", 222);
-          writer.setAttribute("data-custom_comment", 222, viewToModelElem(editor, value));
-          console.log("data-custom_comment", 222, value, viewToModelElem(editor, value));
+          // writer.setAttribute("data-custom_comment", 222, viewToModelElem(editor, value));
+          console.log("data-custom_comment", 222, value);
         }
       });
+    });
+
+    editor.on("selectionReqElem", (e, currentData) => {
+      console.log("selectionReqElem", currentData);
+      const value = currentData.value;
+
+      // const reqString = reqDom.outerHTML;
+
+      // console.log("moveReqToLib_contents", reqDom, reqString);
+
+      const model = editor.model;
+      model.change((writer) => {
+        if (!Array.isArray(value)) {
+          console.log(value.addClass);
+
+          value._setAttribute("data-custom_comment", 222);
+          writer.setAttribute("data-custom_comment", 222, viewToModelElem(editor, value));
+          console.log("data-custom_comment", 222, value);
+        }
+      });
+    });
+
+    editor.on("csmLinkPositionEv", (e, currentData) => {
+      const { eventType, value } = currentData || {};
+      if (eventType === "editLinkPos") {
+        console.log("editLinkPos", value);
+        showLinkPositionModal(
+          [
+            { uid: 1, value: "value", position: "10" },
+            { uid: 2, value: "value2", position: "20" },
+            { uid: 3, value: "value3", position: "30" },
+            { uid: 4, value: "value4", position: "40" },
+          ],
+          value
+        );
+      }
+
+      if (eventType === "openModal") {
+        showLinkPositionModal([
+          { uid: 1, value: "value", position: "10" },
+          { uid: 2, value: "value2", position: "20" },
+          { uid: 3, value: "value3", position: "30" },
+          { uid: 4, value: "value4", position: "40" },
+        ]);
+      }
+    });
+
+    editor.on("csmLinkTTEv", (e, currentData) => {
+      const { eventType, value } = currentData || {};
+      const allReq = findAllElementsByName(editor, "requirement");
+      const allReqData = editor.allReqData;
+      console.log("csmLinkTTEv", allReq, allReqData);
+      if (eventType === "editLinkTT") {
+        console.log("editLinkTT", value);
+        showLinkTTModal(allReqData, value);
+      }
+
+      if (eventType === "openModal") {
+        showLinkTTModal(allReqData);
+      }
     });
 
     editor.on("customLinkEvent", (e, currentData) => {
@@ -243,10 +339,34 @@ Editor.create(document.querySelector("#editor"), {})
         //     console.log(e, args, newVal, oldVal);
         //   });
 
-        console.log(editor.getData());
-        console.log(getArrayImgObjByHtmlString(editor.getData()));
+        const htmlString = editor.getData();
+
+        const nx = replaceElementsWithJsonContent(editor);
+
+        console.log("replaceElementsWithJsonContent", nx);
+
+        const modelFragment = editor.data.processor.toView(htmlString);
+
+        const reqDom = editor.editing.view.domConverter.mapViewToDom(modelFragment);
+        console.log("reqDom", reqDom, editor.model.document.getRoot());
+
+        // const viewFragment = editor.editing.view.createDocumentFragment();
+        // const dom = editor.editing.view.domConverter.viewToDom( modelFragment, document, { bind: true } );
+
+        const arrayDataJsonAttrIcons = getArrayDataJsonAttrIcons(editor);
+        console.log("arrayDataJsonAttrIcons", arrayDataJsonAttrIcons);
+
+        console.log("parseReqDivTags", htmlString, parseReqDivTags(htmlString));
+
+        // console.log(modelFragment, dom);
+
+        console.log(getArrayImgObjByHtmlString(htmlString));
 
         console.log("openModal", value);
+        executeEditorCmd(editor, "insertCustomLink", {
+          href: 123,
+          text: "textLink",
+        });
       }
 
       // const currentData = _.find(arg)
@@ -271,6 +391,9 @@ Editor.create(document.querySelector("#editor"), {})
     editor.editing.view.document.on("blur", (...arg) => {
       console.log("foc", arg);
     });
+    // Пример использования функции
+    const distance = calculateDistanceToBottomOfWindow(".ck-editor__top");
+    console.log("Расстояние от нижней точки элемента до нижней точки окна:", distance);
   })
   .catch((error) => {
     console.error(error.stack);
@@ -353,3 +476,32 @@ function createHtmlFromLiObjects(liObjectsOrArray) {
 // const __htmlContent = createHtmlFromLiObjects(["a", "b", "c"]);
 // console.log(_htmlContent);
 // console.log(__htmlContent);
+
+function calculateDistanceToBottomOfWindow(className) {
+  // Находим элемент по классу
+  const element = document.querySelector(`${className}`);
+
+  console.log(element);
+
+  // Если элемент не найден, возвращаем null или другое значение
+  if (!element) {
+    console.warn(`Элемент с классом ${className} не найден.`);
+    return null;
+  }
+
+  // Получаем координаты и размеры элемента
+  const rect = element.getBoundingClientRect();
+
+  console.log(rect);
+
+  // Нижняя точка элемента
+  const elementBottom = rect.bottom;
+
+  // Высота окна
+  const windowHeight = window.innerHeight;
+
+  // Расчет расстояния от нижней точки элемента до нижней точки окна
+  const distance = Math.floor(windowHeight - elementBottom) - 20;
+
+  return distance;
+}

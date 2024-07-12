@@ -5,12 +5,12 @@ import {
   KeystrokeHandler,
   View,
   ViewCollection,
-} from "../ckeditor";
+} from "../reqCkeditor.service";
 import { pencilIcon, unlinkIcon } from "./icons/insertSymbols";
 
 export class CustomLinkActionsView extends View {
-  constructor(locale, editor) {
-    super(locale, editor);
+  constructor(locale, editor, hiddenPreviewBtn) {
+    super(locale, editor, hiddenPreviewBtn);
 
     const t = locale.t;
 
@@ -20,7 +20,7 @@ export class CustomLinkActionsView extends View {
 
     this.keystrokes = new KeystrokeHandler();
 
-    this.previewButtonView = this._createPreviewButton();
+    this.previewButtonView = this._createPreviewButton(hiddenPreviewBtn);
 
     this.unlinkButtonView = this._createButton(
       t("Unlink"),
@@ -31,7 +31,8 @@ export class CustomLinkActionsView extends View {
     this.editButtonView = this._createButton(
       t("Edit link"),
       pencilIcon,
-      "edit"
+      "edit",
+      "href"
     );
 
     this.set("href");
@@ -97,7 +98,7 @@ export class CustomLinkActionsView extends View {
     this._focusCycler.focusFirst();
   }
 
-  _createButton(label, icon, eventName) {
+  _createButton(label, icon, eventName, addProp) {
     const button = new ButtonView(this.locale);
 
     button.set({
@@ -105,6 +106,14 @@ export class CustomLinkActionsView extends View {
       icon,
       tooltip: true,
     });
+
+    if(addProp) {
+      button.bind(addProp).to(this, addProp, (text) => {
+        return text;
+      });
+    }
+
+
 
     button.delegate("execute").to(this, eventName);
 
@@ -114,7 +123,7 @@ export class CustomLinkActionsView extends View {
   /**
    * Creates a link href preview button.
    */
-  _createPreviewButton() {
+  _createPreviewButton(hiddenPreviewBtn) {
     const button = new ButtonView(this.locale);
     const bind = this.bindTemplate;
     const t = this.t;
@@ -126,7 +135,7 @@ export class CustomLinkActionsView extends View {
 
     button.extendTemplate({
       attributes: {
-        class: ["ck", "ck-link-actions__preview"],
+        class: ["ck", "ck-link-actions__preview", hiddenPreviewBtn ? "hidden" : undefined],
         // href: bind.to("href", (href) => href && ensureSafeUrl(href)),
         // target: "_blank",
         rel: "noopener noreferrer",

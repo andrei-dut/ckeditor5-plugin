@@ -8,6 +8,7 @@ export function createTestItemToolbar(editor, name, icon, cb) {
           label: name,
           icon,
           tooltip: true,
+          withText: icon ? false : true
         });
   
         button.on("execute", () => {
@@ -17,3 +18,6 @@ export function createTestItemToolbar(editor, name, icon, cb) {
         return button;
       });
 }
+
+// example 
+// createTestItemToolbar(editor, "test", icon, () => {})

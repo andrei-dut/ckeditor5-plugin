@@ -1,4 +1,4 @@
-import { Plugin } from "../../ckeditor";
+import { Plugin } from "../../reqCkeditor.service";
 import { executeEditorCmd } from "../editorUtils";
 import CopyCutPasteCmd from "./copyCutPasteCmd";
 
