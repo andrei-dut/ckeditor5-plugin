@@ -7,10 +7,10 @@ import {
   clickOutsideHandler,
 } from "../../reqCkeditor.service";
 import { registerCustomLink } from "./registerCustomLink";
-import InsertCustomLinkCommand from "./InsertCustomLinkCommand";
 import { executeEditorCmd, findAttributeRange, getSelectedLinkElement } from "../editorUtils";
 import { createClickChecker } from "../utils";
 import { CustomLinkActionsView } from "../customViews";
+import InsertCustomLinkCommand from "./InsertCustomLInkCommand";
 
 export class CustomLinkPlugin extends Plugin {
   static get pluginName() {

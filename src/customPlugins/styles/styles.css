@@ -32,6 +32,11 @@
   width: 60px;
 }
 
+.ck.ck-editor .ck.ck-reset_all .toolbar-insert-symbol .ck-dropdown__panel .ck-button  *{
+  width: revert-layer;
+  height: revert-layer;
+}
+
 .toolbar-insert-symbol .ck.ck-reset.ck-dropdown__panel {
   max-width: 114px;
 }
