@@ -95,23 +95,18 @@ export class IconPickerPlugin extends Plugin {
     const conversion = editor.conversion;
     const imageUtils = editor.plugins.get("ImageUtils");
 
-    function createImageViewElement(writer, imageType, modelElement) {
+    function createImageViewElement(writer, modelElement) {
       const emptyElement = writer.createEmptyElement("img");
       const id = modelElement
         ? modelElement.getAttribute("data-id") || modelElement.getAttribute("id")
         : undefined;
 
-      const container =
-        imageType === "imageBlock"
-          ? writer.createContainerElement("figure", { class: "image" })
-          : writer.createContainerElement(
-              "span",
-              { class: "image-inline", id },
-              { isAllowedInsideAttributeElement: true }
-            );
-
+      const container = writer.createContainerElement(
+        "span",
+        { class: "image-inline", id },
+        { isAllowedInsideAttributeElement: true }
+      )
       writer.insert(writer.createPositionAt(container, 0), emptyElement);
-      console.log("createImageViewElement", modelElement, id);
       return container;
     }
 
@@ -174,36 +169,23 @@ export class IconPickerPlugin extends Plugin {
       }
     }
 
-    function getImgViewElementMatcher(editor, matchImageType) {
-
+    function getImgViewElementMatcher(editor) {
       if (editor.plugins.has("ImageInlineEditing") !== editor.plugins.has("ImageBlockEditing")) {
         return {
           name: "img",
           attributes: {
             src: true,
+            "data-id": true
           },
         };
       }
-
       const imageUtils = editor.plugins.get("ImageUtils");
-
       return (element) => {
         // Convert only images with src attribute.
         if (!imageUtils.isInlineImageView(element) || !element.hasAttribute("src")) {
           return null;
         }
-
-        // The <img> can be standalone, wrapped in <figure>...</figure> (ImageBlock plugin) or
-        // wrapped in <figure><a>...</a></figure> (LinkImage plugin).
-        const imageType = element.findAncestor(imageUtils.isBlockImageView)
-          ? "imageBlock"
-          : "imageInlineIcon";
-          console.log(1111111111111, imageType, matchImageType, imageType !== matchImageType);
-        if (imageType !== matchImageType) {
-          return null;
-        }
-
-        return { name: true, attributes: ["src"] };
+        return { name: true, attributes: ["src", "data-id"] };
       };
     }
 
@@ -216,7 +198,7 @@ export class IconPickerPlugin extends Plugin {
       model: "imageInlineIcon",
       view: (modelElement, { writer }) =>
         imageUtils.toImageWidget(
-          createImageViewElement(writer, "imageInlineIcon", modelElement),
+          createImageViewElement(writer, modelElement),
           writer,
           t("image widget")
         ),
@@ -233,14 +215,14 @@ export class IconPickerPlugin extends Plugin {
     // More image related upcasts are in 'ImageEditing' plugin.
     conversion.for("upcast").elementToElement({
       view: getImgViewElementMatcher(editor, "imageInlineIcon"),
-      model: (viewImage, { writer }) => {
-        console.log('12332313123123');
-        return writer.createElement("imageInlineIcon", {
+      model: (viewImage, { writer }) => 
+        writer.createElement("imageInlineIcon", {
           src: viewImage.getAttribute("src"),
           "data-json": viewImage.getAttribute("data-json"),
           "data-id": viewImage.getAttribute("data-id"),
-        });
-      },
+        }),
+
+      converterPriority: "highest",
     });
   }
 }
