@@ -25,12 +25,12 @@ export class IconPickerPlugin extends Plugin {
 
     const schema = editor.model.schema;
 
-    // Расширение элемента imageInline для поддержки новых атрибутов
-    schema.extend( 'imageInline', {
-        allowAttributes: [ "data-json", "id", "data-id"]
-    } );
-
-    this._setupConversion();
+    schema.register("imageInlineIcon", {
+      isObject: true,
+      isInline: true,
+      allowWhere: "$text",
+      allowAttributes: ["alt", "src", "srcset", "data-json", "id", "data-id"],
+    });
 
     editor.commands.add("insertIcon", new InsertIconCommand(editor));
     editor.ui.componentFactory.add("iconPickerButton", (locale) => {
@@ -41,7 +41,7 @@ export class IconPickerPlugin extends Plugin {
         listItem.set({
           label: icon.label,
           icon: icon.icon,
-          class: icon.iconName
+          class: icon.iconName,
         });
 
         function insertIconFc(svgEl, iconName, svgValues) {
@@ -49,11 +49,10 @@ export class IconPickerPlugin extends Plugin {
 
           if (insertIconCmd) {
             insertIconCmd.execute({
-                    iconName,
-                    icon: svgEl,
-                    svgValues,
-                  }
-            );
+              iconName,
+              icon: svgEl,
+              svgValues,
+            });
           }
           editor.editing.view.focus();
           emitter.off("insertIcon", insertIconFc);
@@ -86,17 +85,22 @@ export class IconPickerPlugin extends Plugin {
       toolbarDropdown.bind("isOn", "isEnabled").to(command, "value", "isEnabled");
       return toolbarDropdown;
     });
+
+    this._setupConversion();
   }
 
   _setupConversion() {
-		const editor = this.editor;
-		const t = editor.t;
-		const conversion = editor.conversion;
-		const imageUtils = editor.plugins.get( 'ImageUtils' );
+    const editor = this.editor;
+    const t = editor.t;
+    const conversion = editor.conversion;
+    const imageUtils = editor.plugins.get("ImageUtils");
 
     function createImageViewElement(writer, imageType, modelElement) {
       const emptyElement = writer.createEmptyElement("img");
-      const id = modelElement ? modelElement.getAttribute('data-id') || modelElement.getAttribute('id') : undefined;
+      const id = modelElement
+        ? modelElement.getAttribute("data-id") || modelElement.getAttribute("id")
+        : undefined;
+
       const container =
         imageType === "imageBlock"
           ? writer.createContainerElement("figure", { class: "image" })
@@ -107,7 +111,7 @@ export class IconPickerPlugin extends Plugin {
             );
 
       writer.insert(writer.createPositionAt(container, 0), emptyElement);
-
+      console.log("createImageViewElement", modelElement, id);
       return container;
     }
 
@@ -125,117 +129,118 @@ export class IconPickerPlugin extends Plugin {
         const element = conversionApi.mapper.toViewElement(data.item);
         const img = imageUtils.findViewImgElement(element);
 
-        viewWriter.setAttribute(
-          data.attributeKey,
-          data.attributeNewValue || "",
-          img
-        );
+        viewWriter.setAttribute(data.attributeKey, data.attributeNewValue || "", img);
       }
     }
 
-    function downcastSrcsetAttribute( imageUtils, imageType ) {
-      return dispatcher => {
-        dispatcher.on( `attribute:srcset:${ imageType }`, converter );
+    function downcastSrcsetAttribute(imageUtils, imageType) {
+      return (dispatcher) => {
+        dispatcher.on(`attribute:srcset:${imageType}`, converter);
       };
-    
-      function converter( evt, data, conversionApi ) {
-        if ( !conversionApi.consumable.consume( data.item, evt.name ) ) {
+
+      function converter(evt, data, conversionApi) {
+        if (!conversionApi.consumable.consume(data.item, evt.name)) {
           return;
         }
-    
+
         const writer = conversionApi.writer;
-        const element = conversionApi.mapper.toViewElement( data.item );
-        const img = imageUtils.findViewImgElement( element );
-    
-        if ( data.attributeNewValue === null ) {
+        const element = conversionApi.mapper.toViewElement(data.item);
+        const img = imageUtils.findViewImgElement(element);
+
+        if (data.attributeNewValue === null) {
           const srcset = data.attributeOldValue;
-    
-          if ( srcset.data ) {
-            writer.removeAttribute( 'srcset', img );
-            writer.removeAttribute( 'sizes', img );
-    
-            if ( srcset.width ) {
-              writer.removeAttribute( 'width', img );
+
+          if (srcset.data) {
+            writer.removeAttribute("srcset", img);
+            writer.removeAttribute("sizes", img);
+
+            if (srcset.width) {
+              writer.removeAttribute("width", img);
             }
           }
         } else {
           const srcset = data.attributeNewValue;
-    
-          if ( srcset.data ) {
-            writer.setAttribute( 'srcset', srcset.data, img );
+
+          if (srcset.data) {
+            writer.setAttribute("srcset", srcset.data, img);
             // Always outputting `100vw`. See https://github.com/ckeditor/ckeditor5-image/issues/2.
-            writer.setAttribute( 'sizes', '100vw', img );
-    
-            if ( srcset.width ) {
-              writer.setAttribute( 'width', srcset.width, img );
+            writer.setAttribute("sizes", "100vw", img);
+
+            if (srcset.width) {
+              writer.setAttribute("width", srcset.width, img);
             }
           }
         }
       }
     }
 
-    function getImgViewElementMatcher( editor, matchImageType ) {
-      if ( editor.plugins.has( 'ImageInlineEditing' ) !== editor.plugins.has( 'ImageBlockEditing' ) ) {
+    function getImgViewElementMatcher(editor, matchImageType) {
+
+      if (editor.plugins.has("ImageInlineEditing") !== editor.plugins.has("ImageBlockEditing")) {
         return {
-          name: 'img',
+          name: "img",
           attributes: {
-            src: true
-          }
+            src: true,
+          },
         };
       }
-    
-      const imageUtils = editor.plugins.get( 'ImageUtils' );
-    
-      return element => {
+
+      const imageUtils = editor.plugins.get("ImageUtils");
+
+      return (element) => {
         // Convert only images with src attribute.
-        if ( !imageUtils.isInlineImageView( element ) || !element.hasAttribute( 'src' ) ) {
+        if (!imageUtils.isInlineImageView(element) || !element.hasAttribute("src")) {
           return null;
         }
-    
+
         // The <img> can be standalone, wrapped in <figure>...</figure> (ImageBlock plugin) or
         // wrapped in <figure><a>...</a></figure> (LinkImage plugin).
-        const imageType = element.findAncestor( imageUtils.isBlockImageView ) ? 'imageBlock' : 'imageInline';
-    
-        if ( imageType !== matchImageType ) {
+        const imageType = element.findAncestor(imageUtils.isBlockImageView)
+          ? "imageBlock"
+          : "imageInlineIcon";
+          console.log(1111111111111, imageType, matchImageType, imageType !== matchImageType);
+        if (imageType !== matchImageType) {
           return null;
         }
-    
-        return { name: true, attributes: [ 'src' ] };
+
+        return { name: true, attributes: ["src"] };
       };
     }
 
-		conversion.for( 'dataDowncast' )
-			.elementToElement( {
-				model: 'imageInline',
-				view: ( modelElement, { writer } ) => writer.createEmptyElement( 'img' )
-			} );
+    conversion.for("dataDowncast").elementToElement({
+      model: "imageInlineIcon",
+      view: (modelElement, { writer }) => writer.createEmptyElement("img"),
+    });
 
-      conversion.for("editingDowncast").elementToElement({
-        model: "imageInline",
-        view: (modelElement, { writer }) =>
-          imageUtils.toImageWidget(
-            createImageViewElement(writer, "imageInline", modelElement),
-            writer,
-            t("image widget")
-          ),
-      });
+    conversion.for("editingDowncast").elementToElement({
+      model: "imageInlineIcon",
+      view: (modelElement, { writer }) =>
+        imageUtils.toImageWidget(
+          createImageViewElement(writer, "imageInlineIcon", modelElement),
+          writer,
+          t("image widget")
+        ),
+    });
 
-		conversion.for( 'downcast' )
-      .add(downcastImageAttribute(imageUtils, "imageInline", "data-id"))
-    .add(downcastImageAttribute(imageUtils, "imageInline", "src"))
-    .add(downcastImageAttribute(imageUtils, "imageInline", "alt"))
-    .add(downcastImageAttribute(imageUtils, "imageInline", "data-json"))
-			.add( downcastSrcsetAttribute( imageUtils, 'imageInline' ) );
+    conversion
+      .for("downcast")
+      .add(downcastImageAttribute(imageUtils, "imageInlineIcon", "data-id"))
+      .add(downcastImageAttribute(imageUtils, "imageInlineIcon", "src"))
+      .add(downcastImageAttribute(imageUtils, "imageInlineIcon", "alt"))
+      .add(downcastImageAttribute(imageUtils, "imageInlineIcon", "data-json"))
+      .add(downcastSrcsetAttribute(imageUtils, "imageInlineIcon"));
 
-		// More image related upcasts are in 'ImageEditing' plugin.
-            conversion.for("upcast").elementToElement({
-              view: getImgViewElementMatcher(editor, "imageInline"),
-              model: (viewImage, { writer }) =>
-                writer.createElement("imageInline", {
-                  src: viewImage.getAttribute("src"),
-                  "data-json": viewImage.getAttribute("data-json"),
-                  "data-id": viewImage.getAttribute("data-id"),
-                }),
-            });
-	}
+    // More image related upcasts are in 'ImageEditing' plugin.
+    conversion.for("upcast").elementToElement({
+      view: getImgViewElementMatcher(editor, "imageInlineIcon"),
+      model: (viewImage, { writer }) => {
+        console.log('12332313123123');
+        return writer.createElement("imageInlineIcon", {
+          src: viewImage.getAttribute("src"),
+          "data-json": viewImage.getAttribute("data-json"),
+          "data-id": viewImage.getAttribute("data-id"),
+        });
+      },
+    });
+  }
 }

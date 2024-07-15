@@ -15,7 +15,7 @@ export default class InsertIconCommand extends Command {
     const selection = model.document.selection;
 console.log("InsertIconCommand", iconData);
     model.change((writer) => {
-      const imageElement = writer.createElement("imageInline", {
+      const imageElement = writer.createElement("imageInlineIcon", {
         src: svg64(iconData.icon),
         alt: iconData.iconName,
         id: iconData.iconName,
