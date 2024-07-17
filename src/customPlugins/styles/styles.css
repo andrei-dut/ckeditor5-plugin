@@ -189,10 +189,13 @@ p {
   position: relative;
   border: 1px solid;
   max-width: 44px;
+  min-width: 44px;
   display: flex;
   margin-right: auto;
   justify-content: space-between;
   cursor: pointer;
+  float: left;
+  margin-right: 10px;
 }
 
 .dropdown-designation .dropdown-designation-value{

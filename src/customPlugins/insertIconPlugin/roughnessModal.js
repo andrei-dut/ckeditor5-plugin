@@ -148,6 +148,7 @@ function addModal(content) {
     saveBtn.onclick = function () {
       const currentValues = getCurrentValues();
       updateY(undefined, currentValues.y);
+      updateZ(currentValues.z);
       const svgElement = document.querySelector("#wrapSvg svg");
       if (svgElement?.outerHTML)
         emitter.emit(
@@ -216,6 +217,15 @@ function addModal(content) {
       });
     });
   }
+  const cleanBtn = document.querySelector(".dropdown-designation__clean");
+
+  if(cleanBtn) {
+    cleanBtn.addEventListener("click", function () {
+      selectItem('')
+    });
+  
+  }
+
 
   closeButton.addEventListener("click", function () {
     modal.remove();
@@ -372,18 +382,23 @@ function removeInput(btn) {
   }
 }
 
+function updateZ(text) {
+  const svgElement = document.querySelector("#wrapSvg svg");
+  const targetTextElement = findTextTagInSVG(svgElement, "z");
+  if (targetTextElement) {
+    targetTextElement.textContent = text || "";
+  }
+  const cleanBtn = document.querySelector(".dropdown-designation__clean");
+  if(cleanBtn) {
+    cleanBtn.disabled = !text;
+  }
+}
+
 function selectItem(item) {
   const dropdownIcon = document.querySelector(".dropdown-designation-value");
   if (dropdownIcon) dropdownIcon.textContent = item;
 
-  if (!item) {
-    return;
-  }
-  const svgElement = document.querySelector("#wrapSvg svg");
-  const targetTextElement = findTextTagInSVG(svgElement, "z");
-  if (targetTextElement) {
-    targetTextElement.textContent = item;
-  }
+  updateZ(item);
 }
 
 // Пример использования функции
@@ -419,19 +434,20 @@ export const showModal = () =>
       </div>
       <div class="cond-designation">
         <p>Усл. обозначение направления обработки:</p>
-        <div class="dropdown-designation">
-        <span class="dropdown-designation-value"></span>
-        <span class="dropdown-designation-icon">▼</span>
-        <div class="dropdown-designation-content">
-          <div>\u2534</div>
-          <div>x</div>
-          <div>P</div>
-          <div>M</div>
-          <div>C</div>
-          <div>R</div>
-          <div>=</div>
-        </div>
+      <div class="dropdown-designation">
+          <span class="dropdown-designation-value"></span>
+          <span class="dropdown-designation-icon">▼</span>
+          <div class="dropdown-designation-content">
+            <div>\u2534</div>
+            <div>x</div>
+            <div>P</div>
+            <div>M</div>
+            <div>C</div>
+            <div>R</div>
+            <div>=</div>
+          </div>
       </div>
+      <button disabled class="dropdown-designation__clean">Очистить</button>
       </div>
     </div>
   </div>
