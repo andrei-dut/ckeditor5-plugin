@@ -71,7 +71,7 @@ export const replaceElementsWithJsonContent = function (editor) {
           try {
             const letter = tagName === "sup" ? "H" : "L";
             const textNode = document.createTextNode(
-              `<${letter}>${element.textContent}<${letter}>`
+              `<${letter}>${element.textContent}<${letter}>`.replaceAll(" ", "")
             );
             element.parentNode.replaceChild(textNode, element);
           } catch (error) {
