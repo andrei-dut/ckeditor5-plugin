@@ -94,7 +94,7 @@ export const replaceElementsWithJsonContent = function (editor) {
     replaceParametrText();
 
     elementCopy.innerHTML = replaceStringToNX(elementCopy.innerHTML);
-    const resultString = `${reqMarker}) ${elementCopy.textContent}`;
+    const resultString = `${reqMarker}. ${elementCopy.textContent}`;
 
     console.log("elementCopy", elementCopy, resultString, reqMarker);
     return resultString;
