@@ -97,11 +97,11 @@ export const mathSymbolsForEditor = [
 
 export const customSpecialCharactersItems = [
   {
-    groupName: "Mathematical",
+    groupName: "Математические",
     items: mathSymbolsForEditor,
   },
   {
-    groupName: "Greek",
+    groupName: "Греческие",
     items: greekAlphabetForEditor,
   },
 ];

@@ -604,7 +604,7 @@ export const ra_manual = `<svg data-xer="xer" xmlns="http://www.w3.org/2000/svg"
 </g>
 </svg>
 `;
-export const ra1_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra3_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;">
 
 <g transform="translate(-20, -17)">
@@ -622,7 +622,7 @@ height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;">
 
 </svg>
 `;
-export const ra1_2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra3_2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 95 44" style="font-size:12px;">
 
 <g  transform="translate(-20, -16)">
@@ -641,7 +641,7 @@ height="100%" viewBox="-0.5 -0.5 95 44" style="font-size:12px;">
 
 </svg>
 `;
-export const ra1_3 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra3_3 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 102 57" style="font-size:12px;">
 
 <g transform="translate(-20, -16)">
@@ -662,7 +662,7 @@ height="100%" viewBox="-0.5 -0.5 102 57" style="font-size:12px;">
 
 </svg>
 `;
-export const ra1_4 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra3_4 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 110 69" style="font-size:12px;">
 
 <g transform="translate(-20, -16)">
@@ -685,7 +685,7 @@ height="100%" viewBox="-0.5 -0.5 110 69" style="font-size:12px;">
 
 </svg>
 `;
-export const ra1_5 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra3_5 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 117 82" style="font-size:12px;">
 
 <g transform="translate(-20, -16)">
@@ -712,7 +712,7 @@ height="100%" viewBox="-0.5 -0.5 117 82" style="font-size:12px;">
 
 </svg>
 `;
-export const ra1_6 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra3_6 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 126 94" style="font-size:12px;">
 
 <g transform="translate(-20, -16)">
@@ -739,7 +739,7 @@ height="100%" viewBox="-0.5 -0.5 126 94" style="font-size:12px;">
 
 </svg>
 `;
-export const ra1_temp = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+export const ra3_temp = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 version="1.1" width="27px" height="37px" viewBox="0 0 27 37">
 
 <g >
@@ -750,7 +750,7 @@ version="1.1" width="27px" height="37px" viewBox="0 0 27 37">
 
 </svg>
 `;
-export const ra2_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra1_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;">
 
 <g transform="translate(-20, -17)">
@@ -767,7 +767,7 @@ height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;">
 
 </svg>
 `;
-export const ra2_2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra1_2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 95 44" style="font-size:12px;">
 
 <g transform="translate(-20, -16)">
@@ -785,7 +785,7 @@ height="100%" viewBox="-0.5 -0.5 95 44" style="font-size:12px;">
 
 </svg>
 `;
-export const ra2_3 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra1_3 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 102 57" style="font-size:12px;">
 
 <g transform="translate(-20, -16)">
@@ -807,7 +807,7 @@ height="100%" viewBox="-0.5 -0.5 102 57" style="font-size:12px;">
 
 </svg>
 `;
-export const ra2_4 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra1_4 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%"  viewBox="-0.5 -0.5 110 69" style="font-size:12px;">
 
 <g transform="translate(-20, -16)">
@@ -829,7 +829,7 @@ height="100%"  viewBox="-0.5 -0.5 110 69" style="font-size:12px;">
 
 </svg>
 `;
-export const ra2_5 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra1_5 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 117 82" style="font-size:12px;">
 
 <g transform="translate(-20, -16)">
@@ -854,7 +854,7 @@ height="100%" viewBox="-0.5 -0.5 117 82" style="font-size:12px;">
 
 </svg>
 `;
-export const ra2_6 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra1_6 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 126 94" style="font-size:12px;"
 >
 
@@ -881,7 +881,7 @@ height="100%" viewBox="-0.5 -0.5 126 94" style="font-size:12px;"
 
 </svg>
 `;
-export const ra2_temp = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="27px"
+export const ra1_temp = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="27px"
 height="37px" viewBox="0 0 27 37"
 >
 
@@ -892,7 +892,7 @@ height="37px" viewBox="0 0 27 37"
 
 </svg>
 `;
-export const ra3_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra2_1 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;"
 >
 
@@ -912,7 +912,7 @@ height="100%" viewBox="-0.5 -0.5 94 34" style="font-size:12px;"
 
 </svg>
 `;
-export const ra3_2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra2_2 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 95 44"  style="font-size:12px;"
 >
 
@@ -933,7 +933,7 @@ height="100%" viewBox="-0.5 -0.5 95 44"  style="font-size:12px;"
 
 </svg>
 `;
-export const ra3_3 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra2_3 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 102 57"  style="font-size:12px;"
 >
 
@@ -956,7 +956,7 @@ height="100%" viewBox="-0.5 -0.5 102 57"  style="font-size:12px;"
 
 </svg>
 `;
-export const ra3_4 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra2_4 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 110 69" style="font-size:12px;"
 >
 
@@ -981,7 +981,7 @@ height="100%" viewBox="-0.5 -0.5 110 69" style="font-size:12px;"
 
 </svg>
 `;
-export const ra3_5 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra2_5 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 117 82" style="font-size:12px;"
 >
 
@@ -1009,7 +1009,7 @@ height="100%" viewBox="-0.5 -0.5 117 82" style="font-size:12px;"
 
 </svg>
 `;
-export const ra3_6 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
+export const ra2_6 = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%"
 height="100%" viewBox="-0.5 -0.5 126 94" style="font-size:12px;"
 >
 
@@ -1038,7 +1038,7 @@ height="100%" viewBox="-0.5 -0.5 126 94" style="font-size:12px;"
 
 </svg>
 `;
-export const ra3_temp = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="27px"
+export const ra2_temp = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="27px"
 height="37px" viewBox="0 0 27 37"
 >
 

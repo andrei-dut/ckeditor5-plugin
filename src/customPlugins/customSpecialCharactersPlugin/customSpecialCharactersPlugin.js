@@ -6,7 +6,7 @@ import {
   import { CharacterGridView, CharacterInfoView, SpecialCharactersNavigationView } from "./csmSpChViews";
   
   
-  const ALL_SPECIAL_CHARACTERS_GROUP = "All";
+  const ALL_SPECIAL_CHARACTERS_GROUP = "Все";
   
   
   export class CustomSpecialCharactersPlugin extends Plugin {

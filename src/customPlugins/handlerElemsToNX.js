@@ -156,7 +156,7 @@ export function dataSvgToXml(key, values = {}, onlyValue) {
     case "allowance": {
       return {
         name: key,
-        value: `<C0.5000><T+${values.x}!-${values.y}><C>`,
+        value: `<C0.5000><T${values.x}!${values.y}><C>`,
       };
     }
     case "customTextIcon": {
