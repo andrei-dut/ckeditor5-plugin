@@ -116,7 +116,7 @@ export const replaceElementsWithJsonContent = function (editor) {
   const toCP1251 = function(text) {
     return iconv.encode(text, 'win1251');
   }
-  CP1251 = toCP1251(doneString);
+  CP1251 = toCP1251(doneString + "\u0020");
   } catch (error) {
     console.log("error_toCP1251", error);
   }

@@ -93,6 +93,7 @@ export const mathSymbolsForEditor = [
   { character: "∑", title: "N-ary summation" },
   { character: "△", title: "" },
   { character: "□", title: "" },
+  { character: "°", title: "" },
 ];
 
 export const customSpecialCharactersItems = [
