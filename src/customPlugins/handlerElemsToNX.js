@@ -7,7 +7,6 @@ export const replaceElementsWithJsonContent = function (editor) {
   const result = [];
 
   const handlerElems = (element, reqMarker) => {
-    console.log(element);
 
     const elementCopy = element.cloneNode(true);
 
