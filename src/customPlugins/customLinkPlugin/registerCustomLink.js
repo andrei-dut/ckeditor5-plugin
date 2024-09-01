@@ -17,7 +17,7 @@ function createLinkElement(data, { writer }) {
       href,
       "data-text": text,
       class: "custom-link",
-      "data-json": JSON.stringify({ name: "customLink", value: `<$LINK!”${text}”>` }),
+      "data-json": JSON.stringify({ name: "customLink", value: `<$LINK!${text}>` }),
     },
     { priority: 5 }
   );

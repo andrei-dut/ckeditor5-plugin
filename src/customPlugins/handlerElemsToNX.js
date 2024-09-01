@@ -7,6 +7,8 @@ export const replaceElementsWithJsonContent = function (editor) {
   const result = [];
 
   const handlerElems = (element, reqMarker) => {
+    console.log(element);
+
     const elementCopy = element.cloneNode(true);
 
     /////////////// replaceByDataJson
@@ -93,10 +95,54 @@ export const replaceElementsWithJsonContent = function (editor) {
     };
     replaceParametrText();
 
+    //////////////////// replaceUl_Ol
+    const replaceUl_Ol = () => {
+      const lists = ["ol", "ul"];
+      lists.forEach((tagName) => {
+        const elements = elementCopy.querySelectorAll(tagName);
+        elements.forEach((element) => {
+          try {
+            const innerHTML_array = [];
+            for (const child of element.children) {
+              const childInnerHTML = child.innerHTML || "";
+              const lengthAr = innerHTML_array.length;
+              innerHTML_array.push(
+                `${lengthAr === 0 ? "" : ""}\t${
+                  tagName === "ol" ? `${lengthAr + 1}.` : "•"
+                } ${childInnerHTML}\n`
+              );
+            }
+            const textNode = document.createTextNode(innerHTML_array.join(' '));
+            element.parentNode.replaceChild(textNode, element);
+          } catch (error) {
+            console.log("error", error);
+          }
+        });
+      });
+    };
+    replaceUl_Ol();
+
+    //////////////////// replaceWrapElems
+    const replaceWrapElems = () => {
+      const tagNames = ["p"];
+      tagNames.forEach((tagName) => {
+        const elements = elementCopy.querySelectorAll(tagName);
+        elements.forEach((element) => {
+          try {
+            const textNode = document.createTextNode(`${element.innerHTML || ""}\n`);
+            element.parentNode.replaceChild(textNode, element);
+          } catch (error) {
+            console.log("error", error);
+          }
+        });
+      });
+    };
+    replaceWrapElems();
+
     elementCopy.innerHTML = replaceStringToNX(elementCopy.innerHTML);
     const resultString = `${reqMarker}. ${elementCopy.textContent}`;
 
-    console.log("elementCopy", elementCopy, resultString, reqMarker);
+    console.log("elementCopy", elementCopy, elementCopy.innerHTML, resultString, reqMarker);
     return resultString;
   };
 
@@ -112,16 +158,15 @@ export const replaceElementsWithJsonContent = function (editor) {
   let CP1251;
 
   try {
-  
-  const toCP1251 = function(text) {
-    return iconv.encode(text, 'win1251');
-  }
-  CP1251 = toCP1251(doneString + "\u0020");
+    const toCP1251 = function (text) {
+      return iconv.encode(text, "win1251");
+    };
+    CP1251 = toCP1251(doneString + "\u0020");
   } catch (error) {
     console.log("error_toCP1251", error);
   }
 
-  return {arrayString: result, doneString, CP1251};
+  return { arrayString: result, doneString, CP1251 };
 };
 
 export function dataSvgToXml(key, values = {}, onlyValue) {
@@ -306,5 +351,6 @@ export function replaceStringToNX(inputString) {
     .replaceAll("χ", "<%TTGR623>")
     .replaceAll("ψ", "<%TTGR624>")
     .replaceAll("∅", "<%TTGR625>")
-    .replaceAll("ω", "<%TTGR625>");
+    .replaceAll("ω", "<%TTGR625>")
+    .replaceAll(`&lt;br data-cke-filler="true"&gt;`, "");
 }
