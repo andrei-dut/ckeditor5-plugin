@@ -7,7 +7,6 @@ export const replaceElementsWithJsonContent = function (editor) {
   const result = [];
 
   const handlerElems = (element, reqMarker) => {
-
     const elementCopy = element.cloneNode(true);
 
     /////////////// replaceByDataJson
@@ -111,7 +110,7 @@ export const replaceElementsWithJsonContent = function (editor) {
                 } ${childInnerHTML}\n`
               );
             }
-            const textNode = document.createTextNode(innerHTML_array.join(' '));
+            const textNode = document.createTextNode(innerHTML_array.join(""));
             element.parentNode.replaceChild(textNode, element);
           } catch (error) {
             console.log("error", error);
@@ -137,11 +136,21 @@ export const replaceElementsWithJsonContent = function (editor) {
       });
     };
     replaceWrapElems();
-
     elementCopy.innerHTML = replaceStringToNX(elementCopy.innerHTML);
-    const resultString = `${reqMarker}. ${elementCopy.textContent}`;
 
-    console.log("elementCopy", elementCopy, elementCopy.innerHTML, resultString, reqMarker);
+    function decodeHtmlEntities(text) {
+      try {
+        const textarea = document.createElement("textarea");
+        textarea.innerHTML = text;
+        return textarea.value;
+      } catch (error) {
+        return text;
+      }
+    }
+
+    const resultString = `${reqMarker}. ${decodeHtmlEntities(elementCopy.textContent)}`;
+
+    console.log("elementCopy", elementCopy.innerHTML);
     return resultString;
   };
 
