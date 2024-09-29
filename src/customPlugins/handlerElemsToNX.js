@@ -178,16 +178,19 @@ export const replaceElementsWithJsonContent = function (editor) {
 };
 
 export function dataSvgToXml(key, values = {}, onlyValue) {
+  const replaceNonBreakingSpace = (str) => {
+    return str.replace(/ /g, '\u00A0');
+  }
   switch (key) {
     case "mult1":
       return {
         name: key,
-        value: `${values.aa || "aa"} <R${values.bb || "bb"}!${values.cc || "cc"}> `,
+        value: replaceNonBreakingSpace(`${values.aa || "aa"} <R${values.bb || "bb"}!${values.cc || "cc"}> `),
       };
     case "mult2":
       return {
         name: key,
-        value: `${values.aa || "aa"} <Q${values.bb || "bb"}!${values.cc || "cc"}> `,
+        value: replaceNonBreakingSpace(`${values.aa || "aa"} <Q${values.bb || "bb"}!${values.cc || "cc"}> `),
       };
     case "roughness": {
       const keys = Object.keys(values);
