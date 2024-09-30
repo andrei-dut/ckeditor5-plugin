@@ -179,7 +179,7 @@ export const replaceElementsWithJsonContent = function (editor) {
 
 export function dataSvgToXml(key, values = {}, onlyValue) {
   const replaceNonBreakingSpace = (str) => {
-    return str.replace(/ /g, '\u00A0');
+    return str.replace(/ /g, '&nbsp;');
   }
   switch (key) {
     case "mult1":
