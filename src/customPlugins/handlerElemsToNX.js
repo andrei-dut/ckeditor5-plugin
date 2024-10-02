@@ -170,6 +170,31 @@ export const replaceElementsWithJsonContent = function (editor) {
       return iconv.encode(text, "win1251");
     };
     CP1251 = toCP1251(doneString + "\u0020");
+    // console.log("CP1251", CP1251);
+    const array = CP1251;
+    const last20 = array.slice(-20);
+
+    // Функция для проверки, есть ли 63 более 2 раз подряд
+    const get63 = (arr) => {
+      const indices = [];
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === 63) {
+          indices.push(CP1251.length - 20 + i);
+        }
+      }
+      return indices;
+    };
+
+
+    const indeces63 = get63(last20).filter(
+      (value, i, array) =>{
+        const isNext = (i !== array.length - 1 && value + 1 === array[i + 1]);
+        return isNext || (!isNext && i !== array.length - 1 && value - 1 === array[i - 1]) ||
+        (i === array.length - 1 && value - 1 === array[i - 1])}
+    );
+    CP1251 = (CP1251 || []).filter((el, i) => !indeces63.find((_val) => _val === i))
+
+    // console.log(indeces63);
   } catch (error) {
     console.log("error_toCP1251", error);
   }
