@@ -182,7 +182,7 @@ export const replaceElementsWithJsonContent = function (editor) {
           indices.push(CP1251.length - 20 + i);
         }
       }
-      return indices;
+      return indices.length > 1 ? indices : [];
     };
 
 
