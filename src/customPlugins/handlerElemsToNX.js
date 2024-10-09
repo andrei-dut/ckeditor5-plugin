@@ -237,7 +237,7 @@ export function dataSvgToXml(key, values = {}, onlyValue) {
     case "allowance": {
       return {
         name: key,
-        value: `<C0.5000><T${values.x}!${values.y}><C>`,
+        value: replaceNonBreakingSpace(`<C0.5000><T${values.x}!${values.y}><C>`),
       };
     }
     case "customTextIcon": {
@@ -386,7 +386,7 @@ export function replaceStringToNX(inputString) {
     .replaceAll("φ", "<%TTGR622>")
     .replaceAll("χ", "<%TTGR623>")
     .replaceAll("ψ", "<%TTGR624>")
-    .replaceAll("∅", "<%TTGR625>")
+    .replaceAll("∅", "<O>")
     .replaceAll("ω", "<%TTGR625>")
     .replaceAll(`&lt;br data-cke-filler="true"&gt;`, "");
 }
