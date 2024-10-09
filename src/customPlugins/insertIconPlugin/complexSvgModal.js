@@ -7,7 +7,7 @@ function setSizesSvg_customTextIcon(wrapSvg) {
     const svg = wrapSvg.querySelector("svg");
 
     const path = svg.querySelector("path");
-    const longestText = svg.querySelector("text tspan") || svg.querySelector("text")
+    const longestText = svg.querySelector("text tspan") || svg.querySelector("text");
     const svgRectTextLongest = longestText.getBBox();
     const xEndText = Math.ceil(svgRectTextLongest.width + svgRectTextLongest.x);
 
@@ -79,37 +79,59 @@ function setSizesSvg_mult2(wrapSvg, id) {
       const tspan1_BBox = tspan1.getBBox();
       const tspan1_x2 = Math.round(tspan1_BBox.x + tspan1_BBox.width);
 
-      replaceElemAttr(null, tspan2, "x", `${(tspan1_x2)}`);
+      replaceElemAttr(null, tspan2, "x", `${tspan1_x2}`);
       const tspan2_BBox = tspan2.getBBox();
 
       const tspan2_x2 = Math.round(tspan2_BBox.x + tspan2_BBox.width);
-      replaceElemAttr(/M\s+\d+/, path, "d", `M ${tspan2_x2 + variances.varianceTspan_2_path_x1 + 4}`);
-      replaceElemAttr(/(?<=,.*\s)\d+/, path, "d", `${tspan2_x2 + variances.varianceTspan_2_path_x2 + 4}`);
+      replaceElemAttr(
+        /M\s+\d+/,
+        path,
+        "d",
+        `M ${tspan2_x2 + variances.varianceTspan_2_path_x1 + 4}`
+      );
+      replaceElemAttr(
+        /(?<=,.*\s)\d+/,
+        path,
+        "d",
+        `${tspan2_x2 + variances.varianceTspan_2_path_x2 + 4}`
+      );
 
       replaceElemAttr(null, tspan3, "x", `${tspan2_x2 + variances.varianceTspan_2_3 + 10}`);
-
     } else if (id === "tspan2") {
       const tspan1_BBox = tspan1.getBBox();
       const tspan2_BBox = tspan2.getBBox();
       const tspan2_x1 = Math.round(tspan2_BBox.x);
       const tspan2_x2 = Math.round(tspan2_BBox.x + tspan2_BBox.width);
       console.log(tspan2_x1, tspan1_BBox.width);
-      replaceElemAttr(/M\s+\d+/, path, "d", `M ${tspan2_x2 + variances.varianceTspan_2_path_x1 +4}`);
-      replaceElemAttr(/(?<=,.*\s)\d+/, path, "d", `${tspan2_x2 + variances.varianceTspan_2_path_x2 +4}`);
+      replaceElemAttr(
+        /M\s+\d+/,
+        path,
+        "d",
+        `M ${tspan2_x2 + variances.varianceTspan_2_path_x1 + 4}`
+      );
+      replaceElemAttr(
+        /(?<=,.*\s)\d+/,
+        path,
+        "d",
+        `${tspan2_x2 + variances.varianceTspan_2_path_x2 + 4}`
+      );
       // replaceElemAttr(null, tspan1, "x", `${tspan2_x2 - (variances.varianceTspan_2_1 + tspan1_BBox.width)}`);
       replaceElemAttr(null, tspan3, "x", `${tspan2_x2 + variances.varianceTspan_2_3 + 10}`);
-
     }
     const g2 = svg.querySelector("#layer1");
     const transform = g2.getAttribute("transform");
     const tspan1_BBox = tspan1.getBBox();
     const tspan2_BBox = tspan2.getBBox();
-    if(tspan1_BBox.x < 0) {
-      replaceElemAttr(transform, g2, "transform", `translate(${-(tspan1.getBBox().x)}, 0)`);
-      } else {
-      replaceElemAttr(transform, g2, "transform", `translate(${-((tspan1_BBox.x > tspan2_BBox.x ? tspan2_BBox.x : tspan1_BBox.x) - 2)}, 0)`);
-
-      }
+    if (tspan1_BBox.x < 0) {
+      replaceElemAttr(transform, g2, "transform", `translate(${-tspan1.getBBox().x}, 0)`);
+    } else {
+      replaceElemAttr(
+        transform,
+        g2,
+        "transform",
+        `translate(${-((tspan1_BBox.x > tspan2_BBox.x ? tspan2_BBox.x : tspan1_BBox.x) - 2)}, 0)`
+      );
+    }
     setViewBoxWidthSvgByG(svg, 10);
   } catch (error) {
     console.log("setSizesSvg_error", error);
@@ -209,10 +231,8 @@ function addModal(content, svgName) {
           varianceTspan_2_1,
           varianceTspan_2_path_x1,
           varianceTspan_2_path_x2,
-          varianceTspan_2_3
-        }
-
-
+          varianceTspan_2_3,
+        };
       }
       const newText = this.value;
       if (textElement) {
@@ -228,15 +248,32 @@ function addModal(content, svgName) {
     baseModalContent2.appendChild(inputElement);
   });
 
+  const dispatchEventInput = () => {
+    try {
+      const event = new Event("input");
+      const inputs = modalContent.querySelectorAll(".parametr__input");
+      inputs?.forEach(function (_input) {
+        _input.dispatchEvent(event);
+      });
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+
   const saveBtn = modalContent.querySelector("#saveBtn");
 
   if (saveBtn) {
-    saveBtn.onclick = function () {
-      const svgElement = wrapSvgTempElem.querySelector("svg");
-      if (svgElement?.outerHTML)
-        emitter.emit("insertIcon", svgElement?.outerHTML, svgName, _values);
-      modal.remove();
+    const hanlderClick = () => {
+      dispatchEventInput();
+      setTimeout(() => {
+        const svgElement = wrapSvgTempElem.querySelector("svg");
+        if (svgElement?.outerHTML)
+          emitter.emit("insertIcon", svgElement?.outerHTML, svgName, _values);
+        modal.remove();
+      });
+      saveBtn.removeEventListener("click", hanlderClick);
     };
+    saveBtn.addEventListener("click", hanlderClick);
   }
 
   modalContent.appendChild(closeButton);
@@ -261,7 +298,6 @@ function addModal(content, svgName) {
 
   return openModal;
 }
-
 // Пример использования функции
 export const showBaseModal = (svgTemp, svgName) =>
   addModal(

@@ -46,7 +46,6 @@ export class IconPickerPlugin extends Plugin {
 
         function insertIconFc(svgEl, iconName, svgValues) {
           const insertIconCmd = editor.commands.get("insertIcon");
-
           if (insertIconCmd) {
             insertIconCmd.execute({
               iconName,
@@ -67,6 +66,7 @@ export class IconPickerPlugin extends Plugin {
             insertIconFc(icon.icon, icon.iconName);
             return;
           }
+          emitter.off("insertIcon", insertIconFc);
           emitter.on("insertIcon", insertIconFc);
           // dropdown.hide();
         });

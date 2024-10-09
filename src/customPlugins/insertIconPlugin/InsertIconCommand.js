@@ -13,7 +13,6 @@ export default class InsertIconCommand extends Command {
   execute(iconData = {}) {
     const model = this.editor.model;
     const selection = model.document.selection;
-console.log("InsertIconCommand", iconData);
     model.change((writer) => {
       const imageElement = writer.createElement("imageInlineIcon", {
         src: svg64(iconData.icon),
