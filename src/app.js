@@ -368,10 +368,10 @@ Editor.create(document.querySelector("#editor"), {})
         console.log(getArrayImgObjByHtmlString(htmlString));
 
         console.log("openModal", value);
-        executeEditorCmd(editor, "insertCustomLink", {
-          href: 123,
-          text: "textLink",
-        });
+        // executeEditorCmd(editor, "insertCustomLink", {
+        //   href: 123,
+        //   text: "textLink",
+        // });
       }
 
       // const currentData = _.find(arg)

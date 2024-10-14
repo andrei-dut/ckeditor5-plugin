@@ -136,7 +136,9 @@ export const replaceElementsWithJsonContent = function (editor) {
       });
     };
     replaceWrapElems();
-    elementCopy.innerHTML = replaceStringToNX(elementCopy.innerHTML);
+    // console.log("innerHTML", elementCopy.innerHTML, elementCopy.textContent);
+    elementCopy.textContent = replaceStringToNX(elementCopy.textContent);
+    elementCopy.innerHTML = replaceHTMLStringToNX(elementCopy.innerHTML);
 
     function decodeHtmlEntities(text) {
       try {
@@ -150,7 +152,7 @@ export const replaceElementsWithJsonContent = function (editor) {
 
     const resultString = `${reqMarker}. ${decodeHtmlEntities(elementCopy.textContent)}`;
 
-    console.log("elementCopy", elementCopy.innerHTML);
+    // console.log("elementCopy", elementCopy.innerHTML, elementCopy, elementCopy.textContent);
     return resultString;
   };
 
@@ -185,14 +187,15 @@ export const replaceElementsWithJsonContent = function (editor) {
       return indices.length > 1 ? indices : [];
     };
 
-
-    const indeces63 = get63(last20).filter(
-      (value, i, array) =>{
-        const isNext = (i !== array.length - 1 && value + 1 === array[i + 1]);
-        return isNext || (!isNext && i !== array.length - 1 && value - 1 === array[i - 1]) ||
-        (i === array.length - 1 && value - 1 === array[i - 1])}
-    );
-    CP1251 = (CP1251 || []).filter((el, i) => !indeces63.find((_val) => _val === i))
+    const indeces63 = get63(last20).filter((value, i, array) => {
+      const isNext = i !== array.length - 1 && value + 1 === array[i + 1];
+      return (
+        isNext ||
+        (!isNext && i !== array.length - 1 && value - 1 === array[i - 1]) ||
+        (i === array.length - 1 && value - 1 === array[i - 1])
+      );
+    });
+    CP1251 = (CP1251 || []).filter((el, i) => !indeces63.find((_val) => _val === i));
 
     // console.log(indeces63);
   } catch (error) {
@@ -204,18 +207,22 @@ export const replaceElementsWithJsonContent = function (editor) {
 
 export function dataSvgToXml(key, values = {}, onlyValue) {
   const replaceNonBreakingSpace = (str) => {
-    return str.replace(/ /g, '&nbsp;');
-  }
+    return str.replace(/ /g, "&nbsp;");
+  };
   switch (key) {
     case "mult1":
       return {
         name: key,
-        value: replaceNonBreakingSpace(`${values.aa || "aa"} <R${values.bb || "bb"}!${values.cc || "cc"}> `),
+        value: replaceNonBreakingSpace(
+          `${values.aa || "aa"} <R${values.bb || "bb"}!${values.cc || "cc"}> `
+        ),
       };
     case "mult2":
       return {
         name: key,
-        value: replaceNonBreakingSpace(`${values.aa || "aa"} <Q${values.bb || "bb"}!${values.cc || "cc"}> `),
+        value: replaceNonBreakingSpace(
+          `${values.aa || "aa"} <Q${values.bb || "bb"}!${values.cc || "cc"}> `
+        ),
       };
     case "roughness": {
       const keys = Object.keys(values);
@@ -389,4 +396,8 @@ export function replaceStringToNX(inputString) {
     .replaceAll("∅", "<O>")
     .replaceAll("ω", "<%TTGR625>")
     .replaceAll(`&lt;br data-cke-filler="true"&gt;`, "");
+}
+
+export function replaceHTMLStringToNX(inputString) {
+  return inputString.replaceAll(`&lt;br data-cke-filler="true"&gt;`, "");
 }
