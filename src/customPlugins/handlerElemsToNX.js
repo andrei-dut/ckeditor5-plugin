@@ -356,8 +356,6 @@ export function dataSvgToXml(key, values = {}, onlyValue) {
 export function replaceStringToNX(inputString) {
   return inputString
     .replaceAll("Ø", "<%TTSPS10>")
-    .replaceAll("±", "<%TTSPS09>")
-    .replaceAll("°", "<%TTSPS08>")
     .replaceAll("≥", "<%TTSPS02>")
     .replaceAll("≤", "<%TTSPS01>")
     .replaceAll("§", "<%TTSPS06>")
